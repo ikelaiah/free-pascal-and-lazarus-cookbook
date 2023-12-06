@@ -1,0 +1,66 @@
+site_name: Learn Object Pascal
+site_url: https://learn-pascal-lang.org
+nav:
+  - Home: index.md
+  - Install: install.md
+  - Documentation: doc.md
+  - Videos: video.md
+  - Community: community.md
+  - About: about.md
+theme:
+  name: material
+  font: 
+    text: Roboto
+    code: Fira Code
+  palette:
+        # Palette toggle for light mode
+    - scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - toc.follow
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+  - open-in-new-tab
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_lang_class: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.smartsymbols
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
