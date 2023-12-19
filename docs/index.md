@@ -1,17 +1,9 @@
-# Welcome to MkDocs
+# Free Pascal Cookbook
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+![Cooking](assets/there-is-a-young-very-happy-cheerful-bright-pup-cheetah-in-a-kitchen-dressed-as-chef-81632844.png)
 
-## Commands
+Find recipes, get things done fast in Free Pascal!
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+!!! warning
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+    This document is a work in progress. Contents are still being revised and added.
