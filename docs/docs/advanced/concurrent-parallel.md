@@ -6,7 +6,7 @@ Parallelism = Do one task in less time using multiple cores.
 
 ## Perform tasks on multiple threads
 
-```pascal
+```pascal linenums="1"
 program Threading;
 
 {$MODE OBJFPC}{$H+}{$J-}

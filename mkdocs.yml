@@ -1,4 +1,4 @@
-site_name: Free Pascal Cookbook
+site_name: Free Pascal & Lazarus Cookbook
 site_url: https://learn-pascal-lang.org
 nav:
   - Home: 
@@ -6,39 +6,27 @@ nav:
     - About: about.md
     - License: LICENSE.md
   - The Basics:
-    - Install: docs/basics/install.md
+    - Install FPC and Lazarus: docs/basics/install.md
+    - Lazarus IDE: docs/basics/lazarus-ide.md
     - Run a "Hello World!": docs/basics/hello-world.md
-    - Structuring Your Codes: docs/basics/pascal-code-structure.md
-    - Building and Processing Lists: docs/basics/lists.md
-    - Immutability: docs/basics/immutability.md
+    - Code Structure: docs/basics/code-structure.md
     - Functions & Procedures: docs/basics/funcs-procs.md
-    - Data Structures: docs/basics/data-structure.md
+    - Immutability: docs/basics/immutability.md
+    - Dates & Times: docs/basics/dates.md
+    - Lists with Generics and Arrays: docs/basics/lists.md
+    - Directories, Paths and Files: docs/basics/dir-path-filename.md
+    - Exceptions: docs/basics/exception-try-blocks.md
     - Strings: docs/basics/strings.md
-    - Regular Expressions: docs/basics/regex.md
     - Numbers: docs/basics/numbers.md
-    - Loops, iteration, mapping: docs/basics/loops-iter.md
-    - Multidimensional Arrays: docs/basics/multi-dim-arrays.md
-    - Dates and Times: docs/basics/dates.md
-    - Pattern Matching: docs/basics/pattern.md
-    - Input/Output: docs/basics/io.md
-    - Files and Directories: docs/basics/files-dir.md
+    - Regular Expressions: docs/basics/regex.md
   - Advanced Topics:
-    - Creating Packages: docs/advanced/create-packages.md
-    - Creating Units: docs/advanced/create-units.md
-    - Error and condition handling: docs/advanced/error-condition.md
-    - Debugging: docs/advanced/debugging.mg
-    - Macros and Backquote: docs/advanced/macros.md
-    - Type System: docs/advanced/types.md
     - Concurrency and Parallelism: docs/advanced/concurrent-parallel.md
+    - Conditional Compilation: docs/advanced/conditional-compilation.md
     - Performance Tuning: docs/advanced/performance.md
-    - Testing and Continuous Integration: docs/advanced/testing.md
-    - Scripting. Building executables: docs/advanced/compile.md
-    - Miscellaneous: docs/advanced/misc.md
   - External Systems:
     - Overview: docs/external-systems/overview.md
   - Community: community.md
-  - Other Resources:
-    # - Cheatsheet: docs/resources/cheatsheet.md
+  - Resources:
     - Documents & Sites: docs/resources/docs-sites.md
     - FPC & Lazarus Packages: docs/resources/fpc-laz-packages.md
     - Videos: docs/resources/videos.md
@@ -77,10 +65,21 @@ theme:
     - toc.follow
     - search.suggest
     - search.highlight
+    - content.code.copy
 
 plugins:
   - search
   - open-in-new-tab
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: auto
+      height: auto
+      zoomable: true
+      draggable: true
+
 
 markdown_extensions:
   - attr_list
@@ -109,10 +108,10 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.critic
   - sane_lists
-
+  - toc:
+      permalink: true
   - pymdownx.arithmatex:
       generic: true
-
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6

@@ -13,16 +13,13 @@ There are various kinds of packages for Free Pascal & Lazarus IDE. The following
 > - [Lazarus Runtime Packages](https://wiki.freepascal.org/Lazarus_Packages) adds a dependency on a **runtime package** and Lazarus adds the files to the search path.
 > - [Lazarus (IDE)Packages](https://wiki.freepascal.org/Lazarus_IDE_Packages) is bundled with IDE and can be installed via main menu: `Package -> Install/Uninstall Packages..`.
 > - [Lazarus Designtime Packages](https://wiki.freepascal.org/Lazarus_Packages) register themselves in the IDE, e.g. **designtime** editor components for the object inspector. These may contain runtime-only units.
-> - [Fppkg](https://wiki.freepascal.org/fppkg) is the newer Free Pascal packaging system, which installs packages based on [FPMake](https://wiki.freepascal.org/FPMake).
-> - [Package List](https://wiki.freepascal.org/Package_List) lists packages in the FPC `packages/` directory. These are packages with `fpmake` buildsystem and metadata.
-> - [Fpcmake](https://wiki.freepascal.org/Fpcmake) contains info about the older (but still used) **Makefile.fpc** Free Pascal packaging system.
-> - [Library Packages](https://wiki.freepascal.org/packages) page is a discussion about as of yet unimplemented **Library Packages** (like Delphi's .BPL), where packages are reusable parts of the program in special files (DLL with special interfaces).
-> 
+> - [Fppkg](https://wiki.freepascal.org/fppkg) is a Free Pascal packaging system, which installs packages based on [FPMake](https://wiki.freepascal.org/FPMake).
 
 ## Package Managers
 
-- **LazarusPackageManager**(CLI) - [https://github.com/Warfley/LazarusPackageManager](https://github.com/Warfley/LazarusPackageManager)
 - **Online Package Manager**(GUI) - [https://wiki.freepascal.org/Online_Package_Manager](https://wiki.freepascal.org/Online_Package_Manager)
+- **fpcupdeluxe**(GUI) - [https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases](https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases)
+- **LazarusPackageManager**(CLI) - [https://github.com/Warfley/LazarusPackageManager](https://github.com/Warfley/LazarusPackageManager)
 - **fppkg** (CLI) - [https://wiki.freepascal.org/fppkg](https://wiki.freepascal.org/fppkg)
 
 ## FPC & Lazarus Packages
@@ -40,6 +37,19 @@ There are various kinds of packages for Free Pascal & Lazarus IDE. The following
     - [https://packages.lazarus-ide.org](https://packages.lazarus-ide.org)
     - BeniBella's collection - [https://www.benibela.de/sources_en.html#top](https://www.benibela.de/sources_en.html#top)
     - Check the forums and discord channel too.
+
+
+### [LGenerics](https://github.com/avk959/LGenerics)
+
+`#generics`
+
+A Generics library with tons of goodies by [A.Koverdyaev(avk)](https://github.com/avk959).
+
+### [ArrayHelper](https://github.com/WilliCommer/ArrayHelper)
+
+`#array-helper`
+
+Delphi class helper for TArray with functions like Add, Delete, IndexOf, Map, etc. Includes examples and testing. Extends TArray with functions similar to TList or TStrings for easier memory management. Introduces TArrayRecord to use dynamic arrays like objects without the need for a final Free call.
 
 ### Currency type
 

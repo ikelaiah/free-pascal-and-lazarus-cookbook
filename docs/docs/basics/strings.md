@@ -2,21 +2,21 @@
 
 ## What is a `String`?
 
-A `String` in FPC is an alias for;
+Depending on compiler setting, a `String` in FPC is an alias for;
 
 - `ShortString` (fixed 255 length),
 - `AnsiString` (variable length) or
-- `Unicodestring` (UTF16) depending on a compiler setting.
+- `UnicodeString` (UTF16).
 
 When `{$H+}` is not specified, or `{$H-}`, `String` is an alias for `ShortString`.
 
 Any `ShortString` have a maximum length of 255 characters with the implicit codepage `CP_ACP`. Short strings are always assumed to use the system code page.
 
-When `{$H+}` is not specified, or `{$H-}`, `String` is an alias for `ShortString`.
-
 When `{$H+}` is specified, `String` is an alias for `AnsiString`.
 
 Any `String` is essentially an `AnsiString` with the `DefaultSystemCodePage` declared in it; `AnsiString(CP_ACP)`. And if the default system code page is `65001`, then any `String` is `UTF-8`. 
+
+With `{$mode delpiunicode}` switch, `string` is an alias for `Unicodestring` string.
 
 Commonly on Windows, the system code page is `1252`. If the system code page is `1252`, then any `String` is `1252`.
 
@@ -28,7 +28,7 @@ Commonly on Windows, the system code page is `1252`. If the system code page is 
 
 ## Display UTF-8 on a console
 
-```pascal
+```pascal linenums="1"
 begin
   writeln('勤奋,勤勉になる,부지런하다!👍');
   writeln('Press Enter key to exit');
@@ -36,9 +36,9 @@ begin
 end.                                 
 ```
 
-Alternatively, you can assign your UTF-8 test to a `string`.
+Alternatively, you can assign your UTF-8 test to a `string` variable.
 
-```pascal
+```pascal linenums="1"
 var
   s: string = '勤奋,勤勉になる,부지런하다!👍';
 
@@ -67,7 +67,7 @@ end.
 
 See [https://www.freepascal.org/docs-html/rtl/system/defaultsystemcodepage.html](https://www.freepascal.org/docs-html/rtl/system/defaultsystemcodepage.html)
 
-```pascal
+```pascal linenums="1"
 begin
   writeln(DefaultSystemCodePage); 
 end.                                 

@@ -5,7 +5,7 @@
 Add a global directive `{$J-}` to your main pascal file.
 
 
-## Give me the long answer. How do I make `const` variables constant?
+## Why is `const` section writeable in by default?
 
 In Turbo Pascal 7.0, you could only assign values in the `const` section, not in `var` section.
 
@@ -17,7 +17,7 @@ As [the official docs](https://www.freepascal.org/docs-html/ref/refse10.html) me
 
 Consider the following program. By the default `{$J+}`, you can change the gravity of the Earth, with the gravity of the Moon!
 
-```pascal
+```pascal linenums="1"
 program Immutability;
 
 {$mode objfpc}{$H+}
@@ -31,10 +31,10 @@ begin
 end.
 ```
 
-To make `const` variables behaving like `const` variables of modern programming languages, use `{$J-}`
+To make `const` variables behaving like `const` variables in modern programming languages, use `{$J-}`
 
 
-```pascal
+```pascal linenums="1"
 program Immutability;
 
 {$mode objfpc}{$H+}

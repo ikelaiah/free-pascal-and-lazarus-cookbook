@@ -1,8 +1,10 @@
 # Structuring Your Codes
 
-## Structure of a Pascal Program
+## How do I Structure of a Pascal Program?
 
-```pascal
+Here is a common structure of a Pascal program.
+
+```pascal linenums="1"
 program ProgramStructure;
 
 { Global compiler directives at the top. }
@@ -37,8 +39,8 @@ end.
 
 Here is a program example that stores student information in a record, and print it on the console.
 
-```pascal
-program simple_program;
+```pascal linenums="1"
+program SimpleProgram;
 
 {$mode objFPC}{$H+}{$J-}
 
@@ -50,29 +52,29 @@ const
 
 type
   TStudent = record
-    student_id: string;
-    first_name: string;
-    last_name: string;
+    studentId: string;
+    firstname: string;
+    lastname: string;
   end;
 
-procedure print_student_info(student: TStudent);
+procedure PrintStudentInfo(student: TStudent);
 begin
-  writeln(student.student_id);
-  writeln(student.first_name, ' ', student.last_name);
+  WriteLn(student.studentId);
+  WriteLn(student.firstname, ' ', student.lastname);
 end;
 
 var
-  my_student: TStudent;
+  myStudent: TStudent;
 
 begin
-  writeln('Now : ', DateToStr(Now));
+  WriteLn('Now : ', DateToStr(Now));
 
-  my_student.first_name := 'John';
-  my_student.last_name := 'Costco';
-  my_student.student_id := student_id_prefix + '2227209';
-  print_student_info(my_student);
+  myStudent.firstname := 'John';
+  myStudent.lastname := 'Costco';
+  myStudent.studentId := student_id_prefix + '2227209';
+  PrintStudentInfo(myStudent);
 
-  writeln('Press Enter key to quit ...');
+  WriteLn('Press Enter key to quit ...');
   readln();
 end.
 ```
@@ -86,9 +88,9 @@ John Costco
 Press Enter key to quit ...
 ```
 
-## Structure of a Unit
+## How do I Structure a Unit?
 
-```pascal
+```pascal linenums="1"
 unit AnEmptyUnit;
 
 interface
@@ -123,27 +125,27 @@ Here is an example of a simple unit for calculating the areas of a square and a 
 1. the unit has a private variable called `short_pi`, which is not available outside the unit itself.
 2. the unit has two public functions.
 
-```pascal
-unit areas;
+```pascal linenums="1"
+unit Areas;
 
 interface
 
-function calc_area_square(side: real): real;
-function calc_area_circle(radius: real): real;
+function CalcAreaSquare(side: real): real;
+function CalcAreaCircle(radius: real): real;
 
 implementation
 
 const
-  short_pi: real = 3.14;
+  shortPI: real = 3.14;
 
-function calc_area_square(side: real): real;
+function CalcAreaSquare(side: real): real;
 begin
   Result := side * side;
 end;
 
-function calc_area_circle(radius: real): real;
+function CalcAreaCircle(radius: real): real;
 begin
-  Result :=  short_pi * radius * radius;
+  Result :=  shortPI * radius * radius;
 end;
 
 end.
@@ -151,26 +153,26 @@ end.
 
 We can use this unit as follows.
 
-```pascal
-program test_unit;
+```pascal linenums="1"
+program TestUnit;
 
 {$mode ObjFPC}{$H+}{$J-}
 
 uses
   { Call your unit in the `uses` section. }
-  areas;
+  Areas;
 
 begin
   { Calculate area of a square. }
-  writeln('Area of 2.5cm square is ', areas.calc_area_square(2.5): 0: 2, ' cm².');
+  WriteLn('Area of 2.5cm square is ', Areas.CalcAreaSquare(2.5): 0: 2, ' cm².');
 
   { Calculate area of a circle. }
-  writeln('Area of a circle with r=2.5cm is ', areas.calc_area_circle(2.5): 0: 2, ' cm².');
+  WriteLn('Area of a circle with r=2.5cm is ', Areas.CalcAreaCircle(2.5): 0: 2, ' cm².');
 
   { The following line will not compile }
-  // writeln('short_pi is ', areas.short_pi);
+  // WriteLn('shortPI is ', Areas.shortPI);
 
-  writeln('Press Enter key to exit ...');
+  WriteLn('Press Enter key to exit ...');
   readln;
 end.
 ```

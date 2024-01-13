@@ -1,48 +1,63 @@
-# Install the Free Pascal Compiler
+# Install FPC and Lazarus
 
-Updated: 2023-12-15.
+## Install on Windows
 
-Latest versions of the Free Pascal Compiler (FPC) and Lazarus IDE:
+### Download the `fpcupdeluxe` installer
 
-- `FPC 3.2.2`.
-- `Lazarus 2.2.6`.
+1. Head to [https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases](https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases)
+2. Download the latest `fpcupdeluxe` for your OS and architecture, and save it in a new folder.
+3. Run `fpcupdeluxe`.
 
-## Get the Lazarus IDE + FPC (Recommended)
+### Install latest fixes of FPC and Lazarus
 
-**Windows**
+Steps.
 
-1. Download [lazarus-2.2.6-fpc-3.2.2-win64.exe](https://sourceforge.net/projects/lazarus/files/Lazarus%20Windows%2064%20bits/Lazarus%202.2.6/lazarus-2.2.6-fpc-3.2.2-win64.exe/download).
-2. Run the installer.
+1. Set installation path.
+2. Click the **Fixes** button.
+3. Click **Yes** when the confirmation box appears. 
 
+![Step1](../../assets/fcpupdeluxe-step-01.png)
 
-**Linux**
+The installtion of FPC and Lazarus might take a while. Sit back and relax.
 
-See [Installing Lazarus on Linux](https://wiki.freepascal.org/Installing_Lazarus_on_Linux).
+Once succesfully installed, the console will let you know a shortcut to Lazarus IDE is available on the Windows desktop.
 
-**macOS**
+```
+SUCCESS: installation by fpcupdeluxe complete !
 
-See [Installing Lazarus on macOS](https://wiki.freepascal.org/Installing_Lazarus_on_macOS).
-
-## Get the FPC Only
-
-
-**Windows**
-
-1. Download [`fpc-3.2.2.win32.and.win64.exe`](https://sourceforge.net/projects/freepascal/files/Win32/3.2.2/fpc-3.2.2.win32.and.win64.exe/download).
-2. Run the installer.
-
-**Linux**
-
-Install using your linux distro package manager.
-
-For example, to install `fpc-3.2.2` on On **Ubuntu 22.04 TLS**, as follows.
-
-```bash
-sudo apt install fpc-3.2.2
+Fpcupdeluxe has created a desktop shortcut to start Lazarus.
+Shortcut-name: Lazarus_fpcupdeluxe
+Lazarus by fpcupdeluxe MUST be started with this shortcut !!
 ```
 
-Alternatively, see [Installing the Free Pascal Compiler on Linux](https://wiki.lazarus.freepascal.org/Installing_the_Free_Pascal_Compiler#Linux).
+![Step1-end](../../assets/fcpupdeluxe-step-01-end.png)
 
-**macOS**
+### Install Online Package Manager and Dock modules
 
-See [Installing the Free Pascal Compiler on macOS](https://wiki.lazarus.freepascal.org/Installing_the_Free_Pascal_Compiler#macOS).
+There are two more recommended modules to install.
+
+- With the **Online Package Manager (OPM)**, you can easily install online packages right within the Lazarus IDE.
+- The **Dock (anchordocking)** module turns the Lazarus IDE into a one-window setup.
+
+Steps.
+
+1. Click on the **Modules** tab.
+2. Click on the **OPM** button. Click yes when the confirmation box appears. Wait until the installation is completed before moving to the last step.
+3. Click on the **Dock** button. Click yes when the confirmation box appears.
+
+![Step1-end](../../assets/fcpupdeluxe-step-02.png)
+
+Once the installation is completed succesfully, close `fcpupdeluxe`.
+
+### Run `Lazarus_fcpupdeluxe`
+
+At the end of the installation, you will find `Lazarus_fcpupdeluxe` on your desktop.
+
+Double click to run it. You will see Lazarus IDE as shown below.
+
+![LazarusIDE](../../assets/lazarus-ide-start-01.png)
+
+
+## Install on Linux and macOS
+
+Consult the [`fpcupdeluxe` github page](https://github.com/LongDirtyAnimAlf/fpcupdeluxe).

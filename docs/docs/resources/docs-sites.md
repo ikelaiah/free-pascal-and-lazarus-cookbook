@@ -8,6 +8,7 @@
 
 ## :material-speedometer: Experienced - Veteran
 
+- `#fpc` [Modern Object Pascal Introduction for Programmers](https://castle-engine.io/modern_pascal#_why)
 - `#fpc` [Pascal cheat sheet](https://learnxinyminutes.com/docs/pascal/) from [learnxinyminutes.com](https://learnxinyminutes.com).
 - `#fpc` [Pascal Programming idioms](https://programming-idioms.org/cheatsheet/Pascal) from [programming-idioms.org](https://programming-idioms.org).
 - `#fpc` `#lazarus` 5-part SQLdb tutorial
