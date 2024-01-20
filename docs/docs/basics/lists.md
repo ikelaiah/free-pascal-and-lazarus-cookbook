@@ -17,7 +17,7 @@ Use [`TStringList`](https://lazarus-ccr.sourceforge.io/docs/rtl/classes/tstringl
 2. Create the `TStringList` (line 16)
 3. Append items
 4. `Sort` it (line 33)
-5. Finally, `Free` the `TStringList`` when you're done. (line 63)
+5. Finally, `Free` the `TStringList`. (line 63)
 
 ```pascal linenums="1" hl_lines="9 16 33 63"
 program StringList;

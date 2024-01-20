@@ -53,3 +53,26 @@ begin
     writeln('Failed to create directory');
 end.
 ```
+
+## Checking if a file exists
+
+Use `FileExists` from unit `SysUtils`.
+
+```pascal linenums="1" hl_lines="4 12"
+program CheckFileExists;
+
+uses
+  SysUtils;
+
+var
+  fileName: String;
+
+begin
+  fileName := 'hello-world.txt';
+
+  if FileExists(fileName) then
+    Writeln( fileName, ' exists.')
+  else
+    Writeln(fileName, ' does not exist.');
+end.
+```

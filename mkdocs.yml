@@ -17,6 +17,7 @@ nav:
     - Directories, Paths and Files: docs/basics/dir-path-filename.md
     - Exceptions: docs/basics/exception-try-blocks.md
     - Strings: docs/basics/strings.md
+    - File Handling: docs/basics/file-handling.md
     - Numbers: docs/basics/numbers.md
     - Regular Expressions: docs/basics/regex.md
   - Advanced Topics:
@@ -41,7 +42,7 @@ theme:
   palette:
         # Palette toggle for light mode
     - scheme: default
-      primary: indigo
+      primary: blue
       accent: indigo
       toggle:
         icon: material/brightness-7 
@@ -49,7 +50,7 @@ theme:
 
     # Palette toggle for dark mode
     - scheme: slate
-      primary: black
+      primary: blue
       accent: indigo
       toggle:
         icon: material/brightness-4

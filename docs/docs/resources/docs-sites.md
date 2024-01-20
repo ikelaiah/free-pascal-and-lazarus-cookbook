@@ -2,6 +2,7 @@
 
 ## :material-speedometer-slow: Beginner
 
+- `#lazarus` [Laz Planet Tutorials](https://lazplanet.blogspot.com/search/label/Tutorials)
 - `#fpc` [Free Pascal from Square One](./FreePascalFromSquareOne.pdf) by Jeff Duntemann.
 - `#fpc` [Tao Yue's Pascal Tutorial](https://www.taoyue.com/tutorials/pascal), which also available on [Free Pascal's wiki](https://wiki.freepascal.org/Basic_Pascal_Tutorial).
 - `#fpc` [Tutorials Point's Pascal Tutorial](https://www.tutorialspoint.com/pascal/index.htm)
