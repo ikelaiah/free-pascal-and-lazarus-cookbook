@@ -7,32 +7,37 @@ Here is a common structure of a Pascal program.
 ```pascal linenums="1"
 program ProgramStructure;
 
-{ Global compiler directives at the top. }
+// Global compiler directives here
+// Ref: https://www.freepascal.org/docs-html/prog/progse3.html
 
 uses
-  { Add necesasry units here. }
+  // Add units here
 
 const
-  { Declare consts.  }
+  // Add consts here
+  // Refs: https://www.freepascal.org/docs-html/ref/refse9.html#x21-200002.1
+  //       https://www.freepascal.org/docs-html/ref/refse10.html#x22-210002.2
 
 resourcestring
-  { Declare resourcestrings. }
+  // Declare resourcestrings
+  // Ref: https://www.freepascal.org/docs-html/ref/refse11.html
 
 type
-  { Declare types. }
+  // Declare types
 
 var
-  { Declare variables. }
+  // Declare variables, initialise when possible
 
 threadvar
-  { Declare threadvars.
-    Variables in this section have unique values for each thread} 
+  // Declare threadvars
+  // Variables in this section have unique values for each thread
+  // Ref: https://www.freepascal.org/docs-html/ref/refse26.html
 
-{ Define procedures and functions before the MAIN entry of the program. }
+  // Define procedures and functions before the MAIN entry/block of the program
 
 begin
-   { This is the MAIN entry of your program. } 
-end.             
+   // This is the MAIN entry/block
+end.         
 ```
 
 ## An example of a Pascal Program
@@ -45,6 +50,10 @@ program SimpleProgram;
 {$mode objFPC}{$H+}{$J-}
 
 uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
   SysUtils;
 
 const
@@ -57,16 +66,19 @@ type
     lastname: string;
   end;
 
-procedure PrintStudentInfo(student: TStudent);
-begin
-  WriteLn(student.studentId);
-  WriteLn(student.firstname, ' ', student.lastname);
-end;
+  // Prints the contents of a TStudent var
+  procedure PrintStudentInfo(student: TStudent);
+  begin
+    WriteLn(student.studentId);
+    WriteLn(student.firstname, ' ', student.lastname);
+  end;
 
 var
   myStudent: TStudent;
 
 begin
+  // The Main block/entry of the program
+
   WriteLn('Now : ', DateToStr(Now));
 
   myStudent.firstname := 'John';
@@ -74,8 +86,9 @@ begin
   myStudent.studentId := student_id_prefix + '2227209';
   PrintStudentInfo(myStudent);
 
+  // Pause console
   WriteLn('Press Enter key to quit ...');
-  readln();
+  ReadLn();
 end.
 ```
 
@@ -91,29 +104,30 @@ Press Enter key to quit ...
 ## How do I Structure a Unit?
 
 ```pascal linenums="1"
-unit AnEmptyUnit;
+program UnitStructure;
 
 interface
 
-  { This is the Public section. 
-    Variables, functions and procedures declared in this section 
-    will be accessible from the unit's caller. }
+  // This is the Public section.
+  // Variables, functions and procedures declared in this section
+  // will be accessible from the unit's caller.
 
 implementation
 
-  { This is the Private section.
-    Anything declared in this section will only be available to the unit. }
+  // This is the Private section.
+  // Anything declared in this section will only be available to the unit.
 
 initialization
 
-	{ Optional. Code that runs when the unit gets loaded. }
+  // Optional. Code that runs when the unit gets loaded.
+  // Ref: https://www.freepascal.org/docs-html/ref/refse112.html#x233-25700016.2
 
 finalization
 
-	{ Optional. Code that runs when the program ends normally.
-      The finalization part of the units are executed in the 
-      reverse order of the initialization execution. 
-      - Reference Guide, 16.2 (Official Doc). }
+  // Optional. Code that runs when the program ends normally.
+  // The finalization part of the units are executed in the
+  // reverse order of the initialization execution.
+  // Ref: https://www.freepascal.org/docs-html/ref/refse112.html#x233-25700016.2
 
 end.
 ```
@@ -145,33 +159,42 @@ end;
 
 function CalcAreaCircle(radius: real): real;
 begin
-  Result :=  shortPI * radius * radius;
+  Result := shortPI * radius * radius;
 end;
 
 end.
 ```
 
-We can use this unit as follows.
+We can use this `Areas` unit as follows.
 
 ```pascal linenums="1"
-program TestUnit;
+program SimpleProgramWithUnit;
 
 {$mode ObjFPC}{$H+}{$J-}
 
 uses
-  { Call your unit in the `uses` section. }
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
   Areas;
 
 begin
-  { Calculate area of a square. }
-  WriteLn('Area of 2.5cm square is ', Areas.CalcAreaSquare(2.5): 0: 2, ' cm².');
+  // Calculate area of a square
+  WriteLn('Area of 2.5cm square is ',
+          Areas.CalcAreaSquare(2.5): 0: 2,
+          ' cm².');
 
-  { Calculate area of a circle. }
-  WriteLn('Area of a circle with r=2.5cm is ', Areas.CalcAreaCircle(2.5): 0: 2, ' cm².');
+  // Calculate area of a circle
+  WriteLn('Area of a circle with r=2.5cm is ',
+          Areas.CalcAreaCircle(2.5):0: 2,
+          ' cm².');
 
-  { The following line will not compile }
+  // The following WriteLn will not compile
+  // Because shortPI is declared in the private section of the Area unit
   // WriteLn('shortPI is ', Areas.shortPI);
 
+  // Pause console
   WriteLn('Press Enter key to exit ...');
   readln;
 end.

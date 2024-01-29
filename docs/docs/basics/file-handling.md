@@ -20,7 +20,7 @@ See the snippet below. It uses `SysUtil` for catching errors during opening and 
 4. Close the file with `CloseFile`. Line 24.
 
 ```pascal linenums="1" hl_lines="13 18 21 24"
-program FileHandlingClassicNewTextFile;
+program ClassicNewTextFile;
 
 {$mode objfpc}{$H+}
 
@@ -61,7 +61,7 @@ end.
 Overly verbose with `try...finally`? It can be written as follows too.
 
 ```pascal linenums="1"
-program FileHandlingClassicNewTextFileSimple;
+program ClassicNewTextFileSimple;
 
 {$mode objfpc}{$H+}
 
@@ -97,7 +97,7 @@ Here is an example.
 - Now, writing a text into a file is in a line. See line 41.
 
 ```pascal linenums="1" hl_lines="9-32 37"
-program FileHandlingClassicNewTextFileOrganised;
+program ClassicNewTextFileOrganised;
 
 {$mode objfpc}{$H+}
 
@@ -153,7 +153,7 @@ For writing text into a new file using Object style;
 4. `Free` the `TFileStream` object from memory. Lines 22.
 
 ```pascal linenums="1" hl_lines="14 17 19 24"
-program FileHandlingTFileStreamNewTextFile;
+program TFileStreamNewTextFile;
 
 uses
   Classes, SysUtils;
@@ -189,7 +189,7 @@ end.
 This example is the previous snippet wrapped in a `procedure`.
 
 ```pascal linenums="1" hl_lines="32"
-program FileHandlingTFileStreamNewTextFileOrganised;
+program TFileStreamNewTextFileOrganised;
 
 uses
   Classes, SysUtils;
@@ -238,7 +238,7 @@ Here is an example.
 3. Close the file with `CloseFile`. Line 21.
 
 ```pascal linenums="1" hl_lines="13 18 21"
-program FileHandlingClassicCreateBlankTextFile;
+program ClassicCreateBlankTextFile;
 
 uses
   Classes,
@@ -283,7 +283,7 @@ Quite straightforward.
 
 
 ```pascal linenums="1" hl_lines="15 21"
-program FileHandlingTFileStreamCreateBlankTextFile;
+program TFileStreamCreateBlankTextFile;
 
 uses
   Classes, SysUtils;
@@ -373,8 +373,7 @@ Here is an alternative implementation.
 - inner `try..free` blocks are now in separate procedures.
 - the outer `try..except` can now catch exceptions from procedures.
 
-```pascal linenums="1" hl_lines="10 31 50"
-
+```pascal linenums="1" hl_lines="11 33 52"
 program TStreamReaderReadFileTidy;
 
 {$mode objfpc}{$H+}
@@ -384,7 +383,8 @@ uses
   SysUtils,
   streamex;
 
-  procedure ReadTextFile(fileStream: TStream);
+  // Read a stream of string line by line
+  procedure ReadTextFile(const fileStream: TStream);
   var
     reader: TStreamReader;
     i: integer;
@@ -397,7 +397,7 @@ uses
       while not reader.EOF do
       begin
         line := reader.ReadLine;
-        WriteLn(Format('line %d is: %s', [i, line]));
+        WriteLn(Format('line %d: %s', [i, line]));
         i := i + 1;
       end;
     finally
@@ -405,7 +405,8 @@ uses
     end;
   end;
 
-  procedure ReadTextFile(filename: string);
+  // Open a file for reading, and pass the stream to TStreamReader for reading.
+  procedure ReadTextFile(const filename: string);
   var
     fileStream: TFileStream;
   begin

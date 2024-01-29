@@ -128,7 +128,7 @@ end.
 
 ## How to generate a series of random real numbers?
 
-You can use TGVector and `function RandomNumberBetween(const min, max: real): real;` mentioned in the previous section.
+You can use `TGVector` and `function RandomNumberBetween(const min, max: real): real;` mentioned in the previous section.
 
 1. Create a new `type` to contain a list of real numbers (line 15).
 2. Create a new `var` based on the `type` and allocate  (line 22).

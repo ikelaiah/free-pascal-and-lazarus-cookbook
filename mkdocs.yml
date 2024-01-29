@@ -8,22 +8,22 @@ nav:
   - The Basics:
     - Install FPC and Lazarus: docs/basics/install.md
     - Lazarus IDE: docs/basics/lazarus-ide.md
-    - Run a "Hello World!": docs/basics/hello-world.md
     - Code Structure: docs/basics/code-structure.md
+    - Run a "Hello World!": docs/basics/hello-world.md
+    - Command Line Parameters: docs/basics/cmd-line-params.md
     - Functions & Procedures: docs/basics/funcs-procs.md
     - Immutability: docs/basics/immutability.md
+    - Lists: docs/basics/lists.md 
+    - Strings: docs/basics/strings.md
+    - Numbers: docs/basics/numbers.md
     - Dates & Times: docs/basics/dates.md
-    - Lists with Generics and Arrays: docs/basics/lists.md
     - Directories, Paths and Files: docs/basics/dir-path-filename.md
     - Exceptions: docs/basics/exception-try-blocks.md
-    - Strings: docs/basics/strings.md
     - File Handling: docs/basics/file-handling.md
-    - Numbers: docs/basics/numbers.md
     - Regular Expressions: docs/basics/regex.md
   - Advanced Topics:
     - Concurrency and Parallelism: docs/advanced/concurrent-parallel.md
     - Conditional Compilation: docs/advanced/conditional-compilation.md
-    - Performance Tuning: docs/advanced/performance.md
   - External Systems:
     - Overview: docs/external-systems/overview.md
   - Community: community.md
@@ -43,7 +43,7 @@ theme:
         # Palette toggle for light mode
     - scheme: default
       primary: blue
-      accent: indigo
+      accent: pink
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
@@ -51,7 +51,7 @@ theme:
     # Palette toggle for dark mode
     - scheme: slate
       primary: blue
-      accent: indigo
+      accent: pink
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
