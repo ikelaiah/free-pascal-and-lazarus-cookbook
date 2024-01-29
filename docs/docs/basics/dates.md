@@ -238,14 +238,3 @@ begin
   Readln;
 end.
 ```
-
-
-## How do I deal with multiple date formats; dd-mmm-yy and dd-mm-yy?
-
-Sometime we get CSV files with multiple date format in date columns. For example, 03-MAY-24 and 03-05-2024.
-
-The snippet below shows how to parse multiple date format correctly.
-
-```pascal
-
-```
