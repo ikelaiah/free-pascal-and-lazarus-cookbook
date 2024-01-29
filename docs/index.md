@@ -8,12 +8,10 @@ For tutorials and in-depth technical discussion, see [Resources](docs/resources/
 
 !!! note
 
-    Code snippets on this site work with `FPC 3.x` and `Lazarus 3.x`.
+    Code snippets on this site work with `FPC 3.2.3` and `Lazarus 3.1`.
 
 !!! warning
 
     This document is a work in progress. 
     
     Contents are still being revised and added.
-
-    Last revision: 2024-01-13. 

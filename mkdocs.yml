@@ -5,7 +5,7 @@ nav:
     - Overview: index.md
     - About: about.md
     - License: LICENSE.md
-  - The Basics:
+  - Core Tasks:
     - Install FPC and Lazarus: docs/basics/install.md
     - Lazarus IDE: docs/basics/lazarus-ide.md
     - Code Structure: docs/basics/code-structure.md
