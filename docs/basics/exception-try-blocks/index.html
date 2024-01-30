@@ -810,18 +810,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#when-do-i-use-tryexception-blocks" class="md-nav__link">
+  <a href="#when-do-i-use-tryfinally-blocks" class="md-nav__link">
     <span class="md-ellipsis">
-      When do I use try...exception blocks?
+      When do I use try...finally blocks?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-do-i-use-tryfinally-blocks" class="md-nav__link">
+  <a href="#when-do-i-use-tryexception-blocks" class="md-nav__link">
     <span class="md-ellipsis">
-      When do I use try...finally blocks?
+      When do I use try...exception blocks?
     </span>
   </a>
   
@@ -1226,18 +1226,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#when-do-i-use-tryexception-blocks" class="md-nav__link">
+  <a href="#when-do-i-use-tryfinally-blocks" class="md-nav__link">
     <span class="md-ellipsis">
-      When do I use try...exception blocks?
+      When do I use try...finally blocks?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-do-i-use-tryfinally-blocks" class="md-nav__link">
+  <a href="#when-do-i-use-tryexception-blocks" class="md-nav__link">
     <span class="md-ellipsis">
-      When do I use try...finally blocks?
+      When do I use try...exception blocks?
     </span>
   </a>
   
@@ -1286,14 +1286,14 @@
 
 
 <h1 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h1>
-<h2 id="when-do-i-use-tryexception-blocks">When do I use <code>try...exception</code> blocks?<a class="headerlink" href="#when-do-i-use-tryexception-blocks" title="Permanent link">&para;</a></h2>
-<p>Use them to catch exceptions and provide a means to recover in the code.</p>
 <h2 id="when-do-i-use-tryfinally-blocks">When do I use <code>try...finally</code> blocks?<a class="headerlink" href="#when-do-i-use-tryfinally-blocks" title="Permanent link">&para;</a></h2>
 <p>Use them for the following tasks.</p>
 <ul>
 <li>clean up resources or <code>Free</code> memory within a block that allocates memory, or</li>
 <li>close files in case an exception occured.</li>
 </ul>
+<h2 id="when-do-i-use-tryexception-blocks">When do I use <code>try...exception</code> blocks?<a class="headerlink" href="#when-do-i-use-tryexception-blocks" title="Permanent link">&para;</a></h2>
+<p>Use them to catch exceptions and provide a means to recover in the code.</p>
 <h2 id="can-i-nest-exception-handling">Can I nest exception handling?<a class="headerlink" href="#can-i-nest-exception-handling" title="Permanent link">&para;</a></h2>
 <p>Yes you can. See <a href="https://www.freepascal.org/docs-html/current/ref/refse121.html#x247-27100017.4">Language Reference 17.4</a>.</p>
 <p>Here is an example. The snippet below has one outer <code>try...except</code> that can catch any error from <code>TFileStream</code> or <code>TStreamReader</code>.</p>

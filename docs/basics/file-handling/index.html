@@ -1427,11 +1427,15 @@
 <h3 id="new-text-file-classic">New text file - Classic<a class="headerlink" href="#new-text-file-classic" title="Permanent link">&para;</a></h3>
 <p>See the snippet below. It uses <code>SysUtil</code> for catching errors during opening and writing file.</p>
 <ol>
-<li>Use <code>AssignFile</code> to assign a text file to a file type <code>TextFile</code>. Line 13.</li>
-<li>Use <code>Rewrite</code> to open file for writing (and create if doesn't exists). Line 18.</li>
-<li>Add text using the assigned file type and <code>WriteLn</code>. Line 21.</li>
-<li>Close the file with <code>CloseFile</code>. Line 24.</li>
+<li>Use <code>AssignFile</code> to assign a text file to a file type <code>TextFile</code>. Line 14.</li>
+<li>Use <code>Rewrite</code> to open file for writing (and create if doesn't exists). Line 19.</li>
+<li>Add text using the assigned file type and <code>WriteLn</code>. Line 22.</li>
+<li>Close the file with <code>CloseFile</code> in the <code>try..finally</code> block. Line 31.</li>
 </ol>
+<blockquote>
+<p>You should always strive to have a <code>try..finally</code> outside the <code>try..except</code>.</p>
+<p>-Gustavo 'Gus' Carreno</p>
+</blockquote>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -1478,27 +1482,27 @@
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="kt">textFile</span><span class="o">:</span><span class="w"> </span><span class="n">System</span><span class="o">.</span><span class="kt">TextFile</span><span class="o">;</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">begin</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="c1">// Set the name of the file that will be created</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="hll"><span class="w">  </span><span class="nb">AssignFile</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;output_file.txt&#39;</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="c1">// Enclose in try/except block to handle errors</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">  </span><span class="k">try</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="c1">// Open the file for writing (it will create it file doesn&#39;t exist)</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="hll"><span class="w">    </span><span class="nb">ReWrite</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="c1">// Adding text</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;This is a new line&#39;</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="c1">// Close file</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="hll"><span class="w">    </span><span class="nb">CloseFile</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Created a new file&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">  </span><span class="k">except</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">    </span><span class="c1">// Catch error here</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">    </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">EInOutError</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Error occurred. Details: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">ClassName</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="k">try</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">      </span><span class="c1">// Set the name of the file that will be created</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="hll"><span class="w">      </span><span class="nb">AssignFile</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;output_file.txt&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">      </span><span class="c1">// Enclose in try/except block to handle errors</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">      </span><span class="k">try</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">        </span><span class="c1">// Create (if not found) and open the file for writing</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="hll"><span class="w">        </span><span class="nb">Rewrite</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">        </span><span class="c1">// Adding text</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="hll"><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;Hello Text!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">      </span><span class="k">except</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">        </span><span class="c1">// Catch error here</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">        </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">EInOutError</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">          </span><span class="nb">writeln</span><span class="p">(</span><span class="s">&#39;Error occurred. Details: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">ClassName</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">      </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">    </span><span class="k">finally</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">      </span><span class="c1">// Close file</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="hll"><span class="w">      </span><span class="nb">CloseFile</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
 </span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a>
 </span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">  </span><span class="c1">// Pause console</span>
 </span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
@@ -1585,7 +1589,9 @@
 <span class="normal"><a href="#__codelineno-2-38">38</a></span>
 <span class="normal"><a href="#__codelineno-2-39">39</a></span>
 <span class="normal"><a href="#__codelineno-2-40">40</a></span>
-<span class="normal"><a href="#__codelineno-2-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">program</span><span class="w"> </span><span class="n">ClassicNewTextFileOrganised</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">program</span><span class="w"> </span><span class="n">ClassicNewTextFileOrganised</span><span class="o">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cm">{$mode objfpc}{$H+}</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
@@ -1597,35 +1603,37 @@
 </span></span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="hll"><span class="w">  </span><span class="k">var</span>
 </span></span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="hll"><span class="w">    </span><span class="kt">textFile</span><span class="o">:</span><span class="w"> </span><span class="n">System</span><span class="o">.</span><span class="kt">TextFile</span><span class="o">;</span>
 </span></span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="hll"><span class="w">  </span><span class="k">begin</span>
-</span></span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="hll"><span class="w">    </span><span class="c1">// Set the name of the file that will be created</span>
-</span></span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="hll"><span class="w">    </span><span class="nb">AssignFile</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="n">fileName</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="hll">
-</span></span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="hll"><span class="w">    </span><span class="c1">// Enclose in try/except block to handle errors</span>
-</span></span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="hll"><span class="w">    </span><span class="k">try</span>
-</span></span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="hll"><span class="w">      </span><span class="c1">// Create (if not found) and open the file for writing</span>
-</span></span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="hll"><span class="w">      </span><span class="nb">Rewrite</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="hll">
-</span></span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="hll"><span class="w">      </span><span class="c1">// Adding text</span>
-</span></span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="hll"><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="n">stringText</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="hll">
-</span></span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="hll"><span class="w">      </span><span class="c1">// Close file</span>
-</span></span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="hll"><span class="w">      </span><span class="nb">CloseFile</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="hll">
-</span></span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="hll"><span class="w">    </span><span class="k">except</span>
-</span></span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="hll"><span class="w">      </span><span class="c1">// Catch error here</span>
-</span></span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="hll"><span class="w">      </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">EInOutError</span><span class="w"> </span><span class="k">do</span>
-</span></span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="hll"><span class="w">        </span><span class="nb">writeln</span><span class="p">(</span><span class="s">&#39;Error occurred. Details: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">ClassName</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="hll"><span class="w">    </span><span class="k">end</span><span class="o">;</span>
-</span></span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="hll"><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span></span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>
-</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="k">begin</span>
-</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a>
-</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="w">  </span><span class="c1">// Write a text to a file</span>
-</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="hll"><span class="w">  </span><span class="n">WriteTextToFile</span><span class="p">(</span><span class="s">&#39;hello-text.txt&#39;</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;Hello There! How are you?&#39;</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a>
-</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="w">  </span><span class="c1">// Wait for enter</span>
-</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">  </span><span class="nb">readln</span><span class="o">;</span>
-</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="k">end</span><span class="o">.</span>
+</span></span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="hll"><span class="w">    </span><span class="k">try</span><span class="w"> </span>
+</span></span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="hll"><span class="w">      </span><span class="c1">// Set the name of the file that will be created</span>
+</span></span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="hll"><span class="w">      </span><span class="nb">AssignFile</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="n">fileName</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="hll">
+</span></span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="hll"><span class="w">      </span><span class="c1">// Enclose in try/except block to handle errors</span>
+</span></span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="hll"><span class="w">      </span><span class="k">try</span>
+</span></span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="hll"><span class="w">        </span><span class="c1">// Create (if not found) and open the file for writing</span>
+</span></span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="hll"><span class="w">        </span><span class="nb">Rewrite</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="hll">
+</span></span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="hll"><span class="w">        </span><span class="c1">// Adding text</span>
+</span></span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="hll"><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="n">stringText</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="hll">
+</span></span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="hll"><span class="w">      </span><span class="k">except</span>
+</span></span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="hll"><span class="w">        </span><span class="c1">// Catch error here</span>
+</span></span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="hll"><span class="w">        </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">EInOutError</span><span class="w"> </span><span class="k">do</span>
+</span></span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="hll"><span class="w">          </span><span class="nb">writeln</span><span class="p">(</span><span class="s">&#39;Error occurred. Details: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">ClassName</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="hll"><span class="w">      </span><span class="k">end</span><span class="o">;</span>
+</span></span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="hll"><span class="w">    </span><span class="k">finally</span>
+</span></span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="hll"><span class="w">      </span><span class="c1">// Close file</span>
+</span></span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="hll"><span class="w">      </span><span class="nb">CloseFile</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="hll"><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span></span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="hll"><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span></span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="k">begin</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="w">  </span><span class="c1">// Write a text to a file</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="hll"><span class="w">  </span><span class="n">WriteTextToFile</span><span class="p">(</span><span class="s">&#39;hello-text.txt&#39;</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;Hello There! How are you?&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="w">  </span><span class="c1">// Wait for enter</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="w">  </span><span class="nb">readln</span><span class="o">;</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="new-text-file-tfilestream">New text file - TFileStream<a class="headerlink" href="#new-text-file-tfilestream" title="Permanent link">&para;</a></h3>
 <p>For writing text into a new file using Object style;</p>
