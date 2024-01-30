@@ -1,15 +1,15 @@
 # Exceptions
 
-## When do I use `try...exception` blocks?
-
-Use them to catch exceptions and provide a means to recover in the code.
-
 ## When do I use `try...finally` blocks?
 
 Use them for the following tasks.
 
 - clean up resources or `Free` memory within a block that allocates memory, or
 - close files in case an exception occured.
+
+## When do I use `try...exception` blocks?
+
+Use them to catch exceptions and provide a means to recover in the code.
 
 ## Can I nest exception handling?
 
