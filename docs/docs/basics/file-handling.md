@@ -14,12 +14,16 @@ There are many ways to do this;
 
 See the snippet below. It uses `SysUtil` for catching errors during opening and writing file.
 
-1. Use `AssignFile` to assign a text file to a file type `TextFile`. Line 13.
-2. Use `Rewrite` to open file for writing (and create if doesn't exists). Line 18.
-3. Add text using the assigned file type and `WriteLn`. Line 21.
-4. Close the file with `CloseFile`. Line 24.
+1. Use `AssignFile` to assign a text file to a file type `TextFile`. Line 14.
+2. Use `Rewrite` to open file for writing (and create if doesn't exists). Line 19.
+3. Add text using the assigned file type and `WriteLn`. Line 22.
+4. Close the file with `CloseFile` in the `try..finally` block. Line 31.
 
-```pascal linenums="1" hl_lines="13 18 21 24"
+> You should always strive to have a `try..finally` outside the `try..except`.
+> 
+> -Gustavo 'Gus' Carreno
+
+```pascal linenums="1" hl_lines="14 19 22 31"
 program ClassicNewTextFile;
 
 {$mode objfpc}{$H+}
@@ -31,27 +35,27 @@ var
   textFile: System.TextFile;
 
 begin
-  // Set the name of the file that will be created
-  AssignFile(textFile, 'output_file.txt');
+    try
+      // Set the name of the file that will be created
+      AssignFile(textFile, 'output_file.txt');
 
-  // Enclose in try/except block to handle errors
-  try
-    // Open the file for writing (it will create it file doesn't exist)
-    ReWrite(textFile);
+      // Enclose in try/except block to handle errors
+      try
+        // Create (if not found) and open the file for writing
+        Rewrite(textFile);
 
-    // Adding text
-    WriteLn(textFile, 'This is a new line');
+        // Adding text
+        WriteLn(textFile, 'Hello Text!');
 
-    // Close file
-    CloseFile(textFile);
-
-    WriteLn('Created a new file');
-
-  except
-    // Catch error here
-    on E: EInOutError do
-      WriteLn('Error occurred. Details: ', E.ClassName, '/', E.Message);
-  end;
+      except
+        // Catch error here
+        on E: EInOutError do
+          writeln('Error occurred. Details: ', E.ClassName, '/', E.Message);
+      end;
+    finally
+      // Close file
+      CloseFile(textFile);
+    end;
 
   // Pause console
   ReadLn;
@@ -96,7 +100,7 @@ Here is an example.
 - The lines that write text is refactored into a procedure. See line 9-36.
 - Now, writing a text into a file is in a line. See line 41.
 
-```pascal linenums="1" hl_lines="9-32 37"
+```pascal linenums="1" hl_lines="9-34 39"
 program ClassicNewTextFileOrganised;
 
 {$mode objfpc}{$H+}
@@ -109,24 +113,26 @@ uses
   var
     textFile: System.TextFile;
   begin
-    // Set the name of the file that will be created
-    AssignFile(textFile, fileName);
+    try 
+      // Set the name of the file that will be created
+      AssignFile(textFile, fileName);
 
-    // Enclose in try/except block to handle errors
-    try
-      // Create (if not found) and open the file for writing
-      Rewrite(textFile);
+      // Enclose in try/except block to handle errors
+      try
+        // Create (if not found) and open the file for writing
+        Rewrite(textFile);
 
-      // Adding text
-      WriteLn(textFile, stringText);
+        // Adding text
+        WriteLn(textFile, stringText);
 
+      except
+        // Catch error here
+        on E: EInOutError do
+          writeln('Error occurred. Details: ', E.ClassName, '/', E.Message);
+      end;
+    finally
       // Close file
       CloseFile(textFile);
-
-    except
-      // Catch error here
-      on E: EInOutError do
-        writeln('Error occurred. Details: ', E.ClassName, '/', E.Message);
     end;
   end;
 
@@ -138,6 +144,7 @@ begin
   // Wait for enter
   readln;
 end.
+
 ```
 
 
