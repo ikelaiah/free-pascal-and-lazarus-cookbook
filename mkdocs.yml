@@ -34,8 +34,8 @@ nav:
 
 theme:
   name: material
-  logo: assets/logo.png
-  favicon: assets/favicon.png
+  logo: assets/logo-new-rounded-min.png
+  favicon: assets/logo-new-rounded-min.png
   font: 
     text: Roboto
     code: Fira Code
