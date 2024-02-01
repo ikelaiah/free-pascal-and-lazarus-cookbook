@@ -18,7 +18,7 @@
     <br />
     <a href="https://ikelaiah.github.io/free-pascal-and-lazarus-cookbook">Visit Site</a>
     ·
-    <a href="https://github.com/ikelaiah/free-pascal-snippets">Visit Snippets' Repo</a>
+    <a href="https://github.com/ikelaiah/free-pascal-snippets">View Snippets Repo</a>
   </p>
 </div>
 
