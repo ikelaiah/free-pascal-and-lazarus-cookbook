@@ -5,13 +5,22 @@
 1. For Loop.
 
 ```pascal
-for counter := start_value to end_value do
+for counter := initial_value to final_value do
 begin
   // code to run
 end;
 ```
 
-2. For-In Loop.
+!!! Remarks
+
+    - Free Pascal ==calculates the upper bound once== before setting the counter variable.
+    - You can't change the value of a loop variable inside the loop.
+    - The loop variable's value is unclear after the loop ends or if the loop doesn't run. If the loop stops early due to an exception, break, or goto statement, the variable keeps its last value.
+    - If you're using nested procedures, the loop variable must be a local variable. Using a loop variable outside the nested procedure will cause a compiler error, but using a global variable is allowed.
+
+    Adapted from [https://www.freepascal.org/docs-html/ref/refsu58.html#x168-19200013.2.4]()
+
+1. For-In Loop.
 
 ```pascal
 for item in collection do
@@ -43,8 +52,8 @@ until condition;
 // Basically, a loop inside another loop
 // A simple example (among many others)
 
-for counter_a := start_value_a to end_value_a do
-  for counter_b := start_value_b to end_value_b do
+for counter_a := initial_value_a to final_value_a do
+  for counter_b := initial_value_b to final_value_b do
   begin
     // code to run
   end;
@@ -58,9 +67,7 @@ The snippet below demonstrates different types of loops in Free Pascal.
 ```pascal linenums="1"
 program Loops;
 
-  {$mode objfpc}
-  {$H+}
-  {$J-}
+  {$mode objfpc}{$H+}{$J-}
 
 var
   intArray: array [0..2] of integer = (10, 20, 30);
