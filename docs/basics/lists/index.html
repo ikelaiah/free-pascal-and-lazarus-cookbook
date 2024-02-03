@@ -11,14 +11,14 @@
         <link rel="canonical" href="https://learn-pascal-lang.org/docs/basics/lists/">
       
       
-        <link rel="prev" href="../immutability/">
+        <link rel="prev" href="../loops/">
       
       
         <link rel="next" href="../strings/">
       
       
       <link rel="icon" href="../../../assets/logo-new-rounded-min.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
@@ -26,10 +26,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -56,15 +56,17 @@
     
     
    <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-    html.glightbox-open { overflow: initial; height: 100%; }
-    .gslide-title { margin-top: 0px; user-select: text; }
-    .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }
-    .gscrollbar-fixer { padding-right: 15px; }
-    .gdesc-inner { font-size: 0.75rem; }
-    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -76,6 +78,9 @@
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="pink">
   
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -131,9 +136,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
       </label>
     
@@ -141,18 +146,15 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
       </label>
     
   
 </form>
       
-    
-    
-      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -654,6 +656,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -787,9 +810,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-building-a-list-which-unit-is-preferable-to-use-fgl-or-genericscollection" class="md-nav__link">
+  <a href="#when-building-a-list-which-unit-is-preferable-to-use-fgl-or-genericscollections" class="md-nav__link">
     <span class="md-ellipsis">
-      When building a list, which unit is preferable to use: fgl or Generics.Collection?
+      When building a list, which unit is preferable to use: fgl or Generics.Collections?
     </span>
   </a>
   
@@ -1422,9 +1445,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-building-a-list-which-unit-is-preferable-to-use-fgl-or-genericscollection" class="md-nav__link">
+  <a href="#when-building-a-list-which-unit-is-preferable-to-use-fgl-or-genericscollections" class="md-nav__link">
     <span class="md-ellipsis">
-      When building a list, which unit is preferable to use: fgl or Generics.Collection?
+      When building a list, which unit is preferable to use: fgl or Generics.Collections?
     </span>
   </a>
   
@@ -2171,8 +2194,8 @@
 </span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40"></a><span class="k">end</span><span class="o">.</span><span class="w"> </span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="when-building-a-list-which-unit-is-preferable-to-use-fgl-or-genericscollection">When building a list, which unit is preferable to use: <code>fgl</code> or <code>Generics.Collection</code>?<a class="headerlink" href="#when-building-a-list-which-unit-is-preferable-to-use-fgl-or-genericscollection" title="Permanent link">&para;</a></h2>
-<p>Consider the following answer from PascalDragon, March 22, 2020, 12:55 pm.</p>
+<h2 id="when-building-a-list-which-unit-is-preferable-to-use-fgl-or-genericscollections">When building a list, which unit is preferable to use: <code>fgl</code> or <code>Generics.Collections</code>?<a class="headerlink" href="#when-building-a-list-which-unit-is-preferable-to-use-fgl-or-genericscollections" title="Permanent link">&para;</a></h2>
+<p>Consider this answer from PascalDragon, March 22, 2020, 12:55 pm.</p>
 <blockquote>
 <p>Just to clear these up as well:</p>
 <ul>
@@ -2182,15 +2205,15 @@
 <p>Source: https://forum.lazarus.freepascal.org/index.php?topic=48988.0</p>
 </blockquote>
 <h2 id="external-usinglgenerics-unit">External - Using<code>LGenerics</code> unit<a class="headerlink" href="#external-usinglgenerics-unit" title="Permanent link">&para;</a></h2>
-<p>Before trying out snippet in this section, make sure you have installed <code>LGenerics</code> via <code>Online Package Manager (OPM)</code> in Lazarus IDE.</p>
+<p>Before trying out snippet in this section, make sure you have installed <code>LGenerics</code> via the <code>Online Package Manager (OPM)</code> in Lazarus IDE.</p>
 <h3 id="creating-a-list-of-integer-using-lgenerics">Creating a list of integer using <code>LGenerics</code><a class="headerlink" href="#creating-a-list-of-integer-using-lgenerics" title="Permanent link">&para;</a></h3>
 <ol>
 <li>In <code>uses</code> add <code>lgVector</code>.</li>
 <li>Create a new type based on <code>TGVector&lt;T&gt;</code>.</li>
 <li>Declare a <code>var</code> to use this new list type.</li>
 <li>Create a new instance of the new list for use. The constructor takes an array. See line 18.</li>
+<li>Lastly, don't forget to <code>Free</code> your memory as shown in line 33.</li>
 </ol>
-<p>Lastly, don't forget to <code>Free</code> your memory as shown in line 33.</p>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -2533,19 +2556,11 @@
 
 
 
-
-
-
-
-
-
-
                 
               </article>
             </div>
           
           
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
@@ -2576,10 +2591,10 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
