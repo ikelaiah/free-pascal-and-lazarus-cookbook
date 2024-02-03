@@ -62,7 +62,7 @@ program GetOptSimple;
 // $ ./GetOptSimple -a "Hello" -bcd
 // $ ./GetOptSimple -dcb -a "Hello"
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}

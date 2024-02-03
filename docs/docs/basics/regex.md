@@ -22,7 +22,7 @@ program RegexSimple;
 // Matches!
 // $
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   RegExpr;
@@ -79,7 +79,7 @@ See the example below. The algorithm is encapsulated in `ReplaceDateSeparatorWit
 ```pascal linenums="1" hl_lines="17 20 26 28"
 program ReplaceDateSeparators;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}

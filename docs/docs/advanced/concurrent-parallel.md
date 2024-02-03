@@ -9,7 +9,7 @@ Parallelism = Do one task in less time using multiple cores.
 ```pascal linenums="1"
 program Threading;
 
-{$MODE OBJFPC}{$H+}{$J-}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$ifdef unix}

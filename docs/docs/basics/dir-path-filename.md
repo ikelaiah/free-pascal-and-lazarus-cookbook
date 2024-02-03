@@ -7,7 +7,7 @@ Here is a snippet of creating a sub directory called `demo/ex-01` in the program
 ```pascal linenums="1"
 program DirPathFileCreateDir;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}
@@ -35,7 +35,7 @@ Here is a snippet of creating a sub directory called `demo/胜利` in the progra
 ```pascal linenums="1"
 program DirPathFileCreateDirUTF8;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}

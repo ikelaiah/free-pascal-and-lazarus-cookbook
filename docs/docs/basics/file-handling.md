@@ -26,7 +26,7 @@ See the snippet below. It uses `SysUtil` for catching errors during opening and 
 ```pascal linenums="1" hl_lines="14 19 22 31"
 program ClassicNewTextFile;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   SysUtils;
@@ -67,7 +67,7 @@ Overly verbose with `try...finally`? It can be written as follows too.
 ```pascal linenums="1"
 program ClassicNewTextFileSimple;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 var
   textFile: System.TextFile;
@@ -103,7 +103,7 @@ Here is an example.
 ```pascal linenums="1" hl_lines="9-34 39"
 program ClassicNewTextFileOrganised;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   SysUtils;
@@ -383,7 +383,7 @@ Here is an alternative implementation.
 ```pascal linenums="1" hl_lines="11 33 52"
 program TStreamReaderReadFileTidy;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   Classes,

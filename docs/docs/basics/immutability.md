@@ -20,7 +20,7 @@ Consider the following program. By the default `{$J+}`, you can change the gravi
 ```pascal linenums="1"
 program Immutability;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 const
   gravityEarth:Real = 9.81;
@@ -37,7 +37,7 @@ To make `const` variables behaving like `const` variables in modern programming 
 ```pascal linenums="1"
 program Immutability;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 const
   gravityEarth:Real = 9.81;

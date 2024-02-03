@@ -47,7 +47,7 @@ Here is a program example that stores student information in a record, and print
 ```pascal linenums="1"
 program SimpleProgram;
 
-{$mode objFPC}{$H+}{$J-}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}
@@ -170,7 +170,7 @@ We can use this `Areas` unit as follows.
 ```pascal linenums="1"
 program SimpleProgramWithUnit;
 
-{$mode ObjFPC}{$H+}{$J-}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}

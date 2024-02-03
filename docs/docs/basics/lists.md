@@ -22,7 +22,7 @@ Use [`TStringList`](https://lazarus-ccr.sourceforge.io/docs/rtl/classes/tstringl
 ```pascal linenums="1" hl_lines="9 16 33 63"
 program StringList;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   Classes;
@@ -113,7 +113,7 @@ Here is an example.
 ```pascal linenums="1" hl_lines="11 14 19 22-24 30 44"
 program SimpleIntegerList;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   Math,
@@ -173,7 +173,7 @@ Here is an example of sorting `TList<TStudent>` by name and by age.
 ```pascal hl_lines="36 39-49 75 83" linenums="1"
 program TListCustomComparison;
 
-{$mode objfpc}{$H+}{$modeSwitch advancedRecords}
+{$mode objfpc}{$H+}{$J-}{$modeSwitch advancedRecords}
 
 uses
   Generics.Defaults,
@@ -288,7 +288,7 @@ See the snippet below.
 ```pascal linenums="1" hl_lines="6 10 13-16 23 35 43"
 program FGLIntegerList;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   fgl,
@@ -343,7 +343,7 @@ Use `AddList()`. Here is an example.
 ```pascal hl_lines="26" linenums="1"
 program AppendFPGList;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   fgl,
@@ -409,7 +409,7 @@ Before trying out snippet in this section, make sure you have installed `LGeneri
 ```pascal hl_lines="7 10 13 18 21-23 33" linenums="1"
 program LGIntegerList;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   Classes,
@@ -462,7 +462,7 @@ See the following example.
 ```pascal hl_lines="8 12 35 45" linenums="1"
 program LGIntegerListSort;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   Classes,
@@ -532,7 +532,7 @@ The creation of the list is at line 13.
 ```pascal hl_lines="13" linenums="1"
 program StaticArrayExample;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   Generics.Collections;
@@ -578,8 +578,7 @@ Here is an example using [dynamic array](https://wiki.freepascal.org/Dynamic_arr
 ```pascal
 program DynamicArrayExample;
 
-{$mode objfpc}
-{$H+}
+{$mode objfpc}{$H+}{$J-}
 {$modeswitch arrayoperators}
 
 uses

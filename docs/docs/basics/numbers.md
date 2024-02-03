@@ -19,7 +19,7 @@ Call `Randomize` once, then use [`Random()`](https://www.freepascal.org/docs-htm
 ```pascal hl_lines="14 17" linenums="1"
 program RandomNumberSimple;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   Math;

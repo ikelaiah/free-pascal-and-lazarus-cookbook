@@ -88,7 +88,7 @@ end.
 ```pascal linenums="1"
 program ReadTextFileOverloading;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   Classes, StreamEx, SysUtils;
