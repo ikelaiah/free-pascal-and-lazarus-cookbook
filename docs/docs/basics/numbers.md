@@ -9,8 +9,6 @@
     
     Reason? Xoshiro128 is faster, has a much smaller memory footprint and generates better random numbers.
     
-    Remedy? When using a certain randseed, another random sequence is generated, but as the PRNG is considered as an implementation detail, this does not hurt.
-    
     git: [91cf1774](https://gitlab.com/freepascal.org/fpc/source/-/commit/91cf1774dd59376434dde4581f8eaad74696aa0a)
 
 
