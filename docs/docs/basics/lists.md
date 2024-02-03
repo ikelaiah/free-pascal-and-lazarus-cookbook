@@ -383,9 +383,9 @@ begin
 end. 
 ```
 
-## When building a list, which unit is preferable to use: `fgl` or `Generics.Collection`?
+## When building a list, which unit is preferable to use: `fgl` or `Generics.Collections`?
 
-Consider the following answer from PascalDragon, March 22, 2020, 12:55 pm.
+Consider this answer from PascalDragon, March 22, 2020, 12:55 pm.
 
 > Just to clear these up as well:
 > 
@@ -396,7 +396,7 @@ Consider the following answer from PascalDragon, March 22, 2020, 12:55 pm.
 
 ## External - Using`LGenerics` unit
 
-Before trying out snippet in this section, make sure you have installed `LGenerics` via `Online Package Manager (OPM)` in Lazarus IDE.
+Before trying out snippet in this section, make sure you have installed `LGenerics` via the `Online Package Manager (OPM)` in Lazarus IDE.
 
 ### Creating a list of integer using `LGenerics`
 
@@ -404,8 +404,7 @@ Before trying out snippet in this section, make sure you have installed `LGeneri
 2. Create a new type based on `TGVector<T>`.
 3. Declare a `var` to use this new list type.
 4. Create a new instance of the new list for use. The constructor takes an array. See line 18.
-
-Lastly, don't forget to `Free` your memory as shown in line 33.
+5. Lastly, don't forget to `Free` your memory as shown in line 33.
 
 ```pascal hl_lines="7 10 13 18 21-23 33" linenums="1"
 program LGIntegerList;

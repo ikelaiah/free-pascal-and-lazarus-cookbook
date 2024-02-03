@@ -13,6 +13,7 @@ nav:
     - Command Line Parameters: docs/basics/cmd-line-params.md
     - Functions & Procedures: docs/basics/funcs-procs.md
     - Immutability: docs/basics/immutability.md
+    - Loops: docs/basics/loops.md
     - Lists: docs/basics/lists.md 
     - Strings: docs/basics/strings.md
     - Numbers: docs/basics/numbers.md
