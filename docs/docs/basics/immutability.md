@@ -20,7 +20,7 @@ Consider the following program. By the default `{$J+}`, you can change the gravi
 ```pascal linenums="1"
 program Immutability;
 
-{$mode objfpc}{$H+}{$J-}
+{$mode objfpc}{$H+}
 
 const
   gravityEarth:Real = 9.81;
