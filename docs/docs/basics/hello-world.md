@@ -116,7 +116,8 @@ end.
 
 !!! Contribution
 
-    𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪 and Gustavo 'Gus' Carreno 🇵🇹 (the Unofficial Free Pascal Discord Server) suggested this one.
+    𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪 and Gustavo 'Gus' Carreno 🇵🇹 (Unofficial Free Pascal Discord Server) suggested making directives more readable.
+
     Thank you!
 
 Sure. You can use the long names of compiler directives. See [Compiler Directives](https://www.freepascal.org/docs-html/prog/progch1.html#progse2.html). 
