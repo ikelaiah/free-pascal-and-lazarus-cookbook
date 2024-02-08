@@ -9,7 +9,7 @@ Parallelism = Do one task in less time using multiple cores.
 
 !!! Contribution
 
-    2024-02-08 - paweld 🇵🇱 caught memory leaks in the original code and fixed it.
+    2024-02-08 - paweld 🇵🇱 caught a memory leak in the original code and fixed it.
 
     Thank you!
 
@@ -25,7 +25,7 @@ Parallelism = Do one task in less time using multiple cores.
 ```pascal linenums="1" hl_lines="17-24 27-34 37-44 55 56"
 program CreateThreads;
 
-// 2024-02-08 - paweld 🇵🇱 fixed memory leak issues in the original code.
+// 2024-02-08 - paweld 🇵🇱 fixed a memory leak issue in the original code.
 
 {$mode objfpc}{$H+}{$J-}
 
