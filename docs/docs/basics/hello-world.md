@@ -116,7 +116,7 @@ end.
 
 !!! Contribution
 
-    𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪 and Gustavo 'Gus' Carreno 🇵🇹 (Unofficial Free Pascal Discord Server) suggested making directives more readable.
+    𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪 and Gustavo 'Gus' Carreno 🇵🇹 (Unofficial Free Pascal Discord Server) suggested making directives more readable. paweld 🇵🇱, for pointing out `{$longstrings on}`.
 
     Thank you!
 
