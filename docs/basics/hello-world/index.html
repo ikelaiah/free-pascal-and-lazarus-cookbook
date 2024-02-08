@@ -629,9 +629,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setup-a-project-and-save" class="md-nav__link">
+  <a href="#setup-a-project-using-a-template-and-save" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup a Project and Save
+      Setup a Project using a template and Save
     </span>
   </a>
   
@@ -712,6 +712,15 @@
   <a href="#how-to-prevent-a-console-from-closing-when-run-in-the-lazarus-ide" class="md-nav__link">
     <span class="md-ellipsis">
       How to prevent a console from closing when run in the Lazarus IDE?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-we-make-the-directives-more-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can we make the directives more readable?
     </span>
   </a>
   
@@ -1309,9 +1318,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setup-a-project-and-save" class="md-nav__link">
+  <a href="#setup-a-project-using-a-template-and-save" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup a Project and Save
+      Setup a Project using a template and Save
     </span>
   </a>
   
@@ -1397,6 +1406,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#can-we-make-the-directives-more-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can we make the directives more readable?
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1414,7 +1432,7 @@
 
 <h1 id="run-a-hello-world">Run a Hello World!<a class="headerlink" href="#run-a-hello-world" title="Permanent link">&para;</a></h1>
 <h2 id="hello-world-in-lazarus-ide">Hello World! in Lazarus IDE<a class="headerlink" href="#hello-world-in-lazarus-ide" title="Permanent link">&para;</a></h2>
-<h3 id="setup-a-project-and-save">Setup a Project and Save<a class="headerlink" href="#setup-a-project-and-save" title="Permanent link">&para;</a></h3>
+<h3 id="setup-a-project-using-a-template-and-save">Setup a Project using a template and Save<a class="headerlink" href="#setup-a-project-using-a-template-and-save" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open <a href="https://www.lazarus-ide.org">Lazarus IDE</a>.</li>
 <li>On the top menu bar, click <code>Project -&gt; Simple Program -&gt; OK</code></li>
@@ -1434,16 +1452,25 @@
 </ol>
 <div class="language-pascal highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
 </span></code></pre></div>
+<ol start="6">
+<li>Add the following compiler directives after the <code>program</code> declaration. <mark>Make sure to add this line in all your Object Pascal codes</mark>. </li>
+</ol>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span></code></pre></div>
 <p>Your final code would look as follows.</p>
-<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">program</span><span class="w"> </span><span class="n">HelloWorld</span><span class="o">;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">begin</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">end</span><span class="o">.</span>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">program</span><span class="w"> </span><span class="n">HelloWorld</span><span class="o">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="hll"><span class="cm">{$mode objfpc}{$H+}{$J-}</span><span class="w"> </span><span class="c1">// Add this line in your object pascal codes.</span>
+</span></span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="k">begin</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="hll"><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 <ol start="6">
 <li>Press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-s">S</kbd></span> to save the code.</li>
@@ -1459,11 +1486,15 @@
 <li>Launch your favourite text editor</li>
 <li>Create a new file and put the following snippet in it.</li>
 </ol>
-<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">begin</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">end</span><span class="o">.</span>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span><span class="w"> </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">begin</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 <ol start="3">
 <li>Save it as <code>HelloWorld.pas</code>.</li>
@@ -1471,7 +1502,7 @@
 <h3 id="compile-using-fpc-and-run">Compile using  <code>fpc</code> and run<a class="headerlink" href="#compile-using-fpc-and-run" title="Permanent link">&para;</a></h3>
 <h4 id="windows-cli">Windows CLI<a class="headerlink" href="#windows-cli" title="Permanent link">&para;</a></h4>
 <p>On Windows, compile and run as follows.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>fpc<span class="w"> </span>HelloWorld.pas<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>HelloWorld.exe
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>fpc<span class="w"> </span>HelloWorld.pas<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>HelloWorld.exe
 </span></code></pre></div>
 <p>If running <code>fpc</code> from CLI doesn't work, try one of the following options.</p>
 <ol>
@@ -1483,19 +1514,61 @@
 </ol>
 <h4 id="linux-cli">Linux  CLI<a class="headerlink" href="#linux-cli" title="Permanent link">&para;</a></h4>
 <p>On Linux, compile and run as follows.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>fpc<span class="w"> </span>HelloWorld.pas<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./HelloWorld.exe
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>fpc<span class="w"> </span>HelloWorld.pas<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./HelloWorld.exe
 </span></code></pre></div>
 <h2 id="how-to-prevent-a-console-from-closing-when-run-in-the-lazarus-ide">How to prevent a console from closing when run in the Lazarus IDE?<a class="headerlink" href="#how-to-prevent-a-console-from-closing-when-run-in-the-lazarus-ide" title="Permanent link">&para;</a></h2>
-<p>When you run a console program (non-GUI), the console may dissapear immediately after you press <span class="keys"><kbd class="key-f9">F9</kbd></span>. You can prevent this by adding <a href="https://www.freepascal.org/docs-html/rtl/system/readln.html"><code>readln;</code></a> before the program ends.</p>
-<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
-<span class="normal"><a href="#__codelineno-6-2">2</a></span>
-<span class="normal"><a href="#__codelineno-6-3">3</a></span>
-<span class="normal"><a href="#__codelineno-6-4">4</a></span>
-<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">begin</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter key to exit&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="hll"><span class="w">  </span><span class="nb">readln</span><span class="o">;</span>
-</span></span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="k">end</span><span class="o">.</span><span class="w">                                 </span>
+<p>When you run a console program (non-GUI), the console may dissapear immediately after you press <span class="keys"><kbd class="key-f9">F9</kbd></span>. You can prevent this by adding <a href="https://www.freepascal.org/docs-html/rtl/system/readln.html"><code>ReadLn;</code></a> before the program ends.</p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">program</span><span class="w"> </span><span class="n">HelloWorldPause</span><span class="o">;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span><span class="w"> </span><span class="c1">// Add this line in your object pascal codes.</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="k">begin</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter key to exit&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="hll"><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span></span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="k">end</span><span class="o">.</span><span class="w">                      </span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="can-we-make-the-directives-more-readable">Can we make the directives more readable?<a class="headerlink" href="#can-we-make-the-directives-more-readable" title="Permanent link">&para;</a></h2>
+<div class="admonition contribution">
+<p class="admonition-title">Contribution</p>
+<p>Making directives more readable was suggested by 𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪 and Gustavo 'Gus' Carreno 🇵🇹 of the Unofficial Free Pascal Discord Server.</p>
+</div>
+<p>Sure. You can use the long names of compiler directives. See <a href="https://www.freepascal.org/docs-html/prog/progch1.html#progse2.html">Compiler Directives</a>. </p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">program</span><span class="w"> </span><span class="n">HelloWorldAlt</span><span class="o">;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">  </span><span class="c1">// Here is an example using more readable complier directives</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="hll"><span class="w">  </span><span class="cm">{$mode objfpc}</span>
+</span></span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="hll"><span class="w">  </span><span class="cm">{$longStrings on}</span>
+</span></span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="hll"><span class="w">  </span><span class="cm">{$writeableConst off}</span>
+</span></span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="k">begin</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter key to exit&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 
 
