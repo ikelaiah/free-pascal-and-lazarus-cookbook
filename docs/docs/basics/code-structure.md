@@ -167,7 +167,7 @@ end.
 
 We can use this `Areas` unit as follows.
 
-```pascal linenums="1"
+```pascal linenums="1" hl_lines="10 15 20"
 program SimpleProgramWithUnit;
 
 {$mode objfpc}{$H+}{$J-}
@@ -182,12 +182,12 @@ uses
 begin
   // Calculate area of a square
   WriteLn('Area of 2.5cm square is ',
-          Areas.CalcAreaSquare(2.5): 0: 2,
+          CalcAreaSquare(2.5): 0: 2,
           ' cm².');
 
   // Calculate area of a circle
   WriteLn('Area of a circle with r=2.5cm is ',
-          Areas.CalcAreaCircle(2.5):0: 2,
+          CalcAreaCircle(2.5):0: 2,
           ' cm².');
 
   // The following WriteLn will not compile
@@ -199,3 +199,13 @@ begin
   readln;
 end.
 ```
+
+!!! Contribution
+
+    2024-02-08 - Gustavo 'Gus' Carreno 🇵🇹 pointed out on the original code; it is not necessary to include the unit's name when calling a routine.
+
+    Previously we had `CalcAreaCircle(2.5)` as `Areas.CalcAreaCircle(2.5)`.
+    
+    Anything in the `interface` section of a Unit will become global for the scope of the program/unit/dll that includes it. Hence, the code above is only `CalcAreaCircle(2.5)`.
+
+    ==We only need to include the name of the unit if a naming conflict occurs==.
