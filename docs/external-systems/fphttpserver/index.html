@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://learn-pascal-lang.org/docs/basics/funcs-procs/">
+        <link rel="canonical" href="https://learn-pascal-lang.org/docs/external-systems/fphttpserver/">
       
       
-        <link rel="prev" href="../cmd-line-params/">
-      
-      
-        <link rel="next" href="../immutability/">
       
       
       <link rel="icon" href="../../../assets/logo-new-rounded-min.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Functions & Procedures - Free Pascal & Lazarus Cookbook</title>
+        <title>A Simple Webserver using fphttpserver - Free Pascal & Lazarus Cookbook</title>
       
     
     
@@ -88,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#functions-and-procedure" class="md-skip">
+        <a href="#a-simple-webserver-using-fphttpserver" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Functions & Procedures
+              A Simple Webserver using fphttpserver
             
           </span>
         </div>
@@ -227,13 +223,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../install/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../basics/install/" class="md-tabs__link">
           
   
   Core Tasks
@@ -269,7 +263,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../external-systems/overview/" class="md-tabs__link">
+        <a href="../overview/" class="md-tabs__link">
           
   
   External Systems
@@ -467,8 +461,6 @@
       
   
   
-    
-  
   
   
     
@@ -479,12 +471,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -498,7 +490,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Core Tasks
@@ -512,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../install/" class="md-nav__link">
+      <a href="../../basics/install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lazarus-ide/" class="md-nav__link">
+      <a href="../../basics/lazarus-ide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-structure/" class="md-nav__link">
+      <a href="../../basics/code-structure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hello-world/" class="md-nav__link">
+      <a href="../../basics/hello-world/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cmd-line-params/" class="md-nav__link">
+      <a href="../../basics/cmd-line-params/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -614,30 +606,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Functions & Procedures
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../basics/funcs-procs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -646,44 +618,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#can-a-routine-receive-a-pointer-to-the-passed-variable" class="md-nav__link">
-    <span class="md-ellipsis">
-      Can a routine receive a pointer to the passed variable?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-ensure-a-passed-parameter-wont-be-changed-inside-a-routine" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to ensure a passed parameter won't be changed inside a routine?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -696,7 +630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../immutability/" class="md-nav__link">
+      <a href="../../basics/immutability/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -717,7 +651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../loops/" class="md-nav__link">
+      <a href="../../basics/loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -738,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lists/" class="md-nav__link">
+      <a href="../../basics/lists/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -759,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../strings/" class="md-nav__link">
+      <a href="../../basics/strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -780,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../numbers/" class="md-nav__link">
+      <a href="../../basics/numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -801,7 +735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dates/" class="md-nav__link">
+      <a href="../../basics/dates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -822,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dir-path-filename/" class="md-nav__link">
+      <a href="../../basics/dir-path-filename/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -843,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exception-try-blocks/" class="md-nav__link">
+      <a href="../../basics/exception-try-blocks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -864,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../file-handling/" class="md-nav__link">
+      <a href="../../basics/file-handling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -885,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../regex/" class="md-nav__link">
+      <a href="../../basics/regex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1042,7 +976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../external-systems/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1213,32 +1147,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#can-a-routine-receive-a-pointer-to-the-passed-variable" class="md-nav__link">
-    <span class="md-ellipsis">
-      Can a routine receive a pointer to the passed variable?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-ensure-a-passed-parameter-wont-be-changed-inside-a-routine" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to ensure a passed parameter won't be changed inside a routine?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1252,112 +1160,8 @@
                   
 
 
-<h1 id="functions-and-procedure">Functions and Procedure<a class="headerlink" href="#functions-and-procedure" title="Permanent link">&para;</a></h1>
-<h2 id="can-a-routine-receive-a-pointer-to-the-passed-variable">Can a routine receive a pointer to the passed variable?<a class="headerlink" href="#can-a-routine-receive-a-pointer-to-the-passed-variable" title="Permanent link">&para;</a></h2>
-<p>Yes. Use the <a href="https://www.freepascal.org/docs-html/current/ref/refsu65.html#x181-20500014.4.2"><code>var</code> parameter modifier</a>. </p>
-<blockquote>
-<p>The procedure gets a pointer to the variable that was passed, and uses this pointer to access the variable’s value. From this, it follows that any changes made to the parameter, will propagate back to the calling block.</p>
-<p><a href="https://www.freepascal.org/docs-html/current/ref/refsu65.html#x181-20500014.4.2">FPC Language Reference 14.4.2</a>.</p>
-</blockquote>
-<p>Here is an example.</p>
-<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">program</span><span class="w"> </span><span class="n">ParamModifierVar</span><span class="o">;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">uses</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="n">sysutils</span><span class="o">;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="k">procedure</span><span class="w"> </span><span class="nf">AddFour</span><span class="p">(</span><span class="k">var</span><span class="w"> </span><span class="n">input</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">begin</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="n">input</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="o">;</span><span class="w"> </span><span class="c1">// this line modifies the value of passed variable</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">var</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="n">myNumber</span><span class="o">:</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="o">;</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="k">begin</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;myNumber is ... &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">myNumber</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// the value will be 10</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">  </span><span class="n">AddFour</span><span class="p">(</span><span class="n">myNumber</span><span class="p">)</span><span class="o">;</span><span class="w">                     </span><span class="c1">// call the procedure</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;myNumber is ... &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">myNumber</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// the value will be 14</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">end</span><span class="o">.</span><span class="w"> </span>
-</span></code></pre></div></td></tr></table></div>
-<h2 id="how-to-ensure-a-passed-parameter-wont-be-changed-inside-a-routine">How to ensure a passed parameter won't be changed inside a routine?<a class="headerlink" href="#how-to-ensure-a-passed-parameter-wont-be-changed-inside-a-routine" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>Use <a href="https://www.freepascal.org/docs-html/current/ref/refsu67.html#x183-20700014.4.4"><code>const</code></a>.</p>
-<ul>
-<li><strong>Note</strong>. The compiler decides if the parameter will be passed by value or by reference.</li>
-</ul>
-</li>
-<li>
-<p>Alternatively, use <a href="https://www.freepascal.org/docs-html/current/ref/refsu67.html#x183-20700014.4.4"><code>constref</code></a>.</p>
-<ul>
-<li><strong>Note</strong>. This parameter is the same as <code>const</code>. Plus, it also tells the compiler that the value should be passed by reference, like a <code>var</code> parameter.</li>
-</ul>
-</li>
-</ol>
-<p>Here is an example.</p>
-<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span>
-<span class="normal"><a href="#__codelineno-1-18">18</a></span>
-<span class="normal"><a href="#__codelineno-1-19">19</a></span>
-<span class="normal"><a href="#__codelineno-1-20">20</a></span>
-<span class="normal"><a href="#__codelineno-1-21">21</a></span>
-<span class="normal"><a href="#__codelineno-1-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">program</span><span class="w"> </span><span class="n">ParamModifierConst</span><span class="o">;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">function</span><span class="w"> </span><span class="nf">CalcAreaCircle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">radius</span><span class="o">:</span><span class="w"> </span><span class="kt">Real</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">Real</span><span class="o">;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">begin</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span><span class="c1">// Argument &#39;radius&#39; has a const modifier.</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">  </span><span class="c1">// Hence, it is not possible to re-assign it another value.</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span><span class="c1">// Uncommenting the following line may lead to a compile error.</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">  </span><span class="c1">// radius:=radius*2;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span><span class="bp">Result</span><span class="o">:=</span><span class="w"> </span><span class="nb">Pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="o">;</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="k">var</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">  </span><span class="n">myRadius</span><span class="o">:</span><span class="kt">Real</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span><span class="o">;</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">  </span><span class="n">area</span><span class="o">:</span><span class="kt">Real</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="o">;</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="k">begin</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">  </span><span class="n">area</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">CalcAreaCircle</span><span class="p">(</span><span class="n">myRadius</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;The radius is &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">myRadius</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">2</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;The area of the circle is &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">area</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">2</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="k">end</span><span class="o">.</span>
-</span></code></pre></div></td></tr></table></div>
+<h1 id="a-simple-webserver-using-fphttpserver">A Simple Webserver using <code>fphttpserver</code><a class="headerlink" href="#a-simple-webserver-using-fphttpserver" title="Permanent link">&para;</a></h1>
+<p>Coming soon.</p>
 
 
 
