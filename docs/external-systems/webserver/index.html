@@ -1051,9 +1051,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-simple-rest-apis" class="md-nav__link">
+  <a href="#a-simple-rest-apis-returning-json-and-html-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      A Simple REST APIs
+      A simple REST APIs returning JSON and HTML contents
     </span>
   </a>
   
@@ -1232,9 +1232,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-simple-rest-apis" class="md-nav__link">
+  <a href="#a-simple-rest-apis-returning-json-and-html-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      A Simple REST APIs
+      A simple REST APIs returning JSON and HTML contents
     </span>
   </a>
   
@@ -1256,8 +1256,21 @@
 
 
 <h1 id="webserver">Webserver<a class="headerlink" href="#webserver" title="Permanent link">&para;</a></h1>
-<h3 id="a-simple-rest-apis">A Simple REST APIs<a class="headerlink" href="#a-simple-rest-apis" title="Permanent link">&para;</a></h3>
-<p>Here is an example.</p>
+<h2 id="a-simple-rest-apis-returning-json-and-html-contents">A simple REST APIs returning JSON and HTML contents<a class="headerlink" href="#a-simple-rest-apis-returning-json-and-html-contents" title="Permanent link">&para;</a></h2>
+<p>The following example is a basic REST APIs with three routes.</p>
+<ul>
+<li><code>/api/timestamp</code> to give current timestamp in JSON.</li>
+<li><code>/api/greet/:name</code> to return a name in JSON.</li>
+<li><code>/404</code>, to handle everything else.</li>
+</ul>
+<p>Here is the breakdown.</p>
+<ol>
+<li>In the <code>unit</code>, add <code>fphttpapp</code>, <code>HTTPDefs</code>, <code>httproute</code>, <code>fpjson</code> and <code>jsonparser</code>. Line 16-20.</li>
+<li>Setup port no and enable multi-threading to process incoming http requests. Line 77-78.</li>
+<li>Register routes. Line 81-83.</li>
+<li>Define procedures to handle the routes. Line 23-67.</li>
+<li>Initialise and run. Line 86-88. </li>
+</ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -1347,8 +1360,7 @@
 <span class="normal"><a href="#__codelineno-0-87">87</a></span>
 <span class="normal"><a href="#__codelineno-0-88">88</a></span>
 <span class="normal"><a href="#__codelineno-0-89">89</a></span>
-<span class="normal"><a href="#__codelineno-0-90">90</a></span>
-<span class="normal"><a href="#__codelineno-0-91">91</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">program</span><span class="w"> </span><span class="n">SimpleApiWebserver</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-0-90">90</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">program</span><span class="w"> </span><span class="n">SimpleApiWebserver</span><span class="o">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1">// References:</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">//  - https://medium.com/@marcusfernstrm/create-rest-apis-with-freepascal-441e4aa447b7</span>
@@ -1363,12 +1375,12 @@
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">,</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">  </span><span class="n">fphttpapp</span><span class="o">,</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">  </span><span class="n">HTTPDefs</span><span class="o">,</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span><span class="n">httproute</span><span class="o">,</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">  </span><span class="n">fpjson</span><span class="o">,</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">  </span><span class="n">jsonparser</span><span class="o">;</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="hll"><span class="w">  </span><span class="n">fphttpapp</span><span class="o">,</span>
+</span></span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="hll"><span class="w">  </span><span class="n">HTTPDefs</span><span class="o">,</span>
+</span></span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="hll"><span class="w">  </span><span class="n">httproute</span><span class="o">,</span>
+</span></span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="hll"><span class="w">  </span><span class="n">fpjson</span><span class="o">,</span>
+</span></span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="hll"><span class="w">  </span><span class="n">jsonparser</span><span class="o">;</span>
+</span></span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>
 </span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">  </span><span class="c1">// Endpoint for getting the current timestamp</span>
 </span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">  </span><span class="k">procedure</span><span class="w"> </span><span class="nf">TimestampEndPoint</span><span class="p">(</span><span class="n">aRequest</span><span class="o">:</span><span class="w"> </span><span class="n">TRequest</span><span class="o">;</span><span class="w"> </span><span class="n">aResponse</span><span class="o">:</span><span class="w"> </span><span class="n">TResponse</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">  </span><span class="k">var</span>
@@ -1423,22 +1435,21 @@
 </span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73"></a>
 </span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="k">begin</span>
 </span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75"></a>
-</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">  </span><span class="c1">// Set port</span>
-</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Port</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">port</span><span class="o">;</span>
-</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="w">  </span><span class="c1">// Set multi-threading</span>
-</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Threaded</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">isThreaded</span><span class="o">;</span>
-</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80"></a>
-</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="w">  </span><span class="c1">// Setup routes</span>
-</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/api/timestamp&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">TimestampEndPoint</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/api/greet/:name&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">GreetEndpoint</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/404&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">ErrorEndPoint</span><span class="o">,</span><span class="w"> </span><span class="k">True</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85"></a>
-</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="w">  </span><span class="c1">// Initialise and run, with a message</span>
-</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Initialize</span><span class="o">;</span>
-</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;== Server is running on port &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">port</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; ===&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Run</span><span class="o">;</span>
-</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90"></a>
-</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="k">end</span><span class="o">.</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">  </span><span class="c1">// Set port no &amp; enable multi-threading to handle http requests</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Port</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">port</span><span class="o">;</span>
+</span></span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Threaded</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">isThreaded</span><span class="o">;</span>
+</span></span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79"></a>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="w">  </span><span class="c1">// Setup routes</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/api/timestamp&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">TimestampEndPoint</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/api/greet/:name&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">GreetEndpoint</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/404&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">ErrorEndPoint</span><span class="o">,</span><span class="w"> </span><span class="k">True</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84"></a>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">  </span><span class="c1">// Initialise and run, with a message</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Initialize</span><span class="o">;</span>
+</span></span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="hll"><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;== Server is running on port &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">port</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; ===&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Run</span><span class="o">;</span>
+</span></span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89"></a>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 <p><strong>How to use</strong></p>
 <ul>
