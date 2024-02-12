@@ -1,11 +1,23 @@
 # Webserver
 
 
-### A Simple REST APIs
+## A simple REST APIs returning JSON and HTML contents
 
-Here is an example.
+The following example is a basic REST APIs with three routes.
 
-```pascal linenums="1"
+  - `/api/timestamp` to give current timestamp in JSON.
+  - `/api/greet/:name` to return a name in JSON.
+  - `/404`, to handle everything else.
+
+Here is the breakdown.
+
+1. In the `unit`, add `fphttpapp`, `HTTPDefs`, `httproute`, `fpjson` and `jsonparser`. Line 16-20.
+2. Setup port no and enable multi-threading to process incoming http requests. Line 77-78.
+3. Register routes. Line 81-83.
+4. Define procedures to handle the routes. Line 23-67.
+5. Initialise and run. Line 86-88. 
+
+```pascal linenums="1" hl_lines="16-20 77-78 81-83 86-88"
 program SimpleApiWebserver;
 
 // References:
@@ -81,9 +93,8 @@ const
 
 begin
 
-  // Set port
+  // Set port no & enable multi-threading to handle http requests
   Application.Port := port;
-  // Set multi-threading
   Application.Threaded := isThreaded;
 
   // Setup routes
