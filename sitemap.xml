@@ -116,6 +116,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://learn-pascal-lang.org/docs/external-systems/parsing-json/</loc>
+         <lastmod>2024-02-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://learn-pascal-lang.org/docs/external-systems/webserver/</loc>
          <lastmod>2024-02-13</lastmod>
          <changefreq>daily</changefreq>

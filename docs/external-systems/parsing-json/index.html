@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://learn-pascal-lang.org/docs/advanced/concurrent-parallel/">
+        <link rel="canonical" href="https://learn-pascal-lang.org/docs/external-systems/parsing-json/">
       
       
-        <link rel="prev" href="../../basics/regex/">
+        <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../conditional-compilation/">
+        <link rel="next" href="../webserver/">
       
       
       <link rel="icon" href="../../../assets/logo-new-rounded-min.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Concurrency and Parallelism - Free Pascal & Lazarus Cookbook</title>
+        <title>Parsing JSON - Free Pascal & Lazarus Cookbook</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#threadingconcurrency-and-parallelism" class="md-skip">
+        <a href="#parsing-json" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Concurrency and Parallelism
+              Parsing JSON
             
           </span>
         </div>
@@ -245,13 +245,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../advanced/concurrent-parallel/" class="md-tabs__link">
           
   
   Advanced Topics
@@ -265,11 +263,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../external-systems/overview/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
           
   
   External Systems
@@ -850,8 +850,6 @@
       
   
   
-    
-  
   
   
     
@@ -862,12 +860,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -881,7 +879,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Advanced Topics
@@ -892,30 +890,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Concurrency and Parallelism
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../advanced/concurrent-parallel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -924,35 +902,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#perform-tasks-on-multiple-threads" class="md-nav__link">
-    <span class="md-ellipsis">
-      Perform tasks on multiple threads
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -965,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../conditional-compilation/" class="md-nav__link">
+      <a href="../../advanced/conditional-compilation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -990,8 +939,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1000,12 +951,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -1019,7 +970,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             External Systems
@@ -1033,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../external-systems/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1051,10 +1002,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../external-systems/parsing-json/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Parsing JSON
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1063,6 +1034,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-make-a-get-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I make a GET request?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-parse-json-from-dummyjsonorg" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I parse JSON from dummyjson.org?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1075,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../external-systems/webserver/" class="md-nav__link">
+      <a href="../webserver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,9 +1262,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#perform-tasks-on-multiple-threads" class="md-nav__link">
+  <a href="#how-do-i-make-a-get-request" class="md-nav__link">
     <span class="md-ellipsis">
-      Perform tasks on multiple threads
+      How do I make a GET request?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-parse-json-from-dummyjsonorg" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I parse JSON from dummyjson.org?
     </span>
   </a>
   
@@ -1276,28 +1294,24 @@
                   
 
 
-<h1 id="threadingconcurrency-and-parallelism">Threading(Concurrency) and Parallelism<a class="headerlink" href="#threadingconcurrency-and-parallelism" title="Permanent link">&para;</a></h1>
-<p>Threading = Do various tasks together.</p>
-<p>Parallelism = Do one task in less time using multiple cores.</p>
-<h2 id="perform-tasks-on-multiple-threads">Perform tasks on multiple threads<a class="headerlink" href="#perform-tasks-on-multiple-threads" title="Permanent link">&para;</a></h2>
-<div class="admonition contribution">
-<p class="admonition-title">Contribution</p>
-<p>2024-02-08 - paweld 🇵🇱 caught a memory leak in the original code and fixed it.</p>
-<p>Thank you!</p>
+<h1 id="parsing-json">Parsing JSON<a class="headerlink" href="#parsing-json" title="Permanent link">&para;</a></h1>
+<p>Since many services use JSON for exchanging information, wouldn't it be nice to know how to do this in Free Pascal and Lazarus?</p>
+<h2 id="how-do-i-make-a-get-request">How do I make a GET request?<a class="headerlink" href="#how-do-i-make-a-get-request" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The snippet below is based on a fine tutorial by <a href="https://medium.com/@marcusfernstrm/freepascal-and-json-337c04cad489">Marcus Fernström</a>.</p>
+<p>Watch the detailed explanation by Marcus on YouTube; <a href="https://www.youtube.com/watch?v=Gy-OcEPgTHg">Learn how to consume JSON data in Free Pascal</a></p>
 </div>
+<p>Here is an example on making a GET request of JSON data and displaying it on console.</p>
 <ol>
-<li>Create a class, for example <code>TTaskThread</code>, based on <code>TThread</code>. Prepare to override <code>Execute</code> and define a constructor <code>Create</code>. Line 17-24.</li>
-<li>Override <code>Execute</code>. Line 27-34.<ul>
-<li>This procedure contains your task to perform.</li>
+<li>In <code>uses</code> add <code>opensslsockets</code> and <code>fphttpclient</code> for making the GET request. Line 11-12.</li>
+<li>Set two variables. Line 16-17.<ul>
+<li>One for the URL. Here I use <code>https://dummyjson.com/users?limit=3</code>.</li>
+<li>One for the response of the GET request.</li>
 </ul>
 </li>
-<li>Define a constructor. Line 36-43.<ul>
-<li>call constructor of <code>TThread</code>,</li>
-<li>set free on terminate and</li>
-<li>Start thread. </li>
-</ul>
-</li>
-<li>Create all threads.</li>
+<li>Make the GET request by using <code>TFPHTTPClient.SimpleGet(url)</code>. Line 22.</li>
+<li>Print result on console. Line 25.</li>
 </ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1328,113 +1342,102 @@
 <span class="normal"><a href="#__codelineno-0-27">27</a></span>
 <span class="normal"><a href="#__codelineno-0-28">28</a></span>
 <span class="normal"><a href="#__codelineno-0-29">29</a></span>
-<span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span>
-<span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
-<span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span>
-<span class="normal"><a href="#__codelineno-0-46">46</a></span>
-<span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span>
-<span class="normal"><a href="#__codelineno-0-52">52</a></span>
-<span class="normal"><a href="#__codelineno-0-53">53</a></span>
-<span class="normal"><a href="#__codelineno-0-54">54</a></span>
-<span class="normal"><a href="#__codelineno-0-55">55</a></span>
-<span class="normal"><a href="#__codelineno-0-56">56</a></span>
-<span class="normal"><a href="#__codelineno-0-57">57</a></span>
-<span class="normal"><a href="#__codelineno-0-58">58</a></span>
-<span class="normal"><a href="#__codelineno-0-59">59</a></span>
-<span class="normal"><a href="#__codelineno-0-60">60</a></span>
-<span class="normal"><a href="#__codelineno-0-61">61</a></span>
-<span class="normal"><a href="#__codelineno-0-62">62</a></span>
-<span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span>
-<span class="normal"><a href="#__codelineno-0-65">65</a></span>
-<span class="normal"><a href="#__codelineno-0-66">66</a></span>
-<span class="normal"><a href="#__codelineno-0-67">67</a></span>
-<span class="normal"><a href="#__codelineno-0-68">68</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">program</span><span class="w"> </span><span class="n">CreateThreads</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">program</span><span class="w"> </span><span class="n">GetRequest</span><span class="o">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1">// 2024-02-08 - paweld 🇵🇱 fixed a memory leak issue in the original code.</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="cm">{$mode objfpc}{$H+}</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">uses</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="cm">{$ifdef unix}</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="n">cmem</span><span class="o">,</span><span class="w"> </span><span class="n">cthreads</span><span class="o">,</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="cm">{$endif}</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">;</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="k">type</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="c1">// Create a class based on TThread</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">  </span><span class="c1">// TTaskThread</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="hll"><span class="w">  </span><span class="n">TTaskThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TThread</span><span class="p">)</span>
-</span></span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="hll"><span class="w">  </span><span class="kp">protected</span>
-</span></span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="hll"><span class="w">    </span><span class="c1">// Override the Execute procedure of TThread</span>
-</span></span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="hll"><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">Execute</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
-</span></span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="hll"><span class="w">  </span><span class="kp">public</span>
-</span></span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="hll"><span class="w">    </span><span class="c1">// Thread constructor with free on terminate</span>
-</span></span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="hll"><span class="w">    </span><span class="k">constructor</span><span class="w"> </span><span class="nf">Create</span><span class="o">;</span>
-</span></span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="hll"><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span></span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">  </span><span class="c1">// The Execute procedure, simulating a task</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="hll"><span class="w">  </span><span class="k">procedure</span><span class="w"> </span><span class="nc">TTaskThread</span><span class="o">.</span><span class="nf">Execute</span><span class="o">;</span>
-</span></span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="hll"><span class="w">  </span><span class="k">begin</span>
-</span></span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Started a task on thread ID &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="hll">
-</span></span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="hll"><span class="w">    </span><span class="nb">Sleep</span><span class="p">(</span><span class="nb">Random</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">;</span><span class="w"> </span><span class="c1">// simulate a time to complete a task</span>
-</span></span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="hll">
-</span></span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Sending a terminate signal to thread ID: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="hll"><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span></span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">  </span><span class="c1">// Constructor of TTaskThread</span>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="hll"><span class="w">  </span><span class="k">constructor</span><span class="w"> </span><span class="nc">TTaskThread</span><span class="o">.</span><span class="nf">Create</span><span class="o">;</span>
-</span></span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="hll"><span class="w">  </span><span class="k">begin</span>
-</span></span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="hll"><span class="w">    </span><span class="c1">//create suspended</span>
-</span></span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="hll"><span class="w">    </span><span class="k">inherited</span><span class="w"> </span><span class="n">Create</span><span class="p">(</span><span class="k">True</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="hll"><span class="w">    </span><span class="n">FreeOnTerminate</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">True</span><span class="o">;</span>
-</span></span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="hll"><span class="w">    </span><span class="c1">//run thread</span>
-</span></span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="hll"><span class="w">    </span><span class="n">Start</span><span class="o">;</span>
-</span></span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="hll"><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span></span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="k">var</span>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">  </span><span class="n">task1</span><span class="o">,</span><span class="w"> </span><span class="n">task2</span><span class="o">:</span><span class="w"> </span><span class="n">TThread</span><span class="o">;</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="k">begin</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;---------------------&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Started TThread demo&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;---------------------&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">  </span><span class="c1">// Create all threads</span>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="hll"><span class="w">  </span><span class="n">task1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TTaskThread</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
-</span></span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="hll"><span class="w">  </span><span class="n">task2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TTaskThread</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
-</span></span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a>
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">  </span><span class="c1">// Start a task on the main thread</span>
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">  </span><span class="nb">Writeln</span><span class="p">(</span><span class="s">&#39;Starting a task from the main thread&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">  </span><span class="nb">Sleep</span><span class="p">(</span><span class="nb">Random</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">;</span><span class="w"> </span><span class="c1">// simulate a task</span>
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="w">  </span><span class="nb">Writeln</span><span class="p">(</span><span class="s">&#39;Completed the task from the main thread&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62"></a>
-</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;---------------------&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Finished TThread demo&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter to quit&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;---------------------&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
-</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="k">end</span><span class="o">.</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">uses</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="cm">{$IFDEF UNIX}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">  </span><span class="n">cthreads</span><span class="o">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="c1">// For making web requests</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="hll"><span class="w">  </span><span class="n">opensslsockets</span><span class="o">,</span>
+</span></span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="hll"><span class="w">  </span><span class="n">fphttpclient</span><span class="o">;</span>
+</span></span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="k">var</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="hll"><span class="w">  </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;https://dummyjson.com/users?limit=3&#39;</span><span class="o">;</span><span class="w"> </span><span class="c1">// endpoint to get JSON mock data</span>
+</span></span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="hll"><span class="w">  </span><span class="n">rawJson</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span><span class="w"> </span><span class="c1">// a var to store raw JSON data</span>
+</span></span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">begin</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">  </span><span class="c1">// Get the raw JSON data</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Contacting &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">url</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; ...&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="hll"><span class="w">  </span><span class="n">rawJson</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TFPHTTPClient</span><span class="o">.</span><span class="n">SimpleGet</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">  </span><span class="c1">// Display JSON on console</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="hll"><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="n">rawJson</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">  </span><span class="c1">// Pause console</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press enter key to exit...&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
+<h2 id="how-do-i-parse-json-from-dummyjsonorg">How do I parse JSON from <code>dummyjson.org</code>?<a class="headerlink" href="#how-do-i-parse-json-from-dummyjsonorg" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Again, the snippet below is based on a fine tutorial by <a href="https://medium.com/@marcusfernstrm/freepascal-and-json-337c04cad489">Marcus Fernström</a>.</p>
+<p>Watch the detailed explanation by Marcus on YouTube; <a href="https://www.youtube.com/watch?v=Gy-OcEPgTHg">Learn how to consume JSON data in Free Pascal</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>WIP</p>
+</div>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">program</span><span class="w"> </span><span class="n">ParseJSON</span><span class="o">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm">{$mode objfpc}{$H+}</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">uses</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="cm">{$IFDEF UNIX}</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="n">cthreads</span><span class="o">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="c1">// For making web requests</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="n">opensslsockets</span><span class="o">,</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="n">fphttpclient</span><span class="o">,</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="c1">// For parsing JSON data</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="n">fpjson</span><span class="o">,</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="n">jsonparser</span><span class="o">;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="k">var</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="n">url</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;https://dummyjson.com/users?limit=3&#39;</span><span class="o">;</span><span class="w"> </span><span class="c1">// endpoint to get JSON mock data</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="n">rawJson</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span><span class="w">       </span><span class="c1">// a var to store raw JSON data</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="n">arrayJson</span><span class="o">:</span><span class="w"> </span><span class="n">TJSONArray</span><span class="o">;</span><span class="w"> </span><span class="c1">// a var for processing an array of JSON objects</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="n">enumJson</span><span class="o">:</span><span class="w"> </span><span class="n">TJSONEnum</span><span class="o">;</span><span class="w">   </span><span class="c1">// an enum type for looping JSON arrays</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="n">objJson</span><span class="o">:</span><span class="w"> </span><span class="n">TJSONObject</span><span class="o">;</span><span class="w">  </span><span class="c1">// a var for manipulating a JSON object</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="k">begin</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="c1">// Get the raw JSON data</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Contacting &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">url</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; ...&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="n">rawJson</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TFPHTTPClient</span><span class="o">.</span><span class="n">SimpleGet</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">  </span><span class="c1">// Next, get the users array as TJSONArray;</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="c1">// 1. convert the raw JSON data to TJSONData,</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="c1">// 2. find data called &quot;users&quot; (a JSON array as per dummyjson&#39;s structure) and</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="c1">// 3. cast as TJSONArray</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span><span class="n">arrayJson</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TJSONArray</span><span class="p">(</span><span class="n">GetJSON</span><span class="p">(</span><span class="n">rawJson</span><span class="p">)</span><span class="o">.</span><span class="n">FindPath</span><span class="p">(</span><span class="s">&#39;users&#39;</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">  </span><span class="c1">// Loop using the TJSONEnum</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="n">enumJson</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">arrayJson</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">    </span><span class="c1">// Cast the enum value (TJSONData) to TJSONObject</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">    </span><span class="n">objJson</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TJSONObject</span><span class="p">(</span><span class="n">enumJson</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span><span class="c1">// Output a few pieces of data as example.</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;id   : &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">objJson</span><span class="o">.</span><span class="n">FindPath</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">AsString</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;name : &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">objJson</span><span class="o">.</span><span class="n">FindPath</span><span class="p">(</span><span class="s">&#39;firstName&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">AsString</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">objJson</span><span class="o">.</span><span class="n">FindPath</span><span class="p">(</span><span class="s">&#39;lastName&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">AsString</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;phone: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">objJson</span><span class="o">.</span><span class="n">FindPath</span><span class="p">(</span><span class="s">&#39;phone&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">AsString</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;city : &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">objJson</span><span class="o">.</span><span class="n">FindPath</span><span class="p">(</span><span class="s">&#39;address.city&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">AsString</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;state: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">objJson</span><span class="o">.</span><span class="n">FindPath</span><span class="p">(</span><span class="s">&#39;address.state&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">AsString</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;---&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">  </span><span class="c1">// Pause console</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press enter key to exit...&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="k">end</span><span class="o">.</span>
+</span></code></pre></div>
 
 
 
