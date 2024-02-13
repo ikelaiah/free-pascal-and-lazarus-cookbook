@@ -27,6 +27,7 @@ nav:
     - Conditional Compilation: docs/advanced/conditional-compilation.md
   - External Systems:
     - Overview: docs/external-systems/overview.md
+    - Parsing JSON: docs/external-systems/parsing-json.md
     - Web Server: docs/external-systems/webserver.md
   - Community: community.md
   - Resources:
