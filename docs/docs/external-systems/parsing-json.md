@@ -120,3 +120,9 @@ begin
   ReadLn;
 end.
 ```
+
+## In the previous example, why `TJSONArray(GetJSON(rawJson).FindPath('users'))`, not `TJSONArray(GetJSON(rawJson))`?
+
+!!! Note
+
+    WIP
