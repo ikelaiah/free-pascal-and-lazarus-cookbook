@@ -2,7 +2,6 @@
 
 Since many services use JSON for exchanging information, wouldn't it be nice to know how to do this in Free Pascal and Lazarus?
 
-
 ## How do I make a GET request?
 
 !!! Note
@@ -94,7 +93,6 @@ begin
   // Get the raw JSON data
   WriteLn('Contacting ', url, ' ...');
   rawJson := TFPHTTPClient.SimpleGet(url);
-
 
   // Next, get the users array as TJSONArray;
   // 1. convert the raw JSON data to TJSONData,
