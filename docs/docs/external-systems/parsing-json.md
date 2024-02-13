@@ -9,7 +9,7 @@ Since many services use JSON for exchanging information, wouldn't it be nice to 
 
     The snippet below is based on a fine tutorial by [Marcus Fernström](https://medium.com/@marcusfernstrm/freepascal-and-json-337c04cad489).
 
-    Watch the detailed explanation by Marcus here; [Learn how to consume JSON data in Free Pascal](https://www.youtube.com/watch?v=Gy-OcEPgTHg)
+    Watch the detailed explanation by Marcus on YouTube; [Learn how to consume JSON data in Free Pascal](https://www.youtube.com/watch?v=Gy-OcEPgTHg)
 
 Here is an example on making a GET request of JSON data and displaying it on console.
 
@@ -60,7 +60,7 @@ end.
 
     Again, the snippet below is based on a fine tutorial by [Marcus Fernström](https://medium.com/@marcusfernstrm/freepascal-and-json-337c04cad489).
 
-    Watch the detailed explanation by Marcus here; [Learn how to consume JSON data in Free Pascal](https://www.youtube.com/watch?v=Gy-OcEPgTHg)
+    Watch the detailed explanation by Marcus on YouTube; [Learn how to consume JSON data in Free Pascal](https://www.youtube.com/watch?v=Gy-OcEPgTHg)
 
 !!! Note
 
