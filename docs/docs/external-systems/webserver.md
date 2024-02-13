@@ -1,19 +1,20 @@
 # Webserver
 
-
 ## A simple REST APIs returning JSON and HTML contents
 
-The following example is a basic REST APIs with three routes.
+Have a look at the example below, based on a tutorial by [Marcus Fernström](https://medium.com/@marcusfernstrm/create-rest-apis-with-freepascal-441e4aa447b7).
+
+The program creates a basic REST APIs with three routes.
 
   - `/api/timestamp` to give current timestamp in JSON.
-  - `/api/greet/:name` to return a name in JSON.
-  - `/404`, to handle everything else.
+  - `/api/greet/:name` to return a specified `name` in JSON.
+  - `/404` for handling everything else.
 
 Here is the breakdown.
 
 1. In the `unit`, add `fphttpapp`, `HTTPDefs`, `httproute`, `fpjson` and `jsonparser`. Line 16-20.
 2. Setup port no and enable multi-threading to process incoming http requests. Line 77-78.
-3. Register routes. Line 81-83.
+3. Register routes and set `/404` as the default route. Line 81-83.
 4. Define procedures to handle the routes. Line 23-67.
 5. Initialise and run. Line 86-88. 
 
@@ -100,7 +101,7 @@ begin
   // Setup routes
   HTTPRouter.RegisterRoute('/api/timestamp', rmGet, @TimestampEndPoint);
   HTTPRouter.RegisterRoute('/api/greet/:name', rmGet, @GreetEndpoint);
-  HTTPRouter.RegisterRoute('/404', rmGet, @ErrorEndPoint, True);
+  HTTPRouter.RegisterRoute('/404', rmGet, @ErrorEndPoint, True); // Set as the default endpoint
 
   // Initialise and run, with a message
   Application.Initialize;
@@ -113,9 +114,9 @@ end.
 **How to use**
 
 - Run the program.
-  - To get the current timestamp, type into your browser: `http://127.0.0.1:8080/api/timestamp`.
-  - To get a greeting in json, type into your browser: `http://127.0.0.1:8080/api/greet/Jonathan`.
-  - All other endpoints will get you to: `http://127.0.0.1:8080/404`.
+  - To get the current timestamp, put into your browser: `http://127.0.0.1:8080/api/timestamp`.
+  - To get a greeting in json, put into your browser: `http://127.0.0.1:8080/api/greet/Jonathan`.
+  - Non-matching endpoints will get you to: `http://127.0.0.1:8080/404`.
 
 
 **References**
