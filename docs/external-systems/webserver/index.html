@@ -1257,17 +1257,18 @@
 
 <h1 id="webserver">Webserver<a class="headerlink" href="#webserver" title="Permanent link">&para;</a></h1>
 <h2 id="a-simple-rest-apis-returning-json-and-html-contents">A simple REST APIs returning JSON and HTML contents<a class="headerlink" href="#a-simple-rest-apis-returning-json-and-html-contents" title="Permanent link">&para;</a></h2>
-<p>The following example is a basic REST APIs with three routes.</p>
+<p>Have a look at the example below, based on a tutorial by <a href="https://medium.com/@marcusfernstrm/create-rest-apis-with-freepascal-441e4aa447b7">Marcus Fernström</a>.</p>
+<p>The program creates a basic REST APIs with three routes.</p>
 <ul>
 <li><code>/api/timestamp</code> to give current timestamp in JSON.</li>
-<li><code>/api/greet/:name</code> to return a name in JSON.</li>
-<li><code>/404</code>, to handle everything else.</li>
+<li><code>/api/greet/:name</code> to return a specified <code>name</code> in JSON.</li>
+<li><code>/404</code> for handling everything else.</li>
 </ul>
 <p>Here is the breakdown.</p>
 <ol>
 <li>In the <code>unit</code>, add <code>fphttpapp</code>, <code>HTTPDefs</code>, <code>httproute</code>, <code>fpjson</code> and <code>jsonparser</code>. Line 16-20.</li>
 <li>Setup port no and enable multi-threading to process incoming http requests. Line 77-78.</li>
-<li>Register routes. Line 81-83.</li>
+<li>Register routes and set <code>/404</code> as the default route. Line 81-83.</li>
 <li>Define procedures to handle the routes. Line 23-67.</li>
 <li>Initialise and run. Line 86-88. </li>
 </ol>
@@ -1442,7 +1443,7 @@
 </span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="w">  </span><span class="c1">// Setup routes</span>
 </span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/api/timestamp&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">TimestampEndPoint</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/api/greet/:name&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">GreetEndpoint</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/404&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">ErrorEndPoint</span><span class="o">,</span><span class="w"> </span><span class="k">True</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/404&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">ErrorEndPoint</span><span class="o">,</span><span class="w"> </span><span class="k">True</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// Set as the default endpoint</span>
 </span></span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84"></a>
 </span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">  </span><span class="c1">// Initialise and run, with a message</span>
 </span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Initialize</span><span class="o">;</span>
@@ -1454,9 +1455,9 @@
 <p><strong>How to use</strong></p>
 <ul>
 <li>Run the program.</li>
-<li>To get the current timestamp, type into your browser: <code>http://127.0.0.1:8080/api/timestamp</code>.</li>
-<li>To get a greeting in json, type into your browser: <code>http://127.0.0.1:8080/api/greet/Jonathan</code>.</li>
-<li>All other endpoints will get you to: <code>http://127.0.0.1:8080/404</code>.</li>
+<li>To get the current timestamp, put into your browser: <code>http://127.0.0.1:8080/api/timestamp</code>.</li>
+<li>To get a greeting in json, put into your browser: <code>http://127.0.0.1:8080/api/greet/Jonathan</code>.</li>
+<li>Non-matching endpoints will get you to: <code>http://127.0.0.1:8080/404</code>.</li>
 </ul>
 <p><strong>References</strong></p>
 <ul>
