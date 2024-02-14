@@ -8,7 +8,7 @@ Here are chats, mailing lists, conferences and events that relate to Free Pascal
 
 - [Free Pascal and Lazarus](https://forum.lazarus.freepascal.org/index.php)
 
-### Discord Groups
+### Discord Servers
 
 - [Unofficial Free Pascal](https://discord.com/invite/GPFyAc2UJ2)
 - [Delphi Community](https://delphi-community.com)
@@ -18,9 +18,14 @@ Here are chats, mailing lists, conferences and events that relate to Free Pascal
 - `#lazarus` at `web.libera.chat`. 
     - You can access it via [Free Pascal & Lazarus forum](https://forum.lazarus.freepascal.org/index.php/page,9.html)
 - `#fpc` and `#fpc-alt` on `irc.libera.chat`
-    - I have not been able to join the `irc.libera.chat`
-    - The `irc.libera.chat` for off-topic discussions.
-    - The FPC core team has no control over either of these channels.
+
+!!! Note
+
+    I have not been able to join the `irc.libera.chat`
+
+    The `irc.libera.chat` is for off-topic discussions.
+
+    The FPC core team has no control over either of these channels.
 
 ## Email Lists
 
