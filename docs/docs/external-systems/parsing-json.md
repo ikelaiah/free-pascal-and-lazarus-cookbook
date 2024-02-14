@@ -61,11 +61,24 @@ end.
 
     Watch the detailed explanation by Marcus on YouTube; [Learn how to consume JSON data in Free Pascal](https://www.youtube.com/watch?v=Gy-OcEPgTHg)
 
-!!! Note
+Here is the breakdown of the example below.
 
-    WIP
+1. Add necessary units for making the GET requests and parsing JSON data. Line 10-15.
+2. Setup variables for receiving and processing the JSON data. Line 19-22.
+     - A `string` to store raw JSON data.
+     - A `TJSONArray` for storing an array of JSON objects.
+     - A `TJSONEnum` for looping JSON arrays.
+     - A `TJSONObject` for manipulating a JSON object.
+3. Make the GET request and store the raw JSON response. Line 27.
+4. Retrieve the array as TJSONArray. Line 33.
+      - Convert the raw `JSON` data to `TJSONData`,
+      - find data called "`users`" (a JSON array as per dummyjson's specs) and
+      - Lastly, cast as `TJSONArray`.
+5. Use the `TJSONEnum` var to loop through the JSON array. Line 36.
+6. To use the JSON  object in the loop, cast the `TJSONEnum .value`, which is `TJSONData` to `TJSONObject`. Line 39.
+7. Once you've obtained the JSONObject, use [`FindPath`](https://www.freepascal.org/docs-html/fcl/fpjson/tjsondata.findpath.html) to get value based on a key or a path.
 
-```pascal
+```pascal linenums="1"
 program ParseJSON;
 
 {$mode objfpc}{$H+}
@@ -75,7 +88,7 @@ uses
   cthreads,
   {$ENDIF}
   Classes,
-  // For making web requests
+  // For web requests
   opensslsockets,
   fphttpclient,
   // For parsing JSON data
@@ -84,8 +97,8 @@ uses
 
 var
   url: string = 'https://dummyjson.com/users?limit=3'; // endpoint to get JSON mock data
-  rawJson: string;       // a var to store raw JSON data
-  arrayJson: TJSONArray; // a var for processing an array of JSON objects
+  rawJson: string;       // a var to store the raw JSON data
+  arrayJson: TJSONArray; // a var for storing an array of JSON objects
   enumJson: TJSONEnum;   // an enum type for looping JSON arrays
   objJson: TJSONObject;  // a var for manipulating a JSON object
 
@@ -106,7 +119,7 @@ begin
     // Cast the enum value (TJSONData) to TJSONObject
     objJson := TJSONObject(enumJson.Value);
 
-    // Output a few pieces of data as example.
+    // Output values based on keys/paths using `TJSONObject.FindPath('a_key')`
     WriteLn('id   : ', objJson.FindPath('id').AsString);
     WriteLn('name : ', objJson.FindPath('firstName').AsString, ' ', objJson.FindPath('lastName').AsString);
     WriteLn('phone: ', objJson.FindPath('phone').AsString);
@@ -121,13 +134,9 @@ begin
 end.
 ```
 
-## In the previous example, why `TJSONArray(GetJSON(rawJson).FindPath('users'))`, not `TJSONArray(GetJSON(rawJson))`?
+### Why do we use `GetJSON(rawJson).FindPath('users')` to get the array?
 
-!!! Note
-
-    WIP
-
-That is because `https://dummyjson.com/users?limit=3` returns the following JSON object.
+ As per the specs of `https://dummyjson.com/users?limit=3`, the array of users is in `users`. Here is an response example from the `/users?limit=3` endpoint.
 
 ```json
 {
