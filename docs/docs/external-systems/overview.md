@@ -1,4 +1,5 @@
-# Overview
+# External Systems
 
-Recipes (Examples) on using Free Pascal and Lazarus to interact with external systems.
+This section has recipes on interacting with outside worlds using Free Pascal and Lazarus.
 
+Choose a topic from the left sidebar.
