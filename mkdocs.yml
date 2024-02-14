@@ -6,6 +6,7 @@ nav:
     - About: about.md
     - License: LICENSE.md
   - Core Tasks:
+    - Overview: docs/basics/overview.md
     - Install FPC and Lazarus: docs/basics/install.md
     - Lazarus IDE: docs/basics/lazarus-ide.md
     - Code Structure: docs/basics/code-structure.md
@@ -23,6 +24,7 @@ nav:
     - File Handling: docs/basics/file-handling.md
     - Regular Expressions: docs/basics/regex.md
   - Advanced Topics:
+    - Overview: docs/advanced/overview.md
     - Concurrency and Parallelism: docs/advanced/concurrent-parallel.md
     - Conditional Compilation: docs/advanced/conditional-compilation.md
   - External Systems:
