@@ -22,7 +22,7 @@ Here is an example on making a GET request of JSON data and displaying it on con
 ```pascal linenums="1"  hl_lines="11-12 16 17 22 25"
 program GetRequest;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}
@@ -81,7 +81,7 @@ Here is the breakdown of the example below.
 ```pascal linenums="1"
 program ParseJSON;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}

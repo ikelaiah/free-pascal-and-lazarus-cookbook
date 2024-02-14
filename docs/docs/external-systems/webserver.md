@@ -26,7 +26,7 @@ program SimpleApiWebserver;
 //  - https://www.youtube.com/watch?v=9N0cxI1Hp0U
 //  - https://wiki.lazarus.freepascal.org/fpWeb_Tutorial#webserver-example
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}
