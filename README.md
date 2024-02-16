@@ -26,10 +26,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-I'm compiling my own snippets and others, also resources relating to [Free Pascal](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org) for my study.
+This cookbook contains my study notes for [Free Pascal](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
