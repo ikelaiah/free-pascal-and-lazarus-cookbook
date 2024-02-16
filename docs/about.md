@@ -8,7 +8,7 @@
 
 Hence, this site.
 
-I'm compiling my own snippets and others, also resources relating to [Free Pascal](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org) for my study. Also, I'm hoping others would find these collections useful too.
+I'm compiling my own snippets and others, also related resources for studying [Free Pascal](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org). I'm hoping others would find these collections useful too.
 
 I've taken care to acknowledge the original location of information & authors whenever possible. If I overlooked anyone, please inform me.
 

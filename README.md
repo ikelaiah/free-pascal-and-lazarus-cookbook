@@ -26,7 +26,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This cookbook contains my study notes for [Free Pascal](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org).
+This cook book is a collection of handy recipes and study notes for the  [Free Pascal programming language](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org), contributed by both myself and others.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

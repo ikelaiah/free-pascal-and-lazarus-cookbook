@@ -2,9 +2,12 @@
 
 ![Cooking](assets/home-min.png)
 
-Find recipes, get things done fast in [Free Pascal programming language](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org)!
 
-For tutorials and places for in-depth technical discussion, see [Resources](docs/resources/docs-sites.md).
+Welcome to my Free Pascal and Lazarus IDE cookbook! Inside, you'll discover a collection of handy recipes (snippets) and study notes for the [Free Pascal programming language](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org), contributed by both myself and others.
+
+Uncover time-saving recipes and streamline your work in Free Pascal!
+
+If you're seeking tutorials and in-depth technical discussions, don't miss [Resources](docs/resources/docs-sites.md).
 
 ## Acknowledgments
 
