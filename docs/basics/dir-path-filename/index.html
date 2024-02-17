@@ -1539,11 +1539,11 @@
 <ol>
 <li>Add <code>FileUtil</code> in the unit section.</li>
 <li>
-<p>Call <code>FindAllFiles</code> and store output in a <code>TStringList</code> variable. No need to create the <code>TStringList</code>, <code>FindAllFiles</code> does it for you. When you call this function, specify the following;</p>
+<p>Invoke the <code>FindAllFiles</code> and save the output into a <code>TStringList</code> variable. You don't need to instantiate the <code>TStringList</code> object separately; <code>FindAllFiles</code> handles it automatically. When calling this function, make sure to provide the following:</p>
 <ul>
-<li>path to search</li>
-<li>type of files to search</li>
-<li>recursive</li>
+<li>The path to be searched.</li>
+<li>The types of files to be searched.</li>
+<li>Specify whether the search should be recursive.</li>
 </ul>
 </li>
 <li>
