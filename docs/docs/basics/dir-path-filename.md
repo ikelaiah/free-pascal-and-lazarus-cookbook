@@ -61,9 +61,9 @@ begin
 end.
 ```
 
-## Create a directory or chain of directories using UTF8
+## Create a directory or chain of directories with UTF8
 
-You can use `ForceDirectories` to create directories using UTF8.
+You can use `ForceDirectories` to create directories with UTF8.
 
 Here is a snippet of creating a sub directory called `demo/胜利` in the program's current directory.
 
