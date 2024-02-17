@@ -54,7 +54,36 @@ begin
 end.
 ```
 
-## Checking if a file exists
+## Check if a directory exists
+
+Use `FileExists` from unit `SysUtils`.
+
+```Pascal
+program CheckDirExists;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils;
+
+begin
+
+  if (DirectoryExists('sub-folder/')) then
+    WriteLn('That folder exists!')
+  else
+    WriteLn('Can''t find it!');
+
+  // Pause console
+  ReadLn;
+
+end.
+```
+
+## Check if a file exists
 
 Use `FileExists` from unit `SysUtils`.
 
@@ -76,3 +105,71 @@ begin
     Writeln(fileName, ' does not exist.');
 end.
 ```
+
+## Find files recursively (using LazUtils package)
+
+You can use [FindAllFiles](https://lazarus-ccr.sourceforge.io/docs/lazutils/fileutil/findallfiles.html) from `FileUtil` unit.
+
+To use this unit, you must add `LazUtils` package from the `Project Inspector -> Required Packages`.
+
+![Add LazUtils in Project inspector](../../assets/lazutils-in-inspector.png)
+
+Here is an example. This program looks for `csv` and `xslx` files in a sub-folder.
+
+1. Add `FileUtil` in the unit section.
+2. Call `FindAllFiles` and store output in a `TStringList` variable. No need to create the `TStringList`, `FindAllFiles` does it for you. When you call this function, specify the following;
+
+     - path to search
+     - type opf files to search
+     - recursive
+  
+3. Lastly, free the `TStringList`.
+
+```pascal linenums="1" hl_lines="10 23 34"
+program ListAllFiles;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
+  FileUtil, // Add LazUtils in Project Inspector -> Required Packages first
+  SysUtils;
+
+var
+  searchResults: TStringList;
+  path: string = './sub-folder/';
+  criteria: string = '*.csv;*.xlsx';
+  isRecursive: boolean = True;
+  item: string;
+
+begin
+
+  // Call FindAllFiles, no need to create TStringList manually
+  searchResults := FindAllFiles(path, criteria, isRecursive);
+  try
+    // Print number of files found
+    WriteLn(Format('Found %d files', [searchResults.Count]));
+
+    // Display results, if any
+    if searchResults.Count > 0 then
+      for item in searchResults do WriteLn(item);
+
+  finally
+    // Free the TStringList
+    searchResults.Free;
+  end;
+
+  // Pause console
+  WriteLn;
+  WriteLn('Press Enter key to exit ...');
+  ReadLn;
+end.
+```
+
+**References**
+
+- [https://lazarus-ccr.sourceforge.io/docs/lazutils/fileutil/findallfiles.html](https://lazarus-ccr.sourceforge.io/docs/lazutils/fileutil/findallfiles.html)
+- [https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-find-all-files-in-a-directory-and-subdirectories-matching-criteria/](https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-find-all-files-in-a-directory-and-subdirectories-matching-criteria/)
