@@ -1,5 +1,40 @@
 # Directories, Path and Filename
 
+## Get home directory of current user
+
+Use [`GetUserDir`](https://www.freepascal.org/docs-html/rtl/sysutils/getuserdir.html) from `SysUtils` unit.
+
+1. Add `SysUtils` in the uses section.
+2. Call `GetUserDir`.
+
+```pascal linenums="1" hl_lines="10 18"
+program GetHomeDir;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils;
+
+var
+  homeDir: string;
+
+begin
+
+  // Get home dir
+  homeDir := GetUserDir;
+
+  WriteLn('THe home directory is ', homeDir);
+
+  // Pause console
+  WriteLn('Press enter to quit ...');
+  ReadLn;
+end.
+```
+
 ## Create a directory or chain of directories
 
 Here is a snippet of creating a sub directory called `demo/ex-01` in the program's current directory.
@@ -116,7 +151,7 @@ To use this unit, you must add `LazUtils` package from the `Project Inspector ->
 
 Here is an example. This program looks for `csv` and `xslx` files in a sub-folder.
 
-1. Add `FileUtil` in the unit section.
+1. Add `FileUtil` in the uses section.
 2. Invoke the `FindAllFiles` and save the output into a `TStringList` variable. You don't need to instantiate the `TStringList` object separately; `FindAllFiles` handles it automatically. When calling this function, make sure to provide the following:
 
       - The path to be searched.
