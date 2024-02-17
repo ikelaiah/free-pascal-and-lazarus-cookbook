@@ -13,11 +13,11 @@ Otherwise, jump to [I know the size of my list. How do I build one for storing a
 
 Use [`TStringList`](https://lazarus-ccr.sourceforge.io/docs/rtl/classes/tstringlist.html). See the recipe below.
 
-1. Create a var of  `TStringList` (line 9)
-2. Create the `TStringList` (line 16)
-3. Append items
-4. `Sort` it (line 33)
-5. Finally, `Free` the `TStringList`. (line 63)
+1. Create a var of  `TStringList`. Line 9.
+2. Create the `TStringList`. Line 16.
+3. Append items.
+4. `Sort` it. Line 33.
+5. Finally, `Free` the `TStringList`. Line 63.
 
 ```pascal linenums="1" hl_lines="9 16 33 63"
 program StringList;
