@@ -120,7 +120,7 @@ Here is an example. This program looks for `csv` and `xslx` files in a sub-folde
 2. Call `FindAllFiles` and store output in a `TStringList` variable. No need to create the `TStringList`, `FindAllFiles` does it for you. When you call this function, specify the following;
 
      - path to search
-     - type opf files to search
+     - type of files to search
      - recursive
   
 3. Lastly, free the `TStringList`.
