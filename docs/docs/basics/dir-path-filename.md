@@ -117,11 +117,11 @@ To use this unit, you must add `LazUtils` package from the `Project Inspector ->
 Here is an example. This program looks for `csv` and `xslx` files in a sub-folder.
 
 1. Add `FileUtil` in the unit section.
-2. Call `FindAllFiles` and store output in a `TStringList` variable. No need to create the `TStringList`, `FindAllFiles` does it for you. When you call this function, specify the following;
+2. Invoke the `FindAllFiles` and save the output into a `TStringList` variable. You don't need to instantiate the `TStringList` object separately; `FindAllFiles` handles it automatically. When calling this function, make sure to provide the following:
 
-     - path to search
-     - type of files to search
-     - recursive
+      - The path to be searched.
+      - The types of files to be searched.
+      - Specify whether the search should be recursive.
   
 3. Lastly, free the `TStringList`.
 
