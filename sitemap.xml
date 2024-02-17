@@ -2,152 +2,152 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://learn-pascal-lang.org/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/LICENSE/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/about/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/community/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/advanced/concurrent-parallel/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/advanced/conditional-compilation/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/advanced/overview/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/cmd-line-params/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/code-structure/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/dates/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/dir-path-filename/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/exception-try-blocks/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/file-handling/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/funcs-procs/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/hello-world/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/immutability/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/install/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/lazarus-ide/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/lists/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/loops/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/numbers/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/overview/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/regex/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/basics/strings/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/external-systems/overview/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/external-systems/parsing-json/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/external-systems/webserver/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/resources/docs-sites/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/resources/fpc-laz-packages/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://learn-pascal-lang.org/docs/resources/videos/</loc>
-         <lastmod>2024-02-16</lastmod>
+         <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
