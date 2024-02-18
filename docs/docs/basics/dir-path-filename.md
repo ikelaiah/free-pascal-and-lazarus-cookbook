@@ -222,7 +222,7 @@ I added `IsFileNameMatching` to match `searchRec.Name` against a regex experssio
 
 1. When calling `FindFirst` use `*` or `*.*`. The Regex will do the filtering. Line 44.
 2. In the `repeat ... until FindNext(searchRec) <> 0` loop, simply match `searchRec.Name` against a regular expression. That's it. Line 49.
-3. Call `FindClose` to release resources used by `FindFirst` and `FindNext`. Line. 
+3. Call `FindClose` to release resources used by `FindFirst` and `FindNext`. Line 59. 
 
 ```pascal linenums="1" hl_lines="13-34 44 49 59"
 program FindFirstSearchRegex;
