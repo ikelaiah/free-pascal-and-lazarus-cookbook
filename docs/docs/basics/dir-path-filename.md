@@ -220,10 +220,11 @@ See the snippet below, which looks for `*.csv` and `*.txt` files.
 
 I added `IsFileNameMatching` to match `searchRec.Name` against a regex experssion. Line 13-34.
 
-1. When calling `FindFirst` use `*` or `*.*`. The Regex will do the filtering.
-2. In the `repeat ... until FindNext(searchRec) <> 0` loop, simply match `searchRec.Name` against a regular expression. That's it. Line 50.
+1. When calling `FindFirst` use `*` or `*.*`. The Regex will do the filtering. Line 44.
+2. In the `repeat ... until FindNext(searchRec) <> 0` loop, simply match `searchRec.Name` against a regular expression. That's it. Line 49.
+3. Call `FindClose` to release resources used by `FindFirst` and `FindNext`. Line. 
 
-```pascal linenums="1" hl_lines="13-34 50"
+```pascal linenums="1" hl_lines="13-34 44 49 59"
 program FindFirstSearchRegex;
 
 {$mode objfpc}{$H+}
@@ -266,14 +267,13 @@ var
   Count: integer = 0; // Optional, only if you need a count
 
 begin
-
-  // Call FindFirst, requires 3 arguments
+  // Call FindFirst, append *.* to path
   if FindFirst(path + '*.*', faAnyFile, searchRec) = 0 then
   begin
     repeat
-      if (searchRec.Name <> '.') and (searchRec.Name <> '..') then
+      if (searchRec.Name <> '.') and (searchRec.Name <> '..') and (searchRec.Attr <> faDirectory) then
       begin
-        if IsFileNameMatching(searchRec.Name, regexExpression) and (searchRec.Attr <> faDirectory) then
+        if IsFileNameMatching(searchRec.Name, regexExpression) then
         begin
           // Optional, only if you need a count -- increase a counter
           Inc(Count);
@@ -333,7 +333,7 @@ var
   i: integer;
 
 begin
-
+  // Call FindFirst, append wildcard pattern to path
   if FindFirst(path + criteria, faAnyFile, searchRec) = 0 then
   begin
     repeat
@@ -369,11 +369,11 @@ end.
 
 Straightforwrd, simply by extending from the previous snippet we can achieve this.
 
-1. When calling `FindFirst` use `*` or `*.*`. The Regex will do the filtering.
-2. Do `SetLength` and add `searchRec.Name` into array if `IsFileNameMatching(searchRec.Name, regexExpression)` returns `True`. Line 54-64.
-3. Call `FindClose(searchRec)` at the end of `FindNext(searchRec)` to avoid memory leaks.
+1. When calling `FindFirst` use `*` or `*.*`. The Regex will do the filtering. Line 46.
+2. Do `SetLength` and add `searchRec.Name` into array if `IsFileNameMatching(searchRec.Name, regexExpression)` returns `True`. Line 53-63.
+3. Call `FindClose(searchRec)` at the end of `FindNext(searchRec)` to avoid memory leaks. Line 67.
 
-```pascal linenums="1" hl_lines="54-64 68"
+```pascal linenums="1" hl_lines="46 53-63 67"
 program FindFirstSearchRegexStoreInArray;
 
 {$mode objfpc}{$H+}{$J-}
@@ -418,8 +418,7 @@ var
   i: integer;
 
 begin
-
-  // Call FindFirst, requires 3 arguments
+  // Call FindFirst, append *.* to path
   if FindFirst(path + '*.*', faAnyFile, searchRec) = 0 then
   begin
     repeat
@@ -470,7 +469,7 @@ It may seem complicated, however, the algorithm in `SearchFiles` is pretty strai
 
 3. Lastly, call `FindClose(searchRec)`.
 
-```pascal linenums="1" hl_lines="36-64 73"
+```pascal linenums="1" hl_lines="36-64 72"
 program FindFirstSearchRecursive;
 
 {$mode objfpc}{$H+}{$J-}
@@ -541,7 +540,6 @@ var
   regexPattern: string = '(.csv|.xlsx)';
 
 begin
-
   // Display files in a path, recursively, using a regex pattern
   SearchFiles(path, regexPattern);
 
