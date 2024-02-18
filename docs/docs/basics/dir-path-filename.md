@@ -238,7 +238,7 @@ uses
   RegExpr;
 
   // A function for matching filename against a regex pattern
-  function IsFileNameMatching(fileName: string; regexPattern: string): boolean;
+  function IsFileNameMatching(const fileName: string; const regexPattern: string): boolean;
   var
     regex: TRegExpr;
   begin
@@ -387,7 +387,7 @@ uses
   RegExpr;
 
   // A function for matching filename against a regex pattern
-  function IsFileNameMatching(fileName: string; regexPattern: string): boolean;
+  function IsFileNameMatching(const fileName: string; const regexPattern: string): boolean;
   var
     regex: TRegExpr;
   begin
@@ -483,7 +483,7 @@ uses
   RegExpr;
 
   // A function for matching filename against a regex pattern
-  function IsFileNameMatching(fileName: string; regexPattern: string): boolean;
+  function IsFileNameMatching(const fileName: string; const regexPattern: string): boolean;
   var
     regex: TRegExpr;
   begin
