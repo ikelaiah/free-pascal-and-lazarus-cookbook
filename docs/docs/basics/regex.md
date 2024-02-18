@@ -1,12 +1,122 @@
 # Regex
 
+## Match a filename using regex
+
+Here is an example of using `TRegExpr` and `\w*.txt$` to match `*.txt` files.
+
+1. In `uses` section add `RegExpr`. Line 11.
+2. Create the `TRegExpr` object Line 20.
+3. Enable case insensitive flag. Line 23. 
+4. Apply the regex expression. Line 25.
+5. Use `TRegExpr.Exec` to find a match in the input string. Line 27.
+6. `Free` the `TRegExpr` object at the end. Line 33.
+
+```pascal linenums="1" hl_lines="11 20 23 25 27 33"
+program MatchingFilename;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils,
+  RegExpr;
+
+var
+  regex: TRegExpr;
+  regexPattern: string = '\w*.txt$';
+  filename: string = 'hello-text.txt';
+
+begin
+  // Create TRegExpr
+  regex := TRegExpr.Create;
+  try
+    // Set the regex to case-insensitive
+    regex.ModifierI := True;
+    // Apply the regex pattern
+    regex.Expression := regexPattern;
+    // Check for a match
+    if regex.Exec(filename) then
+      WriteLn(Format('''%s'' matches %s!', [regexPattern, filename]))
+    else
+      WriteLn(Format('''%s'' does not match %s!', [regexPattern, filename]));
+  finally
+    // Free TRegExpr
+    regex.Free;
+  end;
+
+  // Pause console
+  WriteLn('Press Enter key to exit ...');
+  ReadLn;
+end.
+```
+
+## Match a filename using regex (Alt)
+
+If you find the previous snippet to be untidy, you have the option to encapsulate the regular expression matching within a function. See the snippet below, line 13-33.
+
+See the snippet below, matching a filename using a regex is now a one liner. Line 40.
+
+```pascal linenums="1" hl_lines="13-33 40"
+program MatchingFilenameAlt;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils,
+  RegExpr;
+
+  // A function for matching filename against a regex pattern
+  function IsFileNameMatching(const fileName: string; const regexPattern: string): boolean;
+  var
+    regex: TRegExpr;
+  begin
+    regex := TRegExpr.Create;
+    try
+      // Set the regex to case-insensitive
+      regex.ModifierI := True;
+      // Apply the regex pattern
+      regex.Expression := regexPattern;
+      // Check for a match
+      if regex.Exec(filename) then
+        Result := True
+      else
+        Result := False;
+    finally
+      // Free TRegExpr
+      regex.Free;
+    end;
+  end;
+
+var
+  regexPattern: string = '\w*.txt$';
+  filename: string = 'hello-text.txt';
+
+begin
+  if IsFileNameMatching(filename, regexPattern) then
+    WriteLn(Format('%s matches %s!', [regexPattern, filename]))
+  else
+    WriteLn(Format('%s does not match %s!', [regexPattern, filename]));
+
+  //Pause console
+  WriteLn('Press Enter kay to exit ...');
+  ReadLn;
+end.
+```
+
 ## How do I match a string using regex?
 
 Here is an example of using `TRegExpr` to find a match.
 
 1. In `uses` section add `RegExpr`. Line 15.
 2. Create the `TRegExpr` object Line 24.
-3. Set the regex modifiers. Line 27. 
+3. Enable case insensitive flag. Line 27. 
 4. Use `Exec` to find a match in the input string. Line 38.
 5. `Free` the `TRegExpr` object at the end. Line 48.
 
