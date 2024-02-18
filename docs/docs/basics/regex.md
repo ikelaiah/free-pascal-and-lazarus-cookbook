@@ -52,6 +52,7 @@ begin
   ReadLn;
 end.
 ```
+For more info check [https://regex.sorokin.engineer/en/latest/tregexpr.html](https://regex.sorokin.engineer/en/latest/tregexpr.html).
 
 ## Match a filename using regex (Alt)
 
@@ -110,26 +111,35 @@ begin
 end.
 ```
 
-## How do I match a string using regex?
+## Match a string using regex and print out all matches
 
-Here is an example of using `TRegExpr` to find a match.
+Here is an example of using `TRegExpr` to find and print out matches, where the user specify the regex as a command line argument.
 
-1. In `uses` section add `RegExpr`. Line 15.
-2. Create the `TRegExpr` object Line 24.
-3. Enable case insensitive flag. Line 27. 
-4. Use `Exec` to find a match in the input string. Line 38.
-5. `Free` the `TRegExpr` object at the end. Line 48.
+The program will keep on asking for an input string until a match is found.
 
-```pascal linenums="1" hl_lines="1 24 27 38 48"
-program RegexSimple;
+1. In `uses` section add `RegExpr`. Line 21.
+2. Create the `TRegExpr` object using `ParamStr(1)` as the expression to evaluate. Line 33.
+3. Enable case insensitive flag. Line 36. 
+4. Use `Exec` to find a match in the input string. Line 45.
+5. If input is found use while loop to get the values in `re.Matches[i]`. Line 50-55.
+6. `Free` the `TRegExpr` object at the end. Line 62.
+
+```pascal linenums="1" hl_lines="21 33 36 45 50-55 62"
+program RegexExample;
 
 // Program will quit when you give a text input matching regex pattern
 // in the program's argument.
 
 // For example.
-// $./RegexSimple.exe "hello(.+)world"
-// Enter a text: hello??world
+// $ RegexExample.exe "(\d{1,4})[-/.](\d{1,2}|[a-zA-Z]{3,})[-/.](\d{1,4})"
+
+// Enter a text:24-Mar-2024
 // Matches!
+// Note! Match[0] is the entire match!
+// Match 0 : 24-Mar-2024
+// Match 1 : 24
+// Match 2 : Mar
+// Match 3 : 2024
 // $
 
 {$mode objfpc}{$H+}{$J-}
@@ -140,36 +150,44 @@ uses
 var
   re: TRegExpr;
   input: string;
-
+  i: integer;
 begin
+
+  // If user input is '', exit program
+  if ParamStr(1) = '' then Exit;
 
   // Create the regex object using first argument of the program
   re := TRegExpr.Create(ParamStr(1));
-
-  // Set the regex to case-insensitive
-  re.ModifierI := True;
-
   try
+    // Set regex flag to case-insensitive
+    re.ModifierI := True;
 
-    // Keep on repeating until there is a match
+    // Keep on asking the user until there is a match
     repeat
       WriteLn;
       Write('Enter a text:');
       ReadLn(input);
 
-      // If there is a match, and the first match is not '' print 'Matches!'
+      // If there is a match, and match[0] (global) is not '', show all matches
       if re.Exec(input) and (re.Match[0] <> '') then
-        // Show confirmation on screen
-        WriteLn('Matches!')
+      begin
+        WriteLn('Matches!');
+        WriteLn('Note! Match[0] is the entire match!');
+        // Loop through matches using re.Matches[i]
+        i := 0;
+        while re.Match[i] <> '' do
+        begin
+          WriteLn('Match ', i, ' : ', re.Match[i]);
+          Inc(i);
+        end;
+      end
       else
         WriteLn('No match, try again.');
     until re.Match[0] <> '';
-
   finally
     // Free TRegExpr object
     re.Free;
   end;
-
 end.
 ```
 
