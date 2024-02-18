@@ -120,11 +120,11 @@ The program will keep on asking for an input string until a match is found.
 1. In `uses` section add `RegExpr`. Line 21.
 2. Create the `TRegExpr` object using `ParamStr(1)` as the expression to evaluate. Line 33.
 3. Enable case insensitive flag. Line 36. 
-4. Use `Exec` to find a match in the input string. Line 45.
-5. If input is found use while loop to get the values in `re.Matches[i]`. Line 50-55.
-6. `Free` the `TRegExpr` object at the end. Line 62.
+4. Use `Exec` to find a match in the input string. Line 43.
+5. If input is found use while loop to get the values in `re.Matches[i]`. Line 48-53.
+6. `Free` the `TRegExpr` object at the end. Line 60.
 
-```pascal linenums="1" hl_lines="21 33 36 45 50-55 62"
+```pascal linenums="1" hl_lines="21 33 36 43 48-53 60"
 program RegexExample;
 
 // Program will quit when you give a text input matching regex pattern
@@ -161,13 +161,11 @@ begin
   try
     // Set regex flag to case-insensitive
     re.ModifierI := True;
-
     // Keep on asking the user until there is a match
     repeat
       WriteLn;
       Write('Enter a text:');
       ReadLn(input);
-
       // If there is a match, and match[0] (global) is not '', show all matches
       if re.Exec(input) and (re.Match[0] <> '') then
       begin
