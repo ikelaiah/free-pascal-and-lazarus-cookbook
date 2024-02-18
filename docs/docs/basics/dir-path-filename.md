@@ -459,7 +459,7 @@ end.
 
 See an example below, using `TRegExpr` and `FindFirst`.
 
-It may seem complicated, however the algorithm in `SearchFiles` is pretty straightforward.
+It may seem complicated, however, the algorithm in `SearchFiles` is pretty straightforward.
 
 1. Call `FindFirst` using `*` or `*.*`. The Regex will do the filtering.
 2. In the `repeat ... until FindNext(searchResult) <> 0` loop;
