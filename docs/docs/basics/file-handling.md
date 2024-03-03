@@ -10,6 +10,7 @@ There are many ways to do this;
       - [`TStringList`](https://www.freepascal.org/docs-html/rtl/classes/tstringlist.html) and
       - [`TFileStream`](https://www.freepascal.org/docs-html/rtl/classes/tfilestream.html).
 
+
 ### New text file - Classic
 
 See the snippet below. It uses `SysUtil` for catching errors during opening and writing file.
@@ -141,8 +142,8 @@ begin
   // Write a text to a file
   WriteTextToFile('hello-text.txt', 'Hello There! How are you?');
 
-  // Wait for enter
-  readln;
+  // Pause console
+  ReadLn;
 end.
 
 ```
@@ -233,6 +234,52 @@ begin
 end.
 ```
 
+### New Text File - TSringList
+
+1. Create the `TStringList` object. Line 18.
+2. Use the `Add` method to add text or lines. Line 21-22.
+3. Use `SaveToFile` to save your `TStringList` into a text file. Line 25.
+4. Remember to `Free` the resources. Line 28.
+
+
+```pascal linenums="1" hl_lines="18 21 22 25 28"
+program TStringListNewTextFile;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes;
+
+var
+  textFileName: string = 'hello-text.txt';
+  stringList: TStringList;
+
+begin
+
+  // Create TStringList object
+  stringList := TStringList.Create;
+  try
+    // Add lines
+    stringList.Add('Hello Line 1!');
+    stringList.Add('Hello Line 2!');
+
+    // Save to a file
+    stringList.SaveToFile(textFileName);
+  finally
+    // Free object
+    stringList.Free;
+  end;
+
+  // Pause Console
+  WriteLn('Press Enter key to exit ...');
+  ReadLn;
+
+end.
+```
+
 
 ## How can I create a new blank text file?
 
@@ -312,6 +359,49 @@ begin
     // Free resources
     fileStream.Free;
   end;
+end.
+```
+
+### Blank text file - TStringList
+
+See the snippet below.
+
+1. Create the `TStringList` object. Line 18.
+2. Use `SaveToFile` to save your `TStringList` into a text file. Line 22.
+3. Remember to `Free` the resources. Line 25.
+
+```pascal linenums="1" hl_lines="18 22 25"
+program TStringListBlankFIle;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes;
+
+var
+  textFileName: string = 'hello-text.txt';
+  stringList: TStringList;
+
+begin
+
+  // Create TStringList object
+  stringList := TStringList.Create;
+  try
+
+    // Save to a file
+    stringList.SaveToFile(textFileName);
+  finally
+    // Free object
+    stringList.Free;
+  end;
+
+  // Pause Console
+  WriteLn('Press Enter key to exit ...');
+  ReadLn;
+
 end.
 ```
 
