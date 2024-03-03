@@ -19,6 +19,7 @@ Here are chats, mailing lists, conferences and events that relate to Free Pascal
     - You can access it via [Free Pascal & Lazarus forum](https://forum.lazarus.freepascal.org/index.php/page,9.html)
 - `#fpc` and `#fpc-alt` on `irc.libera.chat`
 
+
 !!! Note
 
     I have not been able to join the `irc.libera.chat`
