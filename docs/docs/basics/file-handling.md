@@ -93,7 +93,7 @@ end.
 I'd prefer to handle error gracefully. Hence, I like the first snippet better.
 
 
-### New text file - Classic in a procedure
+### New text file - Classic alt
 
 You can streamline the process of writing text to a file by refactoring the lines into a procedure.
 
@@ -150,8 +150,7 @@ end.
 ```
 
 
-### New text file - TFileStream
-
+### New text file - `TFileStream`
 
 
 For writing text into a new file using Object style;
@@ -193,7 +192,7 @@ begin
 end.
 ```
 
-### New text file - TFileStream in a procedure
+### New text file - `TFileStream` alt
 
 This example is the previous snippet wrapped in a `procedure`.
 
@@ -235,7 +234,7 @@ begin
 end.
 ```
 
-### New Text File - TSringList
+### New text file - `TSringList`
 
 1. Create the `TStringList` object. Line 18.
 2. Use the `Add` method to add text or lines. Line 21-22.
@@ -405,137 +404,9 @@ begin
 end.
 ```
 
-## How to read a text file line by line?
-
-See the snippet below as example.
-
-1. Create a `TFileStream` to open a text file for reading. Line 17.
-2. Create a `StreamReader` to read the text file. Line 19. 
-3. Use the `while not TStreamReader.eof` to read the text file line by line. Line 23-28.
-4. `Free` resources when done.
-
-To gracefully handle error during open and read operations, an outer `try..except` is in place.
-
-```pascal linenums="1" hl_lines="17 19 23-28"
-program TStreamReaderReadFile;
-
-uses
-  Classes,
-  SysUtils,
-  streamex;
-
-var
-  reader: TStreamReader;
-  fileStream: TFileStream;
-  line, filename:string;
-  i: integer;
-begin
-  // filename to read
-  filename:= 'cake-ipsum-.txt';
-  try
-    fileStream := TFileStream.Create(filename, fmOpenRead);
-    try
-      reader := TStreamReader.Create(fileStream);
-      try
-        // Set line counter to 1
-        i := 1;
-        while not reader.EOF do
-        begin
-          line := reader.ReadLine;
-          WriteLn(Format('line %d is: %s', [i, line]));
-          i := i + 1;
-        end;
-      finally
-        reader.Free;
-      end;
-    finally
-      fileStream.Free;
-    end;
-  except
-    on E: Exception do
-      WriteLn('Error: ' + E.Message);
-  end;
-
-  // Pause console
-  ReadLn;
-end.
-```
-
-### Make the code more readable
-
-The nested `try..free` blocks in the `try..except` might be difficult to read. But the code works, right?
-
-Here is an alternative implementation.
-
-- inner `try..free` blocks are now in separate procedures.
-- the outer `try..except` can now catch exceptions from procedures.
-
-```pascal linenums="1" hl_lines="11 33 52"
-program TStreamReaderReadFileTidy;
-
-{$mode objfpc}{$H+}{$J-}
-
-uses
-  Classes,
-  SysUtils,
-  streamex;
-
-  // Read a stream of string line by line
-  procedure ReadTextFile(const fileStream: TStream);
-  var
-    reader: TStreamReader;
-    i: integer;
-    line: string;
-  begin
-    reader := TStreamReader.Create(fileStream);
-    try
-      // Set line counter to 1
-      i := 1;
-      while not reader.EOF do
-      begin
-        line := reader.ReadLine;
-        WriteLn(Format('line %d: %s', [i, line]));
-        i := i + 1;
-      end;
-    finally
-      reader.Free;
-    end;
-  end;
-
-  // Open a file for reading, and pass the stream to TStreamReader for reading.
-  procedure ReadTextFile(const filename: string);
-  var
-    fileStream: TFileStream;
-  begin
-    fileStream := TFileStream.Create(filename, fmOpenRead);
-    try
-      ReadTextFile(fileStream);
-    finally
-      fileStream.Free;
-    end;
-  end;
-
-var
-  filename: string;
-
-begin
-  // filename to read
-  filename := 'cake-ipsum.txt';
-  try
-    ReadTextFile(filename);
-  except
-    on E: Exception do
-      WriteLn('Error: ' + E.Message);
-  end;
-
-  // Pause console
-  ReadLn;
-end.
-```
-
 ## How to append text to an existing text file?
 
-### Append - Classical way
+### Append text file - Classic
 
 See an example below. The program will create a new file if the file for appending is not found.
 
@@ -624,7 +495,7 @@ begin
 end.
 ```
 
-### Append - TFileStream
+### Append text file - `TFileStream`
 
 Quite straightforward. Remember to free `TFileStream` when done.
 
@@ -687,9 +558,9 @@ begin
 end.
 ```
 
-### Append - TStringList
+### Append text file - `TStringList`
 
-See the example below. The program starts by checking if the file exists. If the files doesn't exists, exit program early.
+The example below starts by checking if the file exists. If the files doesn't exists, exit program early.
 
 1. Create a `TStringList` object if the text file exists. Line 28.
 2. Load the existing text into a `TStringList` object. Line 31.
@@ -757,3 +628,133 @@ end.
     Sebastian Z, Aug 12, 2018 at 20:56
     
     Source: [https://stackoverflow.com/a/51808874/1179312](https://stackoverflow.com/a/51808874/1179312)
+
+## How to read a text file?
+
+### Read text file - `TFileStream`
+
+See the snippet below as example.
+
+1. Create a `TFileStream` to open a text file for reading. Line 17.
+2. Create a `StreamReader` to read the text file. Line 19. 
+3. Use the `while not TStreamReader.eof` to read the text file line by line. Line 23-28.
+4. `Free` resources when done.
+
+To gracefully handle error during open and read operations, an outer `try..except` is in place.
+
+```pascal linenums="1" hl_lines="17 19 23-28"
+program TStreamReaderReadFile;
+
+uses
+  Classes,
+  SysUtils,
+  streamex;
+
+var
+  reader: TStreamReader;
+  fileStream: TFileStream;
+  line, filename:string;
+  i: integer;
+begin
+  // filename to read
+  filename:= 'cake-ipsum-.txt';
+  try
+    fileStream := TFileStream.Create(filename, fmOpenRead);
+    try
+      reader := TStreamReader.Create(fileStream);
+      try
+        // Set line counter to 1
+        i := 1;
+        while not reader.EOF do
+        begin
+          line := reader.ReadLine;
+          WriteLn(Format('line %d is: %s', [i, line]));
+          i := i + 1;
+        end;
+      finally
+        reader.Free;
+      end;
+    finally
+      fileStream.Free;
+    end;
+  except
+    on E: Exception do
+      WriteLn('Error: ' + E.Message);
+  end;
+
+  // Pause console
+  ReadLn;
+end.
+```
+
+#### Make the `TFileStream` and `TStreamReader` code more readable
+
+The nested `try..free` blocks in the `try..except` might be difficult to read. But the code works, right?
+
+Here is a better strategy.
+
+- The inner `try..free` blocks are now in separate procedures.
+- The outer `try..except` can now catch exceptions from procedures.
+
+```pascal linenums="1" hl_lines="11 33 52"
+program TStreamReaderReadFileTidy;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  Classes,
+  SysUtils,
+  streamex;
+
+  // Read a stream of string line by line
+  procedure ReadTextFile(const fileStream: TStream);
+  var
+    reader: TStreamReader;
+    i: integer;
+    line: string;
+  begin
+    reader := TStreamReader.Create(fileStream);
+    try
+      // Set line counter to 1
+      i := 1;
+      while not reader.EOF do
+      begin
+        line := reader.ReadLine;
+        WriteLn(Format('line %d: %s', [i, line]));
+        i := i + 1;
+      end;
+    finally
+      reader.Free;
+    end;
+  end;
+
+  // Open a file for reading, and pass the stream to TStreamReader for reading.
+  procedure ReadTextFile(const filename: string);
+  var
+    fileStream: TFileStream;
+  begin
+    fileStream := TFileStream.Create(filename, fmOpenRead);
+    try
+      ReadTextFile(fileStream);
+    finally
+      fileStream.Free;
+    end;
+  end;
+
+var
+  filename: string;
+
+begin
+  // filename to read
+  filename := 'cake-ipsum.txt';
+  try
+    ReadTextFile(filename);
+  except
+    on E: Exception do
+      WriteLn('Error: ' + E.Message);
+  end;
+
+  // Pause console
+  ReadLn;
+end.
+```
