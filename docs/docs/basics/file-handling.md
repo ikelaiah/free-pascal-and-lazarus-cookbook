@@ -151,7 +151,7 @@ end.
 ```
 
 
-### Create a text file using `TFileStream`
+### Create a text file - `TFileStream`
 
 
 For writing text into a new file using Object style;
@@ -193,7 +193,7 @@ begin
 end.
 ```
 
-### Create a text file using `TFileStream` (alt)
+### Create a text file - `TFileStream` (alt)
 
 This example is the previous snippet wrapped in a `procedure`.
 
@@ -235,7 +235,7 @@ begin
 end.
 ```
 
-### Create a text file using `TSringList`
+### Create a text file - `TSringList`
 
 1. Create the `TStringList` object. Line 18.
 2. Use the `Add` method to add text or lines. Line 21-22.
@@ -328,7 +328,7 @@ begin
 end.
 ```
 
-### A blank text file using `TFileStream`
+### A blank text file - `TFileStream`
 
 Quite straightforward.
 
@@ -362,7 +362,7 @@ begin
 end.
 ```
 
-### A blank text file using `TStringList`
+### A blank text file - `TStringList`
 
 See the snippet below.
 
@@ -496,7 +496,7 @@ begin
 end.
 ```
 
-### Append a text file using `TFileStream`
+### Append a text file - `TFileStream`
 
 Quite straightforward. Remember to free `TFileStream` when done.
 
@@ -559,7 +559,7 @@ begin
 end.
 ```
 
-### Append a text file using `TStringList`
+### Append a text file - `TStringList`
 
 The example below starts by checking if the file exists. If the files doesn't exists, exit program early.
 
@@ -632,7 +632,7 @@ end.
 
 ## Read a text file
 
-### Read a text file using `TFileStream`
+### Read a text file - `TFileStream`
 
 See the snippet below as example.
 
