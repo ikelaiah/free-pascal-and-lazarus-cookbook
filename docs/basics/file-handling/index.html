@@ -1019,6 +1019,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-to-append-text-to-an-existing-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to append text to an existing text file?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to append text to an existing text file?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#append-classical-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      Append - Classical way
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append-tfilestream" class="md-nav__link">
+    <span class="md-ellipsis">
+      Append - TFileStream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append-tstringlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Append - TStringList
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1537,6 +1579,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-to-append-text-to-an-existing-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to append text to an existing text file?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to append text to an existing text file?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#append-classical-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      Append - Classical way
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append-tfilestream" class="md-nav__link">
+    <span class="md-ellipsis">
+      Append - TFileStream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append-tstringlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Append - TStringList
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1574,7 +1658,7 @@
 <li>Close the file with <code>CloseFile</code> in the <code>try..finally</code> block. Line 31.</li>
 </ol>
 <blockquote>
-<p>You should always strive to have a <code>try..finally</code> outside the <code>try..except</code>.</p>
+<p><em>[When saving file the classic way]</em> you should always strive to have a <code>try..finally</code> outside the <code>try..except</code>.</p>
 <p>-Gustavo 'Gus' Carreno</p>
 </blockquote>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
@@ -2410,6 +2494,391 @@
 </span><span id="__span-10-59"><a id="__codelineno-10-59" name="__codelineno-10-59"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-10-60"><a id="__codelineno-10-60" name="__codelineno-10-60"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
+<h2 id="how-to-append-text-to-an-existing-text-file">How to append text to an existing text file?<a class="headerlink" href="#how-to-append-text-to-an-existing-text-file" title="Permanent link">&para;</a></h2>
+<h3 id="append-classical-way">Append - Classical way<a class="headerlink" href="#append-classical-way" title="Permanent link">&para;</a></h3>
+<p>See an example below. The program will create a new file if the file for appending is not found.</p>
+<ol>
+<li>
+<p><code>AssignFile</code> and <code>CloseFile</code> is in <strong>outer</strong> <code>try..finally</code> block. This ensures the file will be closed whenever an IO error occured.</p>
+<ul>
+<li>Assign a string filename to a text file variable. Line 47.</li>
+<li>Remember to <code>CloseFile</code> after appending. Line 66.</li>
+</ul>
+</li>
+<li>
+<p>Appending text is inside the <strong>inner</strong> <code>try..except</code> block.</p>
+<ul>
+<li>Use <code>Append</code> to open the file in append mode. Line 52.</li>
+<li>Use <code>WriteLn</code> to add new text into the existing file. Line 55.</li>
+</ul>
+</li>
+</ol>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span>
+<span class="normal"><a href="#__codelineno-11-29">29</a></span>
+<span class="normal"><a href="#__codelineno-11-30">30</a></span>
+<span class="normal"><a href="#__codelineno-11-31">31</a></span>
+<span class="normal"><a href="#__codelineno-11-32">32</a></span>
+<span class="normal"><a href="#__codelineno-11-33">33</a></span>
+<span class="normal"><a href="#__codelineno-11-34">34</a></span>
+<span class="normal"><a href="#__codelineno-11-35">35</a></span>
+<span class="normal"><a href="#__codelineno-11-36">36</a></span>
+<span class="normal"><a href="#__codelineno-11-37">37</a></span>
+<span class="normal"><a href="#__codelineno-11-38">38</a></span>
+<span class="normal"><a href="#__codelineno-11-39">39</a></span>
+<span class="normal"><a href="#__codelineno-11-40">40</a></span>
+<span class="normal"><a href="#__codelineno-11-41">41</a></span>
+<span class="normal"><a href="#__codelineno-11-42">42</a></span>
+<span class="normal"><a href="#__codelineno-11-43">43</a></span>
+<span class="normal"><a href="#__codelineno-11-44">44</a></span>
+<span class="normal"><a href="#__codelineno-11-45">45</a></span>
+<span class="normal"><a href="#__codelineno-11-46">46</a></span>
+<span class="normal"><a href="#__codelineno-11-47">47</a></span>
+<span class="normal"><a href="#__codelineno-11-48">48</a></span>
+<span class="normal"><a href="#__codelineno-11-49">49</a></span>
+<span class="normal"><a href="#__codelineno-11-50">50</a></span>
+<span class="normal"><a href="#__codelineno-11-51">51</a></span>
+<span class="normal"><a href="#__codelineno-11-52">52</a></span>
+<span class="normal"><a href="#__codelineno-11-53">53</a></span>
+<span class="normal"><a href="#__codelineno-11-54">54</a></span>
+<span class="normal"><a href="#__codelineno-11-55">55</a></span>
+<span class="normal"><a href="#__codelineno-11-56">56</a></span>
+<span class="normal"><a href="#__codelineno-11-57">57</a></span>
+<span class="normal"><a href="#__codelineno-11-58">58</a></span>
+<span class="normal"><a href="#__codelineno-11-59">59</a></span>
+<span class="normal"><a href="#__codelineno-11-60">60</a></span>
+<span class="normal"><a href="#__codelineno-11-61">61</a></span>
+<span class="normal"><a href="#__codelineno-11-62">62</a></span>
+<span class="normal"><a href="#__codelineno-11-63">63</a></span>
+<span class="normal"><a href="#__codelineno-11-64">64</a></span>
+<span class="normal"><a href="#__codelineno-11-65">65</a></span>
+<span class="normal"><a href="#__codelineno-11-66">66</a></span>
+<span class="normal"><a href="#__codelineno-11-67">67</a></span>
+<span class="normal"><a href="#__codelineno-11-68">68</a></span>
+<span class="normal"><a href="#__codelineno-11-69">69</a></span>
+<span class="normal"><a href="#__codelineno-11-70">70</a></span>
+<span class="normal"><a href="#__codelineno-11-71">71</a></span>
+<span class="normal"><a href="#__codelineno-11-72">72</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="k">program</span><span class="w"> </span><span class="n">ClassicAppendTextFile</span><span class="o">;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="k">uses</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">;</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">  </span><span class="c1">// Create a new file, the classical way</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">  </span><span class="k">procedure</span><span class="w"> </span><span class="nf">CreateNewFile</span><span class="p">(</span><span class="n">filename</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">  </span><span class="k">var</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">    </span><span class="kt">textFile</span><span class="o">:</span><span class="w"> </span><span class="n">System</span><span class="o">.</span><span class="kt">TextFile</span><span class="o">;</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">    </span><span class="c1">// Set the name of the file that will be created</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">    </span><span class="nb">AssignFile</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="n">filename</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">    </span><span class="c1">// Enclose in try/except block to handle errors</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">    </span><span class="k">try</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">      </span><span class="c1">// Open the file for writing (it will create it file doesn&#39;t exist)</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="w">      </span><span class="nb">ReWrite</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">      </span><span class="c1">// Close file</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">      </span><span class="nb">CloseFile</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23"></a>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="w">      </span><span class="c1">// Show a confirmation</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="nb">Format</span><span class="p">(</span><span class="s">&#39;Created a new file: </span><span class="se">&#39;&#39;</span><span class="s">%s</span><span class="se">&#39;&#39;</span><span class="s">&#39;</span><span class="o">,</span><span class="w"> </span><span class="p">[</span><span class="n">filename</span><span class="p">]))</span><span class="o">;</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26"></a>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="w">    </span><span class="k">except</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28"></a><span class="w">      </span><span class="c1">// Catch error here</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="w">      </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">EInOutError</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Error occurred. Details: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">ClassName</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33"></a>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34"></a><span class="k">var</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="w">  </span><span class="n">filename</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;hello-text.txt&#39;</span><span class="o">;</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36"></a><span class="w">  </span><span class="kt">textFile</span><span class="o">:</span><span class="w"> </span><span class="n">System</span><span class="o">.</span><span class="kt">TextFile</span><span class="o">;</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37"></a>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38"></a><span class="k">begin</span>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39"></a>
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40"></a><span class="w">  </span><span class="c1">// First of all, check if the input file exists.</span>
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41"></a><span class="w">  </span><span class="c1">// If not, create a new text file</span>
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43"></a><span class="w">    </span><span class="n">CreateNewFile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44"></a>
+</span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45"></a><span class="w">  </span><span class="k">try</span>
+</span><span id="__span-11-46"><a id="__codelineno-11-46" name="__codelineno-11-46"></a><span class="w">    </span><span class="c1">// Set filename to a file</span>
+</span><span id="__span-11-47"><a id="__codelineno-11-47" name="__codelineno-11-47"></a><span class="hll"><span class="w">    </span><span class="nb">AssignFile</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="n">filename</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-11-48"><a id="__codelineno-11-48" name="__codelineno-11-48"></a>
+</span><span id="__span-11-49"><a id="__codelineno-11-49" name="__codelineno-11-49"></a><span class="w">    </span><span class="c1">// Enclose in try/except block to handle errors</span>
+</span><span id="__span-11-50"><a id="__codelineno-11-50" name="__codelineno-11-50"></a><span class="w">    </span><span class="k">try</span>
+</span><span id="__span-11-51"><a id="__codelineno-11-51" name="__codelineno-11-51"></a><span class="w">      </span><span class="c1">// Open a file for appending.</span>
+</span><span id="__span-11-52"><a id="__codelineno-11-52" name="__codelineno-11-52"></a><span class="hll"><span class="w">      </span><span class="nb">Append</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-11-53"><a id="__codelineno-11-53" name="__codelineno-11-53"></a>
+</span><span id="__span-11-54"><a id="__codelineno-11-54" name="__codelineno-11-54"></a><span class="w">      </span><span class="c1">// Adding text</span>
+</span><span id="__span-11-55"><a id="__codelineno-11-55" name="__codelineno-11-55"></a><span class="hll"><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;New Line!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-11-56"><a id="__codelineno-11-56" name="__codelineno-11-56"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="kt">textFile</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;New Line!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-57"><a id="__codelineno-11-57" name="__codelineno-11-57"></a>
+</span><span id="__span-11-58"><a id="__codelineno-11-58" name="__codelineno-11-58"></a><span class="w">    </span><span class="k">except</span>
+</span><span id="__span-11-59"><a id="__codelineno-11-59" name="__codelineno-11-59"></a><span class="w">      </span><span class="c1">// Catch error here</span>
+</span><span id="__span-11-60"><a id="__codelineno-11-60" name="__codelineno-11-60"></a><span class="w">      </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">EInOutError</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-11-61"><a id="__codelineno-11-61" name="__codelineno-11-61"></a><span class="w">        </span><span class="nb">writeln</span><span class="p">(</span><span class="s">&#39;Error occurred. Details: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">ClassName</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-62"><a id="__codelineno-11-62" name="__codelineno-11-62"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-11-63"><a id="__codelineno-11-63" name="__codelineno-11-63"></a>
+</span><span id="__span-11-64"><a id="__codelineno-11-64" name="__codelineno-11-64"></a><span class="w">  </span><span class="k">finally</span>
+</span><span id="__span-11-65"><a id="__codelineno-11-65" name="__codelineno-11-65"></a><span class="w">    </span><span class="c1">// Close file</span>
+</span><span id="__span-11-66"><a id="__codelineno-11-66" name="__codelineno-11-66"></a><span class="hll"><span class="w">    </span><span class="nb">CloseFile</span><span class="p">(</span><span class="kt">textFile</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-11-67"><a id="__codelineno-11-67" name="__codelineno-11-67"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-11-68"><a id="__codelineno-11-68" name="__codelineno-11-68"></a>
+</span><span id="__span-11-69"><a id="__codelineno-11-69" name="__codelineno-11-69"></a><span class="w">  </span><span class="c1">// Pause console</span>
+</span><span id="__span-11-70"><a id="__codelineno-11-70" name="__codelineno-11-70"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter key to quit.&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-11-71"><a id="__codelineno-11-71" name="__codelineno-11-71"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-11-72"><a id="__codelineno-11-72" name="__codelineno-11-72"></a><span class="k">end</span><span class="o">.</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="append-tfilestream">Append - TFileStream<a class="headerlink" href="#append-tfilestream" title="Permanent link">&para;</a></h3>
+<p>Quite straightforward. Remember to free <code>TFileStream</code> when done.</p>
+<p>See the snippet below.</p>
+<ol>
+<li>
+<p>Does the file  exist? </p>
+<ul>
+<li>If yes, create <code>TFileStream</code> in <em>append</em> mode using <code>TFileStream.Create(filename, fmOpenWrite or fmShareDenyNone)</code>. Line 23.</li>
+<li>If not, create <code>TFileStream</code> using <code>fmCreate</code> mode to create the new file; <code>TFileStream.Create(filename, fmCreate);</code>. Line 26.</li>
+</ul>
+</li>
+<li>
+<p>Set position to the end of the file. Line 31.</p>
+</li>
+<li>Add new text using <code>fileStream.Write</code>. Line 34.</li>
+<li>Free <code>TFileStream</code> object. Line 39.</li>
+</ol>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span>
+<span class="normal"><a href="#__codelineno-12-28">28</a></span>
+<span class="normal"><a href="#__codelineno-12-29">29</a></span>
+<span class="normal"><a href="#__codelineno-12-30">30</a></span>
+<span class="normal"><a href="#__codelineno-12-31">31</a></span>
+<span class="normal"><a href="#__codelineno-12-32">32</a></span>
+<span class="normal"><a href="#__codelineno-12-33">33</a></span>
+<span class="normal"><a href="#__codelineno-12-34">34</a></span>
+<span class="normal"><a href="#__codelineno-12-35">35</a></span>
+<span class="normal"><a href="#__codelineno-12-36">36</a></span>
+<span class="normal"><a href="#__codelineno-12-37">37</a></span>
+<span class="normal"><a href="#__codelineno-12-38">38</a></span>
+<span class="normal"><a href="#__codelineno-12-39">39</a></span>
+<span class="normal"><a href="#__codelineno-12-40">40</a></span>
+<span class="normal"><a href="#__codelineno-12-41">41</a></span>
+<span class="normal"><a href="#__codelineno-12-42">42</a></span>
+<span class="normal"><a href="#__codelineno-12-43">43</a></span>
+<span class="normal"><a href="#__codelineno-12-44">44</a></span>
+<span class="normal"><a href="#__codelineno-12-45">45</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">program</span><span class="w"> </span><span class="n">TFileStreamAppendTextFile</span><span class="o">;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="k">uses</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">  </span><span class="cm">{$IFDEF UNIX}</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">  </span><span class="n">cthreads</span><span class="o">,</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">;</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="k">var</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">  </span><span class="n">filename</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;hello-text.txt&#39;</span><span class="o">;</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">  </span><span class="n">fileStream</span><span class="o">:</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">;</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">  </span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="kt">longint</span><span class="o">;</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">  </span><span class="n">newText</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17"></a>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="k">begin</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19"></a>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">  </span><span class="c1">// First, does the file exist?</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="w">    </span><span class="c1">// If yes, open the file in append mode.</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="hll"><span class="w">    </span><span class="n">fileStream</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">filename</span><span class="o">,</span><span class="w"> </span><span class="n">fmOpenWrite</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">fmShareDenyNone</span><span class="p">)</span>
+</span></span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24"></a><span class="w">  </span><span class="k">else</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="w">    </span><span class="c1">// If not, create a a new file.</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26"></a><span class="hll"><span class="w">    </span><span class="n">fileStream</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">filename</span><span class="o">,</span><span class="w"> </span><span class="n">fmCreate</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27"></a>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28"></a><span class="w">  </span><span class="c1">// Next, start appending.</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29"></a><span class="w">  </span><span class="k">try</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30"></a><span class="w">    </span><span class="c1">// set position at the end of the file</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31"></a><span class="hll"><span class="w">    </span><span class="n">fileStream</span><span class="o">.</span><span class="n">Seek</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="n">soFromEnd</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32"></a><span class="w">    </span><span class="c1">// Write text into the file</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33"></a><span class="w">    </span><span class="n">newText</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">LineEnding</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#39;A new line!&#39;</span><span class="o">;</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34"></a><span class="hll"><span class="w">    </span><span class="n">size</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">fileStream</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="n">newText</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">,</span><span class="w"> </span><span class="nb">Length</span><span class="p">(</span><span class="n">newText</span><span class="p">))</span><span class="o">;</span>
+</span></span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35"></a><span class="w">    </span><span class="c1">// Show confirmation</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36"></a><span class="w">    </span><span class="nb">Writeln</span><span class="p">(</span><span class="nb">Format</span><span class="p">(</span><span class="s">&#39;Appended %s. %d bytes written.&#39;</span><span class="o">,</span><span class="w"> </span><span class="p">[</span><span class="n">filename</span><span class="o">,</span><span class="w"> </span><span class="n">size</span><span class="p">]))</span><span class="o">;</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37"></a><span class="w">  </span><span class="k">finally</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38"></a><span class="w">    </span><span class="c1">// Free TFileStream object</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39"></a><span class="w">    </span><span class="n">fileStream</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41"></a>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42"></a><span class="w">  </span><span class="c1">// Pause console</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter to quit.&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45"></a><span class="k">end</span><span class="o">.</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="append-tstringlist">Append - TStringList<a class="headerlink" href="#append-tstringlist" title="Permanent link">&para;</a></h3>
+<p>See the example below. The program starts by checking if the file exists. If the files doesn't exists, exit program early.</p>
+<ol>
+<li>Create a <code>TStringList</code> object if the text file exists. Line 28.</li>
+<li>Load the existing text into a <code>TStringList</code> object. Line 31.</li>
+<li>Add new text into the <code>TStringList</code> object. Line 34-35.</li>
+<li>Save the appended <code>TStringList</code> into the existing file. Line 38.</li>
+<li>Free resources. Line 43.</li>
+</ol>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span>
+<span class="normal"><a href="#__codelineno-13-21">21</a></span>
+<span class="normal"><a href="#__codelineno-13-22">22</a></span>
+<span class="normal"><a href="#__codelineno-13-23">23</a></span>
+<span class="normal"><a href="#__codelineno-13-24">24</a></span>
+<span class="normal"><a href="#__codelineno-13-25">25</a></span>
+<span class="normal"><a href="#__codelineno-13-26">26</a></span>
+<span class="normal"><a href="#__codelineno-13-27">27</a></span>
+<span class="normal"><a href="#__codelineno-13-28">28</a></span>
+<span class="normal"><a href="#__codelineno-13-29">29</a></span>
+<span class="normal"><a href="#__codelineno-13-30">30</a></span>
+<span class="normal"><a href="#__codelineno-13-31">31</a></span>
+<span class="normal"><a href="#__codelineno-13-32">32</a></span>
+<span class="normal"><a href="#__codelineno-13-33">33</a></span>
+<span class="normal"><a href="#__codelineno-13-34">34</a></span>
+<span class="normal"><a href="#__codelineno-13-35">35</a></span>
+<span class="normal"><a href="#__codelineno-13-36">36</a></span>
+<span class="normal"><a href="#__codelineno-13-37">37</a></span>
+<span class="normal"><a href="#__codelineno-13-38">38</a></span>
+<span class="normal"><a href="#__codelineno-13-39">39</a></span>
+<span class="normal"><a href="#__codelineno-13-40">40</a></span>
+<span class="normal"><a href="#__codelineno-13-41">41</a></span>
+<span class="normal"><a href="#__codelineno-13-42">42</a></span>
+<span class="normal"><a href="#__codelineno-13-43">43</a></span>
+<span class="normal"><a href="#__codelineno-13-44">44</a></span>
+<span class="normal"><a href="#__codelineno-13-45">45</a></span>
+<span class="normal"><a href="#__codelineno-13-46">46</a></span>
+<span class="normal"><a href="#__codelineno-13-47">47</a></span>
+<span class="normal"><a href="#__codelineno-13-48">48</a></span>
+<span class="normal"><a href="#__codelineno-13-49">49</a></span>
+<span class="normal"><a href="#__codelineno-13-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="k">program</span><span class="w"> </span><span class="n">TStringListAppend</span><span class="o">;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="k">uses</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">  </span><span class="cm">{$IFDEF UNIX}</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">  </span><span class="n">cthreads</span><span class="o">,</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">;</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11"></a>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="k">var</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="w">  </span><span class="n">filename</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;hello-text.txt&#39;</span><span class="o">;</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="w">  </span><span class="n">text</span><span class="o">:</span><span class="w"> </span><span class="n">TStringList</span><span class="o">;</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15"></a>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="k">begin</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17"></a>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="w">  </span><span class="c1">// First of all, check if the input file exists.</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="w">  </span><span class="c1">// It not, exit program early.</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="nb">Format</span><span class="p">(</span><span class="s">&#39;File %s does not exist. Press Enter to quit.&#39;</span><span class="o">,</span><span class="w"> </span><span class="p">[</span><span class="n">filename</span><span class="p">]))</span><span class="o">;</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23"></a><span class="w">    </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24"></a><span class="w">    </span><span class="k">Exit</span><span class="o">;</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26"></a>
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27"></a><span class="w">  </span><span class="c1">// If file exists, create a TStringList object</span>
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28"></a><span class="hll"><span class="w">  </span><span class="n">text</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStringList</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
+</span></span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29"></a><span class="w">  </span><span class="k">try</span>
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30"></a><span class="w">    </span><span class="c1">// Read an existing file into TStringList object</span>
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31"></a><span class="hll"><span class="w">    </span><span class="n">text</span><span class="o">.</span><span class="n">LoadFromFile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32"></a>
+</span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33"></a><span class="w">    </span><span class="c1">// Append more text</span>
+</span><span id="__span-13-34"><a id="__codelineno-13-34" name="__codelineno-13-34"></a><span class="hll"><span class="w">    </span><span class="n">text</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#39;New line!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-13-35"><a id="__codelineno-13-35" name="__codelineno-13-35"></a><span class="hll"><span class="w">    </span><span class="n">text</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#39;New line!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-13-36"><a id="__codelineno-13-36" name="__codelineno-13-36"></a>
+</span><span id="__span-13-37"><a id="__codelineno-13-37" name="__codelineno-13-37"></a><span class="w">    </span><span class="c1">// Save the appended TStringList file</span>
+</span><span id="__span-13-38"><a id="__codelineno-13-38" name="__codelineno-13-38"></a><span class="hll"><span class="w">    </span><span class="n">text</span><span class="o">.</span><span class="n">SaveToFile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-13-39"><a id="__codelineno-13-39" name="__codelineno-13-39"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="nb">Format</span><span class="p">(</span><span class="s">&#39;Saved to %s.&#39;</span><span class="o">,</span><span class="w"> </span><span class="p">[</span><span class="n">filename</span><span class="p">]))</span><span class="o">;</span>
+</span><span id="__span-13-40"><a id="__codelineno-13-40" name="__codelineno-13-40"></a>
+</span><span id="__span-13-41"><a id="__codelineno-13-41" name="__codelineno-13-41"></a><span class="w">  </span><span class="k">finally</span>
+</span><span id="__span-13-42"><a id="__codelineno-13-42" name="__codelineno-13-42"></a><span class="w">    </span><span class="c1">// Free object</span>
+</span><span id="__span-13-43"><a id="__codelineno-13-43" name="__codelineno-13-43"></a><span class="hll"><span class="w">    </span><span class="n">text</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span></span><span id="__span-13-44"><a id="__codelineno-13-44" name="__codelineno-13-44"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-13-45"><a id="__codelineno-13-45" name="__codelineno-13-45"></a>
+</span><span id="__span-13-46"><a id="__codelineno-13-46" name="__codelineno-13-46"></a><span class="w">  </span><span class="c1">// Pause Console</span>
+</span><span id="__span-13-47"><a id="__codelineno-13-47" name="__codelineno-13-47"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter to exit.&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-13-48"><a id="__codelineno-13-48" name="__codelineno-13-48"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-13-49"><a id="__codelineno-13-49" name="__codelineno-13-49"></a>
+</span><span id="__span-13-50"><a id="__codelineno-13-50" name="__codelineno-13-50"></a><span class="k">end</span><span class="o">.</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A <code>TStringList</code> is very easy to use, but I wouldn't recommend it for a log file that gets updated very often. It is slow (because the entire file needs to be rewritten when appending just a single line) and it causes unnecessary writes on a ssd drive.</p>
+<p>Sebastian Z, Aug 12, 2018 at 20:56</p>
+<p>Source: <a href="https://stackoverflow.com/a/51808874/1179312">https://stackoverflow.com/a/51808874/1179312</a></p>
+</div>
 
 
 
