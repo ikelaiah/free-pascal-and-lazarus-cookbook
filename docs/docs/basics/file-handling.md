@@ -7,8 +7,9 @@ There are many ways to do this;
 1. classic style (using the [File Handling Functions](https://www.freepascal.org/docs-html/rtl/system/filefunctions.html)) and 
 2. object style, including:
 
-      - [`TStringList`](https://www.freepascal.org/docs-html/rtl/classes/tstringlist.html) and
       - [`TFileStream`](https://www.freepascal.org/docs-html/rtl/classes/tfilestream.html).
+      - [`TStringList`](https://www.freepascal.org/docs-html/rtl/classes/tstringlist.html) and
+
 
 
 ### Create a text file - classic
