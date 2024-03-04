@@ -1,8 +1,8 @@
 # File Handling
 
-## How do I write strings into a new text file?
+## Writing a new text file
 
-There are many ways to do this; 
+There are many ways to do this;
 
 1. classic style (using the [File Handling Functions](https://www.freepascal.org/docs-html/rtl/system/filefunctions.html)) and 
 2. object style, including:
@@ -11,7 +11,7 @@ There are many ways to do this;
       - [`TFileStream`](https://www.freepascal.org/docs-html/rtl/classes/tfilestream.html).
 
 
-### New text file - Classic
+### Create a text file - classic
 
 See the snippet below. It uses `SysUtil` for catching errors during opening and writing file.
 
@@ -93,7 +93,7 @@ end.
 I'd prefer to handle error gracefully. Hence, I like the first snippet better.
 
 
-### New text file - Classic alt
+### Create a text file - Classic alt
 
 You can streamline the process of writing text to a file by refactoring the lines into a procedure.
 
@@ -150,7 +150,7 @@ end.
 ```
 
 
-### New text file - `TFileStream`
+### Create a text file using `TFileStream`
 
 
 For writing text into a new file using Object style;
@@ -192,7 +192,7 @@ begin
 end.
 ```
 
-### New text file - `TFileStream` alt
+### Create a text file using `TFileStream` (alt)
 
 This example is the previous snippet wrapped in a `procedure`.
 
@@ -234,7 +234,7 @@ begin
 end.
 ```
 
-### New text file - `TSringList`
+### Create a text file using `TSringList`
 
 1. Create the `TStringList` object. Line 18.
 2. Use the `Add` method to add text or lines. Line 21-22.
@@ -280,9 +280,9 @@ begin
 end.
 ```
 
-## How can I create a new blank text file?
+## Create a blank text file
 
-### Blank text file - Classic
+### A blank text file - Classic
 
 Here is an example.
 
@@ -327,7 +327,7 @@ begin
 end.
 ```
 
-### Blank text file - TFileStream
+### A blank text file using `TFileStream`
 
 Quite straightforward.
 
@@ -361,7 +361,7 @@ begin
 end.
 ```
 
-### Blank text file - TStringList
+### A blank text file using `TStringList`
 
 See the snippet below.
 
@@ -404,9 +404,9 @@ begin
 end.
 ```
 
-## How to append text to an existing text file?
+## Append to an existing text file
 
-### Append text file - Classic
+### Append a text file - Classic
 
 See an example below. The program will create a new file if the file for appending is not found.
 
@@ -495,7 +495,7 @@ begin
 end.
 ```
 
-### Append text file - `TFileStream`
+### Append a text file using `TFileStream`
 
 Quite straightforward. Remember to free `TFileStream` when done.
 
@@ -558,7 +558,7 @@ begin
 end.
 ```
 
-### Append text file - `TStringList`
+### Append a text file using `TStringList`
 
 The example below starts by checking if the file exists. If the files doesn't exists, exit program early.
 
@@ -629,9 +629,9 @@ end.
     
     Source: [https://stackoverflow.com/a/51808874/1179312](https://stackoverflow.com/a/51808874/1179312)
 
-## How to read a text file?
+## Read a text file
 
-### Read text file - `TFileStream`
+### Read a text file using `TFileStream`
 
 See the snippet below as example.
 
