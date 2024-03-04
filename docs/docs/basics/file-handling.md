@@ -20,7 +20,8 @@ See the snippet below. It uses `SysUtil` for catching errors during opening and 
 3. Add text using the assigned file type and `WriteLn`. Line 22.
 4. Close the file with `CloseFile` in the `try..finally` block. Line 31.
 
-> You should always strive to have a `try..finally` outside the `try..except`.
+
+> *[When saving file the classic way]* you should always strive to have a `try..finally` outside the `try..except`.
 > 
 > -Gustavo 'Gus' Carreno
 
@@ -280,7 +281,6 @@ begin
 end.
 ```
 
-
 ## How can I create a new blank text file?
 
 ### Blank text file - Classic
@@ -532,3 +532,228 @@ begin
   ReadLn;
 end.
 ```
+
+## How to append text to an existing text file?
+
+### Append - Classical way
+
+See an example below. The program will create a new file if the file for appending is not found.
+
+1. `AssignFile` and `CloseFile` is in **outer** `try..finally` block. This ensures the file will be closed whenever an IO error occured.
+   
+      - Assign a string filename to a text file variable. Line 47.
+      - Remember to `CloseFile` after appending. Line 66.
+
+2. Appending text is inside the **inner** `try..except` block.
+
+      - Use `Append` to open the file in append mode. Line 52.
+      - Use `WriteLn` to add new text into the existing file. Line 55.
+
+```pascal linenums="1" hl_lines="47 52 55 66"
+program ClassicAppendTextFile;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  SysUtils;
+
+  // Create a new file, the classical way
+  procedure CreateNewFile(filename: string);
+  var
+    textFile: System.TextFile;
+  begin
+    // Set the name of the file that will be created
+    AssignFile(textFile, filename);
+
+    // Enclose in try/except block to handle errors
+    try
+      // Open the file for writing (it will create it file doesn't exist)
+      ReWrite(textFile);
+
+      // Close file
+      CloseFile(textFile);
+
+      // Show a confirmation
+      WriteLn(Format('Created a new file: ''%s''', [filename]));
+
+    except
+      // Catch error here
+      on E: EInOutError do
+        WriteLn('Error occurred. Details: ', E.ClassName, '/', E.Message);
+    end;
+  end;
+
+var
+  filename: string = 'hello-text.txt';
+  textFile: System.TextFile;
+
+begin
+
+  // First of all, check if the input file exists.
+  // If not, create a new text file
+  if not FileExists(filename) then
+    CreateNewFile(filename);
+
+  try
+    // Set filename to a file
+    AssignFile(textFile, filename);
+
+    // Enclose in try/except block to handle errors
+    try
+      // Open a file for appending.
+      Append(textFile);
+
+      // Adding text
+      WriteLn(textFile, 'New Line!');
+      WriteLn(textFile, 'New Line!');
+
+    except
+      // Catch error here
+      on E: EInOutError do
+        writeln('Error occurred. Details: ', E.ClassName, '/', E.Message);
+    end;
+
+  finally
+    // Close file
+    CloseFile(textFile);
+  end;
+
+  // Pause console
+  WriteLn('Press Enter key to quit.');
+  ReadLn;
+end.
+```
+
+### Append - TFileStream
+
+Quite straightforward. Remember to free `TFileStream` when done.
+
+See the snippet below.
+
+1. Does the file  exist? 
+
+      - If yes, create `TFileStream` in *append* mode using `TFileStream.Create(filename, fmOpenWrite or fmShareDenyNone)`. Line 23.
+      - If not, create `TFileStream` using `fmCreate` mode to create the new file; `TFileStream.Create(filename, fmCreate);`. Line 26.
+  
+2. Set position to the end of the file. Line 31.
+3. Add new text using `fileStream.Write`. Line 34.
+4. Free `TFileStream` object. Line 39.
+
+```pascal linenums="1" hl_lines="23 26 31 34"
+program TFileStreamAppendTextFile;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils;
+
+var
+  filename: string = 'hello-text.txt';
+  fileStream: TFileStream;
+  size: longint;
+  newText: string;
+
+begin
+
+  // First, does the file exist?
+  if FileExists(fileName) then
+    // If yes, open the file in append mode.
+    fileStream := TFileStream.Create(filename, fmOpenWrite or fmShareDenyNone)
+  else
+    // If not, create a a new file.
+    fileStream := TFileStream.Create(filename, fmCreate);
+
+  // Next, start appending.
+  try
+    // set position at the end of the file
+    fileStream.Seek(0, soFromEnd);
+    // Write text into the file
+    newText := LineEnding + 'A new line!';
+    size := fileStream.Write(newText[1], Length(newText));
+    // Show confirmation
+    Writeln(Format('Appended %s. %d bytes written.', [filename, size]));
+  finally
+    // Free TFileStream object
+    fileStream.Free;
+  end;
+
+  // Pause console
+  WriteLn('Press Enter to quit.');
+  ReadLn;
+end.
+```
+
+### Append - TStringList
+
+See the example below. The program starts by checking if the file exists. If the files doesn't exists, exit program early.
+
+1. Create a `TStringList` object if the text file exists. Line 28.
+2. Load the existing text into a `TStringList` object. Line 31.
+3. Add new text into the `TStringList` object. Line 34-35.
+4. Save the appended `TStringList` into the existing file. Line 38.
+5. Free resources. Line 43.
+
+```pascal linenums="1" hl_lines="28 31 34 35 38 43"
+program TStringListAppend;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils;
+
+var
+  filename: string = 'hello-text.txt';
+  text: TStringList;
+
+begin
+
+  // First of all, check if the input file exists.
+  // It not, exit program early.
+  if not FileExists(fileName) then
+  begin
+    WriteLn(Format('File %s does not exist. Press Enter to quit.', [filename]));
+    ReadLn;
+    Exit;
+  end;
+
+  // If file exists, create a TStringList object
+  text := TStringList.Create;
+  try
+    // Read an existing file into TStringList object
+    text.LoadFromFile(filename);
+
+    // Append more text
+    text.Add('New line!');
+    text.Add('New line!');
+
+    // Save the appended TStringList file
+    text.SaveToFile(filename);
+    WriteLn(Format('Saved to %s.', [filename]));
+
+  finally
+    // Free object
+    text.Free;
+  end;
+
+  // Pause Console
+  WriteLn('Press Enter to exit.');
+  ReadLn;
+
+end.
+```
+
+!!! warning
+
+    A `TStringList` is very easy to use, but I wouldn't recommend it for a log file that gets updated very often. It is slow (because the entire file needs to be rewritten when appending just a single line) and it causes unnecessary writes on a ssd drive.
+
+    Sebastian Z, Aug 12, 2018 at 20:56
+    
+    Source: [https://stackoverflow.com/a/51808874/1179312](https://stackoverflow.com/a/51808874/1179312)
