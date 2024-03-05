@@ -106,7 +106,7 @@ begin
         // - https://www.freepascal.org/docs-html/rtl/getopts/index.html
         // - https://www.gnu.org/software/libc/manual/html_node/Using-Getopt.html
         if (optopt = 'a') then
-          writeln('Error: Option ', optopt, ' needs an argument.')
+          WriteLn('Error: Option ', optopt, ' needs an argument.')
         else
           WriteLn('Error: Unknown option: ', optopt);
       end;
@@ -122,7 +122,7 @@ begin
       Write(ParamStr(optind), ' ');
       Inc(optind);
     end;
-    writeln;
+    WriteLn;
   end;
 
 end.

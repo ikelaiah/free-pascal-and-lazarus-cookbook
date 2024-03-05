@@ -30,9 +30,9 @@ Commonly on Windows, the system code page is `1252`. If the system code page is 
 
 ```pascal linenums="1"
 begin
-  writeln('勤奋,勤勉になる,부지런하다!👍');
-  writeln('Press Enter key to exit');
-  readln;
+  WriteLn('勤奋,勤勉になる,부지런하다!👍');
+  WriteLn('Press Enter key to exit');
+  ReadLn;
 end.                                 
 ```
 
@@ -43,7 +43,7 @@ var
   s: string = '勤奋,勤勉になる,부지런하다!👍';
 
 begin
-  writeln(s);
+  WriteLn(s);
 end.                        
 ```
 
@@ -69,7 +69,7 @@ See [https://www.freepascal.org/docs-html/rtl/system/defaultsystemcodepage.html]
 
 ```pascal linenums="1"
 begin
-  writeln(DefaultSystemCodePage); 
+  WriteLn(DefaultSystemCodePage); 
 end.                                 
 ```
 

@@ -48,7 +48,7 @@ begin
     end;
   except
     on E: Exception do
-      writeln('Error: ' + E.Message);
+      WriteLn('Error: ' + E.Message);
   end;
 end;
 
@@ -130,7 +130,7 @@ begin
     ReadTextFile('ikel.pas');
   except
     on E: Exception do
-      writeln('Error: ' + E.Message);
+      WriteLn('Error: ' + E.Message);
   end;
 end.
 ```

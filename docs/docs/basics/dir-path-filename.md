@@ -55,9 +55,9 @@ var
 begin
   directoryName := ConcatPaths(['demo','ex-01']);
   if ForceDirectories(directoryName) then
-    writeln('Directory created successfully')
+    WriteLn('Directory created successfully')
   else
-    writeln('Failed to create directory');
+    WriteLn('Failed to create directory');
 end.
 ```
 
@@ -84,9 +84,9 @@ var
 begin
   directoryName := ConcatPaths(['demo','胜利']);
   if ForceDirectories(directoryName) then
-    writeln('Directory created successfully')
+    WriteLn('Directory created successfully')
   else
-    writeln('Failed to create directory');
+    WriteLn('Failed to create directory');
 end.
 ```
 
@@ -526,7 +526,7 @@ uses
           begin
             if IsFileNameMatching(path + searchRec.Name, regexPattern) then
               // If it matches regex expression, display name
-              writeln(path + searchRec.Name);
+              WriteLn(path + searchRec.Name);
           end;
         end;
       until FindNext(searchRec) <> 0;
