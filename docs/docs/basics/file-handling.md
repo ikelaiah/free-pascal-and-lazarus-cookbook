@@ -4,15 +4,15 @@
 
 There are many ways to do this;
 
-1. classic style (using the [File Handling Functions](https://www.freepascal.org/docs-html/rtl/system/filefunctions.html)) and 
-2. object style, including:
+1. The classic style (using the [File Handling Functions](https://www.freepascal.org/docs-html/rtl/system/filefunctions.html)) and 
+2. The object style, including:
 
       - [`TFileStream`](https://www.freepascal.org/docs-html/rtl/classes/tfilestream.html).
       - [`TStringList`](https://www.freepascal.org/docs-html/rtl/classes/tstringlist.html) and
 
 
 
-### Create a text file - classic
+### Create a text file - Classic
 
 See the snippet below. It uses `SysUtil` for catching errors during opening and writing file.
 
@@ -632,6 +632,70 @@ end.
 
 ## Read a text file
 
+### Read a text file - Classic
+
+The snippet below will quit if the file to read is not found.
+
+1. Assign a file to read into a `TextFile` variable. Line 24.
+2. Within the `try..catch` do the following:
+
+    - Open the file for reading. Line 29.
+    - Use a while loop to read the file one line at a time. Line 32-36.
+    - Use close the file after reading it. Line 39.
+
+```pascal linenums="1" hl_lines="24 29 32-36 39"
+program ClassicReadTextFile;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils;
+
+var
+  filename: string = 'cake-ipsum.txt';
+  textFile: System.TextFile;
+  line: string;
+
+begin
+
+  // Provide user feedback
+  writeln(Format('Reading ''%s''', [filename]));
+  writeln('--------------------');
+
+  // Assign filename to a TextFile variable - set the name of the file for reading
+  AssignFile(textFile, filename);
+
+  // Perform the read operation in a try..except block to handle errors gracefully
+  try
+    // Open the file for reading
+    Reset(textFile);
+
+    // Keep reading lines until the end of the file is reached
+    while not EOF(textFile) do
+    begin
+      ReadLn(textFile, line);
+      WriteLn(line);
+    end;
+
+    // Close the file
+    CloseFile(textFile);
+
+  except
+    on E: Exception do
+      writeln('File handling error occurred. Details: ', E.Message);
+  end;
+
+  // Pause console
+  writeln('--------------------');
+  writeln('Press Enter to quit.');
+  readln;
+end.
+```
+
 ### Read a text file - `TFileStream`
 
 See the snippet below as example.
@@ -757,5 +821,73 @@ begin
 
   // Pause console
   ReadLn;
+end.
+```
+
+
+### Read a text file - `TStringList`
+
+Here is a snippet.
+
+1. Instantiate a `TStringList` object on line 27.
+2. Within the `try..finally` block, load text into a `TStringList` object on line 32.
+3. Use a loop to access the contents of the `TStringList` on lines 35-36.
+4. Release the `TStringList` object on line 40.
+5. Enclose the algorithm in a `try..except` block to handle exceptions when opening or reading the file.
+
+
+```pascal linenums="1" hl_lines="27 32 35 36 40"
+program TStringListReadTextFile;
+
+{$mode objfpc}{$H+}
+
+uses
+  {$IFDEF UNIX}
+  cmem, cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils;
+
+var
+  filename: string = 'cake-ipsum.txt';
+  stringList: TStringList;
+  line: string;
+
+// Main block
+begin
+
+  // Provide user feedback
+  WriteLn(Format('Reading ''%s''', [filename]));
+  WriteLn('--------------------');
+
+  // Start try..except
+  try
+    // Create the TSTringList object
+    stringList := TStringList.Create;
+
+    // Start try..finally
+    try
+      // Read the file into a TStringList
+      stringList.LoadFromFile(filename);
+
+      // Use for loop to read the content of the stringList
+      for line in stringList do
+        WriteLn(line);
+
+    finally
+      // Free object from memory
+      stringList.Free;
+    end;
+
+  except
+    on E: Exception do
+      WriteLn('File handling error occurred. Details: ', E.Message);
+  end; // end of try..except
+
+  // Pause console
+  WriteLn('--------------------');
+  WriteLn('Press Enter key to quit.');
+  ReadLn;
+
 end.
 ```
