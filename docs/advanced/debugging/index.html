@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://learn-pascal-lang.org/docs/external-systems/webserver/">
+        <link rel="canonical" href="https://learn-pascal-lang.org/docs/advanced/debugging/">
       
       
-        <link rel="prev" href="../parsing-json/">
+        <link rel="prev" href="../conditional-compilation/">
       
       
-        <link rel="next" href="../../../community/">
+        <link rel="next" href="../concurrent-parallel/">
       
       
       <link rel="icon" href="../../../assets/logo-new-rounded-min.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Web Server - Free Pascal & Lazarus Cookbook</title>
+        <title>Debugging - Free Pascal & Lazarus Cookbook</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#webserver" class="md-skip">
+        <a href="#debugging" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Web Server
+              Debugging
             
           </span>
         </div>
@@ -245,11 +245,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../advanced/overview/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
           
   
   Advanced Topics
@@ -263,13 +265,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../external-systems/overview/" class="md-tabs__link">
           
   
   External Systems
@@ -871,137 +871,6 @@
       
   
   
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    Advanced Topics
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            Advanced Topics
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/conditional-compilation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Conditional Compilation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/debugging/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Debugging
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/concurrent-parallel/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Concurrency and Parallelism
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -1019,24 +888,24 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    External Systems
+    Advanced Topics
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            External Systems
+            Advanced Topics
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1068,11 +937,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../parsing-json/" class="md-nav__link">
+      <a href="../conditional-compilation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Parsing JSON
+    Conditional Compilation
   </span>
   
 
@@ -1102,7 +971,7 @@
           
   
   <span class="md-ellipsis">
-    Web Server
+    Debugging
   </span>
   
 
@@ -1113,7 +982,7 @@
         
   
   <span class="md-ellipsis">
-    Web Server
+    Debugging
   </span>
   
 
@@ -1135,11 +1004,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-simple-rest-apis-returning-json-and-html-contents" class="md-nav__link">
+  <a href="#official-docs-on-debugging-free-pascal-programs" class="md-nav__link">
     <span class="md-ellipsis">
-      A simple REST APIs returning JSON and HTML contents
+      Official docs on debugging Free Pascal programs
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#official-docs-on-using-heaptrc-to-detect-memory-leaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Official docs on using Heaptrc to detect memory leaks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detecting-heap-memory-leak-in-lazarus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting heap memory leak in Lazarus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detecting heap memory leak in Lazarus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-enable-heaptrc-in-lazarus" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Enable Heaptrc in Lazarus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-redirect-heaptrc-report-to-a-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Redirect Heaptrc report to a file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-view-leaks-and-traces-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. View Leaks and Traces report
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1147,6 +1067,137 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concurrent-parallel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency and Parallelism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    External Systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            External Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../external-systems/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../external-systems/parsing-json/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parsing JSON
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../external-systems/webserver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web Server
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1316,11 +1367,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-simple-rest-apis-returning-json-and-html-contents" class="md-nav__link">
+  <a href="#official-docs-on-debugging-free-pascal-programs" class="md-nav__link">
     <span class="md-ellipsis">
-      A simple REST APIs returning JSON and HTML contents
+      Official docs on debugging Free Pascal programs
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#official-docs-on-using-heaptrc-to-detect-memory-leaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Official docs on using Heaptrc to detect memory leaks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detecting-heap-memory-leak-in-lazarus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting heap memory leak in Lazarus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detecting heap memory leak in Lazarus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-enable-heaptrc-in-lazarus" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Enable Heaptrc in Lazarus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-redirect-heaptrc-report-to-a-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Redirect Heaptrc report to a file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-view-leaks-and-traces-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. View Leaks and Traces report
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1339,22 +1441,45 @@
                   
 
 
-<h1 id="webserver">Webserver<a class="headerlink" href="#webserver" title="Permanent link">&para;</a></h1>
-<h2 id="a-simple-rest-apis-returning-json-and-html-contents">A simple REST APIs returning JSON and HTML contents<a class="headerlink" href="#a-simple-rest-apis-returning-json-and-html-contents" title="Permanent link">&para;</a></h2>
-<p>Have a look at the example below, based on a tutorial by <a href="https://medium.com/@marcusfernstrm/create-rest-apis-with-freepascal-441e4aa447b7">Marcus Fernström</a>.</p>
-<p>The program creates a basic REST APIs with three routes.</p>
+<h1 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h1>
+<h2 id="official-docs-on-debugging-free-pascal-programs">Official docs on debugging Free Pascal programs<a class="headerlink" href="#official-docs-on-debugging-free-pascal-programs" title="Permanent link">&para;</a></h2>
+<p>Here is the official docs by Michaël Van Canneyt and Florian Klämpfl; <a href="https://www.freepascal.org/docs-html/user/userch10.html">Debugging your Program</a>.</p>
+<h2 id="official-docs-on-using-heaptrc-to-detect-memory-leaks">Official docs on using Heaptrc to detect memory leaks<a class="headerlink" href="#official-docs-on-using-heaptrc-to-detect-memory-leaks" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>/api/timestamp</code> to give current timestamp in JSON.</li>
-<li><code>/api/greet/:name</code> to return a specified <code>name</code> in JSON.</li>
-<li><code>/404</code> for handling everything else.</li>
+<li><a href="https://www.freepascal.org/docs-html/rtl/heaptrc/index.html">RTL - <code>heaptrc</code></a></li>
+<li><a href="https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html">RTL - <code>SetHeapTraceOutput</code></a></li>
+<li><a href="https://www.freepascal.org/docs-html/rtl/heaptrc/environment.html">Controlling HeapTrc with environment variables</a></li>
+<li><a href="https://wiki.freepascal.org/heaptrc">Using Heaptrc in FPC</a></li>
+<li><a href="https://wiki.freepascal.org/leakview">Using LeakView in Lazarus</a></li>
 </ul>
-<p>Here is the breakdown.</p>
+<h2 id="detecting-heap-memory-leak-in-lazarus">Detecting heap memory leak in Lazarus<a class="headerlink" href="#detecting-heap-memory-leak-in-lazarus" title="Permanent link">&para;</a></h2>
+<h3 id="1-enable-heaptrc-in-lazarus">1. Enable Heaptrc in Lazarus<a class="headerlink" href="#1-enable-heaptrc-in-lazarus" title="Permanent link">&para;</a></h3>
 <ol>
-<li>In the <code>unit</code>, add <code>fphttpapp</code>, <code>HTTPDefs</code>, <code>httproute</code>, <code>fpjson</code> and <code>jsonparser</code>. Line 16-20.</li>
-<li>Setup port no and enable multi-threading to process incoming http requests. Line 77-78.</li>
-<li>Register routes and set <code>/404</code> as the default route. Line 81-83.</li>
-<li>Define procedures to handle the routes. Line 23-67.</li>
-<li>Initialise and run. Line 86-88. </li>
+<li>First, go to <code>Project | Project Options ...</code> </li>
+<li>In the Options window find <code>Compiler Options | Debugging</code>, then enable the following switches.</li>
+</ol>
+<ul>
+<li><strong>[Mandatory]</strong> <code>Use Heaptrc unit (check for mem-leaks) (-gh)</code></li>
+<li><strong>[Optional]</strong> <code>Display line numbers in run-time errors backtraces (-gl)</code></li>
+</ul>
+<p><a class="glightbox" href="../../../assets/use-heaptrc-unit-check-mem-leaks.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Project options window" src="../../../assets/use-heaptrc-unit-check-mem-leaks.png" /></a></p>
+<h3 id="2-redirect-heaptrc-report-to-a-file">2. Redirect Heaptrc report to a file<a class="headerlink" href="#2-redirect-heaptrc-report-to-a-file" title="Permanent link">&para;</a></h3>
+<p>Simply use <a href="https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html"><code>SetHeapTraceOutput</code></a> to redirect heap trace report to a file.</p>
+<p>Here is an example.</p>
+<ol>
+<li>
+<p>Define a <code>DEBUG</code> symbol. We contain the heap trace report only in debug builds. Line 7.</p>
+<ul>
+<li>FYI, the <code>{$DEFINE}</code> directive has a command-line equivalent, <code>-d</code>.  For example, <code>-dNAME</code></li>
+</ul>
+</li>
+<li>
+<p>Create a conditional compilation block for <code>DEBUG</code> builds, <code>{$IFDEF DEBUG}...{$ENDIF DEBUG}</code>, for redirecting heap trace to a file. Line 23-31.</p>
+<ul>
+<li>Remove existing heap trace file. Line 28, 29.</li>
+<li>Set a file for reporting heap memory leaks. Line 30.</li>
+</ul>
+</li>
 </ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1412,143 +1537,76 @@
 <span class="normal"><a href="#__codelineno-0-54">54</a></span>
 <span class="normal"><a href="#__codelineno-0-55">55</a></span>
 <span class="normal"><a href="#__codelineno-0-56">56</a></span>
-<span class="normal"><a href="#__codelineno-0-57">57</a></span>
-<span class="normal"><a href="#__codelineno-0-58">58</a></span>
-<span class="normal"><a href="#__codelineno-0-59">59</a></span>
-<span class="normal"><a href="#__codelineno-0-60">60</a></span>
-<span class="normal"><a href="#__codelineno-0-61">61</a></span>
-<span class="normal"><a href="#__codelineno-0-62">62</a></span>
-<span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span>
-<span class="normal"><a href="#__codelineno-0-65">65</a></span>
-<span class="normal"><a href="#__codelineno-0-66">66</a></span>
-<span class="normal"><a href="#__codelineno-0-67">67</a></span>
-<span class="normal"><a href="#__codelineno-0-68">68</a></span>
-<span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
-<span class="normal"><a href="#__codelineno-0-71">71</a></span>
-<span class="normal"><a href="#__codelineno-0-72">72</a></span>
-<span class="normal"><a href="#__codelineno-0-73">73</a></span>
-<span class="normal"><a href="#__codelineno-0-74">74</a></span>
-<span class="normal"><a href="#__codelineno-0-75">75</a></span>
-<span class="normal"><a href="#__codelineno-0-76">76</a></span>
-<span class="normal"><a href="#__codelineno-0-77">77</a></span>
-<span class="normal"><a href="#__codelineno-0-78">78</a></span>
-<span class="normal"><a href="#__codelineno-0-79">79</a></span>
-<span class="normal"><a href="#__codelineno-0-80">80</a></span>
-<span class="normal"><a href="#__codelineno-0-81">81</a></span>
-<span class="normal"><a href="#__codelineno-0-82">82</a></span>
-<span class="normal"><a href="#__codelineno-0-83">83</a></span>
-<span class="normal"><a href="#__codelineno-0-84">84</a></span>
-<span class="normal"><a href="#__codelineno-0-85">85</a></span>
-<span class="normal"><a href="#__codelineno-0-86">86</a></span>
-<span class="normal"><a href="#__codelineno-0-87">87</a></span>
-<span class="normal"><a href="#__codelineno-0-88">88</a></span>
-<span class="normal"><a href="#__codelineno-0-89">89</a></span>
-<span class="normal"><a href="#__codelineno-0-90">90</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">program</span><span class="w"> </span><span class="n">SimpleApiWebserver</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">program</span><span class="w"> </span><span class="n">HeapMemoryLeakLazarus</span><span class="o">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1">// References:</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">//  - https://medium.com/@marcusfernstrm/create-rest-apis-with-freepascal-441e4aa447b7</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1">//  - https://www.youtube.com/watch?v=9N0cxI1Hp0U</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="c1">//  - https://wiki.lazarus.freepascal.org/fpWeb_Tutorial#webserver-example</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="k">uses</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">  </span><span class="cm">{$IFDEF UNIX}</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="n">cmem</span><span class="o">,</span><span class="w"> </span><span class="n">cthreads</span><span class="o">,</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">,</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="hll"><span class="w">  </span><span class="n">fphttpapp</span><span class="o">,</span>
-</span></span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="hll"><span class="w">  </span><span class="n">HTTPDefs</span><span class="o">,</span>
-</span></span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="hll"><span class="w">  </span><span class="n">httproute</span><span class="o">,</span>
-</span></span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="hll"><span class="w">  </span><span class="n">fpjson</span><span class="o">,</span>
-</span></span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="hll"><span class="w">  </span><span class="n">jsonparser</span><span class="o">;</span>
-</span></span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">  </span><span class="c1">// Endpoint for getting the current timestamp</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">  </span><span class="k">procedure</span><span class="w"> </span><span class="nf">TimestampEndPoint</span><span class="p">(</span><span class="n">aRequest</span><span class="o">:</span><span class="w"> </span><span class="n">TRequest</span><span class="o">;</span><span class="w"> </span><span class="n">aResponse</span><span class="o">:</span><span class="w"> </span><span class="n">TResponse</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">  </span><span class="k">var</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="n">json</span><span class="o">:</span><span class="w"> </span><span class="n">TJSONObject</span><span class="o">;</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="n">json</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TJSONObject</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span><span class="k">try</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">      </span><span class="n">json</span><span class="o">.</span><span class="n">Strings</span><span class="p">[</span><span class="s">&#39;timestamp&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">FormatDateTime</span><span class="p">(</span><span class="s">&#39;yyyy-mm-dd hh:nn:ss.z&#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">Now</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">Content</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">AsJSON</span><span class="o">;</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">Code</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">200</span><span class="o">;</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">ContentType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#39;application/json&#39;</span><span class="o">;</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">ContentLength</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">Length</span><span class="p">(</span><span class="n">aResponse</span><span class="o">.</span><span class="n">Content</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">SendContent</span><span class="o">;</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">    </span><span class="k">finally</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">      </span><span class="n">json</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">  </span><span class="c1">// An endpoint accepting a variable</span>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">  </span><span class="k">procedure</span><span class="w"> </span><span class="nf">GreetEndpoint</span><span class="p">(</span><span class="n">aRequest</span><span class="o">:</span><span class="w"> </span><span class="n">TRequest</span><span class="o">;</span><span class="w"> </span><span class="n">aResponse</span><span class="o">:</span><span class="w"> </span><span class="n">TResponse</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">  </span><span class="k">var</span>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="n">json</span><span class="o">:</span><span class="w"> </span><span class="n">TJSONObject</span><span class="o">;</span>
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="w">    </span><span class="n">json</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TJSONObject</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">    </span><span class="k">try</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">      </span><span class="n">json</span><span class="o">.</span><span class="n">Strings</span><span class="p">[</span><span class="s">&#39;message&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#39;Hello, &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">aRequest</span><span class="o">.</span><span class="n">RouteParams</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span><span class="o">;</span>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">Content</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">AsJSON</span><span class="o">;</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">Code</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">200</span><span class="o">;</span>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">ContentType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#39;application/json&#39;</span><span class="o">;</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">ContentLength</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">Length</span><span class="p">(</span><span class="n">aResponse</span><span class="o">.</span><span class="n">Content</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">      </span><span class="n">aResponse</span><span class="o">.</span><span class="n">SendContent</span><span class="o">;</span>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">    </span><span class="k">finally</span>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">      </span><span class="n">json</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58"></a>
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">  </span><span class="c1">// An endpoint to handle unknown requests</span>
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">  </span><span class="k">procedure</span><span class="w"> </span><span class="nf">ErrorEndPoint</span><span class="p">(</span><span class="n">aRequest</span><span class="o">:</span><span class="w"> </span><span class="n">TRequest</span><span class="o">;</span><span class="w"> </span><span class="n">aResponse</span><span class="o">:</span><span class="w"> </span><span class="n">TResponse</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="w">    </span><span class="n">aResponse</span><span class="o">.</span><span class="n">Content</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#39;&lt;h1&gt;404!&lt;/h1&gt;&lt;h3&gt;How did you get here?&lt;/h3&gt;&#39;</span><span class="o">;</span>
-</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">    </span><span class="n">aResponse</span><span class="o">.</span><span class="n">Code</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">404</span><span class="o">;</span>
-</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="w">    </span><span class="n">aResponse</span><span class="o">.</span><span class="n">ContentType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#39;text/html&#39;</span><span class="o">;</span>
-</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="w">    </span><span class="n">aResponse</span><span class="o">.</span><span class="n">ContentLength</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">Length</span><span class="p">(</span><span class="n">aResponse</span><span class="o">.</span><span class="n">Content</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="w">    </span><span class="n">aResponse</span><span class="o">.</span><span class="n">SendContent</span><span class="o">;</span>
-</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68"></a>
-</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69"></a>
-</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="k">const</span>
-</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="w">  </span><span class="n">port</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8080</span><span class="o">;</span>
-</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="w">  </span><span class="n">isThreaded</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="o">;</span>
-</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73"></a>
-</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="k">begin</span>
-</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75"></a>
-</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">  </span><span class="c1">// Set port no &amp; enable multi-threading to handle http requests</span>
-</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Port</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">port</span><span class="o">;</span>
-</span></span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Threaded</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">isThreaded</span><span class="o">;</span>
-</span></span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79"></a>
-</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="w">  </span><span class="c1">// Setup routes</span>
-</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/api/timestamp&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">TimestampEndPoint</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/api/greet/:name&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">GreetEndpoint</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="hll"><span class="w">  </span><span class="n">HTTPRouter</span><span class="o">.</span><span class="n">RegisterRoute</span><span class="p">(</span><span class="s">&#39;/404&#39;</span><span class="o">,</span><span class="w"> </span><span class="n">rmGet</span><span class="o">,</span><span class="w"> </span><span class="o">@</span><span class="n">ErrorEndPoint</span><span class="o">,</span><span class="w"> </span><span class="k">True</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// Set as the default endpoint</span>
-</span></span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84"></a>
-</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">  </span><span class="c1">// Initialise and run, with a message</span>
-</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Initialize</span><span class="o">;</span>
-</span></span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="hll"><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;== Server is running on port &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">port</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; ===&#39;</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="hll"><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">Run</span><span class="o">;</span>
-</span></span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89"></a>
-</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="k">end</span><span class="o">.</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1">// Define a symbol name DEBUG.</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="c1">// With this compiler directives we can compile parts of code associated with this symbol.</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="hll"><span class="cm">{$DEFINE DEBUG}</span>
+</span></span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="k">uses</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="cm">{$IFDEF UNIX}</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">  </span><span class="n">cmem</span><span class="o">,</span><span class="w"> </span><span class="n">cthreads</span><span class="o">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="k">var</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">  </span><span class="n">stringList</span><span class="o">:</span><span class="w"> </span><span class="n">TStringList</span><span class="o">;</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span><span class="n">i</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">  </span><span class="c1">// MAIN block</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="k">begin</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="hll"><span class="w">  </span><span class="cm">{$IFDEF DEBUG}</span>
+</span></span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="hll"><span class="w">  </span><span class="c1">// This block assumes your build mode sets -dDEBUG in `Project Options` or other means when defining -gh.</span>
+</span></span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="hll"><span class="w">  </span><span class="c1">// For production build, remove -dDEBUG in `Project Options` or other means and disable -gh.</span>
+</span></span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="hll">
+</span></span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="hll"><span class="w">  </span><span class="c1">// Setup Heaptrc output for the Leak and Traces window in Lazarus.</span>
+</span></span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="hll"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="s">&#39;heap.trc&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+</span></span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="hll"><span class="w">    </span><span class="nb">DeleteFile</span><span class="p">(</span><span class="s">&#39;heap.trc&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="hll"><span class="w">  </span><span class="n">SetHeapTraceOutput</span><span class="p">(</span><span class="s">&#39;heap.trc&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="hll"><span class="w">  </span><span class="cm">{$ENDIF DEBUG}</span>
+</span></span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">  </span><span class="c1">// Create a string list</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">  </span><span class="n">stringList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStringList</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">  </span><span class="k">try</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">    </span><span class="c1">// Adding items</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Adding items&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;--------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">      </span><span class="n">stringList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#39;Counting &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">    </span><span class="c1">// Printing contents</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">:=</span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">stringList</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="n">stringList</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">;</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">  </span><span class="k">finally</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="c1">// If you don&#39;t free, the -gh will give report of memory leaks</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="c1">// If Leak and Traces window is set to a heap trace file, this will appear in the Leak and Traces windoww.</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">    </span><span class="c1">// Otherwise, Heaptrc will print heap memory reports on CLI.</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">    </span><span class="n">stringList</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">  </span><span class="c1">// Pause Console</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter key to quit.&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<p><strong>How to use</strong></p>
-<ul>
-<li>Run the program.</li>
-<li>To get the current timestamp, put into your browser: <code>http://127.0.0.1:8080/api/timestamp</code>.</li>
-<li>To get a greeting in json, put into your browser: <code>http://127.0.0.1:8080/api/greet/Jonathan</code>.</li>
-<li>Non-matching endpoints will get you to: <code>http://127.0.0.1:8080/404</code>.</li>
-</ul>
-<p><strong>References</strong></p>
-<ul>
-<li><a href="https://medium.com/@marcusfernstrm/create-rest-apis-with-freepascal-441e4aa447b7">https://medium.com/@marcusfernstrm/create-rest-apis-with-freepascal-441e4aa447b7</a></li>
-<li><a href="https://www.youtube.com/watch?v=9N0cxI1Hp0U">https://www.youtube.com/watch?v=9N0cxI1Hp0U</a></li>
-<li><a href="https://wiki.lazarus.freepascal.org/fpWeb_Tutorial#webserver-example">https://wiki.lazarus.freepascal.org/fpWeb_Tutorial#webserver-example</a></li>
-</ul>
+<p>After you run the program, you will get a heap trace report file.</p>
+<h3 id="3-view-leaks-and-traces-report">3. View Leaks and Traces report<a class="headerlink" href="#3-view-leaks-and-traces-report" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Click <code>View</code> form the top menu bar of Lazarus IDE.</li>
+<li>Select <code>Leaks and Traces</code></li>
+<li>Set the <code>.trc</code> file to read by pressing the <code>...</code> (elipsis) button.</li>
+<li>Click the <strong>Update</strong> button to reload latest changes to the <code>.trc</code> file.</li>
+</ol>
+<p><a class="glightbox" href="../../../assets/opening-leaks-and-traces-window.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Project options window" src="../../../assets/opening-leaks-and-traces-window.png" /></a></p>
+<p>Now, whenever you run the program in DEBUG mode from Lazarus IDE, simply press the <strong>Update</strong> button on the <strong>Leaks and Traces</strong> window to see the latest heap memory report.</p>
+<p>If there is any leaks in the program, pressing the <strong>Update</strong> button will show leaking memory size, leaking blocks counts and the details of leaking blocks.</p>
+<p><a class="glightbox" href="../../../assets/leaks-in-leaks-and-traces-window.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Project options window" src="../../../assets/leaks-in-leaks-and-traces-window.png" /></a></p>
 
 
 
