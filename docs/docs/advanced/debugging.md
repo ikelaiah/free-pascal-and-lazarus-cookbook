@@ -1,21 +1,24 @@
-# Debugging 
+# Debugging
 
 ## Official docs on debugging Free Pascal programs
 
 Here is the official docs by Michaël Van Canneyt and Florian Klämpfl; [Debugging your Program](https://www.freepascal.org/docs-html/user/userch10.html).
 
 
-## Official docs on using Heaptrc to detect memory leaks
+## Detecting heap memory leak
 
+### Official docs on using Heaptrc to detect memory leaks
+
+- [HeapTrc Usage](https://www.freepascal.org/docs-html/rtl/heaptrc/usage.html)
 - [RTL - `heaptrc`](https://www.freepascal.org/docs-html/rtl/heaptrc/index.html)
 - [RTL - `SetHeapTraceOutput`](https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html)
 - [Controlling HeapTrc with environment variables](https://www.freepascal.org/docs-html/rtl/heaptrc/environment.html)
-- [Using Heaptrc in FPC](https://wiki.freepascal.org/heaptrc)
-- [Using LeakView in Lazarus](https://wiki.freepascal.org/leakview)
+- [Wiki - Using Heaptrc in FPC](https://wiki.freepascal.org/heaptrc)
+- [Wiki - Using LeakView in Lazarus](https://wiki.freepascal.org/leakview)
 
-## Detecting heap memory leak in Lazarus
+### Detecting heap memory leak in Lazarus
 
-### 1. Enable Heaptrc in Lazarus
+#### 1. Enable HeapTrc in Lazarus
 
 1. First, go to `Project | Project Options ...` 
 2. In the Options window find `Compiler Options | Debugging`, then enable the following switches.
@@ -25,7 +28,7 @@ Here is the official docs by Michaël Van Canneyt and Florian Klämpfl; [Debuggi
 
 ![Project options window](../../assets/use-heaptrc-unit-check-mem-leaks.png)
 
-### 2. Redirect Heaptrc report to a file
+#### 2. Save leaks report to a file
 
 Simply use [`SetHeapTraceOutput`](https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html) to redirect heap trace report to a file.
 
@@ -102,7 +105,7 @@ end.
 
 After you run the program, you will get a heap trace report file.
 
-### 3. View Leaks and Traces report
+#### 3. View Leaks & Traces
 
 1. Click `View` form the top menu bar of Lazarus IDE.
 2. Select `Leaks and Traces`

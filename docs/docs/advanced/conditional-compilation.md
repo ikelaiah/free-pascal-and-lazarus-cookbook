@@ -22,6 +22,10 @@ Use [`$ENDIF some ignored comments`](https://www.freepascal.org/docs-html/prog/p
  {$ENDIF name}
 ```
 
+**References**
+
+- [Lazarus - Easy trick on how to use {$IFDEF DEBUG} for simple debugging](https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-easy-trick-on-how-to-use-ifdef-debug-for-simple-debugging/) by Hans on [Tweaking4All](www.tweaking4all.com).
+
 ## Useful symbols for conditional compilation
 
 Here is an example contributed by [𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪](https://discord.com/channels/570025060312547359/570025060312547361/1193531999542063134) (Unofficial Free Pascal Discord).
