@@ -1,6 +1,6 @@
 # Post-Install
 
-## How do I change the header style of the panels?
+## Change the header style of the panels
 
 1. Go to **Tool -> Options ...**.
 2. Click on **Docking/Achordocking** item on the left side and set a **Header Style** (see the screenshot below).
@@ -11,25 +11,25 @@ Hit the **Apply** button to see how the **Header Style** looks on the IDE.
 
 Hit the **OK** button to save the settings.
 
-## How to prevent the caret from moving past end of line?
+## Prevent the caret from moving past end of line
 
 1. Go to **Tools -> Options ... -> Editor (left hand side)**
 2. Uncheck **Allow caret to move past the end of line**.
 
 
-## How do I make hint and completion boxes to pop-up faster?
+## Show hint and completion boxes sooner
 
 1. Go to **Tools -> Options ... -> Editor (left hand side)**
 2. Set shorter values for 
       - **Delay for Delay for completion box** 
       - **Delay for hints**.
 
-## How do I format my code?
+## Format code
 
-Hit ++ctrl+d++.
+Hit ++ctrl+d++ on the code window.
 
 
-## Which debugger should I choose?
+## Setup a debugger in Lazarus
 
 ![Run-with-debugger](../../assets/run-app-with-debugger.png)
 
@@ -43,7 +43,7 @@ Citing from [https://wiki.lazarus.freepascal.org/DWARF](https://wiki.lazarus.fre
 > 
 > DWARF 2 (the one **without** "with sets") does not display sets "type TMySet = set of (v1,v2,v3)" correctly.
 
-## How do I compile and run my code?
+## Compile and run
 
 You have choices. Pick one.
 

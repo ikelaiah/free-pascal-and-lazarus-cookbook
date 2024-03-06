@@ -1,6 +1,6 @@
 # Structuring Your Codes
 
-## How do I Structure of a Pascal Program?
+## Structure of a Pascal Program
 
 Here is a common structure of a Pascal program.
 
@@ -101,7 +101,7 @@ John Costco
 Press Enter key to quit ...
 ```
 
-## How do I Structure a Unit?
+## Structure a Unit
 
 ```pascal linenums="1"
 program UnitStructure;

@@ -2,7 +2,7 @@
 
 ## Install on Windows
 
-### Download the `fpcupdeluxe` installer
+### Get the `fpcupdeluxe` installer
 
 1. Head to [https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases](https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases)
 2. Download the latest `fpcupdeluxe` for your OS and architecture, and save it in a new folder.
