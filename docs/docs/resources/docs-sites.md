@@ -1,13 +1,13 @@
 # Relevant Documents and Sites
 
-## :material-speedometer-slow: Beginner
+## Beginner
 
 - `#lazarus` [Laz Planet Tutorials](https://lazplanet.blogspot.com/search/label/Tutorials)
 - `#fpc` [Free Pascal from Square One](./FreePascalFromSquareOne.pdf) by Jeff Duntemann.
 - `#fpc` [Tao Yue's Pascal Tutorial](https://www.taoyue.com/tutorials/pascal), which also available on [Free Pascal's wiki](https://wiki.freepascal.org/Basic_Pascal_Tutorial).
 - `#fpc` [Tutorials Point's Pascal Tutorial](https://www.tutorialspoint.com/pascal/index.htm)
 
-## :material-speedometer: Experienced - Veteran
+## Experienced - Veteran
 
 - `#fpc` [Modern Object Pascal Introduction for Programmers](https://castle-engine.io/modern_pascal#_why)
 - `#fpc` [Pascal cheat sheet](https://learnxinyminutes.com/docs/pascal/) from [learnxinyminutes.com](https://learnxinyminutes.com).
@@ -21,7 +21,7 @@
 - `#fpc` `#lazarus` [Working with SQLite3 database using SQLdb components](https://wiki.freepascal.org/SQLite#Using_the_SQLdb_components_with_SQLite)
 
 
-## :material-notebook: The Official Free Pascal Resources
+## The Official Free Pascal Resources
 
 The latest documents are available from [Free Pascal](https://www.freepascal.org/docs.html) site and [GitLab FPC Documentation](https://gitlab.com/freepascal.org/fpc/documentation) repo.
 

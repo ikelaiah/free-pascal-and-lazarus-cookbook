@@ -5,9 +5,9 @@
 Here is the official docs by Michaël Van Canneyt and Florian Klämpfl; [Debugging your Program](https://www.freepascal.org/docs-html/user/userch10.html).
 
 
-## Detecting heap memory leak
+## Detecting heap memory leaks
 
-### Official docs on using Heaptrc to detect memory leaks
+### Official docs on using Heaptrc
 
 - [HeapTrc Usage](https://www.freepascal.org/docs-html/rtl/heaptrc/usage.html)
 - [RTL - `heaptrc`](https://www.freepascal.org/docs-html/rtl/heaptrc/index.html)
@@ -16,25 +16,28 @@ Here is the official docs by Michaël Van Canneyt and Florian Klämpfl; [Debuggi
 - [Wiki - Using Heaptrc in FPC](https://wiki.freepascal.org/heaptrc)
 - [Wiki - Using LeakView in Lazarus](https://wiki.freepascal.org/leakview)
 
-### Detecting heap memory leak in Lazarus
+### Detecting heap memory leaks in Lazarus
 
-#### 1. Enable HeapTrc in Lazarus
+**1. Enable HeapTrc in Lazarus**
 
-1. First, go to `Project | Project Options ...` 
-2. In the Options window find `Compiler Options | Debugging`, then enable the following switches.
+First, go to `Project | Project Options ...` 
+
+In the Options window find `Compiler Options | Debugging`, then enable the following switches.
 
 - **[Mandatory]** `Use Heaptrc unit (check for mem-leaks) (-gh)`
 - **[Optional]** `Display line numbers in run-time errors backtraces (-gl)`
 
+Click the image below to expand the view.
+
 ![Project options window](../../assets/use-heaptrc-unit-check-mem-leaks.png)
 
-#### 2. Save leaks report to a file
+**2. Save leaks report to a file**
 
 Simply use [`SetHeapTraceOutput`](https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html) to redirect heap trace report to a file.
 
 Here is an example.
 
-1. Define a `DEBUG` symbol. We contain the heap trace report only in debug builds. Line 7.
+1. Define a `DEBUG` symbol. We contain the heap trace report only for debug builds. Line 7.
 
       - FYI, the `{$DEFINE}` directive has a command-line equivalent, `-d`.  For example, `-dNAME`
 
@@ -105,17 +108,21 @@ end.
 
 After you run the program, you will get a heap trace report file.
 
-#### 3. View Leaks & Traces
+**3. View Leaks & Traces**
 
 1. Click `View` form the top menu bar of Lazarus IDE.
 2. Select `Leaks and Traces`
 3. Set the `.trc` file to read by pressing the `...` (elipsis) button.
 4. Click the **Update** button to reload latest changes to the `.trc` file.
 
+Click the image below to expand the view.
+
 ![Project options window](../../assets/opening-leaks-and-traces-window.png)
 
 Now, whenever you run the program in DEBUG mode from Lazarus IDE, simply press the **Update** button on the **Leaks and Traces** window to see the latest heap memory report.
 
 If there is any leaks in the program, pressing the **Update** button will show leaking memory size, leaking blocks counts and the details of leaking blocks.
+
+Click the image below to expand the view.
 
 ![Project options window](../../assets/leaks-in-leaks-and-traces-window.png)

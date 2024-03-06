@@ -24,7 +24,7 @@ Use [`$ENDIF some ignored comments`](https://www.freepascal.org/docs-html/prog/p
 
 **References**
 
-- [Lazarus - Easy trick on how to use {$IFDEF DEBUG} for simple debugging](https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-easy-trick-on-how-to-use-ifdef-debug-for-simple-debugging/) by Hans on [Tweaking4All](www.tweaking4all.com).
+- [Lazarus - Easy trick on how to use {$IFDEF DEBUG} for simple debugging](https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-easy-trick-on-how-to-use-ifdef-debug-for-simple-debugging/) by Hans on [Tweaking4All](https://www.tweaking4all.com).
 
 ## Useful symbols for conditional compilation
 
