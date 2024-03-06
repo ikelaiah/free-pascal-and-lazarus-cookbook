@@ -1,61 +1,23 @@
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-        <link rel="canonical" href="https://learn-pascal-lang.org/docs/advanced/debugging/">
-      
-      
-        <link rel="prev" href="../conditional-compilation/">
-      
-      
-        <link rel="next" href="../concurrent-parallel/">
-      
-      
-      <link rel="icon" href="../../../assets/logo-new-rounded-min.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
-    
-    
-      
-        <title>Debugging - Free Pascal & Lazarus Cookbook</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
-      
-        
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
-      
-      
+<!DOCTYPE html>
 
-
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
-      
-    
-    
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://learn-pascal-lang.org/docs/advanced/debugging/" rel="canonical"/>
+<link href="../conditional-compilation/" rel="prev"/>
+<link href="../concurrent-parallel/" rel="next"/>
+<link href="../../../assets/logo-new-rounded-min.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.14" name="generator"/>
+<title>Debugging - Free Pascal &amp; Lazarus Cookbook</title>
+<link href="../../../assets/stylesheets/main.fad675c6.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+ <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -67,225 +29,121 @@
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
             </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
-  
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#debugging" class="md-skip">
+<body data-md-color-accent="orange" data-md-color-primary="blue" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#debugging">20. 
           Skip to content
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
+</div>
+<div data-md-component="announce">
+</div>
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Free Pascal &amp; Lazarus Cookbook" class="md-header__button md-logo" aria-label="Free Pascal & Lazarus Cookbook" data-md-component="logo">
-      
-  <img src="../../../assets/logo-new-rounded-min.png" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Free Pascal & Lazarus Cookbook
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Free Pascal &amp; Lazarus Cookbook" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Free Pascal &amp; Lazarus Cookbook">
+<img alt="logo" src="../../../assets/logo-new-rounded-min.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Free Pascal &amp; Lazarus Cookbook
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               Debugging
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-      </label>
-    
-  
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
 </form>
-      
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
-    
-    
-  </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+</div>
+</div>
+</div>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
           
   
   Home
 
         </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../basics/overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../basics/overview/">
           
   
   Core Tasks
 
         </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../overview/">
           
   
   Advanced Topics
 
         </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../external-systems/overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../external-systems/overview/">
           
   
   External Systems
 
         </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../community/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../community/">
         
   
     
@@ -293,1189 +151,464 @@
   Community
 
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../resources/docs-sites/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../resources/docs-sites/">
           
   
   Resources
 
         </a>
-      </li>
-    
-  
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-    
-  
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Free Pascal &amp; Lazarus Cookbook" class="md-nav__button md-logo" aria-label="Free Pascal & Lazarus Cookbook" data-md-component="logo">
-      
-  <img src="../../../assets/logo-new-rounded-min.png" alt="logo">
-
-    </a>
-    Free Pascal & Lazarus Cookbook
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Free Pascal &amp; Lazarus Cookbook" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Free Pascal &amp; Lazarus Cookbook">
+<img alt="logo" src="../../../assets/logo-new-rounded-min.png"/>
+</a>
+    Free Pascal &amp; Lazarus Cookbook
   </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+<span class="md-ellipsis">
     Home
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
             Home
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
     Overview
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../about/">
+<span class="md-ellipsis">
     About
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../LICENSE/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../LICENSE/">
+<span class="md-ellipsis">
     License
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
     Core Tasks
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
             Core Tasks
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/overview/">
+<span class="md-ellipsis">
     Overview
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/install/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/install/">
+<span class="md-ellipsis">
     Install FPC and Lazarus
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/lazarus-ide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/lazarus-ide/">
+<span class="md-ellipsis">
     Lazarus IDE
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/code-structure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/code-structure/">
+<span class="md-ellipsis">
     Code Structure
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/hello-world/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/hello-world/">
+<span class="md-ellipsis">
     Run a "Hello World!"
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/cmd-line-params/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/cmd-line-params/">
+<span class="md-ellipsis">
     Command Line Parameters
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/funcs-procs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Functions & Procedures
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/funcs-procs/">
+<span class="md-ellipsis">
+    Functions &amp; Procedures
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/immutability/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/immutability/">
+<span class="md-ellipsis">
     Immutability
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/loops/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/loops/">
+<span class="md-ellipsis">
     Loops
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/lists/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/lists/">
+<span class="md-ellipsis">
     Lists
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/strings/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/strings/">
+<span class="md-ellipsis">
     Strings
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/numbers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/numbers/">
+<span class="md-ellipsis">
     Numbers
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/dates/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Dates & Times
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/dates/">
+<span class="md-ellipsis">
+    Dates &amp; Times
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/regex/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/regex/">
+<span class="md-ellipsis">
     Regular Expressions
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/dir-path-filename/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/dir-path-filename/">
+<span class="md-ellipsis">
     Directories, Paths and Files
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/exception-try-blocks/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/exception-try-blocks/">
+<span class="md-ellipsis">
     Exceptions
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/file-handling/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../basics/file-handling/">
+<span class="md-ellipsis">
     File Handling
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
     Advanced Topics
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
             Advanced Topics
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/">
+<span class="md-ellipsis">
     Overview
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../conditional-compilation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../conditional-compilation/">
+<span class="md-ellipsis">
     Conditional Compilation
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
     Debugging
   </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
     Debugging
   </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#official-docs-on-debugging-free-pascal-programs" class="md-nav__link">
-    <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#official-docs-on-debugging-free-pascal-programs">20.1 
+<span class="md-ellipsis">
       Official docs on debugging Free Pascal programs
     </span>
-  </a>
-  
+</a>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#detecting-heap-memory-leak" class="md-nav__link">
-    <span class="md-ellipsis">
-      Detecting heap memory leak
+<li class="md-nav__item">
+<a class="md-nav__link" href="#debugger-to-use-in-lazarus-ide">20.2 
+<span class="md-ellipsis">
+      Debugger to use in Lazarus IDE
     </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Detecting heap memory leak">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#official-docs-on-using-heaptrc-to-detect-memory-leaks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Official docs on using Heaptrc to detect memory leaks
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detecting-heap-memory-leaks">20.3 
+<span class="md-ellipsis">
+      Detecting heap memory leaks
     </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detecting-heap-memory-leak-in-lazarus" class="md-nav__link">
-    <span class="md-ellipsis">
-      Detecting heap memory leak in Lazarus
+</a>
+<nav aria-label="Detecting heap memory leaks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#official-docs-on-using-heaptrc">20.3.1 
+<span class="md-ellipsis">
+      Official docs on using Heaptrc
     </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Detecting heap memory leak in Lazarus">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-enable-heaptrc-in-lazarus" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Enable HeapTrc in Lazarus
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detecting-heap-memory-leaks-in-lazarus">20.3.2 
+<span class="md-ellipsis">
+      Detecting heap memory leaks in Lazarus
     </span>
-  </a>
-  
+</a>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-save-leaks-report-to-a-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Save leaks report to a file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-view-leaks-traces" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. View Leaks &amp; Traces
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concurrent-parallel/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../concurrent-parallel/">
+<span class="md-ellipsis">
     Concurrency and Parallelism
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
     External Systems
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
             External Systems
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../external-systems/overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../external-systems/overview/">
+<span class="md-ellipsis">
     Overview
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../external-systems/parsing-json/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../external-systems/parsing-json/">
+<span class="md-ellipsis">
     Parsing JSON
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../external-systems/webserver/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../external-systems/webserver/">
+<span class="md-ellipsis">
     Web Server
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../community/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../community/">
+<span class="md-ellipsis">
     Community
   </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
     Resources
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
             Resources
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../resources/docs-sites/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Documents & Sites
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/docs-sites/">
+<span class="md-ellipsis">
+    Documents &amp; Sites
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../resources/fpc-laz-packages/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    FPC & Lazarus Packages
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/fpc-laz-packages/">
+<span class="md-ellipsis">
+    FPC &amp; Lazarus Packages
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../resources/videos/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/videos/">
+<span class="md-ellipsis">
     Videos
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-  </ul>
+</a>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#official-docs-on-debugging-free-pascal-programs" class="md-nav__link">
-    <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#official-docs-on-debugging-free-pascal-programs">20.1 
+<span class="md-ellipsis">
       Official docs on debugging Free Pascal programs
     </span>
-  </a>
-  
+</a>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#detecting-heap-memory-leak" class="md-nav__link">
-    <span class="md-ellipsis">
-      Detecting heap memory leak
+<li class="md-nav__item">
+<a class="md-nav__link" href="#debugger-to-use-in-lazarus-ide">20.2 
+<span class="md-ellipsis">
+      Debugger to use in Lazarus IDE
     </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Detecting heap memory leak">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#official-docs-on-using-heaptrc-to-detect-memory-leaks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Official docs on using Heaptrc to detect memory leaks
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detecting-heap-memory-leaks">20.3 
+<span class="md-ellipsis">
+      Detecting heap memory leaks
     </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detecting-heap-memory-leak-in-lazarus" class="md-nav__link">
-    <span class="md-ellipsis">
-      Detecting heap memory leak in Lazarus
+</a>
+<nav aria-label="Detecting heap memory leaks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#official-docs-on-using-heaptrc">20.3.1 
+<span class="md-ellipsis">
+      Official docs on using Heaptrc
     </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Detecting heap memory leak in Lazarus">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-enable-heaptrc-in-lazarus" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Enable HeapTrc in Lazarus
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detecting-heap-memory-leaks-in-lazarus">20.3.2 
+<span class="md-ellipsis">
+      Detecting heap memory leaks in Lazarus
     </span>
-  </a>
-  
+</a>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-save-leaks-report-to-a-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Save leaks report to a file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-view-leaks-traces" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. View Leaks &amp; Traces
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-<h1 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h1>
-<h2 id="official-docs-on-debugging-free-pascal-programs">Official docs on debugging Free Pascal programs<a class="headerlink" href="#official-docs-on-debugging-free-pascal-programs" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="debugging"><span class="enumerate-headings-plugin enumerate-heading-plugin">20.</span> Debugging<a class="headerlink" href="#debugging" title="Permanent link">¶</a></h1>
+<h2 id="official-docs-on-debugging-free-pascal-programs"><span class="enumerate-headings-plugin enumerate-heading-plugin">20.1</span> Official docs on debugging Free Pascal programs<a class="headerlink" href="#official-docs-on-debugging-free-pascal-programs" title="Permanent link">¶</a></h2>
 <p>Here is the official docs by Michaël Van Canneyt and Florian Klämpfl; <a href="https://www.freepascal.org/docs-html/user/userch10.html">Debugging your Program</a>.</p>
-<h2 id="detecting-heap-memory-leak">Detecting heap memory leak<a class="headerlink" href="#detecting-heap-memory-leak" title="Permanent link">&para;</a></h2>
-<h3 id="official-docs-on-using-heaptrc-to-detect-memory-leaks">Official docs on using Heaptrc to detect memory leaks<a class="headerlink" href="#official-docs-on-using-heaptrc-to-detect-memory-leaks" title="Permanent link">&para;</a></h3>
+<h2 id="debugger-to-use-in-lazarus-ide"><span class="enumerate-headings-plugin enumerate-heading-plugin">20.2</span> Debugger to use in Lazarus IDE<a class="headerlink" href="#debugger-to-use-in-lazarus-ide" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/run-app-with-debugger.png"><img alt="Run-with-debugger" src="../../../assets/run-app-with-debugger.png"/></a></p>
+<p>Citing from <a href="https://wiki.lazarus.freepascal.org/DWARF">https://wiki.lazarus.freepascal.org/DWARF</a></p>
+<blockquote>
+<p><mark>For GDB "DWARFv2 with sets" is the best option</mark>. Testing shows that, if using other (v3 and up) DWARF (as generated by FPC) then GDB is more likely to crash.</p>
+<p>debugger may not be able to distinguish between PChar and AnsiString
+All identifiers (e.g. field-names) returned by the debugger are upper-cased
+... other diffs</p>
+<p>DWARF 2 (the one <strong>without</strong> "with sets") does not display sets "type TMySet = set of (v1,v2,v3)" correctly.</p>
+</blockquote>
+<h2 id="detecting-heap-memory-leaks"><span class="enumerate-headings-plugin enumerate-heading-plugin">20.3</span> Detecting heap memory leaks<a class="headerlink" href="#detecting-heap-memory-leaks" title="Permanent link">¶</a></h2>
+<h3 id="official-docs-on-using-heaptrc"><span class="enumerate-headings-plugin enumerate-heading-plugin">20.3.1</span> Official docs on using Heaptrc<a class="headerlink" href="#official-docs-on-using-heaptrc" title="Permanent link">¶</a></h3>
 <ul>
 <li><a href="https://www.freepascal.org/docs-html/rtl/heaptrc/usage.html">HeapTrc Usage</a></li>
 <li><a href="https://www.freepascal.org/docs-html/rtl/heaptrc/index.html">RTL - <code>heaptrc</code></a></li>
@@ -1484,23 +617,22 @@
 <li><a href="https://wiki.freepascal.org/heaptrc">Wiki - Using Heaptrc in FPC</a></li>
 <li><a href="https://wiki.freepascal.org/leakview">Wiki - Using LeakView in Lazarus</a></li>
 </ul>
-<h3 id="detecting-heap-memory-leak-in-lazarus">Detecting heap memory leak in Lazarus<a class="headerlink" href="#detecting-heap-memory-leak-in-lazarus" title="Permanent link">&para;</a></h3>
-<h4 id="1-enable-heaptrc-in-lazarus">1. Enable HeapTrc in Lazarus<a class="headerlink" href="#1-enable-heaptrc-in-lazarus" title="Permanent link">&para;</a></h4>
-<ol>
-<li>First, go to <code>Project | Project Options ...</code> </li>
-<li>In the Options window find <code>Compiler Options | Debugging</code>, then enable the following switches.</li>
-</ol>
+<h3 id="detecting-heap-memory-leaks-in-lazarus"><span class="enumerate-headings-plugin enumerate-heading-plugin">20.3.2</span> Detecting heap memory leaks in Lazarus<a class="headerlink" href="#detecting-heap-memory-leaks-in-lazarus" title="Permanent link">¶</a></h3>
+<p><strong>1. Enable HeapTrc in Lazarus</strong></p>
+<p>First, go to <code>Project | Project Options ...</code> </p>
+<p>In the Options window find <code>Compiler Options | Debugging</code>, then enable the following switches.</p>
 <ul>
 <li><strong>[Mandatory]</strong> <code>Use Heaptrc unit (check for mem-leaks) (-gh)</code></li>
 <li><strong>[Optional]</strong> <code>Display line numbers in run-time errors backtraces (-gl)</code></li>
 </ul>
-<p><a class="glightbox" href="../../../assets/use-heaptrc-unit-check-mem-leaks.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Project options window" src="../../../assets/use-heaptrc-unit-check-mem-leaks.png" /></a></p>
-<h4 id="2-save-leaks-report-to-a-file">2. Save leaks report to a file<a class="headerlink" href="#2-save-leaks-report-to-a-file" title="Permanent link">&para;</a></h4>
+<p>Click the image below to expand the view.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/use-heaptrc-unit-check-mem-leaks.png"><img alt="Project options window" src="../../../assets/use-heaptrc-unit-check-mem-leaks.png"/></a></p>
+<p><strong>2. Save leaks report to a file</strong></p>
 <p>Simply use <a href="https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html"><code>SetHeapTraceOutput</code></a> to redirect heap trace report to a file.</p>
 <p>Here is an example.</p>
 <ol>
 <li>
-<p>Define a <code>DEBUG</code> symbol. We contain the heap trace report only in debug builds. Line 7.</p>
+<p>Define a <code>DEBUG</code> symbol. We contain the heap trace report only for debug builds. Line 7.</p>
 <ul>
 <li>FYI, the <code>{$DEFINE}</code> directive has a command-line equivalent, <code>-d</code>.  For example, <code>-dNAME</code></li>
 </ul>
@@ -1596,9 +728,9 @@
 </span></span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="hll"><span class="w">  </span><span class="c1">// For production build, remove -dDEBUG in `Project Options` or other means and disable -gh.</span>
 </span></span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="hll">
 </span></span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="hll"><span class="w">  </span><span class="c1">// Setup Heaptrc output for the Leak and Traces window in Lazarus.</span>
-</span></span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="hll"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="s">&#39;heap.trc&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-</span></span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="hll"><span class="w">    </span><span class="nb">DeleteFile</span><span class="p">(</span><span class="s">&#39;heap.trc&#39;</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="hll"><span class="w">  </span><span class="n">SetHeapTraceOutput</span><span class="p">(</span><span class="s">&#39;heap.trc&#39;</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="hll"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="s">'heap.trc'</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+</span></span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="hll"><span class="w">    </span><span class="nb">DeleteFile</span><span class="p">(</span><span class="s">'heap.trc'</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="hll"><span class="w">  </span><span class="n">SetHeapTraceOutput</span><span class="p">(</span><span class="s">'heap.trc'</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="hll"><span class="w">  </span><span class="cm">{$ENDIF DEBUG}</span>
 </span></span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a>
 </span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">  </span><span class="c1">// Create a string list</span>
@@ -1606,92 +738,69 @@
 </span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a>
 </span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">  </span><span class="k">try</span>
 </span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">    </span><span class="c1">// Adding items</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Adding items&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;--------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'Adding items'</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'--------------------'</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">      </span><span class="n">stringList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#39;Counting &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">      </span><span class="n">stringList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">'Counting '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">;</span>
 </span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a>
 </span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">    </span><span class="c1">// Printing contents</span>
 </span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">:=</span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">stringList</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">do</span>
 </span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="n">stringList</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">;</span>
 </span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a>
 </span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">  </span><span class="k">finally</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="c1">// If you don&#39;t free, the -gh will give report of memory leaks</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="c1">// If you don't free, the -gh will give report of memory leaks</span>
 </span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="c1">// If Leak and Traces window is set to a heap trace file, this will appear in the Leak and Traces windoww.</span>
 </span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">    </span><span class="c1">// Otherwise, Heaptrc will print heap memory reports on CLI.</span>
 </span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">    </span><span class="n">stringList</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
 </span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
 </span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a>
 </span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">  </span><span class="c1">// Pause Console</span>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press Enter key to quit.&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'Press Enter key to quit.'</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 <p>After you run the program, you will get a heap trace report file.</p>
-<h4 id="3-view-leaks-traces">3. View Leaks &amp; Traces<a class="headerlink" href="#3-view-leaks-traces" title="Permanent link">&para;</a></h4>
+<p><strong>3. View Leaks &amp; Traces</strong></p>
 <ol>
 <li>Click <code>View</code> form the top menu bar of Lazarus IDE.</li>
 <li>Select <code>Leaks and Traces</code></li>
 <li>Set the <code>.trc</code> file to read by pressing the <code>...</code> (elipsis) button.</li>
 <li>Click the <strong>Update</strong> button to reload latest changes to the <code>.trc</code> file.</li>
 </ol>
-<p><a class="glightbox" href="../../../assets/opening-leaks-and-traces-window.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Project options window" src="../../../assets/opening-leaks-and-traces-window.png" /></a></p>
+<p>Click the image below to expand the view.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/opening-leaks-and-traces-window.png"><img alt="Project options window" src="../../../assets/opening-leaks-and-traces-window.png"/></a></p>
 <p>Now, whenever you run the program in DEBUG mode from Lazarus IDE, simply press the <strong>Update</strong> button on the <strong>Leaks and Traces</strong> window to see the latest heap memory report.</p>
 <p>If there is any leaks in the program, pressing the <strong>Update</strong> button will show leaking memory size, leaking blocks counts and the details of leaking blocks.</p>
-<p><a class="glightbox" href="../../../assets/leaks-in-leaks-and-traces-window.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Project options window" src="../../../assets/leaks-in-leaks-and-traces-window.png" /></a></p>
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-        </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
+<p>Click the image below to expand the view.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/leaks-in-leaks-and-traces-window.png"><img alt="Project options window" src="../../../assets/leaks-in-leaks-and-traces-window.png"/></a></p>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
       Material for MkDocs
     </a>
-  
 </div>
-      
-    </div>
-  </div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
-    
-    
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-    
-    
-      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
-      
-        <script src="../../../javascripts/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="../../../js/open_in_new_tab.js"></script>
-      
-    
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../../../js/open_in_new_tab.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -1,61 +1,23 @@
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-        <link rel="canonical" href="https://learn-pascal-lang.org/docs/basics/numbers/">
-      
-      
-        <link rel="prev" href="../strings/">
-      
-      
-        <link rel="next" href="../dates/">
-      
-      
-      <link rel="icon" href="../../../assets/logo-new-rounded-min.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
-    
-    
-      
-        <title>Numbers - Free Pascal & Lazarus Cookbook</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
-      
-        
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
-      
-      
+<!DOCTYPE html>
 
-
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
-      
-    
-    
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://learn-pascal-lang.org/docs/basics/numbers/" rel="canonical"/>
+<link href="../strings/" rel="prev"/>
+<link href="../dates/" rel="next"/>
+<link href="../../../assets/logo-new-rounded-min.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.14" name="generator"/>
+<title>Numbers - Free Pascal &amp; Lazarus Cookbook</title>
+<link href="../../../assets/stylesheets/main.fad675c6.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+ <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -67,225 +29,121 @@
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
             </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
-  
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#numbers" class="md-skip">
+<body data-md-color-accent="orange" data-md-color-primary="blue" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#numbers">12. 
           Skip to content
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
+</div>
+<div data-md-component="announce">
+</div>
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Free Pascal &amp; Lazarus Cookbook" class="md-header__button md-logo" aria-label="Free Pascal & Lazarus Cookbook" data-md-component="logo">
-      
-  <img src="../../../assets/logo-new-rounded-min.png" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Free Pascal & Lazarus Cookbook
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Free Pascal &amp; Lazarus Cookbook" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Free Pascal &amp; Lazarus Cookbook">
+<img alt="logo" src="../../../assets/logo-new-rounded-min.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Free Pascal &amp; Lazarus Cookbook
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               Numbers
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-      </label>
-    
-  
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
 </form>
-      
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
-    
-    
-  </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+</div>
+</div>
+</div>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
           
   
   Home
 
         </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../overview/">
           
   
   Core Tasks
 
         </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../advanced/overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../advanced/overview/">
           
   
   Advanced Topics
 
         </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../external-systems/overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../external-systems/overview/">
           
   
   External Systems
 
         </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../community/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../community/">
         
   
     
@@ -293,1107 +151,428 @@
   Community
 
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../resources/docs-sites/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../resources/docs-sites/">
           
   
   Resources
 
         </a>
-      </li>
-    
-  
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-    
-  
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Free Pascal &amp; Lazarus Cookbook" class="md-nav__button md-logo" aria-label="Free Pascal & Lazarus Cookbook" data-md-component="logo">
-      
-  <img src="../../../assets/logo-new-rounded-min.png" alt="logo">
-
-    </a>
-    Free Pascal & Lazarus Cookbook
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Free Pascal &amp; Lazarus Cookbook" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Free Pascal &amp; Lazarus Cookbook">
+<img alt="logo" src="../../../assets/logo-new-rounded-min.png"/>
+</a>
+    Free Pascal &amp; Lazarus Cookbook
   </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+<span class="md-ellipsis">
     Home
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
             Home
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
     Overview
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../about/">
+<span class="md-ellipsis">
     About
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../LICENSE/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../LICENSE/">
+<span class="md-ellipsis">
     License
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
     Core Tasks
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
             Core Tasks
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/">
+<span class="md-ellipsis">
     Overview
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../install/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../install/">
+<span class="md-ellipsis">
     Install FPC and Lazarus
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lazarus-ide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lazarus-ide/">
+<span class="md-ellipsis">
     Lazarus IDE
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../code-structure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../code-structure/">
+<span class="md-ellipsis">
     Code Structure
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../hello-world/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hello-world/">
+<span class="md-ellipsis">
     Run a "Hello World!"
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cmd-line-params/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cmd-line-params/">
+<span class="md-ellipsis">
     Command Line Parameters
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../funcs-procs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Functions & Procedures
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../funcs-procs/">
+<span class="md-ellipsis">
+    Functions &amp; Procedures
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../immutability/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../immutability/">
+<span class="md-ellipsis">
     Immutability
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../loops/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../loops/">
+<span class="md-ellipsis">
     Loops
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lists/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lists/">
+<span class="md-ellipsis">
     Lists
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../strings/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../strings/">
+<span class="md-ellipsis">
     Strings
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
     Numbers
   </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
     Numbers
   </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-generate-a-random-number" class="md-nav__link">
-    <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-generate-a-random-number">12.1 
+<span class="md-ellipsis">
       How to generate a random number?
     </span>
-  </a>
-  
+</a>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-generate-a-random-number-integer-between-2-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-generate-a-random-number-integer-between-2-numbers">12.2 
+<span class="md-ellipsis">
       How to generate a random number (Integer) between 2 numbers?
     </span>
-  </a>
-  
+</a>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-generate-a-random-numbers-between-2-real-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-generate-a-random-numbers-between-2-real-numbers">12.3 
+<span class="md-ellipsis">
       How to generate a random numbers between 2 real numbers?
     </span>
-  </a>
-  
+</a>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-generate-a-series-of-random-real-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-generate-a-series-of-random-real-numbers">12.4 
+<span class="md-ellipsis">
       How to generate a series of random real numbers?
     </span>
-  </a>
-  
+</a>
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dates/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Dates & Times
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dates/">
+<span class="md-ellipsis">
+    Dates &amp; Times
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../regex/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../regex/">
+<span class="md-ellipsis">
     Regular Expressions
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dir-path-filename/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dir-path-filename/">
+<span class="md-ellipsis">
     Directories, Paths and Files
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../exception-try-blocks/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../exception-try-blocks/">
+<span class="md-ellipsis">
     Exceptions
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../file-handling/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../file-handling/">
+<span class="md-ellipsis">
     File Handling
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
     Advanced Topics
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
             Advanced Topics
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../advanced/overview/">
+<span class="md-ellipsis">
     Overview
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/conditional-compilation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../advanced/conditional-compilation/">
+<span class="md-ellipsis">
     Conditional Compilation
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/debugging/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../advanced/debugging/">
+<span class="md-ellipsis">
     Debugging
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/concurrent-parallel/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../advanced/concurrent-parallel/">
+<span class="md-ellipsis">
     Concurrency and Parallelism
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
     External Systems
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
             External Systems
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../external-systems/overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../external-systems/overview/">
+<span class="md-ellipsis">
     Overview
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../external-systems/parsing-json/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../external-systems/parsing-json/">
+<span class="md-ellipsis">
     Parsing JSON
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../external-systems/webserver/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../external-systems/webserver/">
+<span class="md-ellipsis">
     Web Server
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../community/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../community/">
+<span class="md-ellipsis">
     Community
   </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
     Resources
   </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
             Resources
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../resources/docs-sites/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Documents & Sites
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/docs-sites/">
+<span class="md-ellipsis">
+    Documents &amp; Sites
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../resources/fpc-laz-packages/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    FPC & Lazarus Packages
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/fpc-laz-packages/">
+<span class="md-ellipsis">
+    FPC &amp; Lazarus Packages
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../resources/videos/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/videos/">
+<span class="md-ellipsis">
     Videos
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-  </ul>
+</a>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-generate-a-random-number" class="md-nav__link">
-    <span class="md-ellipsis">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-generate-a-random-number">12.1 
+<span class="md-ellipsis">
       How to generate a random number?
     </span>
-  </a>
-  
+</a>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-generate-a-random-number-integer-between-2-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-generate-a-random-number-integer-between-2-numbers">12.2 
+<span class="md-ellipsis">
       How to generate a random number (Integer) between 2 numbers?
     </span>
-  </a>
-  
+</a>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-generate-a-random-numbers-between-2-real-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-generate-a-random-numbers-between-2-real-numbers">12.3 
+<span class="md-ellipsis">
       How to generate a random numbers between 2 real numbers?
     </span>
-  </a>
-  
+</a>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-generate-a-series-of-random-real-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-generate-a-series-of-random-real-numbers">12.4 
+<span class="md-ellipsis">
       How to generate a series of random real numbers?
     </span>
-  </a>
-  
+</a>
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-<h1 id="numbers">Numbers<a class="headerlink" href="#numbers" title="Permanent link">&para;</a></h1>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="numbers"><span class="enumerate-headings-plugin enumerate-heading-plugin">12.</span> Numbers<a class="headerlink" href="#numbers" title="Permanent link">¶</a></h1>
 <div class="admonition info">
 <p class="admonition-title">Random generator</p>
 <p>FPC 3.2.2 uses a Mersenne twister generate random numbers.</p>
@@ -1401,7 +580,7 @@
 <p>Reason? Xoshiro128 is faster, has a much smaller memory footprint and generates better random numbers.</p>
 <p>git: <a href="https://gitlab.com/freepascal.org/fpc/source/-/commit/91cf1774dd59376434dde4581f8eaad74696aa0a">91cf1774</a></p>
 </div>
-<h2 id="how-to-generate-a-random-number">How to generate a random number?<a class="headerlink" href="#how-to-generate-a-random-number" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-generate-a-random-number"><span class="enumerate-headings-plugin enumerate-heading-plugin">12.1</span> How to generate a random number?<a class="headerlink" href="#how-to-generate-a-random-number" title="Permanent link">¶</a></h2>
 <p>Call <code>Randomize</code> once, then use <a href="https://www.freepascal.org/docs-html/rtl/system/random.html"><code>Random()</code></a> function.</p>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1447,12 +626,12 @@
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="how-to-generate-a-random-number-integer-between-2-numbers">How to generate a random number (Integer) between 2 numbers?<a class="headerlink" href="#how-to-generate-a-random-number-integer-between-2-numbers" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-generate-a-random-number-integer-between-2-numbers"><span class="enumerate-headings-plugin enumerate-heading-plugin">12.2</span> How to generate a random number (Integer) between 2 numbers?<a class="headerlink" href="#how-to-generate-a-random-number-integer-between-2-numbers" title="Permanent link">¶</a></h2>
 <p>You can write a function as follows.</p>
-<div class="language-pascal highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">function</span><span class="w"> </span><span class="nf">RandomBetween</span><span class="p">(</span><span class="nb">min</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">begin</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="bp">Result</span><span class="o">:=</span><span class="w"> </span><span class="nb">Random</span><span class="p">(</span><span class="nb">max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">min</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">min</span><span class="o">;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">end</span><span class="o">;</span>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">function</span><span class="w"> </span><span class="nf">RandomBetween</span><span class="p">(</span><span class="nb">min</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">begin</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span><span class="bp">Result</span><span class="o">:=</span><span class="w"> </span><span class="nb">Random</span><span class="p">(</span><span class="nb">max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">min</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">min</span><span class="o">;</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">end</span><span class="o">;</span>
 </span></code></pre></div>
 <p>Here is the full example.</p>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
@@ -1499,18 +678,18 @@
 </span></span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>
 </span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="hll"><span class="w">  </span><span class="n">randomNumber</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">RandomBetween</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Random number between &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">min</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; and &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; is: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">randomNumber</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'Random number between '</span><span class="o">,</span><span class="w"> </span><span class="nb">min</span><span class="o">,</span><span class="w"> </span><span class="s">' and '</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="o">,</span><span class="w"> </span><span class="s">' is: '</span><span class="o">,</span><span class="w"> </span><span class="n">randomNumber</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>
 </span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">  </span><span class="c1">// Pause console</span>
 </span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="how-to-generate-a-random-numbers-between-2-real-numbers">How to generate a random numbers between 2 real numbers?<a class="headerlink" href="#how-to-generate-a-random-numbers-between-2-real-numbers" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-generate-a-random-numbers-between-2-real-numbers"><span class="enumerate-headings-plugin enumerate-heading-plugin">12.3</span> How to generate a random numbers between 2 real numbers?<a class="headerlink" href="#how-to-generate-a-random-numbers-between-2-real-numbers" title="Permanent link">¶</a></h2>
 <p>You can use the function below to get a real number between 2 numbers.</p>
-<div class="language-pascal highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">function</span><span class="w"> </span><span class="nf">RandomNumberBetween</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="nb">min</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="o">:</span><span class="w"> </span><span class="kt">real</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">real</span><span class="o">;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">begin</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="bp">Result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">Random</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nb">max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">min</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">min</span><span class="o">;</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">end</span><span class="o">;</span>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">function</span><span class="w"> </span><span class="nf">RandomNumberBetween</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="nb">min</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="o">:</span><span class="w"> </span><span class="kt">real</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">real</span><span class="o">;</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">begin</span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="bp">Result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">Random</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nb">max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">min</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">min</span><span class="o">;</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="k">end</span><span class="o">;</span>
 </span></code></pre></div>
 <p>Here is the full example.</p>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
@@ -1559,13 +738,13 @@
 </span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">  </span><span class="c1">// Get a random (real) number between min and max</span>
 </span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="hll"><span class="w">  </span><span class="n">randomRealNumber</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">RandomNumberBetween</span><span class="p">(</span><span class="nb">min</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a>
-</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Random real number between &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">min</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">6</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; and &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">6</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; is: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">randomRealNumber</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'Random real number between '</span><span class="o">,</span><span class="w"> </span><span class="nb">min</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">6</span><span class="o">,</span><span class="w"> </span><span class="s">' and '</span><span class="o">,</span><span class="w"> </span><span class="nb">max</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">6</span><span class="o">,</span><span class="w"> </span><span class="s">' is: '</span><span class="o">,</span><span class="w"> </span><span class="n">randomRealNumber</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a>
 </span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">  </span><span class="c1">// Pause console</span>
 </span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="how-to-generate-a-series-of-random-real-numbers">How to generate a series of random real numbers?<a class="headerlink" href="#how-to-generate-a-series-of-random-real-numbers" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-generate-a-series-of-random-real-numbers"><span class="enumerate-headings-plugin enumerate-heading-plugin">12.4</span> How to generate a series of random real numbers?<a class="headerlink" href="#how-to-generate-a-series-of-random-real-numbers" title="Permanent link">¶</a></h2>
 <p>You can use <code>TGVector</code> and <code>function RandomNumberBetween(const min, max: real): real;</code> mentioned in the previous section.</p>
 <ol>
 <li>Create a new <code>type</code> to contain a list of real numbers (line 15).</li>
@@ -1665,22 +844,22 @@
 </span></span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31"></a><span class="w">  </span><span class="k">try</span>
 </span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32"></a>
 </span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33"></a><span class="w">    </span><span class="c1">// Populating the list with random real numbers</span>
-</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;-- Populating the list --------------------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'-- Populating the list --------------------------------'</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35"></a><span class="hll"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">noSample</span><span class="w"> </span><span class="k">do</span>
 </span></span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36"></a><span class="hll"><span class="w">    </span><span class="k">begin</span>
 </span></span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37"></a><span class="hll"><span class="w">      </span><span class="n">realList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">RandomNumberBetween</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span><span class="o">;</span>
 </span></span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38"></a><span class="hll"><span class="w">    </span><span class="k">end</span><span class="o">;</span>
 </span></span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39"></a>
 </span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40"></a><span class="w">    </span><span class="c1">// Displaying the content of the list</span>
-</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;-- Content of list, showing up to 4 decimals ----------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'-- Content of list, showing up to 4 decimals ----------'</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">realList</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">do</span>
 </span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43"></a><span class="w">    </span><span class="k">begin</span>
-</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44"></a><span class="w">      </span><span class="nb">Write</span><span class="p">(</span><span class="n">realList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44"></a><span class="w">      </span><span class="nb">Write</span><span class="p">(</span><span class="n">realList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="o">,</span><span class="w"> </span><span class="s">' '</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
 </span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="o">;</span>
 </span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47"></a>
 </span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48"></a><span class="w">    </span><span class="c1">// Displaying the mean</span>
-</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;-- The mean, up to 4 decimals, is ---------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'-- The mean, up to 4 decimals, is ---------------------'</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">Mean</span><span class="p">(</span><span class="n">realList</span><span class="o">.</span><span class="n">ToArray</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51"></a>
 </span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52"></a><span class="w">  </span><span class="k">finally</span>
@@ -1769,81 +948,56 @@
 </span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a><span class="hll"><span class="w">  </span><span class="nb">SetLength</span><span class="p">(</span><span class="n">realList</span><span class="o">,</span><span class="w"> </span><span class="n">noSample</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a>
 </span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="w">  </span><span class="c1">// Populating the list with random real numbers</span>
-</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;-- Populating the list --------------------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'-- Populating the list --------------------------------'</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">low</span><span class="p">(</span><span class="n">realList</span><span class="p">)</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nb">high</span><span class="p">(</span><span class="n">realList</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
 </span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31"></a><span class="w">  </span><span class="k">begin</span>
 </span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32"></a><span class="hll"><span class="w">    </span><span class="n">realList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">RandomNumberBetween</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
 </span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34"></a>
 </span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35"></a><span class="w">  </span><span class="c1">// Displaying the content of the list</span>
-</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;-- Content of list, showing up to 4 decimals ----------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'-- Content of list, showing up to 4 decimals ----------'</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nb">high</span><span class="p">(</span><span class="n">realList</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
 </span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a><span class="w">    </span><span class="nb">Write</span><span class="p">(</span><span class="n">realList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a><span class="w">    </span><span class="nb">Write</span><span class="p">(</span><span class="n">realList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="o">,</span><span class="w"> </span><span class="s">' '</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
 </span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41"></a>
 </span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="o">;</span>
 </span><span id="__span-6-43"><a id="__codelineno-6-43" name="__codelineno-6-43"></a>
 </span><span id="__span-6-44"><a id="__codelineno-6-44" name="__codelineno-6-44"></a><span class="w">  </span><span class="c1">// Displaying the mean</span>
-</span><span id="__span-6-45"><a id="__codelineno-6-45" name="__codelineno-6-45"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;-- The mean, up to 4 decimals, is ---------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-6-45"><a id="__codelineno-6-45" name="__codelineno-6-45"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">'-- The mean, up to 4 decimals, is ---------------------'</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-6-46"><a id="__codelineno-6-46" name="__codelineno-6-46"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">Mean</span><span class="p">(</span><span class="n">realList</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-6-47"><a id="__codelineno-6-47" name="__codelineno-6-47"></a>
 </span><span id="__span-6-48"><a id="__codelineno-6-48" name="__codelineno-6-48"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-6-49"><a id="__codelineno-6-49" name="__codelineno-6-49"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-        </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
       Material for MkDocs
     </a>
-  
 </div>
-      
-    </div>
-  </div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
-    
-    
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-    
-    
-      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
-      
-        <script src="../../../javascripts/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="../../../js/open_in_new_tab.js"></script>
-      
-    
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../../../js/open_in_new_tab.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
