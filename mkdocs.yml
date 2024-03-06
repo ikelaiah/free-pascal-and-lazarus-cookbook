@@ -23,10 +23,12 @@ nav:
     - Directories, Paths and Files: docs/basics/dir-path-filename.md
     - Exceptions: docs/basics/exception-try-blocks.md
     - File Handling: docs/basics/file-handling.md
+
   - Advanced Topics:
     - Overview: docs/advanced/overview.md
-    - Concurrency and Parallelism: docs/advanced/concurrent-parallel.md
     - Conditional Compilation: docs/advanced/conditional-compilation.md
+    - Debugging: docs/advanced/debugging.md
+    - Concurrency and Parallelism: docs/advanced/concurrent-parallel.md
   - External Systems:
     - Overview: docs/external-systems/overview.md
     - Parsing JSON: docs/external-systems/parsing-json.md

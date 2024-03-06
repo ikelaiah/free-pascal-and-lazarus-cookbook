@@ -1,11 +1,28 @@
 # Conditional Compilation
 
 
+## How can I compile conditionally?
 
+You can use [`$DEFINE`](https://www.freepascal.org/docs-html/prog/progsu11.html) to define a symbol to compile your program conditionally.
 
-## Can I define my own symbols?
+For example.
 
-Sure you can.
+```pascal
+{$DEFINE name}
+```
+
+Then, use [`$IFDEF name`](https://www.freepascal.org/docs-html/prog/progsu31.html) to start the conditional compilation.
+Use [`$ENDIF some ignored comments`](https://www.freepascal.org/docs-html/prog/progsu16.html) to end the conditonal compilation.
+
+```pascal
+ {$IFDEF name}
+
+ // More code ...
+
+ {$ENDIF name}
+```
+
+## Useful symbols for conditional compilation
 
 Here is an example contributed by [𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪](https://discord.com/channels/570025060312547359/570025060312547361/1193531999542063134) (Unofficial Free Pascal Discord).
 
