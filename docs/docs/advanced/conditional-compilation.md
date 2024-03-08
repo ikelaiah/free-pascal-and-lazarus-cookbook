@@ -3,6 +3,8 @@
 
 ## How can I compile conditionally?
 
+### Use [`{$IFDEF}`](https://www.freepascal.org/docs-html/prog/progsu31.html)
+
 You can use [`$DEFINE`](https://www.freepascal.org/docs-html/prog/progsu11.html) to define a symbol to compile your program conditionally.
 
 For example.
@@ -22,9 +24,44 @@ Use [`$ENDIF some ignored comments`](https://www.freepascal.org/docs-html/prog/p
  {$ENDIF name}
 ```
 
+You can combine multiple `{$IFDEF}`s too. See the following example (taken from [https://wiki.freepascal.org/$IF](https://wiki.freepascal.org/$IF)).
+
+```pascal linenums="1"
+//Before you need write these conditions to check some conditions:
+{$DEFINE SOMETHING}
+{$DEFINE SOMETHINGELSE}
+{$IFDEF SOMETHING} //Combine $IFDEF to check multiple conditions
+  {$IFDEF SOMETHINGELSE}
+    {$ModeSwitch advancedrecords}
+  {$ENDIF}
+{$ENDIF}
+```
+
+### Use [`{$IF}`](https://www.freepascal.org/docs-html/prog/progsu29.html)
+
+[`{$IF}`](https://www.freepascal.org/docs-html/prog/progsu29.html) allows you to write complex conditions that cannot be done using `{$ifdef aname}`.
+
+See the following example (taken from [https://wiki.freepascal.org/$IF](https://wiki.freepascal.org/$IF)). You can see two local directives (`$DEFINE` and `$UNDEF`) along with `and` and `or` logic operators in it.
+
+```pascal linenums="1"
+{$IF defined(SOMETHING) and defined(SOMETHINGELSE)}//simple and readabl instead of union {$IFDef}`s
+  {$ModeSwitch advancedrecords}
+{$ENDIF} 
+
+{$IF defined(somthing) or defined(somethingelse)}
+  //Whatever you need!
+{$ENDIF}
+
+{$IF undefined(what) and defined(somethingelse)}
+  //Just for note, Another usage!
+{$ENDIF}
+```
+
 **References**
 
-- [Lazarus - Easy trick on how to use {$IFDEF DEBUG} for simple debugging](https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-easy-trick-on-how-to-use-ifdef-debug-for-simple-debugging/) by Hans on [Tweaking4All](https://www.tweaking4all.com).
+- [Lazarus - Easy trick on how to use {$IFDEF DEBUG} for simple debugging](https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-easy-trick-on-how-to-use-ifdef-debug-for-simple-debugging/) by Hans Luijten on [Tweaking4All](https://www.tweaking4all.com).
+- [Conditional Compilation `{$IFDEF}` - Free Pascal Wiki](https://wiki.freepascal.org/Conditional_compilation)
+- [Conditional Compilation with `{$IF}` - Free Pascal Wiki](https://wiki.freepascal.org/$IF)
 
 ## Useful symbols for conditional compilation
 
