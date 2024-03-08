@@ -398,6 +398,24 @@
       How can I compile conditionally?
     </span>
 </a>
+<nav aria-label="How can I compile conditionally?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-ifdef">19.1.1 
+<span class="md-ellipsis">
+      Use {$IFDEF}
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-if">19.1.2 
+<span class="md-ellipsis">
+      Use {$IF}
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#useful-symbols-for-conditional-compilation">19.2 
@@ -529,6 +547,24 @@
       How can I compile conditionally?
     </span>
 </a>
+<nav aria-label="How can I compile conditionally?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-ifdef">19.1.1 
+<span class="md-ellipsis">
+      Use {$IFDEF}
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-if">19.1.2 
+<span class="md-ellipsis">
+      Use {$IF}
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#useful-symbols-for-conditional-compilation">19.2 
@@ -546,6 +582,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="conditional-compilation"><span class="enumerate-headings-plugin enumerate-heading-plugin">19.</span> Conditional Compilation<a class="headerlink" href="#conditional-compilation" title="Permanent link">¶</a></h1>
 <h2 id="how-can-i-compile-conditionally"><span class="enumerate-headings-plugin enumerate-heading-plugin">19.1</span> How can I compile conditionally?<a class="headerlink" href="#how-can-i-compile-conditionally" title="Permanent link">¶</a></h2>
+<h3 id="use-ifdef"><span class="enumerate-headings-plugin enumerate-heading-plugin">19.1.1</span> Use <a href="https://www.freepascal.org/docs-html/prog/progsu31.html"><code>{$IFDEF}</code></a><a class="headerlink" href="#use-ifdef" title="Permanent link">¶</a></h3>
 <p>You can use <a href="https://www.freepascal.org/docs-html/prog/progsu11.html"><code>$DEFINE</code></a> to define a symbol to compile your program conditionally.</p>
 <p>For example.</p>
 <div class="language-pascal highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">{$DEFINE name}</span>
@@ -558,67 +595,26 @@ Use <a href="https://www.freepascal.org/docs-html/prog/progsu16.html"><code>$END
 </span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>
 </span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w"> </span><span class="cm">{$ENDIF name}</span>
 </span></code></pre></div>
-<p><strong>References</strong></p>
-<ul>
-<li><a href="https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-easy-trick-on-how-to-use-ifdef-debug-for-simple-debugging/">Lazarus - Easy trick on how to use {$IFDEF DEBUG} for simple debugging</a> by Hans on <a href="https://www.tweaking4all.com">Tweaking4All</a>.</li>
-</ul>
-<h2 id="useful-symbols-for-conditional-compilation"><span class="enumerate-headings-plugin enumerate-heading-plugin">19.2</span> Useful symbols for conditional compilation<a class="headerlink" href="#useful-symbols-for-conditional-compilation" title="Permanent link">¶</a></h2>
-<p>Here is an example contributed by <a href="https://discord.com/channels/570025060312547359/570025060312547361/1193531999542063134">𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪</a> (Unofficial Free Pascal Discord).</p>
-<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#__codelineno-2-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">{$IF Defined(DCC) or Defined(VER210) or Defined(VER200) or Defined(VER190) or Defined(VER185) or Defined(VER180) or Defined(VER170) or Defined(VER160) or Defined(VER150) or Defined(VER140) or Defined(VER130) or Defined(VER120) or Defined(VER100) or Defined(VER90) or Defined(VER80)}</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="cm">{$DEFINE Delphi}</span><span class="w"> </span><span class="cm">{ Delphi }</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cm">{$IFEND}</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="cm">{$IF Defined(DELPHI) and Declared(CompilerVersion) and (CompilerVersion &gt;= 25)}</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span><span class="cm">{$LEGACYIFEND ON}</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="cm">{$IFEND}</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="cm">{$IF Defined(FPC)}</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="cm">{$DEFINE Lazarus}</span><span class="w"> </span><span class="cm">{ Lazarus and Free Pascal }</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="cm">{$IFEND}</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="cm">{$IF Defined(DELPHI) and Declared(CompilerVersion) and (CompilerVersion &gt;= 23)}</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">  </span><span class="cm">{$DEFINE NameSpace}</span><span class="w"> </span><span class="cm">{ Delphis NameSpace feature (eg Winapi.Windows instead of Windows) }</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="cm">{$IFEND}</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="cm">{$IF Defined(DELPHI) and Declared(CompilerVersion) and (CompilerVersion &gt;= 20)}</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">  </span><span class="cm">{$DEFINE UniCode}</span><span class="w"> </span><span class="cm">{ Delphis UniCode support }</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="cm">{$IFEND}</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="cm">{$IF Defined(WIN32) or Defined(WIN64) or Defined(MSWindows)}</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">  </span><span class="cm">{$DEFINE Windows}</span><span class="w"> </span><span class="cm">{ We are on Windows }</span>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="cm">{$IFEND Windows}</span>
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="cm">{$IF Defined(FPC) and Declared(FPC_VERSION) and (FPC_VERSION &gt;= 3)}</span>
-</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">  </span><span class="cm">{$DEFINE UniCode}</span><span class="w"> </span><span class="cm">{ FreePascal UniCode support }</span>
-</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="cm">{$IFEND}</span>
+<p>You can combine multiple <code>{$IFDEF}</code>s too. See the following example (taken from [https://wiki.freepascal.org/<span class="arithmatex">\(IF](https://wiki.freepascal.org/\)</span>IF)).</p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">//Before you need write these conditions to check some conditions:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="cm">{$DEFINE SOMETHING}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cm">{$DEFINE SOMETHINGELSE}</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="cm">{$IFDEF SOMETHING}</span><span class="w"> </span><span class="c1">//Combine $IFDEF to check multiple conditions</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="cm">{$IFDEF SOMETHINGELSE}</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="cm">{$ModeSwitch advancedrecords}</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="cm">{$ENDIF}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>And here's an example of how you might use these symbols.</p>
+<h3 id="use-if"><span class="enumerate-headings-plugin enumerate-heading-plugin">19.1.2</span> Use <a href="https://www.freepascal.org/docs-html/prog/progsu29.html"><code>{$IF}</code></a><a class="headerlink" href="#use-if" title="Permanent link">¶</a></h3>
+<p><a href="https://www.freepascal.org/docs-html/prog/progsu29.html"><code>{$IF}</code></a> allows you to write complex conditions that cannot be done using <code>{$ifdef aname}</code>.</p>
+<p>See the following example (taken from [https://wiki.freepascal.org/<span class="arithmatex">\(IF](https://wiki.freepascal.org/\)</span>IF)). You can see two local directives (<code>$DEFINE</code> and <code>$UNDEF</code>) along with <code>and</code> and <code>or</code> logic operators in it.</p>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -629,37 +625,122 @@ Use <a href="https://www.freepascal.org/docs-html/prog/progsu16.html"><code>$END
 <span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span>
-<span class="normal"><a href="#__codelineno-3-13">13</a></span>
-<span class="normal"><a href="#__codelineno-3-14">14</a></span>
-<span class="normal"><a href="#__codelineno-3-15">15</a></span>
-<span class="normal"><a href="#__codelineno-3-16">16</a></span>
-<span class="normal"><a href="#__codelineno-3-17">17</a></span>
-<span class="normal"><a href="#__codelineno-3-18">18</a></span>
-<span class="normal"><a href="#__codelineno-3-19">19</a></span>
-<span class="normal"><a href="#__codelineno-3-20">20</a></span>
-<span class="normal"><a href="#__codelineno-3-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">begin</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="cm">{$IFDEF Delphi}</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="c1">// Specific code for Delphi mode</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="cm">{$ENDIF}</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="cm">{$IFDEF Lazarus}</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span><span class="c1">// Specific code for Lazarus and Free Pascal</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="cm">{$ENDIF}</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="cm">{$IFDEF Namespace}</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">    </span><span class="c1">// Specific code for Delphi's namespace</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="cm">{$ENDIF}</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="cm">{$IFDEF Windows}</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="c1">// Specific code for Windows</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="cm">{$ENDIF}</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="cm">{$IFDEF UniCode}</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="c1">// Code relies on Unicode</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="cm">{$ENDIF}</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="k">end</span><span class="o">.</span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cm">{$IF defined(SOMETHING) and defined(SOMETHINGELSE)}</span><span class="c1">//simple and readabl instead of union {$IFDef}`s</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="cm">{$ModeSwitch advancedrecords}</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="cm">{$ENDIF}</span><span class="w"> </span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="cm">{$IF defined(somthing) or defined(somethingelse)}</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span><span class="c1">//Whatever you need!</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="cm">{$ENDIF}</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="cm">{$IF undefined(what) and defined(somethingelse)}</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">  </span><span class="c1">//Just for note, Another usage!</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="cm">{$ENDIF}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/lazarus-easy-trick-on-how-to-use-ifdef-debug-for-simple-debugging/">Lazarus - Easy trick on how to use {$IFDEF DEBUG} for simple debugging</a> by Hans Luijten on <a href="https://www.tweaking4all.com">Tweaking4All</a>.</li>
+<li><a href="https://wiki.freepascal.org/Conditional_compilation">Conditional Compilation <code>{$IFDEF}</code> - Free Pascal Wiki</a></li>
+<li><a href="https://wiki.freepascal.org/$IF">Conditional Compilation with <code>{$IF}</code> - Free Pascal Wiki</a></li>
+</ul>
+<h2 id="useful-symbols-for-conditional-compilation"><span class="enumerate-headings-plugin enumerate-heading-plugin">19.2</span> Useful symbols for conditional compilation<a class="headerlink" href="#useful-symbols-for-conditional-compilation" title="Permanent link">¶</a></h2>
+<p>Here is an example contributed by <a href="https://discord.com/channels/570025060312547359/570025060312547361/1193531999542063134">𝓚𝓸𝓭𝓮𝓩𝔀𝓮𝓻𝓰 🇩🇪</a> (Unofficial Free Pascal Discord).</p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">{$IF Defined(DCC) or Defined(VER210) or Defined(VER200) or Defined(VER190) or Defined(VER185) or Defined(VER180) or Defined(VER170) or Defined(VER160) or Defined(VER150) or Defined(VER140) or Defined(VER130) or Defined(VER120) or Defined(VER100) or Defined(VER90) or Defined(VER80)}</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="cm">{$DEFINE Delphi}</span><span class="w"> </span><span class="cm">{ Delphi }</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="cm">{$IFEND}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="cm">{$IF Defined(DELPHI) and Declared(CompilerVersion) and (CompilerVersion &gt;= 25)}</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">  </span><span class="cm">{$LEGACYIFEND ON}</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="cm">{$IFEND}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="cm">{$IF Defined(FPC)}</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">  </span><span class="cm">{$DEFINE Lazarus}</span><span class="w"> </span><span class="cm">{ Lazarus and Free Pascal }</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="cm">{$IFEND}</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="cm">{$IF Defined(DELPHI) and Declared(CompilerVersion) and (CompilerVersion &gt;= 23)}</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">  </span><span class="cm">{$DEFINE NameSpace}</span><span class="w"> </span><span class="cm">{ Delphis NameSpace feature (eg Winapi.Windows instead of Windows) }</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="cm">{$IFEND}</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="cm">{$IF Defined(DELPHI) and Declared(CompilerVersion) and (CompilerVersion &gt;= 20)}</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">  </span><span class="cm">{$DEFINE UniCode}</span><span class="w"> </span><span class="cm">{ Delphis UniCode support }</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="cm">{$IFEND}</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="cm">{$IF Defined(WIN32) or Defined(WIN64) or Defined(MSWindows)}</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">  </span><span class="cm">{$DEFINE Windows}</span><span class="w"> </span><span class="cm">{ We are on Windows }</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="cm">{$IFEND Windows}</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="cm">{$IF Defined(FPC) and Declared(FPC_VERSION) and (FPC_VERSION &gt;= 3)}</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">  </span><span class="cm">{$DEFINE UniCode}</span><span class="w"> </span><span class="cm">{ FreePascal UniCode support }</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="cm">{$IFEND}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>And here's an example of how you might use these symbols.</p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">begin</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="cm">{$IFDEF Delphi}</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="c1">// Specific code for Delphi mode</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="cm">{$ENDIF}</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="cm">{$IFDEF Lazarus}</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="c1">// Specific code for Lazarus and Free Pascal</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="cm">{$ENDIF}</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="cm">{$IFDEF Namespace}</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">    </span><span class="c1">// Specific code for Delphi's namespace</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="cm">{$ENDIF}</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="cm">{$IFDEF Windows}</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="w">    </span><span class="c1">// Specific code for Windows</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="cm">{$ENDIF}</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="cm">{$IFDEF UniCode}</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="w">    </span><span class="c1">// Code relies on Unicode</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="cm">{$ENDIF}</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 </article>
 </div>
