@@ -79,7 +79,7 @@ Project Link: [https://github.com/ikelaiah/free-pascal-and-lazarus-cookbook](htt
 
     - [Unofficial Free Pascal discord server](https://discord.com/channels/570025060312547359/570091337173696513).
     - [Free Pascal & Lazarus forum](https://forum.lazarus.freepascal.org/index.php).
-    - [Tweaking4All Forum](https://www.tweaking4all.com/forum/).
+    - [Tweaking4All Delphi, Lazarus, Free Pascal forum](https://www.tweaking4all.com/forum/delphi-lazarus-free-pascal/).
     - [Laz Planet - Blogspot](https://lazplanet.blogspot.com) / [Laz Planet - GitLab](https://lazplanet.gitlab.io).
     - [Delphi Basics](https://www.delphibasics.co.uk/index.html).
 
