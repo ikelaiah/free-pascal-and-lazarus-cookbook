@@ -16,7 +16,7 @@ If you're seeking tutorials and in-depth technical discussions, don't miss [Reso
 
 The repo of this cookbook: [https://github.com/ikelaiah/free-pascal-and-lazarus-cookbook](https://github.com/ikelaiah/free-pascal-and-lazarus-cookbook).
 
-The repo for the code snippets: [https://github.com/ikelaiah/free-pascal-snippets](https://github.com/ikelaiah/free-pascal-snippets).
+The repo of the snippets: [https://github.com/ikelaiah/free-pascal-snippets](https://github.com/ikelaiah/free-pascal-snippets).
 
 ## Acknowledgments
 
