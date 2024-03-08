@@ -3,11 +3,20 @@
 ![Cooking](assets/home-min.png)
 
 
-Welcome to my Free Pascal and Lazarus IDE cookbook! Inside, you'll discover a collection of handy recipes (snippets) and study notes for the [Free Pascal programming language](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org), contributed by both myself and others.
+Welcome to my Free Pascal and Lazarus IDE Cookbook! 
+
+Inside, you'll discover a collection of handy recipes (snippets) and study notes for the [Free Pascal programming language](https://www.freepascal.org) and [Lazarus IDE](https://www.lazarus-ide.org), contributed by both myself and others.
 
 Uncover time-saving recipes and streamline your work in Free Pascal!
 
 If you're seeking tutorials and in-depth technical discussions, don't miss [Resources](docs/resources/docs-sites.md).
+
+
+## GitHub Repos
+
+The repo of this cookbook: [https://github.com/ikelaiah/free-pascal-and-lazarus-cookbook](https://github.com/ikelaiah/free-pascal-and-lazarus-cookbook).
+
+The repo for the code snippets: [https://github.com/ikelaiah/free-pascal-snippets](https://github.com/ikelaiah/free-pascal-snippets).
 
 ## Acknowledgments
 
