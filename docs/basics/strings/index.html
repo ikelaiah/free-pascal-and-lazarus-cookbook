@@ -622,8 +622,14 @@
 <li>your console might not support code page 65001, or</li>
 <li>your windows does not support UTF on API level (only read/write file in UTF-8)</li>
 </ol>
+<p>See this <a href="https://stackoverflow.com/a/57134096">answer from StackOverflow</a> on how to enable code page 65001 on your console.</p>
 </div>
-<p>See this <a href="https://stackoverflow.com/a/57134096">answer from StackOverflow</a> on how to enable code page 65001 on your console or on Windows (system-wide). <strong>DO NOT MISS</strong> the caveat section in that answer.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The same <a href="https://stackoverflow.com/a/57134096">answer from StackOverflow</a> also shows how to enable UTF-8 on Windows (system-wide). </p>
+<p><strong>DO NOT MISS</strong> the caveat section and comments in from that answer.</p>
+<p><strong><em>Enabling UTF-8 system-wide on Windows is currently in beta and could lead to unintended system-wide side effects.</em></strong></p>
+</div>
 <p>Refs:</p>
 <ul>
 <li><a href="https://wiki.freepascal.org/FPC_Unicode_support#Code_pages">https://wiki.freepascal.org/FPC_Unicode_support#Code_pages</a></li>
