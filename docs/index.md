@@ -11,7 +11,6 @@ Uncover time-saving recipes and streamline your work in Free Pascal!
 
 If you're seeking tutorials and in-depth technical discussions, don't miss [Resources](docs/resources/docs-sites.md).
 
-
 ## GitHub Repos
 
 The repo of this cookbook: [https://github.com/ikelaiah/free-pascal-and-lazarus-cookbook](https://github.com/ikelaiah/free-pascal-and-lazarus-cookbook).
