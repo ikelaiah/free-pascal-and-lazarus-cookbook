@@ -54,7 +54,16 @@ end.
     1. your console might not support code page 65001, or
     2. your windows does not support UTF on API level (only read/write file in UTF-8)
    
-   See this [answer from StackOverflow](https://stackoverflow.com/a/57134096) on how to enable code page 65001 on your console or on Windows (system-wide). **DO NOT MISS** the caveat section in that answer.
+    See this [answer from StackOverflow](https://stackoverflow.com/a/57134096) on how to enable code page 65001 on your console.
+
+
+!!! Warning
+   
+    The same [answer from StackOverflow](https://stackoverflow.com/a/57134096) also shows how to enable UTF-8 on Windows (system-wide). 
+   
+    **DO NOT MISS** the caveat section and comments in from that answer.
+      
+    ***Enabling UTF-8 system-wide on Windows is currently in beta and could lead to unintended system-wide side effects.***
 
    Refs:
 
