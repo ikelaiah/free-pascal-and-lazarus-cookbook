@@ -831,18 +831,18 @@ The snippet below was adapted from one of Stephen Ball's articles, [Faster files
 The structure is similar to [reading a text file using TFileStream](#read-a-text-file---tfilestream), but here, we use [`TBufferedFileStream`](https://www.freepascal.org/docs-html/fcl/bufstream/tbufferedfilestream.html).
 
 1. In the `uses` section, add `bufstream`. Line 11.
-2. Create a `TBufferedFileStream` to open a text file for reading. Line 30.
-3. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 33-45.
+2. Create a `TBufferedFileStream` to open a text file for reading. Line 29.
+3. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 32-44.
 
       - This part sequentially reads through a text file, checking each character one by one. 
       - It combines these characters into lines by joining them together until it finds a newline character, which indicates the end of a line. 
       - Once a complete line is formed, the snippet prints it out using the `WriteLn` function.
 
-4. `Free` resources when done. Line 47.
+4. `Free` resources when done. Line 46.
 
 There is an outer `try..except` is in place to handle error during open and read operations.
 
-```pascal linenums="1" hl_lines="11 30 33-45 47"
+```pascal linenums="1" hl_lines="11 29 32-44 46"
 program TBufferedFileStreamReadFile;
 
 {$mode objfpc}{$H+}
@@ -857,7 +857,6 @@ uses
 
 var
   fStream: TBufferedFileStream;
-  fReader: TReadBufStream;
   line: string;
   ch: char;
 
