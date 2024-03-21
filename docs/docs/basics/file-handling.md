@@ -834,9 +834,9 @@ The structure is similar to [reading a text file using TFileStream](#read-a-text
 2. Create a `TBufferedFileStream` to open a text file for reading. Line 30.
 3. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 33-45.
 
-   - This part sequentially reads through a text file, checking each character one by one. 
-   - It combines these characters into lines by joining them together until it finds a newline character, which indicates the end of a line. 
-   - Once a complete line is formed, the snippet prints it out using the `WriteLn` function.
+      - This part sequentially reads through a text file, checking each character one by one. 
+      - It combines these characters into lines by joining them together until it finds a newline character, which indicates the end of a line. 
+      - Once a complete line is formed, the snippet prints it out using the `WriteLn` function.
 
 4. `Free` resources when done. Line 47.
 
