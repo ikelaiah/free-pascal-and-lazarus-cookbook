@@ -824,7 +824,7 @@ begin
 end.
 ```
 
-### Read a text file faster - `TBufferedFileStream`
+### Read a text file - `TBufferedFileStream`
 
 The snippet below was adapted from one of Stephen Ball's articles, [Faster filestream with TBufferedFilestream](https://delphiaball.co.uk/2016/04/29/faster-filestream-tbufferedfilestream/).
 
