@@ -12,7 +12,7 @@ There are many ways to do this;
 
 
 
-### Create a text file - Classic
+### New text file - Classic
 
 See the snippet below. It uses `SysUtil` for catching errors during opening and writing file.
 
@@ -94,7 +94,7 @@ end.
 I'd prefer to handle error gracefully. Hence, I like the first snippet better.
 
 
-### Create a text file - Classic alt
+### New text file - Classic alt
 
 You can streamline the process of writing text to a file by refactoring the lines into a procedure.
 
@@ -151,7 +151,7 @@ end.
 ```
 
 
-### Create a text file - `TFileStream`
+### New text file - `TFileStream`
 
 
 For writing text into a new file using Object style;
@@ -193,7 +193,7 @@ begin
 end.
 ```
 
-### Create a text file - `TFileStream` (alt)
+### New text file - `TFileStream` (alt)
 
 This example is the previous snippet wrapped in a `procedure`.
 
@@ -235,7 +235,7 @@ begin
 end.
 ```
 
-### Create a text file - `TSringList`
+### New text file - `TSringList`
 
 1. Create the `TStringList` object. Line 18.
 2. Use the `Add` method to add text or lines. Line 21-22.
@@ -283,7 +283,7 @@ end.
 
 ## Create a blank text file
 
-### A blank text file - Classic
+### Blank text file - Classic
 
 Here is an example.
 
@@ -328,7 +328,7 @@ begin
 end.
 ```
 
-### A blank text file - `TFileStream`
+### Blank text file - `TFileStream`
 
 Quite straightforward.
 
@@ -362,7 +362,7 @@ begin
 end.
 ```
 
-### A blank text file - `TStringList`
+### Blank text file - `TStringList`
 
 See the snippet below.
 
@@ -824,6 +824,81 @@ begin
 end.
 ```
 
+### Read a text file faster - `TBufferedFileStream`
+
+The snippet below was adapted from one of Stephen Ball's articles, [Faster filestream with TBufferedFilestream](https://delphiaball.co.uk/2016/04/29/faster-filestream-tbufferedfilestream/).
+
+The structure is similar to [reading a text file using TFileStream](#read-a-text-file---tfilestream), but here, we use [`TBufferedFileStream`](https://www.freepascal.org/docs-html/fcl/bufstream/tbufferedfilestream.html).
+
+1. In the `uses` section, add `bufstream`. Line 11.
+2. Create a `TBufferedFileStream` to open a text file for reading. Line 30.
+3. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 33-45.
+
+   - This part sequentially reads through a text file, checking each character one by one. 
+   - It combines these characters into lines by joining them together until it finds a newline character, which indicates the end of a line. 
+   - Once a complete line is formed, the snippet prints it out using the `WriteLn` function.
+
+4. `Free` resources when done. Line 47.
+
+There is an outer `try..except` is in place to handle error during open and read operations.
+
+```pascal linenums="1" hl_lines="11 30 33-45 47"
+program TBufferedFileStreamReadFile;
+
+{$mode objfpc}{$H+}
+
+uses
+  {$IFDEF UNIX}
+  cmem, cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils,
+  bufstream;
+
+var
+  fStream: TBufferedFileStream;
+  fReader: TReadBufStream;
+  line: string;
+  ch: char;
+
+begin
+
+  if Length(ParamStr(1)) < 3 then
+  begin
+    WriteLn('Invalid input file');
+    Exit;
+  end;
+
+  try
+
+    // Create TBufferedFileStream object, read only
+    fStream := TBufferedFileStream.Create(ParamStr(1), fmOpenRead);
+    try
+      // Keep on reading until there is no more data to read
+      while fStream.Read(ch, 1) = 1 do
+      begin
+        if ch = #10 then
+        begin
+          // Display the line.
+          WriteLn('Line: ', line);
+          // After displaing, reset.
+          line := '';
+        end
+        else
+          // If not #10, combine the characters to make up a line.
+          line := line + ch;
+      end;
+    finally
+      fStream.Free;
+    end;
+
+  except
+    on E: Exception do
+      WriteLn('Error: ' + E.Message);
+  end;
+
+end.
+```
 
 ### Read a text file - `TStringList`
 
@@ -888,6 +963,75 @@ begin
   WriteLn('--------------------');
   WriteLn('Press Enter key to quit.');
   ReadLn;
+
+end.
+```
+
+## Counting lines in a text file 
+
+### Counting lines - `TBufferedFileStream`
+
+The snippet below was adapted from [Faster filestream with TBufferedFilestream](https://delphiaball.co.uk/2016/04/29/faster-filestream-tbufferedfilestream/) by Stephen Ball.
+
+The structure is similar to [reading a text file using TFileStream](#read-a-text-file-tfilestream), but here, we use [`TBufferedFileStream`](https://www.freepascal.org/docs-html/fcl/bufstream/tbufferedfilestream.html).
+
+1. In the `uses` section, add `bufstream`. Line 11.
+2. Create a `TBufferedFileStream` to open a text file for reading. Line 33.
+3. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 35-39.
+4. `Free` resources when done. Line 41.
+
+```pascal linenums="1" hl_lines="11 33 35-39 41"
+program TBufferedFileStreamCount;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cmem, cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils,
+  bufstream;
+
+var
+  fStream: TBufferedFileStream;
+  total: int64;
+  ch: char;
+
+begin
+
+  // Do we have a valid input file?
+  if Length(ParamStr(1)) < 3 then
+  begin
+    WriteLn('Please specify a valid input file.');
+    Exit;
+  end;
+
+  // Reset total
+  total := 0;
+
+  // try - except block start
+  try
+
+    fStream := TBufferedFileStream.Create(ParamStr(1), fmOpenRead);
+    try
+      while fStream.Read(ch, 1) = 1 do
+      begin
+        if ch = #10 then
+          Inc(total);
+      end;
+    finally
+      fStream.Free;
+    end;
+
+    // User feedback
+    WriteLn('Total line is: ', IntToStr(total));
+
+  except
+    on E: Exception do
+      WriteLn('Error: ' + E.Message);
+
+  end; // try - except block ends
 
 end.
 ```
