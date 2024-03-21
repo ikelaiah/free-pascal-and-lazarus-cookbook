@@ -3152,15 +3152,17 @@
 <ol>
 <li>In the <code>uses</code> section, add <code>bufstream</code>. Line 11.</li>
 <li>Create a <code>TBufferedFileStream</code> to open a text file for reading. Line 30.</li>
-<li>Use the <code>while fStream.Read(ch, 1) = 1</code> to keep on reading data until there is no more data to read. Line 33-45.</li>
-</ol>
+<li>
+<p>Use the <code>while fStream.Read(ch, 1) = 1</code> to keep on reading data until there is no more data to read. Line 33-45.</p>
 <ul>
 <li>This part sequentially reads through a text file, checking each character one by one. </li>
 <li>It combines these characters into lines by joining them together until it finds a newline character, which indicates the end of a line. </li>
 <li>Once a complete line is formed, the snippet prints it out using the <code>WriteLn</code> function.</li>
 </ul>
-<ol start="4">
-<li><code>Free</code> resources when done. Line 47.</li>
+</li>
+<li>
+<p><code>Free</code> resources when done. Line 47.</p>
+</li>
 </ol>
 <p>There is an outer <code>try..except</code> is in place to handle error during open and read operations.</p>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
