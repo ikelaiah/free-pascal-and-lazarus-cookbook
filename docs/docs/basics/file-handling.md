@@ -974,12 +974,13 @@ The snippet below was adapted from [Faster filestream with TBufferedFilestream](
 
 The structure is similar to [reading a text file using TFileStream](#read-a-text-file-tfilestream), but here, we use [`TBufferedFileStream`](https://www.freepascal.org/docs-html/fcl/bufstream/tbufferedfilestream.html).
 
-1. In the `uses` section, add `bufstream`. Line 11.
-2. Create a `TBufferedFileStream` to open a text file for reading. Line 33.
-3. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 35-39.
-4. `Free` resources when done. Line 41.
+1. In the `uses` section, add `streamex` and `bufstream`. Line 11, 12.
+2. Create a `TBufferedFileStream` to open a text file for reading. Line 34.
+3. Create a `TStreamReader` to read line by line. Line 36.
+4. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 35-39.
+5. `Free` resources when done. Line 48, 51.
 
-```pascal linenums="1" hl_lines="11 33 35-39 41"
+```pascal linenums="1" hl_lines="11 34 36 38-46 48 51"
 program TBufferedFileStreamCount;
 
 {$mode objfpc}{$H+}{$J-}
@@ -990,12 +991,14 @@ uses
   {$ENDIF}
   Classes,
   SysUtils,
+  streamex,
   bufstream;
 
 var
   fStream: TBufferedFileStream;
+  fReader: TStreamReader;
   total: int64;
-  ch: char;
+  line: string;
 
 begin
 
@@ -1011,13 +1014,21 @@ begin
 
   // try - except block start
   try
-
-    fStream := TBufferedFileStream.Create(ParamStr(1), fmOpenRead);
+    fStream := TBufferedFileStream.Create(ParamStr(1), fmOpenRead or fmShareDenyWrite);
     try
-      while fStream.Read(ch, 1) = 1 do
-      begin
-        if ch = #10 then
+      fReader := TStreamReader.Create(fStream);
+      try
+        while not fReader.EOF do
+        begin
+          // Read line
+          line := fReader.ReadLine;
+          // Process line here if needed
+          // ....
+          // Increase counter
           Inc(total);
+        end;
+      finally
+        fReader.Free;
       end;
     finally
       fStream.Free;
