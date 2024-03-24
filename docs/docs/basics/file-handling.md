@@ -979,7 +979,7 @@ The structure is similar to [reading a text file using TFileStream](#read-a-text
 5. `Free` resources when done. Line 46 and 49.
 
 ```pascal linenums="1" hl_lines="11 32 34 36-44 46 49"
-program TBufferedFileStreamCount;
+program TFileStreamCount;
 
 {$mode objfpc}{$H+}{$J-}
 
