@@ -968,19 +968,17 @@ end.
 
 ## Counting lines in a text file 
 
-### Counting lines - `TBufferedFileStream`
+### Counting lines - `TStreamReader`
 
-The snippet below was adapted from [Faster filestream with TBufferedFilestream](https://delphiaball.co.uk/2016/04/29/faster-filestream-tbufferedfilestream/) by Stephen Ball.
+The structure is similar to [reading a text file using TFileStream](#read-a-text-file-tfilestream).
 
-The structure is similar to [reading a text file using TFileStream](#read-a-text-file-tfilestream), but here, we use [`TBufferedFileStream`](https://www.freepascal.org/docs-html/fcl/bufstream/tbufferedfilestream.html).
+1. In the `uses` section, add `streamex`. Line 11.
+2. Create a `TFileStream` to open a text file for reading. Line 34.
+3. Create a `TStreamReader` to read line by line. Line 34.
+4. Do the line counting inside the `while not fReader.EOF do` loop. Line 36-44.
+5. `Free` resources when done. Line 46 and 49.
 
-1. In the `uses` section, add `streamex` and `bufstream`. Line 11, 12.
-2. Create a `TBufferedFileStream` to open a text file for reading. Line 34.
-3. Create a `TStreamReader` to read line by line. Line 36.
-4. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 35-39.
-5. `Free` resources when done. Line 48, 51.
-
-```pascal linenums="1" hl_lines="11 34 36 38-46 48 51"
+```pascal linenums="1" hl_lines="11 32 34 36-44 46 49"
 program TBufferedFileStreamCount;
 
 {$mode objfpc}{$H+}{$J-}
@@ -991,17 +989,15 @@ uses
   {$ENDIF}
   Classes,
   SysUtils,
-  streamex,
-  bufstream;
+  streamex;
 
 var
-  fStream: TBufferedFileStream;
+  fStream: TFileStream;
   fReader: TStreamReader;
   total: int64;
   line: string;
 
 begin
-
   // Do we have a valid input file?
   if Length(ParamStr(1)) < 3 then
   begin
@@ -1014,9 +1010,9 @@ begin
 
   // try - except block start
   try
-    fStream := TBufferedFileStream.Create(ParamStr(1), fmOpenRead or fmShareDenyWrite);
+    fStream := TFileStream.Create(ParamStr(1), fmOpenRead or fmShareDenyWrite);
     try
-      fReader := TStreamReader.Create(fStream);
+      fReader := TStreamReader.Create(fStream, 262144, False);
       try
         while not fReader.EOF do
         begin
@@ -1042,6 +1038,5 @@ begin
       WriteLn('Error: ' + E.Message);
 
   end; // try - except block ends
-
 end.
 ```
