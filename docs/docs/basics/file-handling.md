@@ -1012,7 +1012,7 @@ begin
   try
     fStream := TFileStream.Create(ParamStr(1), fmOpenRead or fmShareDenyWrite);
     try
-      fReader := TStreamReader.Create(fStream, 262144, False);
+      fReader := TStreamReader.Create(fStream);
       try
         while not fReader.EOF do
         begin
