@@ -830,19 +830,20 @@ The snippet below was adapted from one of Stephen Ball's articles, [Faster files
 
 The structure is similar to [reading a text file using TFileStream](#read-a-text-file---tfilestream), but here, we use [`TBufferedFileStream`](https://www.freepascal.org/docs-html/fcl/bufstream/tbufferedfilestream.html).
 
-1. In the `uses` section, add `bufstream`. Line 11.
-2. Create a `TBufferedFileStream` to open a text file for reading. Line 29.
-3. Use the `while fStream.Read(ch, 1) = 1` to keep on reading data until there is no more data to read. Line 32-44.
+1. In the `uses` section, add `streamex` and `buffstream`. Line 11, 12.
+2. Create a `TBufferedFileStream` to open a text file for reading. Line 30.
+3. Create a `TStreamReader` to read the stream. Line 32.
+4. Use the `while not TStreamReader.EOF` to keep on reading data until there is no more data to read. Line 34-41.
 
       - This part sequentially reads through a text file, checking each character one by one. 
       - It combines these characters into lines by joining them together until it finds a newline character, which indicates the end of a line. 
       - Once a complete line is formed, the snippet prints it out using the `WriteLn` function.
 
-4. `Free` resources when done. Line 46.
+5. Finally, `Free` the `TStreamReader` first and `TBufferedFileStream` last. Line 43 and 46.
 
 There is an outer `try..except` is in place to handle error during open and read operations.
 
-```pascal linenums="1" hl_lines="11 29 32-44 46"
+```pascal linenums="1" hl_lines="11 12 29 34-41 43 46"
 program TBufferedFileStreamReadFile;
 
 {$mode objfpc}{$H+}
@@ -853,49 +854,47 @@ uses
   {$ENDIF}
   Classes,
   SysUtils,
+  streamex,
   bufstream;
 
 var
   fStream: TBufferedFileStream;
+  sReader: TStreamReader;
   line: string;
-  ch: char;
+  Count: int64 = 0;
 
 begin
 
-  if Length(ParamStr(1)) < 3 then
+  if Length(ParamStr(1)) < 1 then
   begin
-    WriteLn('Invalid input file');
+    WriteLn('Please provide a valid input file.');
     Exit;
   end;
 
   try
-
-    // Create TBufferedFileStream object, read only
+    // Create TBufferedFileStream object
     fStream := TBufferedFileStream.Create(ParamStr(1), fmOpenRead);
     try
-      // Keep on reading until there is no more data to read
-      while fStream.Read(ch, 1) = 1 do
-      begin
-        if ch = #10 then
+      sReader := TStreamReader.Create(fStream);
+      try
+        // Keep on reading until there is no more data to read
+        Count := 0;
+        while not sReader.EOF do
         begin
-          // Display the line.
-          WriteLn('Line: ', line);
-          // After displaing, reset.
-          line := '';
-        end
-        else
-          // If not #10, combine the characters to make up a line.
-          line := line + ch;
+          line := sReader.ReadLine;
+          Inc(Count);
+          WriteLn('Line ', IntToStr(Count), ' : ', line);
+        end;
+      finally
+        sReader.Free;
       end;
     finally
       fStream.Free;
     end;
-
   except
     on E: Exception do
       WriteLn('Error: ' + E.Message);
   end;
-
 end.
 ```
 
