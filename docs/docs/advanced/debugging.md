@@ -4,6 +4,19 @@
 
 Here is the official docs by Michaël Van Canneyt and Florian Klämpfl; [Debugging your Program](https://www.freepascal.org/docs-html/user/userch10.html).
 
+## Create Debug and Release profiles in Lazarus
+
+1. Open a new project in Lazarus IDE
+2. Go to **Project | Options | Compiler Options**
+3. In the Build modes (by default says default) click the `...` button.
+4. In the **Build Mode** window, click **Create Debug and Release modes** buttion.
+
+Once you've done that, you will see two new profiles; `Debug` and `Release`.
+
+Use the `Debug` profile if you need to detect heap memory leaks.
+
+Use `Release` for production.
+
 ## Debugger to use in Lazarus IDE
 
 ![Run-with-debugger](../../assets/run-app-with-debugger.png)
@@ -19,6 +32,8 @@ Citing from [https://wiki.lazarus.freepascal.org/DWARF](https://wiki.lazarus.fre
 > DWARF 2 (the one **without** "with sets") does not display sets "type TMySet = set of (v1,v2,v3)" correctly.
 
 ## Detecting heap memory leaks
+
+Consider using the pre-defined Debug mode from [Create Debug and Release profiles in Lazarus](#create-debug-and-release-profiles-in-lazarus) before customising your own debugging environment.
 
 ### Official docs on using Heaptrc
 
