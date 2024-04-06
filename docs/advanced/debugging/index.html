@@ -1013,6 +1013,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#create-debug-and-release-profiles-in-lazarus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Debug and Release profiles in Lazarus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#debugger-to-use-in-lazarus-ide" class="md-nav__link">
     <span class="md-ellipsis">
       Debugger to use in Lazarus IDE
@@ -1367,6 +1376,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#create-debug-and-release-profiles-in-lazarus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Debug and Release profiles in Lazarus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#debugger-to-use-in-lazarus-ide" class="md-nav__link">
     <span class="md-ellipsis">
       Debugger to use in Lazarus IDE
@@ -1426,6 +1444,16 @@
 <h1 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h1>
 <h2 id="official-docs-on-debugging-free-pascal-programs">Official docs on debugging Free Pascal programs<a class="headerlink" href="#official-docs-on-debugging-free-pascal-programs" title="Permanent link">&para;</a></h2>
 <p>Here is the official docs by Michaël Van Canneyt and Florian Klämpfl; <a href="https://www.freepascal.org/docs-html/user/userch10.html">Debugging your Program</a>.</p>
+<h2 id="create-debug-and-release-profiles-in-lazarus">Create Debug and Release profiles in Lazarus<a class="headerlink" href="#create-debug-and-release-profiles-in-lazarus" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open a new project in Lazarus IDE</li>
+<li>Go to <strong>Project | Options | Compiler Options</strong></li>
+<li>In the Build modes (by default says default) click the <code>...</code> button.</li>
+<li>In the <strong>Build Mode</strong> window, click <strong>Create Debug and Release modes</strong> buttion.</li>
+</ol>
+<p>Once you've done that, you will see two new profiles; <code>Debug</code> and <code>Release</code>.</p>
+<p>Use the <code>Debug</code> profile if you need to detect heap memory leaks.</p>
+<p>Use <code>Release</code> for production.</p>
 <h2 id="debugger-to-use-in-lazarus-ide">Debugger to use in Lazarus IDE<a class="headerlink" href="#debugger-to-use-in-lazarus-ide" title="Permanent link">&para;</a></h2>
 <p><a class="glightbox" href="../../../assets/run-app-with-debugger.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Run-with-debugger" src="../../../assets/run-app-with-debugger.png" /></a></p>
 <p>Citing from <a href="https://wiki.lazarus.freepascal.org/DWARF">https://wiki.lazarus.freepascal.org/DWARF</a></p>
@@ -1437,6 +1465,7 @@ All identifiers (e.g. field-names) returned by the debugger are upper-cased
 <p>DWARF 2 (the one <strong>without</strong> "with sets") does not display sets "type TMySet = set of (v1,v2,v3)" correctly.</p>
 </blockquote>
 <h2 id="detecting-heap-memory-leaks">Detecting heap memory leaks<a class="headerlink" href="#detecting-heap-memory-leaks" title="Permanent link">&para;</a></h2>
+<p>Consider using the pre-defined Debug mode from <a href="#create-debug-and-release-profiles-in-lazarus">Create Debug and Release profiles in Lazarus</a> before customising your own debugging environment.</p>
 <h3 id="official-docs-on-using-heaptrc">Official docs on using Heaptrc<a class="headerlink" href="#official-docs-on-using-heaptrc" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://www.freepascal.org/docs-html/rtl/heaptrc/usage.html">HeapTrc Usage</a></li>
