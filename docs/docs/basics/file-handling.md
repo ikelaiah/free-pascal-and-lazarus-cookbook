@@ -1,5 +1,9 @@
 # File Handling
 
+!!! Note 
+    
+    The community page - [File Handling in Free Pascal](https://wiki.freepascal.org/File_Handling_In_Pascal) - gives a general overview on handling file on various use cases. There are good tips too. For example, using `AssignFile` and `try..except`, copying file, etc. 
+
 ## Writing a new text file
 
 There are many ways to do this;
@@ -965,20 +969,97 @@ begin
 end.
 ```
 
-## Counting lines in a text file 
+## Count lines in a text file
 
-### Counting lines - `TStreamReader`
+### Count lines - Buffered `TFileStream`
+
+1. In the `uses` section, add `bufstream`. Line 11.
+2. Specify a buffer. Line 20.
+3. Create a `TFileStream` to open a text file for reading. Line 40.
+4. Do the line counting inside the `repeat..until bytesRead = 0` loop. Line 42-52.
+   - Read a chunk of bytes into a buffer
+   - Count number of lines in the chunk and repeat until no more bytes to read. 
+5. `Free` resources when done. Line 54.
+
+```pascal linenums="1" hl_lines="11 20 40 42-52 54"
+program TBufferedFileStreamCount;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cmem, cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils,
+  streamex;
+
+const
+  BufferSize = 131072; // Adjust buffer size as needed
+
+var
+  filename: string;
+  fStream: TFileStream;
+  total: int64;
+  buffer: array[0..BufferSize - 1] of char;
+  bytesRead: integer;
+  i: integer;
+
+begin
+  // Get filename
+  filename := ParamStr(1);
+
+  // Do we have a valid input file?
+  if not FileExists(filename) then
+  begin
+    WriteLn('Please specify a valid input file.');
+    Exit;
+  end;
+
+  // Reset total
+  total := 0;
+
+  // try - except block start
+  try
+    fStream := TFileStream.Create(filename, fmOpenRead or fmShareDenyWrite);
+    try
+      repeat
+        bytesRead := fStream.Read(buffer[0], BufferSize);
+        i := 0;
+        while i < bytesRead do
+        begin
+          // Count lines in the buffer
+          if buffer[i] = #10 then
+            total := total + 1;
+          Inc(i);
+        end;
+      until bytesRead = 0;
+    finally
+      fStream.Free;
+    end;
+
+    // User feedback
+    WriteLn('Total lines:', IntToStr(total));
+
+  except
+    on E: Exception do
+      WriteLn('Error: ' + E.Message);
+  end; // try - except block ends
+end.
+```
+
+### Count lines - `TStreamReader`
 
 The structure is similar to [reading a text file using TFileStream](#read-a-text-file-tfilestream).
 
 1. In the `uses` section, add `streamex`. Line 11.
-2. Create a `TFileStream` to open a text file for reading. Line 34.
-3. Create a `TStreamReader` to read line by line. Line 34.
-4. Do the line counting inside the `while not fReader.EOF do` loop. Line 36-44.
-5. `Free` resources when done. Line 46 and 49.
+2. Create a `TFileStream` to open a text file for reading. Line 36.
+3. Create a `TStreamReader` to read line by line. Line 38.
+4. Do the line counting inside the `while not fReader.EOF do` loop. Line 40-48.
+5. `Free` resources when done. Line 50 and 53.
 
-```pascal linenums="1" hl_lines="11 32 34 36-44 46 49"
-program TFileStreamCount;
+```pascal linenums="1" hl_lines="11 36 38 40-48 50 53"
+program TSTreamReaderCount;
 
 {$mode objfpc}{$H+}{$J-}
 
@@ -991,14 +1072,18 @@ uses
   streamex;
 
 var
+  filename: string;
   fStream: TFileStream;
   fReader: TStreamReader;
   total: int64;
   line: string;
 
 begin
+  // Get filename
+  filename := ParamStr(1);
+
   // Do we have a valid input file?
-  if Length(ParamStr(1)) < 3 then
+  if not FileExists(filename) then
   begin
     WriteLn('Please specify a valid input file.');
     Exit;
@@ -1009,9 +1094,9 @@ begin
 
   // try - except block start
   try
-    fStream := TFileStream.Create(ParamStr(1), fmOpenRead or fmShareDenyWrite);
+    fStream := TFileStream.Create(filename, fmOpenRead or fmShareDenyWrite);
     try
-      fReader := TStreamReader.Create(fStream);
+      fReader := TStreamReader.Create(fStream, 131072, False);
       try
         while not fReader.EOF do
         begin
@@ -1020,7 +1105,7 @@ begin
           // Process line here if needed
           // ....
           // Increase counter
-          Inc(total);
+          total := total + 1;
         end;
       finally
         fReader.Free;
@@ -1035,7 +1120,6 @@ begin
   except
     on E: Exception do
       WriteLn('Error: ' + E.Message);
-
   end; // try - except block ends
 end.
 ```
