@@ -1104,19 +1104,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#counting-lines-in-a-text-file" class="md-nav__link">
+  <a href="#count-lines-in-a-text-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Counting lines in a text file
+      Count lines in a text file
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Counting lines in a text file">
+    <nav class="md-nav" aria-label="Count lines in a text file">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#counting-lines-tstreamreader" class="md-nav__link">
+  <a href="#count-lines-buffered-tfilestream" class="md-nav__link">
     <span class="md-ellipsis">
-      Counting lines - TStreamReader
+      Count lines - Buffered TFileStream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-lines-tstreamreader" class="md-nav__link">
+    <span class="md-ellipsis">
+      Count lines - TStreamReader
     </span>
   </a>
   
@@ -1751,19 +1760,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#counting-lines-in-a-text-file" class="md-nav__link">
+  <a href="#count-lines-in-a-text-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Counting lines in a text file
+      Count lines in a text file
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Counting lines in a text file">
+    <nav class="md-nav" aria-label="Count lines in a text file">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#counting-lines-tstreamreader" class="md-nav__link">
+  <a href="#count-lines-buffered-tfilestream" class="md-nav__link">
     <span class="md-ellipsis">
-      Counting lines - TStreamReader
+      Count lines - Buffered TFileStream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-lines-tstreamreader" class="md-nav__link">
+    <span class="md-ellipsis">
+      Count lines - TStreamReader
     </span>
   </a>
   
@@ -1790,6 +1808,10 @@
 
 
 <h1 id="file-handling">File Handling<a class="headerlink" href="#file-handling" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The community page - <a href="https://wiki.freepascal.org/File_Handling_In_Pascal">File Handling in Free Pascal</a> - gives a general overview on handling file on various use cases. There are good tips too. For example, using <code>AssignFile</code> and <code>try..except</code>, copying file, etc. </p>
+</div>
 <h2 id="writing-a-new-text-file">Writing a new text file<a class="headerlink" href="#writing-a-new-text-file" title="Permanent link">&para;</a></h2>
 <p>There are many ways to do this;</p>
 <ol>
@@ -3385,15 +3407,16 @@
 </span><span id="__span-16-52"><a id="__codelineno-16-52" name="__codelineno-16-52"></a>
 </span><span id="__span-16-53"><a id="__codelineno-16-53" name="__codelineno-16-53"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="counting-lines-in-a-text-file">Counting lines in a text file<a class="headerlink" href="#counting-lines-in-a-text-file" title="Permanent link">&para;</a></h2>
-<h3 id="counting-lines-tstreamreader">Counting lines - <code>TStreamReader</code><a class="headerlink" href="#counting-lines-tstreamreader" title="Permanent link">&para;</a></h3>
-<p>The structure is similar to <a href="#read-a-text-file-tfilestream">reading a text file using TFileStream</a>.</p>
+<h2 id="count-lines-in-a-text-file">Count lines in a text file<a class="headerlink" href="#count-lines-in-a-text-file" title="Permanent link">&para;</a></h2>
+<h3 id="count-lines-buffered-tfilestream">Count lines - Buffered <code>TFileStream</code><a class="headerlink" href="#count-lines-buffered-tfilestream" title="Permanent link">&para;</a></h3>
 <ol>
-<li>In the <code>uses</code> section, add <code>streamex</code>. Line 11.</li>
-<li>Create a <code>TFileStream</code> to open a text file for reading. Line 34.</li>
-<li>Create a <code>TStreamReader</code> to read line by line. Line 34.</li>
-<li>Do the line counting inside the <code>while not fReader.EOF do</code> loop. Line 36-44.</li>
-<li><code>Free</code> resources when done. Line 46 and 49.</li>
+<li>In the <code>uses</code> section, add <code>bufstream</code>. Line 11.</li>
+<li>Specify a buffer. Line 20.</li>
+<li>Create a <code>TFileStream</code> to open a text file for reading. Line 40.</li>
+<li>Do the line counting inside the <code>repeat..until bytesRead = 0</code> loop. Line 42-52.
+   - Read a chunk of bytes into a buffer
+   - Count number of lines in the chunk and repeat until no more bytes to read. </li>
+<li><code>Free</code> resources when done. Line 54.</li>
 </ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
@@ -3454,7 +3477,11 @@
 <span class="normal"><a href="#__codelineno-17-57">57</a></span>
 <span class="normal"><a href="#__codelineno-17-58">58</a></span>
 <span class="normal"><a href="#__codelineno-17-59">59</a></span>
-<span class="normal"><a href="#__codelineno-17-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="k">program</span><span class="w"> </span><span class="n">TFileStreamCount</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-17-60">60</a></span>
+<span class="normal"><a href="#__codelineno-17-61">61</a></span>
+<span class="normal"><a href="#__codelineno-17-62">62</a></span>
+<span class="normal"><a href="#__codelineno-17-63">63</a></span>
+<span class="normal"><a href="#__codelineno-17-64">64</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="k">program</span><span class="w"> </span><span class="n">TBufferedFileStreamCount</span><span class="o">;</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a>
@@ -3466,54 +3493,193 @@
 </span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">,</span>
 </span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="hll"><span class="w">  </span><span class="n">streamex</span><span class="o">;</span>
 </span></span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12"></a>
-</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="k">var</span>
-</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="w">  </span><span class="n">fStream</span><span class="o">:</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">;</span>
-</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a><span class="w">  </span><span class="n">fReader</span><span class="o">:</span><span class="w"> </span><span class="n">TStreamReader</span><span class="o">;</span>
-</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16"></a><span class="w">  </span><span class="n">total</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
-</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="w">  </span><span class="n">line</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
-</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18"></a>
-</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19"></a><span class="k">begin</span>
-</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20"></a><span class="w">  </span><span class="c1">// Do we have a valid input file?</span>
-</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nb">Length</span><span class="p">(</span><span class="nb">ParamStr</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Please specify a valid input file.&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24"></a><span class="w">    </span><span class="k">Exit</span><span class="o">;</span>
-</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26"></a>
-</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27"></a><span class="w">  </span><span class="c1">// Reset total</span>
-</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28"></a><span class="w">  </span><span class="n">total</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="o">;</span>
-</span><span id="__span-17-29"><a id="__codelineno-17-29" name="__codelineno-17-29"></a>
-</span><span id="__span-17-30"><a id="__codelineno-17-30" name="__codelineno-17-30"></a><span class="w">  </span><span class="c1">// try - except block start</span>
-</span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31"></a><span class="w">  </span><span class="k">try</span>
-</span><span id="__span-17-32"><a id="__codelineno-17-32" name="__codelineno-17-32"></a><span class="hll"><span class="w">    </span><span class="n">fStream</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="nb">ParamStr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">,</span><span class="w"> </span><span class="n">fmOpenRead</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">fmShareDenyWrite</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-17-33"><a id="__codelineno-17-33" name="__codelineno-17-33"></a><span class="w">    </span><span class="k">try</span>
-</span><span id="__span-17-34"><a id="__codelineno-17-34" name="__codelineno-17-34"></a><span class="hll"><span class="w">      </span><span class="n">fReader</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStreamReader</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">fStream</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-17-35"><a id="__codelineno-17-35" name="__codelineno-17-35"></a><span class="w">      </span><span class="k">try</span>
-</span><span id="__span-17-36"><a id="__codelineno-17-36" name="__codelineno-17-36"></a><span class="hll"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">fReader</span><span class="o">.</span><span class="n">EOF</span><span class="w"> </span><span class="k">do</span>
-</span></span><span id="__span-17-37"><a id="__codelineno-17-37" name="__codelineno-17-37"></a><span class="hll"><span class="w">        </span><span class="k">begin</span>
-</span></span><span id="__span-17-38"><a id="__codelineno-17-38" name="__codelineno-17-38"></a><span class="hll"><span class="w">          </span><span class="c1">// Read line</span>
-</span></span><span id="__span-17-39"><a id="__codelineno-17-39" name="__codelineno-17-39"></a><span class="hll"><span class="w">          </span><span class="n">line</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">fReader</span><span class="o">.</span><span class="n">ReadLine</span><span class="o">;</span>
-</span></span><span id="__span-17-40"><a id="__codelineno-17-40" name="__codelineno-17-40"></a><span class="hll"><span class="w">          </span><span class="c1">// Process line here if needed</span>
-</span></span><span id="__span-17-41"><a id="__codelineno-17-41" name="__codelineno-17-41"></a><span class="hll"><span class="w">          </span><span class="c1">// ....</span>
-</span></span><span id="__span-17-42"><a id="__codelineno-17-42" name="__codelineno-17-42"></a><span class="hll"><span class="w">          </span><span class="c1">// Increase counter</span>
-</span></span><span id="__span-17-43"><a id="__codelineno-17-43" name="__codelineno-17-43"></a><span class="hll"><span class="w">          </span><span class="nb">Inc</span><span class="p">(</span><span class="n">total</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-17-44"><a id="__codelineno-17-44" name="__codelineno-17-44"></a><span class="hll"><span class="w">        </span><span class="k">end</span><span class="o">;</span>
-</span></span><span id="__span-17-45"><a id="__codelineno-17-45" name="__codelineno-17-45"></a><span class="w">      </span><span class="k">finally</span>
-</span><span id="__span-17-46"><a id="__codelineno-17-46" name="__codelineno-17-46"></a><span class="hll"><span class="w">        </span><span class="n">fReader</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
-</span></span><span id="__span-17-47"><a id="__codelineno-17-47" name="__codelineno-17-47"></a><span class="w">      </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-17-48"><a id="__codelineno-17-48" name="__codelineno-17-48"></a><span class="w">    </span><span class="k">finally</span>
-</span><span id="__span-17-49"><a id="__codelineno-17-49" name="__codelineno-17-49"></a><span class="hll"><span class="w">      </span><span class="n">fStream</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
-</span></span><span id="__span-17-50"><a id="__codelineno-17-50" name="__codelineno-17-50"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-17-51"><a id="__codelineno-17-51" name="__codelineno-17-51"></a>
-</span><span id="__span-17-52"><a id="__codelineno-17-52" name="__codelineno-17-52"></a><span class="w">    </span><span class="c1">// User feedback</span>
-</span><span id="__span-17-53"><a id="__codelineno-17-53" name="__codelineno-17-53"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Total line is: &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">total</span><span class="p">))</span><span class="o">;</span>
-</span><span id="__span-17-54"><a id="__codelineno-17-54" name="__codelineno-17-54"></a>
-</span><span id="__span-17-55"><a id="__codelineno-17-55" name="__codelineno-17-55"></a><span class="w">  </span><span class="k">except</span>
-</span><span id="__span-17-56"><a id="__codelineno-17-56" name="__codelineno-17-56"></a><span class="w">    </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-17-57"><a id="__codelineno-17-57" name="__codelineno-17-57"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Error: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-17-58"><a id="__codelineno-17-58" name="__codelineno-17-58"></a>
-</span><span id="__span-17-59"><a id="__codelineno-17-59" name="__codelineno-17-59"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span><span class="w"> </span><span class="c1">// try - except block ends</span>
-</span><span id="__span-17-60"><a id="__codelineno-17-60" name="__codelineno-17-60"></a><span class="k">end</span><span class="o">.</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="k">const</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="w">  </span><span class="n">BufferSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">131072</span><span class="o">;</span><span class="w"> </span><span class="c1">// Adjust buffer size as needed</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16"></a><span class="k">var</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="w">  </span><span class="n">filename</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18"></a><span class="w">  </span><span class="n">fStream</span><span class="o">:</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">;</span>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19"></a><span class="w">  </span><span class="n">total</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20"></a><span class="hll"><span class="w">  </span><span class="n">buffer</span><span class="o">:</span><span class="w"> </span><span class="k">array</span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="n">BufferSize</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="kt">char</span><span class="o">;</span>
+</span></span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21"></a><span class="w">  </span><span class="n">bytesRead</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22"></a><span class="w">  </span><span class="n">i</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23"></a>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24"></a><span class="k">begin</span>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25"></a><span class="w">  </span><span class="c1">// Get filename</span>
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26"></a><span class="w">  </span><span class="n">filename</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">ParamStr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27"></a>
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28"></a><span class="w">  </span><span class="c1">// Do we have a valid input file?</span>
+</span><span id="__span-17-29"><a id="__codelineno-17-29" name="__codelineno-17-29"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-17-30"><a id="__codelineno-17-30" name="__codelineno-17-30"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Please specify a valid input file.&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-17-32"><a id="__codelineno-17-32" name="__codelineno-17-32"></a><span class="w">    </span><span class="k">Exit</span><span class="o">;</span>
+</span><span id="__span-17-33"><a id="__codelineno-17-33" name="__codelineno-17-33"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-17-34"><a id="__codelineno-17-34" name="__codelineno-17-34"></a>
+</span><span id="__span-17-35"><a id="__codelineno-17-35" name="__codelineno-17-35"></a><span class="w">  </span><span class="c1">// Reset total</span>
+</span><span id="__span-17-36"><a id="__codelineno-17-36" name="__codelineno-17-36"></a><span class="w">  </span><span class="n">total</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="o">;</span>
+</span><span id="__span-17-37"><a id="__codelineno-17-37" name="__codelineno-17-37"></a>
+</span><span id="__span-17-38"><a id="__codelineno-17-38" name="__codelineno-17-38"></a><span class="w">  </span><span class="c1">// try - except block start</span>
+</span><span id="__span-17-39"><a id="__codelineno-17-39" name="__codelineno-17-39"></a><span class="w">  </span><span class="k">try</span>
+</span><span id="__span-17-40"><a id="__codelineno-17-40" name="__codelineno-17-40"></a><span class="hll"><span class="w">    </span><span class="n">fStream</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">filename</span><span class="o">,</span><span class="w"> </span><span class="n">fmOpenRead</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">fmShareDenyWrite</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-17-41"><a id="__codelineno-17-41" name="__codelineno-17-41"></a><span class="w">    </span><span class="k">try</span>
+</span><span id="__span-17-42"><a id="__codelineno-17-42" name="__codelineno-17-42"></a><span class="hll"><span class="w">      </span><span class="k">repeat</span>
+</span></span><span id="__span-17-43"><a id="__codelineno-17-43" name="__codelineno-17-43"></a><span class="hll"><span class="w">        </span><span class="n">bytesRead</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">fStream</span><span class="o">.</span><span class="n">Read</span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">,</span><span class="w"> </span><span class="n">BufferSize</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-17-44"><a id="__codelineno-17-44" name="__codelineno-17-44"></a><span class="hll"><span class="w">        </span><span class="n">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="o">;</span>
+</span></span><span id="__span-17-45"><a id="__codelineno-17-45" name="__codelineno-17-45"></a><span class="hll"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bytesRead</span><span class="w"> </span><span class="k">do</span>
+</span></span><span id="__span-17-46"><a id="__codelineno-17-46" name="__codelineno-17-46"></a><span class="hll"><span class="w">        </span><span class="k">begin</span>
+</span></span><span id="__span-17-47"><a id="__codelineno-17-47" name="__codelineno-17-47"></a><span class="hll"><span class="w">          </span><span class="c1">// Count lines in the buffer</span>
+</span></span><span id="__span-17-48"><a id="__codelineno-17-48" name="__codelineno-17-48"></a><span class="hll"><span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">#10</span><span class="w"> </span><span class="k">then</span>
+</span></span><span id="__span-17-49"><a id="__codelineno-17-49" name="__codelineno-17-49"></a><span class="hll"><span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">;</span>
+</span></span><span id="__span-17-50"><a id="__codelineno-17-50" name="__codelineno-17-50"></a><span class="hll"><span class="w">          </span><span class="nb">Inc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-17-51"><a id="__codelineno-17-51" name="__codelineno-17-51"></a><span class="hll"><span class="w">        </span><span class="k">end</span><span class="o">;</span>
+</span></span><span id="__span-17-52"><a id="__codelineno-17-52" name="__codelineno-17-52"></a><span class="hll"><span class="w">      </span><span class="k">until</span><span class="w"> </span><span class="n">bytesRead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">;</span>
+</span></span><span id="__span-17-53"><a id="__codelineno-17-53" name="__codelineno-17-53"></a><span class="w">    </span><span class="k">finally</span>
+</span><span id="__span-17-54"><a id="__codelineno-17-54" name="__codelineno-17-54"></a><span class="hll"><span class="w">      </span><span class="n">fStream</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span></span><span id="__span-17-55"><a id="__codelineno-17-55" name="__codelineno-17-55"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-17-56"><a id="__codelineno-17-56" name="__codelineno-17-56"></a>
+</span><span id="__span-17-57"><a id="__codelineno-17-57" name="__codelineno-17-57"></a><span class="w">    </span><span class="c1">// User feedback</span>
+</span><span id="__span-17-58"><a id="__codelineno-17-58" name="__codelineno-17-58"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Total lines:&#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">total</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-17-59"><a id="__codelineno-17-59" name="__codelineno-17-59"></a>
+</span><span id="__span-17-60"><a id="__codelineno-17-60" name="__codelineno-17-60"></a><span class="w">  </span><span class="k">except</span>
+</span><span id="__span-17-61"><a id="__codelineno-17-61" name="__codelineno-17-61"></a><span class="w">    </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-17-62"><a id="__codelineno-17-62" name="__codelineno-17-62"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Error: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-17-63"><a id="__codelineno-17-63" name="__codelineno-17-63"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span><span class="w"> </span><span class="c1">// try - except block ends</span>
+</span><span id="__span-17-64"><a id="__codelineno-17-64" name="__codelineno-17-64"></a><span class="k">end</span><span class="o">.</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="count-lines-tstreamreader">Count lines - <code>TStreamReader</code><a class="headerlink" href="#count-lines-tstreamreader" title="Permanent link">&para;</a></h3>
+<p>The structure is similar to <a href="#read-a-text-file-tfilestream">reading a text file using TFileStream</a>.</p>
+<ol>
+<li>In the <code>uses</code> section, add <code>streamex</code>. Line 11.</li>
+<li>Create a <code>TFileStream</code> to open a text file for reading. Line 36.</li>
+<li>Create a <code>TStreamReader</code> to read line by line. Line 38.</li>
+<li>Do the line counting inside the <code>while not fReader.EOF do</code> loop. Line 40-48.</li>
+<li><code>Free</code> resources when done. Line 50 and 53.</li>
+</ol>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span>
+<span class="normal"><a href="#__codelineno-18-13">13</a></span>
+<span class="normal"><a href="#__codelineno-18-14">14</a></span>
+<span class="normal"><a href="#__codelineno-18-15">15</a></span>
+<span class="normal"><a href="#__codelineno-18-16">16</a></span>
+<span class="normal"><a href="#__codelineno-18-17">17</a></span>
+<span class="normal"><a href="#__codelineno-18-18">18</a></span>
+<span class="normal"><a href="#__codelineno-18-19">19</a></span>
+<span class="normal"><a href="#__codelineno-18-20">20</a></span>
+<span class="normal"><a href="#__codelineno-18-21">21</a></span>
+<span class="normal"><a href="#__codelineno-18-22">22</a></span>
+<span class="normal"><a href="#__codelineno-18-23">23</a></span>
+<span class="normal"><a href="#__codelineno-18-24">24</a></span>
+<span class="normal"><a href="#__codelineno-18-25">25</a></span>
+<span class="normal"><a href="#__codelineno-18-26">26</a></span>
+<span class="normal"><a href="#__codelineno-18-27">27</a></span>
+<span class="normal"><a href="#__codelineno-18-28">28</a></span>
+<span class="normal"><a href="#__codelineno-18-29">29</a></span>
+<span class="normal"><a href="#__codelineno-18-30">30</a></span>
+<span class="normal"><a href="#__codelineno-18-31">31</a></span>
+<span class="normal"><a href="#__codelineno-18-32">32</a></span>
+<span class="normal"><a href="#__codelineno-18-33">33</a></span>
+<span class="normal"><a href="#__codelineno-18-34">34</a></span>
+<span class="normal"><a href="#__codelineno-18-35">35</a></span>
+<span class="normal"><a href="#__codelineno-18-36">36</a></span>
+<span class="normal"><a href="#__codelineno-18-37">37</a></span>
+<span class="normal"><a href="#__codelineno-18-38">38</a></span>
+<span class="normal"><a href="#__codelineno-18-39">39</a></span>
+<span class="normal"><a href="#__codelineno-18-40">40</a></span>
+<span class="normal"><a href="#__codelineno-18-41">41</a></span>
+<span class="normal"><a href="#__codelineno-18-42">42</a></span>
+<span class="normal"><a href="#__codelineno-18-43">43</a></span>
+<span class="normal"><a href="#__codelineno-18-44">44</a></span>
+<span class="normal"><a href="#__codelineno-18-45">45</a></span>
+<span class="normal"><a href="#__codelineno-18-46">46</a></span>
+<span class="normal"><a href="#__codelineno-18-47">47</a></span>
+<span class="normal"><a href="#__codelineno-18-48">48</a></span>
+<span class="normal"><a href="#__codelineno-18-49">49</a></span>
+<span class="normal"><a href="#__codelineno-18-50">50</a></span>
+<span class="normal"><a href="#__codelineno-18-51">51</a></span>
+<span class="normal"><a href="#__codelineno-18-52">52</a></span>
+<span class="normal"><a href="#__codelineno-18-53">53</a></span>
+<span class="normal"><a href="#__codelineno-18-54">54</a></span>
+<span class="normal"><a href="#__codelineno-18-55">55</a></span>
+<span class="normal"><a href="#__codelineno-18-56">56</a></span>
+<span class="normal"><a href="#__codelineno-18-57">57</a></span>
+<span class="normal"><a href="#__codelineno-18-58">58</a></span>
+<span class="normal"><a href="#__codelineno-18-59">59</a></span>
+<span class="normal"><a href="#__codelineno-18-60">60</a></span>
+<span class="normal"><a href="#__codelineno-18-61">61</a></span>
+<span class="normal"><a href="#__codelineno-18-62">62</a></span>
+<span class="normal"><a href="#__codelineno-18-63">63</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">program</span><span class="w"> </span><span class="n">TSTreamReaderCount</span><span class="o">;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="k">uses</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">  </span><span class="cm">{$IFDEF UNIX}</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">  </span><span class="n">cmem</span><span class="o">,</span><span class="w"> </span><span class="n">cthreads</span><span class="o">,</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">,</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="hll"><span class="w">  </span><span class="n">streamex</span><span class="o">;</span>
+</span></span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="k">var</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="w">  </span><span class="n">filename</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15"></a><span class="w">  </span><span class="n">fStream</span><span class="o">:</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">;</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16"></a><span class="w">  </span><span class="n">fReader</span><span class="o">:</span><span class="w"> </span><span class="n">TStreamReader</span><span class="o">;</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17"></a><span class="w">  </span><span class="n">total</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18"></a><span class="w">  </span><span class="n">line</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19"></a>
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20"></a><span class="k">begin</span>
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21"></a><span class="w">  </span><span class="c1">// Get filename</span>
+</span><span id="__span-18-22"><a id="__codelineno-18-22" name="__codelineno-18-22"></a><span class="w">  </span><span class="n">filename</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">ParamStr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23"></a>
+</span><span id="__span-18-24"><a id="__codelineno-18-24" name="__codelineno-18-24"></a><span class="w">  </span><span class="c1">// Do we have a valid input file?</span>
+</span><span id="__span-18-25"><a id="__codelineno-18-25" name="__codelineno-18-25"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-18-26"><a id="__codelineno-18-26" name="__codelineno-18-26"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-18-27"><a id="__codelineno-18-27" name="__codelineno-18-27"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Please specify a valid input file.&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-18-28"><a id="__codelineno-18-28" name="__codelineno-18-28"></a><span class="w">    </span><span class="k">Exit</span><span class="o">;</span>
+</span><span id="__span-18-29"><a id="__codelineno-18-29" name="__codelineno-18-29"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-18-30"><a id="__codelineno-18-30" name="__codelineno-18-30"></a>
+</span><span id="__span-18-31"><a id="__codelineno-18-31" name="__codelineno-18-31"></a><span class="w">  </span><span class="c1">// Reset total</span>
+</span><span id="__span-18-32"><a id="__codelineno-18-32" name="__codelineno-18-32"></a><span class="w">  </span><span class="n">total</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="o">;</span>
+</span><span id="__span-18-33"><a id="__codelineno-18-33" name="__codelineno-18-33"></a>
+</span><span id="__span-18-34"><a id="__codelineno-18-34" name="__codelineno-18-34"></a><span class="w">  </span><span class="c1">// try - except block start</span>
+</span><span id="__span-18-35"><a id="__codelineno-18-35" name="__codelineno-18-35"></a><span class="w">  </span><span class="k">try</span>
+</span><span id="__span-18-36"><a id="__codelineno-18-36" name="__codelineno-18-36"></a><span class="hll"><span class="w">    </span><span class="n">fStream</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">filename</span><span class="o">,</span><span class="w"> </span><span class="n">fmOpenRead</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">fmShareDenyWrite</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-18-37"><a id="__codelineno-18-37" name="__codelineno-18-37"></a><span class="w">    </span><span class="k">try</span>
+</span><span id="__span-18-38"><a id="__codelineno-18-38" name="__codelineno-18-38"></a><span class="hll"><span class="w">      </span><span class="n">fReader</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStreamReader</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">fStream</span><span class="o">,</span><span class="w"> </span><span class="mi">131072</span><span class="o">,</span><span class="w"> </span><span class="k">False</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-18-39"><a id="__codelineno-18-39" name="__codelineno-18-39"></a><span class="w">      </span><span class="k">try</span>
+</span><span id="__span-18-40"><a id="__codelineno-18-40" name="__codelineno-18-40"></a><span class="hll"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">fReader</span><span class="o">.</span><span class="n">EOF</span><span class="w"> </span><span class="k">do</span>
+</span></span><span id="__span-18-41"><a id="__codelineno-18-41" name="__codelineno-18-41"></a><span class="hll"><span class="w">        </span><span class="k">begin</span>
+</span></span><span id="__span-18-42"><a id="__codelineno-18-42" name="__codelineno-18-42"></a><span class="hll"><span class="w">          </span><span class="c1">// Read line</span>
+</span></span><span id="__span-18-43"><a id="__codelineno-18-43" name="__codelineno-18-43"></a><span class="hll"><span class="w">          </span><span class="n">line</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">fReader</span><span class="o">.</span><span class="n">ReadLine</span><span class="o">;</span>
+</span></span><span id="__span-18-44"><a id="__codelineno-18-44" name="__codelineno-18-44"></a><span class="hll"><span class="w">          </span><span class="c1">// Process line here if needed</span>
+</span></span><span id="__span-18-45"><a id="__codelineno-18-45" name="__codelineno-18-45"></a><span class="hll"><span class="w">          </span><span class="c1">// ....</span>
+</span></span><span id="__span-18-46"><a id="__codelineno-18-46" name="__codelineno-18-46"></a><span class="hll"><span class="w">          </span><span class="c1">// Increase counter</span>
+</span></span><span id="__span-18-47"><a id="__codelineno-18-47" name="__codelineno-18-47"></a><span class="hll"><span class="w">          </span><span class="n">total</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">;</span>
+</span></span><span id="__span-18-48"><a id="__codelineno-18-48" name="__codelineno-18-48"></a><span class="hll"><span class="w">        </span><span class="k">end</span><span class="o">;</span>
+</span></span><span id="__span-18-49"><a id="__codelineno-18-49" name="__codelineno-18-49"></a><span class="w">      </span><span class="k">finally</span>
+</span><span id="__span-18-50"><a id="__codelineno-18-50" name="__codelineno-18-50"></a><span class="hll"><span class="w">        </span><span class="n">fReader</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span></span><span id="__span-18-51"><a id="__codelineno-18-51" name="__codelineno-18-51"></a><span class="w">      </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-18-52"><a id="__codelineno-18-52" name="__codelineno-18-52"></a><span class="w">    </span><span class="k">finally</span>
+</span><span id="__span-18-53"><a id="__codelineno-18-53" name="__codelineno-18-53"></a><span class="hll"><span class="w">      </span><span class="n">fStream</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span></span><span id="__span-18-54"><a id="__codelineno-18-54" name="__codelineno-18-54"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-18-55"><a id="__codelineno-18-55" name="__codelineno-18-55"></a>
+</span><span id="__span-18-56"><a id="__codelineno-18-56" name="__codelineno-18-56"></a><span class="w">    </span><span class="c1">// User feedback</span>
+</span><span id="__span-18-57"><a id="__codelineno-18-57" name="__codelineno-18-57"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Total line is: &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">total</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-18-58"><a id="__codelineno-18-58" name="__codelineno-18-58"></a>
+</span><span id="__span-18-59"><a id="__codelineno-18-59" name="__codelineno-18-59"></a><span class="w">  </span><span class="k">except</span>
+</span><span id="__span-18-60"><a id="__codelineno-18-60" name="__codelineno-18-60"></a><span class="w">    </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-18-61"><a id="__codelineno-18-61" name="__codelineno-18-61"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Error: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-18-62"><a id="__codelineno-18-62" name="__codelineno-18-62"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span><span class="w"> </span><span class="c1">// try - except block ends</span>
+</span><span id="__span-18-63"><a id="__codelineno-18-63" name="__codelineno-18-63"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 
 
