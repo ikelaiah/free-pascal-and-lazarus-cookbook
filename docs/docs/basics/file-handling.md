@@ -971,6 +971,83 @@ end.
 
 ## Count lines in a text file
 
+### Count lines - Classic
+
+The snippet below will quit if the file to read is not found.
+
+1. Assign a file to read into a `TextFile` variable. Line 37.
+2. Assign a buffer to reduce disk IO. Line 38.
+3. Within the `try..catch` do the following:
+
+      - Open the file for reading. Line 43.
+      - Use a while loop to read the file one line at a time. Line 46-50.
+      - Use close the file after reading it. Line 53.
+
+```pascal linenums="1" hl_lines="37 38 43 46-50 53"
+program ClassicCountLine;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cmem, cthreads,
+  {$ENDIF}
+  Classes,
+  SysUtils;
+
+const
+  BUFFER_SIZE = 65536;
+
+var
+  filename: string;
+  textFile: System.TextFile;
+  buffer: array [0..BUFFER_SIZE - 1] of char;
+  line: string;
+  total: int64;
+
+begin
+  // Get filename
+  filename := ParamStr(1);
+
+  // Do we have a valid input file?
+  if not FileExists(filename) then
+  begin
+    WriteLn('Please specify a valid input file.');
+    Exit;
+  end;
+
+  // Reset total
+  total := 0;
+
+  // Assign filename to a TextFile variable - set the name of the file for reading
+  AssignFile(textFile, filename);
+  SetTextBuf(textFile, buffer);
+
+  // Perform the read operation in a try..except block to handle errors gracefully
+  try
+    // Open the file for reading
+    Reset(textFile);
+
+    // Keep reading lines until the end of the file is reached
+    while not EOF(textFile) do
+    begin
+      ReadLn(textFile, line);
+      total := total + 1;
+    end;
+
+    // Close the file
+    CloseFile(textFile);
+
+    // User feedback
+    WriteLn('Total number of lines: ', IntToStr(total));
+
+  except
+    on E: Exception do
+      WriteLn('File handling error occurred. Details: ', E.Message);
+  end;
+end.
+```
+
 ### Count lines - Buffered `TFileStream`
 
 The snippet below count the occurances of `#10` in a file using buffered `TFileStream`.
@@ -1065,7 +1142,7 @@ Here is the snippet that counts the number of line by parsing the stream line by
 5. `Free` resources when done. Line 50 and 53.
 
 ```pascal linenums="1" hl_lines="11 36 38 40-48 50 53"
-program TSTreamReaderCount;
+program TStreamReaderCount;
 
 {$mode objfpc}{$H+}{$J-}
 
