@@ -46,7 +46,23 @@ Consider using the pre-defined Debug mode from [Create Debug and Release profile
 
 ### Detecting heap memory leaks in Lazarus
 
-**1. Enable HeapTrc in Lazarus**
+There two ways of accomplishing this;
+
+- use the default Debug mode or
+- enable the HeapTrc manually.
+
+#### Enable the default Debug mode
+
+Once you've created the default Debug and Release profiles in Lazarus, switch to Debug Mode to see heap memopry leaks.
+
+Steps:
+
+- Press ++ctrl+shift+f11++ to open the **Project Options** window.
+- Go to **Compilation and Linking**.
+- Set **Build modes** to **Release**.
+- Re-compile your program.
+
+#### Manually enable HeapTrc
 
 First, go to `Project | Project Options ...` 
 
@@ -59,9 +75,7 @@ Click the image below to expand the view.
 
 ![Project options window](../../assets/use-heaptrc-unit-check-mem-leaks.png)
 
-**2. Save leaks report to a file**
-
-Simply use [`SetHeapTraceOutput`](https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html) to redirect heap trace report to a file.
+Now, save leaks report to a file use [`SetHeapTraceOutput`](https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html) to redirect heap trace report to a file.
 
 Here is an example.
 
