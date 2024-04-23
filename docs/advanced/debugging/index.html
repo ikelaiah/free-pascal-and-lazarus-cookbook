@@ -1056,6 +1056,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Detecting heap memory leaks in Lazarus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-the-default-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable the default Debug mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-enable-heaptrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manually enable HeapTrc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1419,6 +1443,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Detecting heap memory leaks in Lazarus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-the-default-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable the default Debug mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-enable-heaptrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manually enable HeapTrc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1476,7 +1524,21 @@ All identifiers (e.g. field-names) returned by the debugger are upper-cased
 <li><a href="https://wiki.freepascal.org/leakview">Wiki - Using LeakView in Lazarus</a></li>
 </ul>
 <h3 id="detecting-heap-memory-leaks-in-lazarus">Detecting heap memory leaks in Lazarus<a class="headerlink" href="#detecting-heap-memory-leaks-in-lazarus" title="Permanent link">&para;</a></h3>
-<p><strong>1. Enable HeapTrc in Lazarus</strong></p>
+<p>There two ways of accomplishing this;</p>
+<ul>
+<li>use the default Debug mode or</li>
+<li>enable the HeapTrc manually.</li>
+</ul>
+<h4 id="enable-the-default-debug-mode">Enable the default Debug mode<a class="headerlink" href="#enable-the-default-debug-mode" title="Permanent link">&para;</a></h4>
+<p>Once you've created the default Debug and Release profiles in Lazarus, switch to Debug Mode to see heap memopry leaks.</p>
+<p>Steps:</p>
+<ul>
+<li>Press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-f11">F11</kbd></span> to open the <strong>Project Options</strong> window.</li>
+<li>Go to <strong>Compilation and Linking</strong>.</li>
+<li>Set <strong>Build modes</strong> to <strong>Release</strong>.</li>
+<li>Re-compile your program.</li>
+</ul>
+<h4 id="manually-enable-heaptrc">Manually enable HeapTrc<a class="headerlink" href="#manually-enable-heaptrc" title="Permanent link">&para;</a></h4>
 <p>First, go to <code>Project | Project Options ...</code> </p>
 <p>In the Options window find <code>Compiler Options | Debugging</code>, then enable the following switches.</p>
 <ul>
@@ -1485,8 +1547,7 @@ All identifiers (e.g. field-names) returned by the debugger are upper-cased
 </ul>
 <p>Click the image below to expand the view.</p>
 <p><a class="glightbox" href="../../../assets/use-heaptrc-unit-check-mem-leaks.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Project options window" src="../../../assets/use-heaptrc-unit-check-mem-leaks.png" /></a></p>
-<p><strong>2. Save leaks report to a file</strong></p>
-<p>Simply use <a href="https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html"><code>SetHeapTraceOutput</code></a> to redirect heap trace report to a file.</p>
+<p>Now, save leaks report to a file use <a href="https://www.freepascal.org/docs-html/rtl/heaptrc/setheaptraceoutput.html"><code>SetHeapTraceOutput</code></a> to redirect heap trace report to a file.</p>
 <p>Here is an example.</p>
 <ol>
 <li>
