@@ -973,12 +973,16 @@ end.
 
 ### Count lines - Buffered `TFileStream`
 
+The snippet below count the occurances of `#10` in a file using buffered `TFileStream`.
+
 1. In the `uses` section, add `bufstream`. Line 11.
 2. Specify a buffer. Line 20.
 3. Create a `TFileStream` to open a text file for reading. Line 40.
 4. Do the line counting inside the `repeat..until bytesRead = 0` loop. Line 42-52.
+
    - Read a chunk of bytes into a buffer
    - Count number of lines in the chunk and repeat until no more bytes to read. 
+
 5. `Free` resources when done. Line 54.
 
 ```pascal linenums="1" hl_lines="11 20 40 42-52 54"
@@ -1051,6 +1055,8 @@ end.
 ### Count lines - `TStreamReader`
 
 The structure is similar to [reading a text file using TFileStream](#read-a-text-file-tfilestream).
+
+Here is the snippet that counts the occurrences of `#10` in a text file, using buffered `TFileStream`, without parsing each line in the text.
 
 1. In the `uses` section, add `streamex`. Line 11.
 2. Create a `TFileStream` to open a text file for reading. Line 36.
