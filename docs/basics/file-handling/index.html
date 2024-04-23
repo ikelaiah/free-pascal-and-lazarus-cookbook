@@ -3409,13 +3409,18 @@
 </span></code></pre></div></td></tr></table></div>
 <h2 id="count-lines-in-a-text-file">Count lines in a text file<a class="headerlink" href="#count-lines-in-a-text-file" title="Permanent link">&para;</a></h2>
 <h3 id="count-lines-buffered-tfilestream">Count lines - Buffered <code>TFileStream</code><a class="headerlink" href="#count-lines-buffered-tfilestream" title="Permanent link">&para;</a></h3>
+<p>The snippet below count the occurances of <code>#10</code> in a file using buffered <code>TFileStream</code>.</p>
 <ol>
 <li>In the <code>uses</code> section, add <code>bufstream</code>. Line 11.</li>
 <li>Specify a buffer. Line 20.</li>
 <li>Create a <code>TFileStream</code> to open a text file for reading. Line 40.</li>
-<li>Do the line counting inside the <code>repeat..until bytesRead = 0</code> loop. Line 42-52.
-   - Read a chunk of bytes into a buffer
-   - Count number of lines in the chunk and repeat until no more bytes to read. </li>
+<li>Do the line counting inside the <code>repeat..until bytesRead = 0</code> loop. Line 42-52.</li>
+</ol>
+<ul>
+<li>Read a chunk of bytes into a buffer</li>
+<li>Count number of lines in the chunk and repeat until no more bytes to read. </li>
+</ul>
+<ol start="5">
 <li><code>Free</code> resources when done. Line 54.</li>
 </ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
@@ -3548,6 +3553,7 @@
 </span></code></pre></div></td></tr></table></div>
 <h3 id="count-lines-tstreamreader">Count lines - <code>TStreamReader</code><a class="headerlink" href="#count-lines-tstreamreader" title="Permanent link">&para;</a></h3>
 <p>The structure is similar to <a href="#read-a-text-file-tfilestream">reading a text file using TFileStream</a>.</p>
+<p>Here is the snippet that counts the number of line by parsing the stream line by line.</p>
 <ol>
 <li>In the <code>uses</code> section, add <code>streamex</code>. Line 11.</li>
 <li>Create a <code>TFileStream</code> to open a text file for reading. Line 36.</li>
