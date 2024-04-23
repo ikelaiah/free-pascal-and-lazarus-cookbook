@@ -41,7 +41,7 @@ You can combine multiple `{$IFDEF}`s too. See the following example (taken from 
 
 [`{$IF}`](https://www.freepascal.org/docs-html/prog/progsu29.html) allows you to write complex conditions that cannot be done using `{$ifdef aname}`.
 
-See the following example (taken from [https://wiki.freepascal.org/$IF](https://wiki.freepascal.org/$IF)). You can see two local directives (`$DEFINE` and `$UNDEF`) along with `and` and `or` logic operators in it.
+See the following example from [https://wiki.freepascal.org/$IF](https://wiki.freepascal.org/$IF). You can see two local directives (`$DEFINE` and `$UNDEF`) along with `and` and `or` logic operators in it.
 
 ```pascal linenums="1"
 {$IF defined(SOMETHING) and defined(SOMETHINGELSE)}//simple and readabl instead of union {$IFDef}`s
