@@ -976,21 +976,21 @@ end.
 The snippet below will quit if the file to read is not found.
 
 1. Assign a file to read into a `TextFile` variable. Line 37.
-2. Assign a buffer to reduce disk IO. Line 38.
-3. Within the `try..catch` do the following:
+2. Open the file for reading. Line 42.
+3. Assign a buffer to reduce disk IO. Line 44.
+4. Within the `try..catch` do the following:
 
-      - Open the file for reading. Line 43.
-      - Use a while loop to read the file one line at a time. Line 46-50.
-      - Use close the file after reading it. Line 53.
+      - Use a while loop to read the file one line at a time. Line 47-51.
+      - Use close the file after reading it. Line 54.
 
-```pascal linenums="1" hl_lines="37 38 43 46-50 53"
+```pascal linenums="1" hl_lines="37 42 44 47-51 54"
 program ClassicCountLine;
 
 {$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}
-  cmem, cthreads,
+  cthreads,
   {$ENDIF}
   Classes,
   SysUtils;
@@ -1021,12 +1021,13 @@ begin
 
   // Assign filename to a TextFile variable - set the name of the file for reading
   AssignFile(textFile, filename);
-  SetTextBuf(textFile, buffer);
 
   // Perform the read operation in a try..except block to handle errors gracefully
   try
     // Open the file for reading
     Reset(textFile);
+    // Set buffer
+    SetTextBuf(textFile, buffer);
 
     // Keep reading lines until the end of the file is reached
     while not EOF(textFile) do
