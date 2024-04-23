@@ -1056,7 +1056,7 @@ end.
 
 The structure is similar to [reading a text file using TFileStream](#read-a-text-file-tfilestream).
 
-Here is the snippet that counts the occurrences of `#10` in a text file, using buffered `TFileStream`, without parsing each line in the text.
+Here is the snippet that counts the number of line by parsing the stream line by line.
 
 1. In the `uses` section, add `streamex`. Line 11.
 2. Create a `TFileStream` to open a text file for reading. Line 36.
