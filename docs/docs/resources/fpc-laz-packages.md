@@ -20,7 +20,6 @@ There are various kinds of packages for Free Pascal & Lazarus IDE. The following
 - **Online Package Manager**(GUI) - [https://wiki.freepascal.org/Online_Package_Manager](https://wiki.freepascal.org/Online_Package_Manager)
 - **fpcupdeluxe**(GUI) - [https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases](https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases)
 - **LazarusPackageManager**(CLI) - [https://github.com/Warfley/LazarusPackageManager](https://github.com/Warfley/LazarusPackageManager)
-- **fppkg** (CLI) - [https://wiki.freepascal.org/fppkg](https://wiki.freepascal.org/fppkg)
 
 ## FPC & Lazarus Packages
 

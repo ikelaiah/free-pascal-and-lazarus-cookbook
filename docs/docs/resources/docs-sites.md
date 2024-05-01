@@ -34,7 +34,7 @@ The latest documents are available from [Free Pascal](https://www.freepascal.org
 - [fpdoc documentation tool reference manual ](http://downloads.freepascal.org/fpc/docs-pdf/fpdoc.pdf) 
 - [Reference chart with all compiler options and switches](http://downloads.freepascal.org/fpc/docs-pdf/chart.pdf) 
 
-## :material-notebook: The Official Lazarus IDE Resources
+## The Official Lazarus IDE Resources
 
 - See [Lazarus' wiki](https://wiki.freepascal.org/Lazarus_Documentation) for various docs on installation, IDE, tools, LCL, Components and other topics.
 - Working with Lazarus and databases - [https://wiki.freepascal.org/Databases](https://wiki.freepascal.org/Databases)

@@ -14,8 +14,6 @@ There are many ways to do this;
       - [`TFileStream`](https://www.freepascal.org/docs-html/rtl/classes/tfilestream.html).
       - [`TStringList`](https://www.freepascal.org/docs-html/rtl/classes/tstringlist.html) and
 
-
-
 ### New text file - Classic
 
 See the snippet below. It uses `SysUtil` for catching errors during opening and writing file.
@@ -154,9 +152,7 @@ end.
 
 ```
 
-
 ### New text file - `TFileStream`
-
 
 For writing text into a new file using Object style;
 
