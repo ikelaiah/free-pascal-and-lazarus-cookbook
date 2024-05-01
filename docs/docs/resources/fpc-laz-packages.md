@@ -13,7 +13,6 @@ There are various kinds of packages for Free Pascal & Lazarus IDE. The following
 > - [Lazarus Runtime Packages](https://wiki.freepascal.org/Lazarus_Packages) adds a dependency on a **runtime package** and Lazarus adds the files to the search path.
 > - [Lazarus (IDE)Packages](https://wiki.freepascal.org/Lazarus_IDE_Packages) is bundled with IDE and can be installed via main menu: `Package -> Install/Uninstall Packages..`.
 > - [Lazarus Designtime Packages](https://wiki.freepascal.org/Lazarus_Packages) register themselves in the IDE, e.g. **designtime** editor components for the object inspector. These may contain runtime-only units.
-> - [Fppkg](https://wiki.freepascal.org/fppkg) is a Free Pascal packaging system, which installs packages based on [FPMake](https://wiki.freepascal.org/FPMake).
 
 ## Package Managers
 
