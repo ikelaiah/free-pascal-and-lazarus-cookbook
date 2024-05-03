@@ -15,6 +15,7 @@ nav:
     - Functions & Procedures: docs/basics/funcs-procs.md
     - Immutability: docs/basics/immutability.md
     - Loops: docs/basics/loops.md
+    - Arrays: docs/basics/arrays.md
     - Lists: docs/basics/lists.md 
     - Strings: docs/basics/strings.md
     - Numbers: docs/basics/numbers.md
@@ -45,7 +46,7 @@ theme:
   favicon: assets/logo-new-rounded-min.png
   font: 
     text: Roboto
-    code: Fira Code
+    code: Roboto Mono
   palette:
         # Palette toggle for light mode
     - scheme: default

@@ -37,13 +37,14 @@ There are various kinds of packages for Free Pascal & Lazarus IDE. The following
     - Check the forums and discord channel too.
 
 
-### [LGenerics](https://github.com/avk959/LGenerics)
+### [LGenerics by avk](https://github.com/avk959/LGenerics)
 
 `#generics`
 
 A Generics library with tons of goodies by [A.Koverdyaev(avk)](https://github.com/avk959).
 
-### [ArrayHelper](https://github.com/WilliCommer/ArrayHelper)
+
+### [ArrayHelper by Willi Commer](https://github.com/WilliCommer/ArrayHelper)
 
 `#array-helper`
 
@@ -107,3 +108,15 @@ Fundamentals 5 is a library for Delphi and Free Pascal. This library can help wi
 `#lazarus` `#visual-component`
 
 **ATSynEdit** is Multi-line editor control for Lazarus, which was made by Alexey Torgashin as an alternative to SynEdit. It is not based on SynEdit, it has totally different structure.
+
+### [Libraries by BeRo1985](https://github.com/BeRo1985)
+
+A collection of useful libraries in Object Pascal by [Benjamin Rosseaux](https://www.rosseaux.net).
+
+- **[PasMP](https://github.com/BeRo1985/pasmp)**: A parallel-processing library to enhance performance in multi-core processor environments.
+- **[FLRE](https://github.com/BeRo1985/flre)**: FLRE (Fast Light Regular Expressions), a fast and efficient regular expression library implemented in Object Pascal, focusing on core features and optimized for speed.
+- **[PasJSON](https://github.com/BeRo1985/pasjson)**: A JSON parser and writer for Pascal, vital for modern data interchange and web development.
+- **[PUCU](https://github.com/BeRo1985/pucu)**: The Pascal UniCode Utils Library, enhancing Unicode support within Pascal projects.
+- And others.
+
+See the full list on [BeRo1985's Github page](https://github.com/BeRo1985?tab=repositories).
