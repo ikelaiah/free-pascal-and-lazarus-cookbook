@@ -190,7 +190,7 @@ begin
 
   // Setting length of dynamic arrays
   SetLength(dailyTemp, 7);   // This array's size is 7, index 0..6
-  SetLength(multipleTwo, 5);  // This array's size is 8, index 0..7
+  SetLength(multipleTwo, 5);  // This array's size is 5, index 0..4
 
   // Populate the daily temp array
   dailyTemp[0] := 30.1;
