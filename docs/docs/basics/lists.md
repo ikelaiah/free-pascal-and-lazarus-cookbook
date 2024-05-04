@@ -6,7 +6,7 @@ Think of it as a higher-level construct than a static or dynamic array.
 
 Higher-level constructs:
 
-- Abstract away lower-level details, allowing developers to work with more generalized and easier-to-use interfaces.
+- Abstract away lower-level details, allowing developers to work with more generalised and easier-to-use interfaces.
 - Reduce the amount of manual code a developer needs to write.
 
 ## Why do we want to use lists? 
