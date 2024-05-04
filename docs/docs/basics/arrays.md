@@ -5,6 +5,22 @@
 - [https://www.freepascal.org/docs-html/ref/refsu14.html](https://www.freepascal.org/docs-html/ref/refsu14.html)
 - [https://wiki.freepascal.org/Array](https://wiki.freepascal.org/Array)
 
+
+## Static array vs dynamic array
+
+| Aspect             | Static Array                                                                                                    | Dynamic Array                                                                                                                                |
+|--------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| Size Flexibility   | Size is fixed and specified at compile time.                                                                    | Can grow or shrink dynamically at runtime using procedures like `SetLength`.                                                                   |
+| Memory Management  | Memory allocation is static and determined during declaration.                                                  | Managed by the compiler and runtime system, automatically allocates and deallocates memory as needed.                                        |
+| Access Time        | Faster access time as elements are accessed directly using indices.                                             | Slightly slower access time compared to static arrays due to dynamic memory management.                                                      |
+| Usage              | Suitable when the size of the collection is known and fixed, providing efficient and direct access to elements. | Ideal for situations where the size of the collection is not known beforehand or may change during program execution.                        |
+| Declaration        | E.g. `type staticArray: array[0..10] of integer;`                                                              | E.g. `type dynamicArray: array of integer;`                                                                                                 |
+| Initialization     | Elements are initialized during declaration or by assigning values to each element directly.                    | Elements can be added dynamically using `SetLength` and  by assigning values directly.                                                     |
+| Memory Efficiency  | Memory usage is optimized as it only allocates space for the specified number of elements.                      | May use more memory than necessary due to potential overallocation or resizing operations.                                                   |
+| Usage Complexity   | Straightforward to use with fixed size and direct access, reducing complexity.                                  | Offers more flexibility but requires handling memory management and resizing operations manually.                                            |
+| Performance Impact | Static arrays generally offer better performance due to their predictable size and direct memory access.        | Depending on the implementation and usage patterns, dynamic arrays can incur a slight performance overhead due to dynamic memory management. |
+
+
 ## What is an array?
 
 > An array is a ==linear data structure concept== that ==groups elements of the same type==, stores them in ==contiguous and adjacent memory locations== and provides ==random access== to all of said elements by way of a linear index.
@@ -12,6 +28,7 @@
 > Each element can be uniquely identified by one or more scalar values, called indices, along those dimensions.
 > 
 > Quoted from [Array | Free Pascal Wiki](https://wiki.freepascal.org/Array).
+
 
 ## What is a static array?
 
@@ -213,9 +230,9 @@ begin
   WriteLn('-------------------');
 
   // Print an element from each array
-  WriteLn('Last temp recorded in the array           : ', high(dailyTemp));
-  WriteLn('First number in multipleTwo array         : ', low(multipleTwo));
-  WriteLn('The second item in the defenceForces array: ', defenceForces[1]);
+  WriteLn('Last temp recorded in the array          : ', high(dailyTemp));
+  WriteLn('Second number in multipleTwo array       : ', multipleTwo[1];
+  WriteLn('The third item in the defenceForces array: ', defenceForces[2]);
 
   WriteLn('-------------------');
 
@@ -249,6 +266,38 @@ begin
 end.
 ```
 
+Output
+
+```bash
+The length of dailyTemp array    : 7
+The length of multipleTwo array  : 5
+The length of defenceForces array: 3
+-------------------
+Last temp recorded in the array          : 6
+Second number in multipleTwo array       : 2
+The third item in the defenceForces array: Air Force
+-------------------
+-- Printing the real array
+The temp for day 0 is 30.10.
+The temp for day 1 is 25.50.
+The temp for day 2 is 28.70.
+The temp for day 3 is 29.10.
+The temp for day 4 is 28.80.
+The temp for day 5 is 28.50.
+The temp for day 6 is 27.20.
+-- Printing the integer array
+0
+2
+4
+6
+8
+-- Printing the string array
+Navy
+Army
+Air Force
+-------------------
+Press enter to quit
+```
 
 ## Should I declare arrays in the `type` or in the `var` section?
 
