@@ -19,69 +19,7 @@ A static array is an array with its range included in the array declaration. In 
 
 Since the size is decided on compile, you cannot change the size of the array. Hence, static array.
 
-### Declaring a static array
-
-You can declare a static array type in the `type` section.
-
-```pascal linenums="1"
-type
-  TArray = array [ordinal..ordinal] of aType;
-
-var
-  anArray:TArray;
-```
-
-Alternatively, you can declare your static array variable in the `var` section.
-
-```pascal linenums="1"
-var
-  anArray : array [ordinal..ordinal] of aType;
-```
-
-Which approach should you use? See [Should I declare arrays in the `type` or in the `var` section?](#do-i-declare-arrays-in-the-type-or-in-the-var-section)
-
-### Declaring and initialising a static array
-
-You can declare and init static array variable in the `var` section.
-
-```pascal linenums="1"
-var
-  anArray : array [ordinal..ordinal] of aType = (val_lowest_ordinal, ... , val_highest_ordinal);
-```
-
-### Accessing an element in a static array
-
-```pascal linenums="1"
-// Accessing an element
-anArray[valid_index];
-
-// Assigning value to an element
-anArray[valid_index] := value;
-```
-
-### Printing the content of a static array var
-
-For simplicity, use either  `for..to..do` or `for..in..do` loop.
-
-```pascal linenums="1"
-// Option 1 - for..to..do loop
-for index := low(anArray) to high(anArray) do
-  WriteLn(anArray[index]);
-
-// Option 2 - for..in..do loop
-for tempVar in anArray do
-  WriteLn(tempvar);
-```
-
-!!! Important
-
-    The functions High and Low return the high and low bounds of the leftmost index type of the array. 
-    
-    You should use them whenever possible, since it improves maintainability of your code. The use of both functions is just as efficient as using constants, because they are evaluated at compile time.
-
-    Source: [https://www.freepascal.org/docs-html/ref/refsu14.html](https://www.freepascal.org/docs-html/ref/refsu14.html)
-
-### Example 01 - declare a type of a static array and create a var with that type
+### Examples of static arrays
 
 ```pascal linenums="1"
 program StaticArrayDemo01;
@@ -95,87 +33,113 @@ uses
   Classes;
 
 type
-  // Example: storing student grades.
-  TStudentGrades = array [1..5] of integer; // size is 5
+  // Declaring a static array in the type-section.
+  TByteArray = array [1..5] of byte; // size is 5
 
 var
-  grades: TStudentGrades;
-  index: integer;   // An index variable for loops.
+  // Creating an array var based on a type.
+  // You can assign initial values here too.
+  studentGrades: TByteArray;
+
+  // Declaring an array type in the var section.
+  multipleTen: array [0..9] of integer; // size is 10
+
+  // Declaring static array and init values in the var-section.
+  osChoices: array [1..3] of string = ('Linux', 'MacOS', 'Windows');
+
+  index: integer; // a var for loops
 
 begin
   // Assign a value to an array's element by using a valid index value
   // enclosed in square brackets.
   // Populate student grades
-  grades[1] := 95;
-  grades[2] := 85;
-  grades[3] := 75;
-  grades[4] := 55;
-  grades[5] := 85;
+  studentGrades[1] := 95;
+  studentGrades[2] := 85;
+  studentGrades[3] := 75;
+  studentGrades[4] := 55;
+  studentGrades[5] := 85;
 
-  // Print an element
-  WriteLn('Grade of student 3 is ', grades[3]);
+  // Populate multiple ten
+  for index := low(multipleTen) to high(multipleTen) do
+    multipleTen[index] := index * 10;
 
+  // Print the length of the arrays
+  WriteLn('The length of grades array     : ', Length(studentGrades));
+  WriteLn('The length of osChoices array  : ', Length(osChoices));
+  WriteLn('The length of multipleTen array: ', Length(multipleTen));
+
+  WriteLn('-------------------');
+
+  // Print an element from each array
+  WriteLn('Grade of student 3 in the array : ', studentGrades[3]);
+  WriteLn('First choice of OS the array    : ', osChoices[1]);
+  WriteLn('The Last multiple of 10 in array: ', high(multipleTen));
+
+  WriteLn('-------------------');
+
+  // Print all elements from each array
   WriteLn('-- Student grades array');
-  // Print an array of student grades
-  for index := low(grades) to high(grades) do
-    WriteLn('Student ', index, ' scored ', grades[index]);
+  for index := low(studentGrades) to high(studentGrades) do
+    WriteLn('Student ', index, ' scored ', studentGrades[index]);
+
+  WriteLn('-- Multiple of ten array');
+  for index := low(multipleTen) to high(multipleTen) do
+    WriteLn('Index  ', index, ' contains ', multipleTen[index]);
+
+  WriteLn('-- OS choices array');
+  for index := low(osChoices) to high(osChoices) do
+    WriteLn('OS choice no ', index, ' is ', osChoices[index]);
 
   // Pause console
-  WriteLn('Press enter key to quit');
+  WriteLn('-------------------');
+  WriteLn('Press enter to quit');
   ReadLn;
 end.
 ```
 
-### Example 02 - declare types of static array vars and init values
+The output will be as follows.
 
-```pascal linenums="1"
-program StaticArrayDemo02;
-
-{$mode objfpc}{$H+}{$J-}
-
-uses
-  {$IFDEF UNIX}
-  cmem, cthreads,
-  {$ENDIF}
-  Classes;
-
-type
-  TSmallStrArray = array[0..2] of string; // Size is 3
-
-var
-  // Create an array var based on a static array type
-  osList: TSmallStrArray = ('Linux', 'MacOS', 'Windows');
-
-  // Declare a static array and init values
-  browsers: array[0..5] of string = ('Chrome', 'Safari', 'Edge',
-                                     'Firefox', 'Opera', 'Vivaldi');
-
-  // An index variable for loops.
-  index: integer;
-
-begin
-
-  // Print an element from an array
-  WriteLn('First choice of OS is ', osList[0]);
-  WriteLn('First choice of browser is ', browsers[0]);
-
-  WriteLn('-- array of operating systems');
-
-  // Print an array of operating systems
-  for index := low(osList) to high(osList) do
-    WriteLn(osList[index]);
-
-  WriteLn('-- array of browser names');
-
-  // Print an array of operating systems
-  for index := low(browsers) to high(browsers) do
-    WriteLn(browsers[index]);
-
-  // Pause console
-  WriteLn('Press enter key to quit');
-  ReadLn;
-end.
+```bash
+The length of grades array     : 5
+The length of osChoices array  : 3
+The length of multipleTen array: 10
+-------------------
+Grade of student 3 in the array : 75
+First choice of OS the array    : Linux
+The Last multiple of 10 in array: 9
+-------------------
+-- Student grades array
+Student 1 scored 95
+Student 2 scored 85
+Student 3 scored 75
+Student 4 scored 55
+Student 5 scored 85
+-- Multiple of ten array
+Index  0 contains 0
+Index  1 contains 10
+Index  2 contains 20
+Index  3 contains 30
+Index  4 contains 40
+Index  5 contains 50
+Index  6 contains 60
+Index  7 contains 70
+Index  8 contains 80
+Index  9 contains 90
+-- OS choices array
+OS choice no 1 is Linux
+OS choice no 2 is MacOS
+OS choice no 3 is Windows
+-------------------
+Press enter to quit
 ```
+
+!!! Important
+
+    The functions High and Low return the high and low bounds of the leftmost index type of the array. 
+    
+    You should use them whenever possible, since it improves maintainability of your code. The use of both functions is just as efficient as using constants, because they are evaluated at compile time.
+
+    Source: [https://www.freepascal.org/docs-html/ref/refsu14.html](https://www.freepascal.org/docs-html/ref/refsu14.html)
 
 ## What is a dynamic array?
 
@@ -187,71 +151,9 @@ In Free Pascal, a dynamic array is a ==data structure== that allows for ==flexib
 
 Source: [https://wiki.freepascal.org/Dynamic_array](https://wiki.freepascal.org/Dynamic_array)
 
-### Declaring a dynamic array
+Before using a dynamic array, you must set the length at runtime using [`SetLength`](https://www.freepascal.org/docs-html/rtl/system/setlength.html) procedure.
 
-You can declare a dynamic array type in the `type` section.
-
-```pascal linenums="1"
-type
-  TDynArray = array of aType;
-
-var
-  aDynArray:TDynArray;
-```
-
-Alternatively, you can declare your static array variable in the `var` section.
-
-```pascal linenums="1"
-var
-  aDynArray : array of aType;
-```
-
-Which approach should you use? See [Should I declare arrays in the `type` or in the `var` section?](#do-i-declare-arrays-in-the-type-or-in-the-var-section)
-
-### Declaring and initialising a dynamic array
-
-You can declare and init a dynamic array variable in the `var` section.
-
-```pascal linenums="1"
-var
-  aDynArray : array of aType = (value_1, value_2, ... , val_n);
-```
-
-### Setting length of a dynamic array
-
-Use [`SetLength`](https://www.freepascal.org/docs-html/rtl/system/setlength.html) to set the length of a dynamic array at runtime.
-
-```pascal linenums="1"
-SetLength(aDynArray, newLength);
-```
-
-### Accessing an element in a dynamic array
-
-Similar to the static array's one, use a valid index value in enclosed in square brackets.
-
-```pascal linenums="1"
-// Accessing an element
-aDynArray[valid_index];
-
-// Assigning value to an element
-aDynArray[valid_index] := value;
-```
-
-### Printing the content of a dynamic array var
-
-For simplicity, use either  `for..to..do` or `for..in..do` loop.
-
-```pascal linenums="1"
-// Option 1 - for..to..do loop
-for index := low(aDynArray) to high(aDynArray) do
-  WriteLn(aDynArray[index]);
-
-// Option 2 - for..in..do loop
-for tempVar in aDynArray do
-  WriteLn(tempvar);
-```
-
-### Example 01 - declare dynamic array types and create vars with the types
+### Example of dynamic arrays
 
 ```pascal linenums="1"
 program DynArrayDemo01;
@@ -262,37 +164,76 @@ uses
   {$IFDEF UNIX}
   cmem, cthreads,
   {$ENDIF}
-  Classes;
+  Classes,
+  SysUtils;
 
 type
-  TIntArray = array of integer;
-  TStringArray = array of string;
+  // Declaring a static array in the type-section.
+  TRealArray = array of real;
 
 var
-  multipleTen: TIntArray;       // size is unknown at compile time
-  defenceForces: TStringArray;  // size is unknown at compile time
+  // Creating an array var based on a type.
+  // You can assign initial values here too.
+  dailyTemp: TRealArray;
+
+  // Declaring an array type in the var section.
+  multipleTwo: array of integer;
+
+  // Declaring an array type in the var section.
+  defenceForces: array of string = ('Navy', 'Army', 'Air Force');
+
   tempInt, index: integer;      // variables for loops.
+  tempReal: real;               // variable for loops.
   tempStr: string;              // a string placeholder for loops.
 
 begin
 
   // Setting length of dynamic arrays
-  SetLength(multipleTen, 10);   // This array's size is 10, index 0..9
-  SetLength(defenceForces, 3);  // This array's size is 2, index 0..1
+  SetLength(dailyTemp, 7);   // This array's size is 7, index 0..6
+  SetLength(multipleTwo, 5);  // This array's size is 8, index 0..7
 
-  // Populate the int array with multiples of 10
-  for index := low(multipleTen) to high(multipleTen) do
-    multipleTen[index] := index * 10;
+  // Populate the daily temp array
+  dailyTemp[0] := 30.1;
+  dailyTemp[1] := 25.5;
+  dailyTemp[2] := 28.7;
+  dailyTemp[3] := 29.1;
+  dailyTemp[4] := 28.8;
+  dailyTemp[5] := 28.5;
+  dailyTemp[6] := 27.2;
 
-  // Populate the string array with strings
-  defenceForces[0] := 'Navy';
-  defenceForces[1] := 'Army';
-  defenceForces[2] := 'Air Force';
+  // Populate the int array with multiples of two
+  for index := low(multipleTwo) to high(multipleTwo) do
+    multipleTwo[index] := index * 2;
+
+  // Print the length of the arrays
+  WriteLn('The length of dailyTemp array    : ', Length(dailyTemp));
+  WriteLn('The length of multipleTwo array  : ', Length(multipleTwo));
+  WriteLn('The length of defenceForces array: ', Length(defenceForces));
+
+  WriteLn('-------------------');
+
+  // Print an element from each array
+  WriteLn('Last temp recorded in the array           : ', high(dailyTemp));
+  WriteLn('First number in multipleTwo array         : ', low(multipleTwo));
+  WriteLn('The second item in the defenceForces array: ', defenceForces[1]);
+
+  WriteLn('-------------------');
+
+  WriteLn('-- Printing the real array');
+
+  // Print the real array
+  for index := 0 to high(dailyTemp) do
+  begin
+    // Option 1
+    // WriteLn('Temp day ', (index + 1), ' is ', dailyTemp[index]:0:2);
+    // Option 2
+    WriteLn(Format('The temp for day %d is %2f.', [index, dailyTemp[index]]));
+  end;
 
   WriteLn('-- Printing the integer array');
 
   // Print the integer array
-  for tempInt in multipleTen do
+  for tempInt in multipleTwo do
     WriteLn(tempInt);
 
   WriteLn('-- Printing the string array');
@@ -302,59 +243,12 @@ begin
     WriteLn(tempStr);
 
   // Pause console
-  WriteLn('Press enter to quit');
-  ReadLn;
-end.
-```
-
-### Example 02 - declare and init values of dynamic arrays
-
-```pascal linenums="1"
-program DynArrayDemo02;
-
-{$mode objfpc}{$H+}{$J-}
-
-uses
-  {$IFDEF UNIX}
-  cmem, cthreads,
-  {$ENDIF}
-  Classes;
-
-type
-  TStringArray = array of string;
-
-var
-  // Create an array var based on a dynamic array type
-  shoppingList: TStringArray = ('Corn Flakes', 'Eggs', 'Tea', 'Milk',
-                                'Cheese', 'Tzatziki', 'Sausages', 'Olives',
-                                'Bread', 'Garlic');
-
-  // Declare a dynamic array and initialise values
-  tofuList: array of string = ('Kinu-dofu', 'Momen-dofu',
-                               'Iburi-dofu', 'Yuba');
-
-  tempStr: string; // a string placeholder for loops.
-
-begin
-
-  WriteLn('-- array of shopping items');
-
-  // Print the string array
-  for tempStr in shoppingList do
-    WriteLn(tempStr);
-
-  WriteLn('-- array of japanese tofu names');
-
-  // Print the string array
-  for tempStr in tofuList do
-    WriteLn(tempStr);
-
-  // Pause console
   WriteLn('-------------------');
   WriteLn('Press enter to quit');
   ReadLn;
 end.
 ```
+
 
 ## Should I declare arrays in the `type` or in the `var` section?
 
