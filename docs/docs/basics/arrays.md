@@ -324,3 +324,111 @@ While it is possible to declare arrays in the `var` section for simplicity or qu
 - **For larger programs**: In larger programs or when working with complex data structures, it is beneficial to declare dynamic arrays in the `type` section to promote code organization, maintainability, and consistency.
 
 - **For quick prototyping or small programs**: In smaller programs or for quick prototyping where simplicity is priority, declaring dynamic arrays in the `var` section may be more practical.
+
+
+## Which one should I use? Static or dynamic array?
+
+### If you know the size at compile time - static array
+
+Here is an example of creating a [static array](https://wiki.freepascal.org/Array) and sorting the elements as well.
+
+The creation of the list is at line 13.
+
+```pascal hl_lines="13" linenums="1"
+program StaticArrayExample;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  Generics.Collections;
+
+type
+  strListHelper = specialize TArrayHelper<string>;
+
+var
+  // Declaring a list of 6 elements
+  strList: array[0..5] of string = ('Zero', 'Twenty', 'Thirty', 'Forty', 'Sixty', 'Fifty');
+  minVal, maxVal: string;
+  i: integer;
+
+begin
+  // Printing out length
+  WriteLn('The length is ', Length(strList));
+
+  // Printing out list
+  WriteLn('-- Original list ---');
+  for i := 0 to High(strList) do WriteLn(strList[i]);
+
+  // Modifying the first element
+  // strList[0] will become 'Zero One'
+  strList[0] := strList[0] + ' One';
+
+  // Sorting ascending by default using TArrayHelper<T>
+  WriteLn('-- Sorting list ---');
+  strListHelper.Sort(strList);
+
+  // Printing out the modified list
+  WriteLn('-- Sorted list ---');
+  for i := 0 to High(strList) do WriteLn(strList[i]);
+
+  // Pausing console, user can continue by pressing enter key
+  ReadLn;
+end.
+```
+
+### If you know the size only at runtime - dynamic array
+
+Here is an example using a [dynamic array](https://wiki.freepascal.org/Dynamic_array) and sorting the elements in it.
+
+```pascal linenums="1"
+program DynamicArrayExample;
+
+{$mode objfpc}{$H+}{$J-}
+{$modeswitch arrayoperators}
+
+uses
+  Generics.Collections;
+
+type
+  strListHelper= specialize TArrayHelper<string>;
+
+var
+  strList: array of string;
+  i: integer;
+
+begin
+
+  // Set the length of the list
+  SetLength(strList, 3);
+
+  // Populating the content, of length 3
+  strList := ['Zero', 'Twenty', 'Thirty'];
+
+  // Append a literal array to the list
+  // Now the length is 6!
+  strList := strList + ['Forty', 'Sixty', 'Fifty'];
+
+  // Printing out length
+  WriteLn('The length is ', Length(strList));
+
+  // Printing out list
+  WriteLn('-- Original list ---');
+  for i := Low(strList) to High(strList) do WriteLn(strList[i]);
+
+  // Modifying the first element
+  // strList[0] will become 'Zero One'
+  strList[0] := strList[0] + ' One';
+
+  // Sorting the array using TArrayHelper<T>
+  WriteLn('-- Sorting list ---');
+  strListHelper.Sort(strList);
+
+  // Printing out the modified list
+  WriteLn('-- Sorted list ---');
+  for i := Low(strList) to High(strList) do WriteLn(strList[i]);
+
+  // Pausing console
+  // user can continue by pressing enter key
+  ReadLn;
+end.
+```
