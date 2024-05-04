@@ -1,11 +1,35 @@
 # Building and Processing Lists
 
-Why do we want to use lists? Conveniences. Especially when you ...
+## What is a list?
 
-- may need to change the length of your lists often at run-time,
-- may need your lists for more than just storing and retreival (sort and search).
+Think of it as a higher-level construct than a static or dynamic array.
 
-Otherwise, jump to [I know the size of my list. How do I build one for storing and retrieval?](#i-know-the-size-of-my-list-how-do-i-build-one-for-storing-and-retrieval)
+Higher-level constructs:
+
+- Abstract away lower-level details, allowing developers to work with more generalized and easier-to-use interfaces.
+- Reduce the amount of manual code a developer needs to write.
+
+## Why do we want to use lists? 
+
+Well, conveniences.
+
+- You may need to change the length of your lists often at run-time.
+- You may need your lists for more than just storing and retreival (sort and search).
+- Etc.
+
+Here is a brief comparison between `array of string` and `TStringList` ([https://wiki.freepascal.org/TStringList-TStrings_Tutorial](https://wiki.freepascal.org/TStringList-TStrings_Tutorial)).
+
+Operation            | array of string                                                                                                                | TStringList                     
+-------------------- | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------
+Variable declaration | StringList: array of string;                                                                                                   | StringList: TStringList;        
+Initialization       | implicit constructor                                                                                                           | StringList := TStringList.Create
+Set size             | SetLength(StringList, X);                                                                                                      | StringList.Size := X;           
+Get size             | X := Length(StringList);                                                                                                       | X := StringList.Count;          
+Add item             | SetLength(StringList, Length(StringList) + 1); StringList[Length(StringList) - 1] := X;                                        | StringList.Add(X);              
+Delete item          | for I := Index to Length(StringList) - 2 do StringList[I] := StringList[I + 1]; SetLength(StringList, Length(StringList) - 1); | StringList.Delete(Index);       
+Remove all items     | SetLength(StringList, 0);                                                                                                      | StringList.Clear;               
+Finalization         | implicit destructor                                                                                                            | StringList.Free;                
+
 
 ## How can I make a list of string and sort it?
 
