@@ -768,6 +768,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-is-a-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a list?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-we-want-to-use-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why do we want to use lists?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-can-i-make-a-list-of-string-and-sort-it" class="md-nav__link">
     <span class="md-ellipsis">
       How can I make a list of string and sort it?
@@ -1454,6 +1472,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-is-a-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a list?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-we-want-to-use-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why do we want to use lists?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-can-i-make-a-list-of-string-and-sort-it" class="md-nav__link">
     <span class="md-ellipsis">
       How can I make a list of string and sort it?
@@ -1595,12 +1631,72 @@
 
 
 <h1 id="building-and-processing-lists">Building and Processing Lists<a class="headerlink" href="#building-and-processing-lists" title="Permanent link">&para;</a></h1>
-<p>Why do we want to use lists? Conveniences. Especially when you ...</p>
+<h2 id="what-is-a-list">What is a list?<a class="headerlink" href="#what-is-a-list" title="Permanent link">&para;</a></h2>
+<p>Think of it as a higher-level construct than a static or dynamic array.</p>
+<p>Higher-level constructs:</p>
 <ul>
-<li>may need to change the length of your lists often at run-time,</li>
-<li>may need your lists for more than just storing and retreival (sort and search).</li>
+<li>Abstract away lower-level details, allowing developers to work with more generalized and easier-to-use interfaces.</li>
+<li>Reduce the amount of manual code a developer needs to write.</li>
 </ul>
-<p>Otherwise, jump to <a href="#i-know-the-size-of-my-list-how-do-i-build-one-for-storing-and-retrieval">I know the size of my list. How do I build one for storing and retrieval?</a></p>
+<h2 id="why-do-we-want-to-use-lists">Why do we want to use lists?<a class="headerlink" href="#why-do-we-want-to-use-lists" title="Permanent link">&para;</a></h2>
+<p>Well, conveniences.</p>
+<ul>
+<li>You may need to change the length of your lists often at run-time.</li>
+<li>You may need your lists for more than just storing and retreival (sort and search).</li>
+<li>Etc.</li>
+</ul>
+<p>Here is a brief comparison between <code>array of string</code> and <code>TStringList</code> (<a href="https://wiki.freepascal.org/TStringList-TStrings_Tutorial">https://wiki.freepascal.org/TStringList-TStrings_Tutorial</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>array of string</th>
+<th>TStringList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variable declaration</td>
+<td>StringList: array of string;</td>
+<td>StringList: TStringList;</td>
+</tr>
+<tr>
+<td>Initialization</td>
+<td>implicit constructor</td>
+<td>StringList := TStringList.Create</td>
+</tr>
+<tr>
+<td>Set size</td>
+<td>SetLength(StringList, X);</td>
+<td>StringList.Size := X;</td>
+</tr>
+<tr>
+<td>Get size</td>
+<td>X := Length(StringList);</td>
+<td>X := StringList.Count;</td>
+</tr>
+<tr>
+<td>Add item</td>
+<td>SetLength(StringList, Length(StringList) + 1); StringList[Length(StringList) - 1] := X;</td>
+<td>StringList.Add(X);</td>
+</tr>
+<tr>
+<td>Delete item</td>
+<td>for I := Index to Length(StringList) - 2 do StringList[I] := StringList[I + 1]; SetLength(StringList, Length(StringList) - 1);</td>
+<td>StringList.Delete(Index);</td>
+</tr>
+<tr>
+<td>Remove all items</td>
+<td>SetLength(StringList, 0);</td>
+<td>StringList.Clear;</td>
+</tr>
+<tr>
+<td>Finalization</td>
+<td>implicit destructor</td>
+<td>StringList.Free;</td>
+</tr>
+</tbody>
+</table>
 <h2 id="how-can-i-make-a-list-of-string-and-sort-it">How can I make a list of string and sort it?<a class="headerlink" href="#how-can-i-make-a-list-of-string-and-sort-it" title="Permanent link">&para;</a></h2>
 <p>Use <a href="https://lazarus-ccr.sourceforge.io/docs/rtl/classes/tstringlist.html"><code>TStringList</code></a>. See the recipe below.</p>
 <ol>
