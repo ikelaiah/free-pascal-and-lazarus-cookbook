@@ -1,8 +1,6 @@
 # Building and Processing Lists
 
-This page focuses on building lists with generics instead of using the regular static and dynamic arrays.
-
-The reason? Conveniences. Especially when you ...
+Why do we want to use lists? Conveniences. Especially when you ...
 
 - may need to change the length of your lists often at run-time,
 - may need your lists for more than just storing and retreival (sort and search).
