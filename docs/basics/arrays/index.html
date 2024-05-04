@@ -756,6 +756,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#static-array-vs-dynamic-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static array vs dynamic array
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-is-an-array" class="md-nav__link">
     <span class="md-ellipsis">
       What is an array?
@@ -1445,6 +1454,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#static-array-vs-dynamic-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static array vs dynamic array
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-is-an-array" class="md-nav__link">
     <span class="md-ellipsis">
       What is an array?
@@ -1564,6 +1582,63 @@
 <li><a href="https://www.freepascal.org/docs-html/ref/refsu14.html">https://www.freepascal.org/docs-html/ref/refsu14.html</a></li>
 <li><a href="https://wiki.freepascal.org/Array">https://wiki.freepascal.org/Array</a></li>
 </ul>
+<h2 id="static-array-vs-dynamic-array">Static array vs dynamic array<a class="headerlink" href="#static-array-vs-dynamic-array" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Static Array</th>
+<th>Dynamic Array</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size Flexibility</td>
+<td>Size is fixed and specified at compile time.</td>
+<td>Can grow or shrink dynamically at runtime using procedures like <code>SetLength</code>.</td>
+</tr>
+<tr>
+<td>Memory Management</td>
+<td>Memory allocation is static and determined during declaration.</td>
+<td>Managed by the compiler and runtime system, automatically allocates and deallocates memory as needed.</td>
+</tr>
+<tr>
+<td>Access Time</td>
+<td>Faster access time as elements are accessed directly using indices.</td>
+<td>Slightly slower access time compared to static arrays due to dynamic memory management.</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>Suitable when the size of the collection is known and fixed, providing efficient and direct access to elements.</td>
+<td>Ideal for situations where the size of the collection is not known beforehand or may change during program execution.</td>
+</tr>
+<tr>
+<td>Declaration</td>
+<td>E.g. <code>type staticArray: array[0..10] of integer;</code></td>
+<td>E.g. <code>type dynamicArray: array of integer;</code></td>
+</tr>
+<tr>
+<td>Initialization</td>
+<td>Elements are initialized during declaration or by assigning values to each element directly.</td>
+<td>Elements can be added dynamically using <code>SetLength</code> and  by assigning values directly.</td>
+</tr>
+<tr>
+<td>Memory Efficiency</td>
+<td>Memory usage is optimized as it only allocates space for the specified number of elements.</td>
+<td>May use more memory than necessary due to potential overallocation or resizing operations.</td>
+</tr>
+<tr>
+<td>Usage Complexity</td>
+<td>Straightforward to use with fixed size and direct access, reducing complexity.</td>
+<td>Offers more flexibility but requires handling memory management and resizing operations manually.</td>
+</tr>
+<tr>
+<td>Performance Impact</td>
+<td>Static arrays generally offer better performance due to their predictable size and direct memory access.</td>
+<td>Depending on the implementation and usage patterns, dynamic arrays can incur a slight performance overhead due to dynamic memory management.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="what-is-an-array">What is an array?<a class="headerlink" href="#what-is-an-array" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>An array is a <mark>linear data structure concept</mark> that <mark>groups elements of the same type</mark>, stores them in <mark>contiguous and adjacent memory locations</mark> and provides <mark>random access</mark> to all of said elements by way of a linear index.</p>
@@ -1915,9 +1990,9 @@
 </span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;-------------------&#39;</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56"></a>
 </span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="w">  </span><span class="c1">// Print an element from each array</span>
-</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Last temp recorded in the array           : &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">high</span><span class="p">(</span><span class="n">dailyTemp</span><span class="p">))</span><span class="o">;</span>
-</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;First number in multipleTwo array         : &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">low</span><span class="p">(</span><span class="n">multipleTwo</span><span class="p">))</span><span class="o">;</span>
-</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;The second item in the defenceForces array: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">defenceForces</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">;</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Last temp recorded in the array          : &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">high</span><span class="p">(</span><span class="n">dailyTemp</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Second number in multipleTwo array       : &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">multipleTwo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">;</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;The third item in the defenceForces array: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">defenceForces</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">;</span>
 </span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a>
 </span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;-------------------&#39;</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63"></a>
@@ -1950,6 +2025,36 @@
 </span><span id="__span-2-90"><a id="__codelineno-2-90" name="__codelineno-2-90"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-2-91"><a id="__codelineno-2-91" name="__codelineno-2-91"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
+<p>Output</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>The<span class="w"> </span>length<span class="w"> </span>of<span class="w"> </span>dailyTemp<span class="w"> </span>array<span class="w">    </span>:<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>The<span class="w"> </span>length<span class="w"> </span>of<span class="w"> </span>multipleTwo<span class="w"> </span>array<span class="w">  </span>:<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>The<span class="w"> </span>length<span class="w"> </span>of<span class="w"> </span>defenceForces<span class="w"> </span>array:<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>-------------------
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Last<span class="w"> </span>temp<span class="w"> </span>recorded<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>array<span class="w">          </span>:<span class="w"> </span><span class="m">6</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Second<span class="w"> </span>number<span class="w"> </span><span class="k">in</span><span class="w"> </span>multipleTwo<span class="w"> </span>array<span class="w">       </span>:<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>The<span class="w"> </span>third<span class="w"> </span>item<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>defenceForces<span class="w"> </span>array:<span class="w"> </span>Air<span class="w"> </span>Force
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>-------------------
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>--<span class="w"> </span>Printing<span class="w"> </span>the<span class="w"> </span>real<span class="w"> </span>array
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>The<span class="w"> </span>temp<span class="w"> </span><span class="k">for</span><span class="w"> </span>day<span class="w"> </span><span class="m">0</span><span class="w"> </span>is<span class="w"> </span><span class="m">30</span>.10.
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>The<span class="w"> </span>temp<span class="w"> </span><span class="k">for</span><span class="w"> </span>day<span class="w"> </span><span class="m">1</span><span class="w"> </span>is<span class="w"> </span><span class="m">25</span>.50.
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>The<span class="w"> </span>temp<span class="w"> </span><span class="k">for</span><span class="w"> </span>day<span class="w"> </span><span class="m">2</span><span class="w"> </span>is<span class="w"> </span><span class="m">28</span>.70.
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>The<span class="w"> </span>temp<span class="w"> </span><span class="k">for</span><span class="w"> </span>day<span class="w"> </span><span class="m">3</span><span class="w"> </span>is<span class="w"> </span><span class="m">29</span>.10.
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>The<span class="w"> </span>temp<span class="w"> </span><span class="k">for</span><span class="w"> </span>day<span class="w"> </span><span class="m">4</span><span class="w"> </span>is<span class="w"> </span><span class="m">28</span>.80.
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>The<span class="w"> </span>temp<span class="w"> </span><span class="k">for</span><span class="w"> </span>day<span class="w"> </span><span class="m">5</span><span class="w"> </span>is<span class="w"> </span><span class="m">28</span>.50.
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>The<span class="w"> </span>temp<span class="w"> </span><span class="k">for</span><span class="w"> </span>day<span class="w"> </span><span class="m">6</span><span class="w"> </span>is<span class="w"> </span><span class="m">27</span>.20.
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>--<span class="w"> </span>Printing<span class="w"> </span>the<span class="w"> </span>integer<span class="w"> </span>array
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="m">0</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="m">2</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="m">4</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="m">6</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="m">8</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>--<span class="w"> </span>Printing<span class="w"> </span>the<span class="w"> </span>string<span class="w"> </span>array
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>Navy
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>Army
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>Air<span class="w"> </span>Force
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>-------------------
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>Press<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span>quit
+</span></code></pre></div>
 <h2 id="should-i-declare-arrays-in-the-type-or-in-the-var-section">Should I declare arrays in the <code>type</code> or in the <code>var</code> section?<a class="headerlink" href="#should-i-declare-arrays-in-the-type-or-in-the-var-section" title="Permanent link">&para;</a></h2>
 <p>While it is possible to declare arrays in the <code>var</code> section for simplicity or quick one-time use, leveraging the <code>type</code> section for array declarations offers benefits in terms of Readability <mark>code structure</mark>, <mark>maintainability</mark>, and <mark>readability</mark> in larger and more complex Pascal programs.</p>
 <h3 id="pros-of-declaring-in-var-section">Pros of declaring in <code>var</code> section<a class="headerlink" href="#pros-of-declaring-in-var-section" title="Permanent link">&para;</a></h3>
