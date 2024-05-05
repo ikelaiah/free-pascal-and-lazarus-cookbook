@@ -19,16 +19,16 @@ Well, conveniences.
 
 Here is a brief comparison between `array of string` and `TStringList` ([https://wiki.freepascal.org/TStringList-TStrings_Tutorial](https://wiki.freepascal.org/TStringList-TStrings_Tutorial)).
 
-Operation            | array of string                                                                                                                | TStringList                     
--------------------- | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------
-Variable declaration | StringList: array of string;                                                                                                   | StringList: TStringList;        
-Initialization       | implicit constructor                                                                                                           | StringList := TStringList.Create
-Set size             | SetLength(StringList, X);                                                                                                      | StringList.Size := X;           
-Get size             | X := Length(StringList);                                                                                                       | X := StringList.Count;          
-Add item             | SetLength(StringList, Length(StringList) + 1); StringList[Length(StringList) - 1] := X;                                        | StringList.Add(X);              
-Delete item          | for I := Index to Length(StringList) - 2 do StringList[I] := StringList[I + 1]; SetLength(StringList, Length(StringList) - 1); | StringList.Delete(Index);       
-Remove all items     | SetLength(StringList, 0);                                                                                                      | StringList.Clear;               
-Finalization         | implicit destructor                                                                                                            | StringList.Free;                
+Operation            | array of string                                                                                                                  | TStringList                     
+-------------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------
+Variable declaration | `stringList: array of string;`                                                                                                   | `stringList: TStringList;`        
+Initialization       | implicit constructor                                                                                                             | `stringList := TStringList.Create;`
+Set size             | `SetLength(StringList, X);`                                                                                                      | `stringList.Size := n;`           
+Get size             | `n := Length(stringList);`                                                                                                       | `n := stringList.Count;`          
+Add item             | `SetLength(stringList, Length(stringList) + 1); stringList[Length(stringList) - 1] := x;`                                        | `stringList.Add(x);`              
+Delete item          | `for i := index to Length(stringList) - 2 do stringList[i] := stringList[i + 1]; SetLength(stringList, Length(stringList) - 1);` | `stringList.Delete(index);`       
+Remove all items     | `SetLength(stringList, 0);`                                                                                                      | `stringList.Clear;`               
+Finalisation         | `implicit destructor`                                                                                                            | `stringList.Free;`                
 
 
 ## How can I make a list of string and sort it?
