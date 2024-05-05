@@ -23,7 +23,7 @@ There are various kinds of packages for Free Pascal & Lazarus IDE. The following
 ## A lib I need is not in my fav package manager, what can I do?
 
 1. Contact the package manager maintaners to add, or
-2. Copy the lib in your project folder and get FPC (via Lazarus GUI) to include the location of your downloaded libs.
+2. Download the lib and get FPC (via Lazarus GUI) to include the location of your downloaded lib.
 
 ## FPC & Lazarus Packages
 
