@@ -20,6 +20,11 @@ There are various kinds of packages for Free Pascal & Lazarus IDE. The following
 - **fpcupdeluxe**(GUI) - [https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases](https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases)
 - **LazarusPackageManager**(CLI) - [https://github.com/Warfley/LazarusPackageManager](https://github.com/Warfley/LazarusPackageManager)
 
+## A lib I need is not in my fav package manager, what can I do?
+
+1. Contact the package manager maintaners to add, or
+2. Copy the lib in your project folder and get FPC (via Lazarus GUI) to include the location of your downloaded libs.
+
 ## FPC & Lazarus Packages
 
 !!! Note
@@ -109,7 +114,7 @@ Fundamentals 5 is a library for Delphi and Free Pascal. This library can help wi
 
 **ATSynEdit** is Multi-line editor control for Lazarus, which was made by Alexey Torgashin as an alternative to SynEdit. It is not based on SynEdit, it has totally different structure.
 
-### [Libraries by BeRo1985](https://github.com/BeRo1985)
+### [Libraries by Benjamin Rosseaux (Bero1985)](https://github.com/BeRo1985)
 
 A collection of useful libraries in Object Pascal by [Benjamin Rosseaux](https://www.rosseaux.net).
 
@@ -120,3 +125,33 @@ A collection of useful libraries in Object Pascal by [Benjamin Rosseaux](https:/
 - And others.
 
 See the full list on [BeRo1985's Github page](https://github.com/BeRo1985?tab=repositories).
+
+
+### Libraries by [Benito van der Zander (benibella)](https://github.com/benibela?tab=repositories)
+
+- **[Internet Tools](https://github.com/benibela/internettools)**: This package provides standard conformant XPath 2.0, XQuery 1.0 and XPath/XQuery 3.0 interpreters with extensions for - among others - JSONiq, pattern matching, CSS and HTML; as well as functions to perform HTTP/S requests on Windows/Linux/MacOSX/Android, an XSLT-inspired webscraping language, and an auto update class. See the [internettools documentation](http://www.benibela.de/documentation/internettools/) or a [short overview](http://www.benibela.de/sources_en.html#internettools).
+
+- **[BBUtils](https://github.com/benibela/bbutils)**: These units consist of important low-level functions missing in FreePascal. For example:
+
+    - String and array view for efficient processing of slices of a string or array.
+    - Various array functions (add, delete, search, prealloc, ...) and array lists.
+    - Various string functions (pchar/ansistring, compare, split, search, convert html entities, ...). string builder for fast construction of strings.
+    - Various date/time parsing/formatting functions, supporting years before 0 and after 65535, and timezones
+    - Mathematical functions (gcd, primes, Bernoulli statistics, prime/euler-phi sieve...)
+    - Stable sorting function for arbitrary sized data arrays
+    - Automatical translation of with tr['marked strings'] and components
+    - A Pascal template language which is "compiled" to Pascal (similar to the C preprocessor)
+    - ...
+    - Read the docs: [bbutils documentation](https://www.benibela.de/documentation/bbutils/bbutils.html)
+
+- **[Big Decimal math](https://github.com/benibela/bigdecimalmath)**: Big Decimal Math
+This unit provides an arbitrary precision BCD float number type. The usecase is performing a few arithmetic operations with the maximal possible accuracy and precision, e.g. calculating the sum of numbers from a text files, where the conversion from decimal input to binary floats would take more time than the calculation. It can be used like any numeric type and supports:
+
+    - At least numbers between 10^-2147483647 to 10^2147483647 with 2147483647 decimal digit precision
+    - All standard arithmetic and comparison operators
+    - Rounding functions (floor, ceil, to-even, ..)
+    - Some more advanced operations, e.g. power and sqrt
+    - Accurate and precise binary float (single/double/extended) to BCD float and string conversion
+    - ..
+    - Read the docs: [bigdecimalmath documentation](http://www.benibela.de/sources_en.html#bigdecimalmath)
+- 
