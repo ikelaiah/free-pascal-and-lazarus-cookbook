@@ -1657,43 +1657,43 @@
 <tbody>
 <tr>
 <td>Variable declaration</td>
-<td>StringList: array of string;</td>
-<td>StringList: TStringList;</td>
+<td><code>stringList: array of string;</code></td>
+<td><code>stringList: TStringList;</code></td>
 </tr>
 <tr>
 <td>Initialization</td>
 <td>implicit constructor</td>
-<td>StringList := TStringList.Create</td>
+<td><code>stringList := TStringList.Create;</code></td>
 </tr>
 <tr>
 <td>Set size</td>
-<td>SetLength(StringList, X);</td>
-<td>StringList.Size := X;</td>
+<td><code>SetLength(StringList, X);</code></td>
+<td><code>stringList.Size := n;</code></td>
 </tr>
 <tr>
 <td>Get size</td>
-<td>X := Length(StringList);</td>
-<td>X := StringList.Count;</td>
+<td><code>n := Length(stringList);</code></td>
+<td><code>n := stringList.Count;</code></td>
 </tr>
 <tr>
 <td>Add item</td>
-<td>SetLength(StringList, Length(StringList) + 1); StringList[Length(StringList) - 1] := X;</td>
-<td>StringList.Add(X);</td>
+<td><code>SetLength(stringList, Length(stringList) + 1); stringList[Length(stringList) - 1] := x;</code></td>
+<td><code>stringList.Add(x);</code></td>
 </tr>
 <tr>
 <td>Delete item</td>
-<td>for I := Index to Length(StringList) - 2 do StringList[I] := StringList[I + 1]; SetLength(StringList, Length(StringList) - 1);</td>
-<td>StringList.Delete(Index);</td>
+<td><code>for i := index to Length(stringList) - 2 do stringList[i] := stringList[i + 1]; SetLength(stringList, Length(stringList) - 1);</code></td>
+<td><code>stringList.Delete(index);</code></td>
 </tr>
 <tr>
 <td>Remove all items</td>
-<td>SetLength(StringList, 0);</td>
-<td>StringList.Clear;</td>
+<td><code>SetLength(stringList, 0);</code></td>
+<td><code>stringList.Clear;</code></td>
 </tr>
 <tr>
-<td>Finalization</td>
-<td>implicit destructor</td>
-<td>StringList.Free;</td>
+<td>Finalisation</td>
+<td><code>implicit destructor</code></td>
+<td><code>stringList.Free;</code></td>
 </tr>
 </tbody>
 </table>
