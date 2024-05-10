@@ -23,7 +23,8 @@ nav:
     - Regular Expressions: docs/basics/regex.md
     - Directories, Paths and Files: docs/basics/dir-path-filename.md
     - Exceptions: docs/basics/exception-try-blocks.md
-    - File Handling: docs/basics/file-handling.md
+    - File Handling I: docs/basics/file-handling.md
+    - File Handling II: docs/basics/file-handling-ii.md
 
   - Advanced Topics:
     - Overview: docs/advanced/overview.md

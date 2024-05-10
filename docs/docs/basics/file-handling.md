@@ -1,4 +1,6 @@
-# File Handling
+# File Handling I
+
+This page deals mostly with creating, reading and appending plain text files in Free Pascal.
 
 !!! Note 
     
