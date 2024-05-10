@@ -7,14 +7,14 @@ More snippets on handling files using Free Pascal.
 Here is an example of reading first two columns in a CSV file using `TCSVDataset`.
 
 ```pascal
-program TCSVDocumentGetSpecificCols;
+program TCSVDatasetGetSpecificCols;
 
 {
  An example of listing the content of first two columns in a CSV file
- using TCSVDocument.
+ using TCSVDataset.
 }
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J-}
 
 uses
   {$IFDEF UNIX}
@@ -22,43 +22,59 @@ uses
   {$ENDIF}
   Classes,
   SysUtils,
-  csvdocument,
   streamex,
-  bufstream;
+  bufstream,
+  csvdataset;
 
-  procedure ReadCSV(filename: string; delimiter: char);
+  // A routine to list first two columns of a CSV file
+  procedure ReadCSV(filename: string;
+                    delimiter: char = ',';
+                    isFirstRowFieldName: boolean = False);
   var
     fileStream: TFileStream;
     buffStream: TReadBufStream;
-    csvReader: TCSVDocument;
-    index, totalLines: int64;
+    csvDataset: TCSVDataset;
+    lineNo: int64;
   begin
-    totalLines := 0;
     fileStream := TFileStream.Create(filename, fmOpenRead);
     try
       buffStream := TReadBufStream.Create(fileStream, 65536);
       try
-        csvReader := TCSVDocument.Create;
+        csvDataset := TCSVDataset.Create(nil);
         try
-          // Assign a delimiter
-          csvReader.Delimiter := delimiter;
 
-          // Assign a source stream.
-          csvReader.LoadFromStream(buffStream);
+          // Assign a valid delimiter
+          csvDataset.CSVOptions.Delimiter := delimiter;
 
-          // Get total lines for iteration.
-          totalLines := csvReader.RowCount;
+          // Is the first line field names?
+          // If yes, first row will be excluded when listing rows
+          csvDataset.CSVOptions.FirstLineAsFieldNames := isFirstRowFieldName;
 
-          // Print the values of first two columns from the CSV file.
-          for index := 0 to totalLines-1 do
+          // Load CSV from the stream
+          csvDataset.LoadFromCSVStream(buffStream);
+
+          // Move to first record
+          csvDataset.First;
+
+          lineNo := 1;
+
+          while not csvDataset.EOF do
           begin
-            WriteLn(Format('row %d: %s, %s', [(index + 1),
-                                              csvReader.Cells[0, index],
-                                              csvReader.Cells[1, index]]));
+            // Get the values of the first two fields here and list them.
+            WriteLn(Format('row %d: %s, %s',
+                           [lineNo,
+                            csvDataset.Fields[0].AsString,
+                            csvDataset.Fields[1].AsString]));
+
+            // Move to next
+            csvDataset.Next;
+
+            // Increment line no
+            lineNo := lineNo + 1;
           end;
 
         finally
-          csvReader.Free;
+          csvDataset.Free;
         end;
       finally
         buffStream.Free;
@@ -72,6 +88,7 @@ var
   filename: string;
 
 begin
+
   filename := ParamStr(1);
   if not FileExists(filename) then
   begin
@@ -79,7 +96,7 @@ begin
     Exit;
   end;
 
-  ReadCSV(filename, ';');
+  ReadCSV(filename, ';', False);
 end.
 ```
 
@@ -126,7 +143,7 @@ uses
           csvReader.Delimiter := delimiter;
 
           // Assign a source stream.
-          csvReader.LoadFromStream(buffStream);
+          csvReader.LoadFromStream(buffStream, 65536);
 
           // Get total lines for iteration.
           totalLines := csvReader.RowCount;
