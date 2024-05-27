@@ -30,7 +30,7 @@ nav:
     - Overview: docs/advanced/overview.md
     - Conditional Compilation: docs/advanced/conditional-compilation.md
     - Debugging: docs/advanced/debugging.md
-    - Concurrency and Parallelism: docs/advanced/concurrent-parallel.md
+    - Multi-threading: docs/advanced/multi-threading.md
   - External Systems:
     - Overview: docs/external-systems/overview.md
     - Parsing JSON: docs/external-systems/parsing-json.md
