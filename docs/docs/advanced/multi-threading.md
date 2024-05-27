@@ -102,8 +102,11 @@ Creating a multi-threaded application is easier using the `TThread` class. This 
 ### Important Features of TThread
 
 - **Terminate Method and Terminated Property**
-    - The `Terminate` method sets `Terminated` to True, but your `Execute` method must check this and stop the loop.
+    - The `Terminate` method sets `Terminated` to `True`, but your `Execute` method must check this and stop the loop.
     - It **does not in any way attempt to terminate the thread** in any other way, this just signals the thread that it should stop executing at the earliest possible moment.
+
+- **WaitFor Method**
+    - `WaitFor` waits for the thread to terminate, and returns the exit status.
 
 !!! Contribution
 
@@ -124,14 +127,16 @@ Creating a multi-threaded application is easier using the `TThread` class. This 
     
     Usually, you use `Terminated` extensively in the `Execute` method.
 
-    You kinda have to check it religiously inside `Execute`, especially if you have a long running and/or blocking thread.
+    You kinda have to check it **religiously** inside `Execute`, especially if you have a long running and/or blocking thread.
 
     But, if I'm not mistaken, the `Terminated` property is privacy level protected. Hence, you **should not use it outside** `Execute`.
 
     To terminate a thread you call `Terminate`. Then if you need to make sure it's done and has cleaned up, you use `WaitFor`.
 
-- **WaitFor Method**
-    - `WaitFor` waits for the thread to terminate, and returns the exit status.
+- **FreeOnTerminate Property**
+  
+    - If `FreeOnTerminate` is `True`, the thread object is automatically freed when the `Execute` method finishes.
+    - If `FreeOnTerminate` is `False`, you need to free the thread object manually.
 
 - **Synchronize Method**
     - Threads **should not directly update visible components** (like UI elements).
@@ -144,10 +149,6 @@ Creating a multi-threaded application is easier using the `TThread` class. This 
 2. The main thread processes the message and runs the specified method.
 3. After running the method, the main thread wakes the sleeping thread, and the thread continues.
 
-- **FreeOnTerminate Property**
-  
-    - If `FreeOnTerminate` is `True`, the thread object is automatically freed when the `Execute` method finishes.
-    - If `FreeOnTerminate` is `False`, you need to free the thread object manually.
 
 By using `TThread`, you can create and manage multiple threads in your application, making it more efficient and responsive.
 
