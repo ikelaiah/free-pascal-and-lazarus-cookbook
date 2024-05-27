@@ -1,9 +1,9 @@
 # Multi-threading
 
-## Overview
+## What is it?
 
 !!! info
-    The information in this section is a simplified version of the content available at the following URL; [Multithreaded Application Tutorial](https://wiki.freepascal.org/Multithreaded_Application_Tutorial), excluding the tutorial.
+    The information in this section is adapted from the following URL; [Multithreaded Application Tutorial](https://wiki.freepascal.org/Multithreaded_Application_Tutorial), excluding the tutorial.
 
 A multi-threaded application can run multiple tasks simultaneously by creating separate threads. The Main Thread manages user interactions, while other threads handle background tasks. 
 
@@ -48,7 +48,6 @@ For simpler tasks, one thread may be enough. Instead of many threads, you can sp
     Source: [Lazarus: The effect of Application.ProcessMessages](https://stackoverflow.com/a/24789033/1179312)
 
 
-
 ### Units needed for a multi-threaded application
 
 #### Windows
@@ -81,6 +80,76 @@ uses
 
   // ... the rest of your code
 ```
+
+## TThread Class
+
+Creating a multi-threaded application is easier using the `TThread` class. This class lets you add another thread (in addition to the main thread) easily. Usually, you only need to override two methods: the constructor (Create) and the Execute method.
+
+### Step-by-Step Guide
+
+1. **Constructor (Create Method)**
+      - This is where you set up the thread.
+      - You initialize variables or properties you need.
+      - The constructor has a parameter called `Suspended`:
+        - If `Suspended` is set to True, the thread won't start immediately.
+        - If `Suspended` is set to False, the thread will start running right after it's created.
+        - If you create the thread with `Suspended := True`, you need to call the Start method later to run it.
+
+2. **Execute Method**
+      - This is where you write the code that will run in the thread.
+      - You can add a loop here to perform repeated actions.
+
+### Important Features of TThread
+
+- **Terminate Method and Terminated Property**
+    - The `Terminate` method sets `Terminated` to True, but your `Execute` method must check this and stop the loop.
+    - It **does not in any way attempt to terminate the thread** in any other way, this just signals the thread that it should stop executing at the earliest possible moment.
+
+!!! Contribution
+
+    Gustavo 'Gus' Carreno 🇵🇹 🇬🇧 — 2024-05-27 at 15:53
+
+    You **should never use** the `Terminate` property of a `TThread` outside the thread itself.
+
+    You **should always use** `WaitFor` *[to wait for the thread to terminate]*!! 
+
+    ```pascal
+    begin
+      // ...
+      MyThread.Terminate;
+      MyThread.WaitFor;
+      //...
+    end;
+    ```
+    
+    Usually, you use `Terminated` extensively in the `Execute` method.
+
+    You kinda have to check it religiously inside `Execute`, especially if you have a long running and/or blocking thread.
+
+    But, if I'm not mistaken, the `Terminated` property is privacy level protected. Hence, you **should not use it outside** `Execute`.
+
+    To terminate a thread you call `Terminate`. Then if you need to make sure it's done and has cleaned up, you use `WaitFor`.
+
+- **WaitFor Method**
+    - `WaitFor` waits for the thread to terminate, and returns the exit status.
+
+- **Synchronize Method**
+    - Threads **should not directly update visible components** (like UI elements).
+    - Use `Synchronize` to safely update UI elements from the thread.
+    - `Synchronize` pauses the thread, runs a method (like updating a label) in the main thread, and then resumes the thread.
+
+### How Synchronize Works
+
+1. The thread posts a message to the main thread and goes to sleep.
+2. The main thread processes the message and runs the specified method.
+3. After running the method, the main thread wakes the sleeping thread, and the thread continues.
+
+- **FreeOnTerminate Property**
+  
+    - If `FreeOnTerminate` is `True`, the thread object is automatically freed when the `Execute` method finishes.
+    - If `FreeOnTerminate` is `False`, you need to free the thread object manually.
+
+By using `TThread`, you can create and manage multiple threads in your application, making it more efficient and responsive.
 
 ## Perform tasks on multiple threads
 
