@@ -1,4 +1,4 @@
-# Multi-threading
+# Multi-threading | Basics
 
 ## What is it?
 
@@ -111,7 +111,7 @@ Creating a multi-threaded application is easier using the [`TThread`](https://ww
   
 !!! Important
 
-    When the thread contains a loop (which is common), the loop should end when `Terminated` becomes `True` (by default, it is false). During each iteration, check the value of `Terminated`, and if it is true, exit the loop promptly after any required cleanup.
+    When the thread contains a loop (which is common), the loop should end when `Terminated` becomes `True` (by default, it is `False`). During each iteration, check the value of `Terminated`, and if it is `True`, exit the loop promptly after any required cleanup.
 
 - **`function WaitFor;`**
     - `WaitFor` waits for the thread to terminate, and returns the exit status.
@@ -158,10 +158,9 @@ Creating a multi-threaded application is easier using the [`TThread`](https://ww
 
 By using `TThread`, you can create and manage multiple threads in your application, making it more efficient and responsive.
 
-## Perform tasks on multiple threads
+## Example - Perform tasks on multiple threads, start automatically and free on terminate
 
-
-!!! Contribution
+!!! Contribution by paweld 🇵🇱
 
     2024-02-08 - paweld 🇵🇱 caught a memory leak in the original code and fixed it.
 
