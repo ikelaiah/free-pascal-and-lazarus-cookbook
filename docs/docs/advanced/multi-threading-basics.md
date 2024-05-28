@@ -158,7 +158,7 @@ Creating a multi-threaded application is easier using the [`TThread`](https://ww
 
 By using `TThread`, you can create and manage multiple threads in your application, making it more efficient and responsive.
 
-## Example - Perform tasks on multiple threads, start automatically and free on terminate
+## Example - Perform simple tasks on multiple threads, start on creationally and free on terminate
 
 !!! Contribution by paweld 🇵🇱
 
@@ -166,14 +166,14 @@ By using `TThread`, you can create and manage multiple threads in your applicati
 
     Thank you!
 
-1. Create a class, for example `TTaskThread`, based on `TThread`. 
+1. Create a class, for example `TTaskThread`, based on `TThread`. Line 17-24.
 2. Override `Execute`. Line 27-34.
     - This procedure contains your task to perform.
 3. Define a constructor. Line 36-43.
     - call constructor of `TThread`,
     - set free on terminate and
     - Start thread. 
-4. Create all threads.
+4. Create all threads in the main block.
 
 ```pascal linenums="1" hl_lines="17-24 27-34 37-44 55 56"
 program CreateThreads;
@@ -214,10 +214,11 @@ type
   // Constructor of TTaskThread
   constructor TTaskThread.Create;
   begin
-    //create suspended
+    // Create suspended
     inherited Create(True);
+    // Free the thread instance when stop executing
     FreeOnTerminate := True;
-    //run thread
+    // Run thread
     Start;
   end;
 
