@@ -5,7 +5,7 @@
 !!! info
     The information in this section is adapted from the following URL; [Multithreaded Application Tutorial](https://wiki.freepascal.org/Multithreaded_Application_Tutorial), excluding the tutorial.
 
-A multi-threaded application can run multiple tasks simultaneously by creating separate threads. The Main Thread manages user interactions, while other threads handle background tasks. 
+A multi-threaded application can run multiple tasks simultaneously by creating separate threads. The Main Thread manages user interactions, while other threads handle background tasks.
 
 This setup improves application responsiveness during intensive operations. Multi-threading is beneficial for running tasks in the background, maintaining user interface responsiveness, and managing multiple client requests in server applications.
 
@@ -21,7 +21,6 @@ Before using multi-threading to speed up tasks using many processors, make sure 
 
 1. Your program is already using all resources well on one CPU core. 
 2. Check if your program is optimized at the highest level (level 3) for the best performance, as higher optimization can make your program faster.
-
 
 ### Multi-threaded apps are complex and harder to debug
 
@@ -83,29 +82,38 @@ uses
 
 ## TThread Class
 
-Creating a multi-threaded application is easier using the `TThread` class. This class lets you add another thread (in addition to the main thread) easily. Usually, you only need to override two methods: the constructor (Create) and the Execute method.
+Creating a multi-threaded application is easier using the [`TThread`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.html) class. This class lets you add another thread (in addition to the main thread) easily. Usually, you only need to override two methods: the [`constructor Create()`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.create.html) and the [`Execute`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.execute.html) method.
 
 ### Step-by-Step Guide
 
-1. **Constructor (Create Method)**
-      - This is where you set up the thread.
-      - You initialize variables or properties you need.
-      - The constructor has a parameter called `Suspended`:
-        - If `Suspended` is set to True, the thread won't start immediately.
-        - If `Suspended` is set to False, the thread will start running right after it's created.
-        - If you create the thread with `Suspended := True`, you need to call the Start method later to run it.
+1. Declare a descendant of the [`TThread`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.html) object. 
 
-2. **Execute Method**
+2. Override the **`constructor Create();`**
+      - This is where you set up the thread.
+      - Initialise variables or properties you need.
+      - The constructor has a parameter called `CreateSuspended`:
+        - If `CreateSuspended` is set to `True`, the thread won't start immediately.
+        - If `CreateSuspended` is set to `False`, the thread will start running right after it's created.
+        - If you create the thread with `CreateSuspended := True`, you need to call the `Start` method later to run it.
+
+3. Override **`Execute;`**
       - This is where you write the code that will run in the thread.
       - You can add a loop here to perform repeated actions.
 
-### Important Features of TThread
+### Important features of TThread
 
-- **Terminate Method and Terminated Property**
-    - The `Terminate` method sets `Terminated` to `True`, but your `Execute` method must check this and stop the loop.
+- **`property ProcessorCount: LongWord;`**
+    - Reurns the number of cores in the system.
+
+- **`procedure Terminate;`**
+    - The `Terminate` method simply changes the `Terminated` property to `True`.
     - It **does not in any way attempt to terminate the thread** in any other way, this just signals the thread that it should stop executing at the earliest possible moment.
+  
+!!! Important
 
-- **WaitFor Method**
+    When the thread contains a loop (which is common), the loop should end when `Terminated` becomes `True` (by default, it is false). During each iteration, check the value of `Terminated`, and if it is true, exit the loop promptly after any required cleanup.
+
+- **`function WaitFor;`**
     - `WaitFor` waits for the thread to terminate, and returns the exit status.
 
 !!! Contribution
@@ -133,22 +141,20 @@ Creating a multi-threaded application is easier using the `TThread` class. This 
 
     To terminate a thread you call `Terminate`. Then if you need to make sure it's done and has cleaned up, you use `WaitFor`.
 
-- **FreeOnTerminate Property**
+- **`property FreeOnTerminate: Boolean;`**
   
     - If `FreeOnTerminate` is `True`, the thread object is automatically freed when the `Execute` method finishes.
     - If `FreeOnTerminate` is `False`, you need to free the thread object manually.
 
-- **Synchronize Method**
-    - Threads **should not directly update visible components** (like UI elements).
-    - Use `Synchronize` to safely update UI elements from the thread.
+- **`procedure Synchronize();`**
+    - Threads **should not directly update visible components** (like UI elements), so you must use  `Synchronize` to safely update UI elements from the thread.
     - `Synchronize` pauses the thread, runs a method (like updating a label) in the main thread, and then resumes the thread.
 
-### How Synchronize Works
+#### How Synchronize works
 
 1. The thread posts a message to the main thread and goes to sleep.
 2. The main thread processes the message and runs the specified method.
 3. After running the method, the main thread wakes the sleeping thread, and the thread continues.
-
 
 By using `TThread`, you can create and manage multiple threads in your application, making it more efficient and responsive.
 
