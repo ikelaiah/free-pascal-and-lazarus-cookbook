@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://learn-pascal-lang.org/docs/advanced/multi-threading/">
+        <link rel="canonical" href="https://learn-pascal-lang.org/docs/advanced/multi-threading-basics/">
       
       
         <link rel="prev" href="../debugging/">
       
       
-        <link rel="next" href="../../external-systems/overview/">
+        <link rel="next" href="../multi-threading-creation/">
       
       
       <link rel="icon" href="../../../assets/logo-new-rounded-min.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Multi-threading - Free Pascal & Lazarus Cookbook</title>
+        <title>Multi-threading Basics - Free Pascal & Lazarus Cookbook</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#multi-threading" class="md-skip">
+        <a href="#multi-threading-basics" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Multi-threading
+              Multi-threading Basics
             
           </span>
         </div>
@@ -1034,7 +1034,7 @@
           
   
   <span class="md-ellipsis">
-    Multi-threading
+    Multi-threading Basics
   </span>
   
 
@@ -1045,7 +1045,7 @@
         
   
   <span class="md-ellipsis">
-    Multi-threading
+    Multi-threading Basics
   </span>
   
 
@@ -1154,16 +1154,17 @@
           <li class="md-nav__item">
   <a href="#important-features-of-tthread" class="md-nav__link">
     <span class="md-ellipsis">
-      Important Features of TThread
+      Important features of TThread
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Important features of TThread">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#how-synchronize-works" class="md-nav__link">
     <span class="md-ellipsis">
-      How Synchronize Works
+      How Synchronize works
     </span>
   </a>
   
@@ -1173,11 +1174,16 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#perform-tasks-on-multiple-threads" class="md-nav__link">
+  <a href="#example-perform-tasks-on-multiple-threads-start-automatically-and-free-on-terminate" class="md-nav__link">
     <span class="md-ellipsis">
-      Perform tasks on multiple threads
+      Example - Perform tasks on multiple threads, start automatically and free on terminate
     </span>
   </a>
   
@@ -1187,6 +1193,48 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi-threading-creation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-threading Creation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi-threading-snippets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-threading Snippets
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1553,16 +1601,17 @@
           <li class="md-nav__item">
   <a href="#important-features-of-tthread" class="md-nav__link">
     <span class="md-ellipsis">
-      Important Features of TThread
+      Important features of TThread
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Important features of TThread">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#how-synchronize-works" class="md-nav__link">
     <span class="md-ellipsis">
-      How Synchronize Works
+      How Synchronize works
     </span>
   </a>
   
@@ -1572,11 +1621,16 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#perform-tasks-on-multiple-threads" class="md-nav__link">
+  <a href="#example-perform-tasks-on-multiple-threads-start-automatically-and-free-on-terminate" class="md-nav__link">
     <span class="md-ellipsis">
-      Perform tasks on multiple threads
+      Example - Perform tasks on multiple threads, start automatically and free on terminate
     </span>
   </a>
   
@@ -1597,13 +1651,13 @@
                   
 
 
-<h1 id="multi-threading">Multi-threading<a class="headerlink" href="#multi-threading" title="Permanent link">&para;</a></h1>
+<h1 id="multi-threading-basics">Multi-threading | Basics<a class="headerlink" href="#multi-threading-basics" title="Permanent link">&para;</a></h1>
 <h2 id="what-is-it">What is it?<a class="headerlink" href="#what-is-it" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The information in this section is adapted from the following URL; <a href="https://wiki.freepascal.org/Multithreaded_Application_Tutorial">Multithreaded Application Tutorial</a>, excluding the tutorial.</p>
 </div>
-<p>A multi-threaded application can run multiple tasks simultaneously by creating separate threads. The Main Thread manages user interactions, while other threads handle background tasks. </p>
+<p>A multi-threaded application can run multiple tasks simultaneously by creating separate threads. The Main Thread manages user interactions, while other threads handle background tasks.</p>
 <p>This setup improves application responsiveness during intensive operations. Multi-threading is beneficial for running tasks in the background, maintaining user interface responsiveness, and managing multiple client requests in server applications.</p>
 <h3 id="do-you-need-multi-threading">Do you need multi-threading?<a class="headerlink" href="#do-you-need-multi-threading" title="Permanent link">&para;</a></h3>
 <p>Multi-threading is good for:</p>
@@ -1669,42 +1723,55 @@
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">  </span><span class="c1">// ... the rest of your code</span>
 </span></code></pre></div></td></tr></table></div>
 <h2 id="tthread-class">TThread Class<a class="headerlink" href="#tthread-class" title="Permanent link">&para;</a></h2>
-<p>Creating a multi-threaded application is easier using the <code>TThread</code> class. This class lets you add another thread (in addition to the main thread) easily. Usually, you only need to override two methods: the constructor (Create) and the Execute method.</p>
+<p>Creating a multi-threaded application is easier using the <a href="https://www.freepascal.org/daily/doc/rtl/classes/tthread.html"><code>TThread</code></a> class. This class lets you add another thread (in addition to the main thread) easily. Usually, you only need to override two methods: the <a href="https://www.freepascal.org/daily/doc/rtl/classes/tthread.create.html"><code>constructor Create()</code></a> and the <a href="https://www.freepascal.org/daily/doc/rtl/classes/tthread.execute.html"><code>Execute</code></a> method.</p>
 <h3 id="step-by-step-guide">Step-by-Step Guide<a class="headerlink" href="#step-by-step-guide" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p><strong>Constructor (Create Method)</strong></p>
+<p>Declare a descendant of the <a href="https://www.freepascal.org/daily/doc/rtl/classes/tthread.html"><code>TThread</code></a> object. </p>
+</li>
+<li>
+<p>Override the <strong><code>constructor Create();</code></strong></p>
 <ul>
 <li>This is where you set up the thread.</li>
-<li>You initialize variables or properties you need.</li>
-<li>The constructor has a parameter called <code>Suspended</code>:<ul>
-<li>If <code>Suspended</code> is set to True, the thread won't start immediately.</li>
-<li>If <code>Suspended</code> is set to False, the thread will start running right after it's created.</li>
-<li>If you create the thread with <code>Suspended := True</code>, you need to call the Start method later to run it.</li>
+<li>Initialise variables or properties you need.</li>
+<li>The constructor has a parameter called <code>CreateSuspended</code>:<ul>
+<li>If <code>CreateSuspended</code> is set to <code>True</code>, the thread won't start immediately.</li>
+<li>If <code>CreateSuspended</code> is set to <code>False</code>, the thread will start running right after it's created.</li>
+<li>If you create the thread with <code>CreateSuspended := True</code>, you need to call the <code>Start</code> method later to run it.</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>Execute Method</strong></p>
+<p>Override <strong><code>Execute;</code></strong></p>
 <ul>
 <li>This is where you write the code that will run in the thread.</li>
 <li>You can add a loop here to perform repeated actions.</li>
 </ul>
 </li>
 </ol>
-<h3 id="important-features-of-tthread">Important Features of TThread<a class="headerlink" href="#important-features-of-tthread" title="Permanent link">&para;</a></h3>
+<h3 id="important-features-of-tthread">Important features of TThread<a class="headerlink" href="#important-features-of-tthread" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong>Terminate Method and Terminated Property</strong></p>
+<p><strong><code>property ProcessorCount: LongWord;</code></strong></p>
 <ul>
-<li>The <code>Terminate</code> method sets <code>Terminated</code> to <code>True</code>, but your <code>Execute</code> method must check this and stop the loop.</li>
-<li>It <strong>does not in any way attempt to terminate the thread</strong> in any other way, this just signals the thread that it should stop executing at the earliest possible moment.</li>
+<li>Reurns the number of cores in the system.</li>
 </ul>
 </li>
 <li>
-<p><strong>WaitFor Method</strong></p>
+<p><strong><code>procedure Terminate;</code></strong></p>
 <ul>
+<li>The <code>Terminate</code> method simply changes the <code>Terminated</code> property to <code>True</code>.</li>
+<li>It <strong>does not in any way attempt to terminate the thread</strong> in any other way, this just signals the thread that it should stop executing at the earliest possible moment.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When the thread contains a loop (which is common), the loop should end when <code>Terminated</code> becomes <code>True</code> (by default, it is <code>False</code>). During each iteration, check the value of <code>Terminated</code>, and if it is <code>True</code>, exit the loop promptly after any required cleanup.</p>
+</div>
+<ul>
+<li><strong><code>function WaitFor;</code></strong><ul>
 <li><code>WaitFor</code> waits for the thread to terminate, and returns the exit status.</li>
 </ul>
 </li>
@@ -1728,34 +1795,33 @@
 </div>
 <ul>
 <li>
-<p><strong>FreeOnTerminate Property</strong></p>
+<p><strong><code>property FreeOnTerminate: Boolean;</code></strong></p>
 <ul>
 <li>If <code>FreeOnTerminate</code> is <code>True</code>, the thread object is automatically freed when the <code>Execute</code> method finishes.</li>
 <li>If <code>FreeOnTerminate</code> is <code>False</code>, you need to free the thread object manually.</li>
 </ul>
 </li>
 <li>
-<p><strong>Synchronize Method</strong></p>
+<p><strong><code>procedure Synchronize();</code></strong></p>
 <ul>
-<li>Threads <strong>should not directly update visible components</strong> (like UI elements).</li>
-<li>Use <code>Synchronize</code> to safely update UI elements from the thread.</li>
+<li>Threads <strong>should not directly update visible components</strong> (like UI elements), so you must use  <code>Synchronize</code> to safely update UI elements from the thread.</li>
 <li><code>Synchronize</code> pauses the thread, runs a method (like updating a label) in the main thread, and then resumes the thread.</li>
 </ul>
 </li>
 </ul>
-<h3 id="how-synchronize-works">How Synchronize Works<a class="headerlink" href="#how-synchronize-works" title="Permanent link">&para;</a></h3>
+<h4 id="how-synchronize-works">How Synchronize works<a class="headerlink" href="#how-synchronize-works" title="Permanent link">&para;</a></h4>
 <ol>
 <li>The thread posts a message to the main thread and goes to sleep.</li>
 <li>The main thread processes the message and runs the specified method.</li>
 <li>After running the method, the main thread wakes the sleeping thread, and the thread continues.</li>
 </ol>
 <p>By using <code>TThread</code>, you can create and manage multiple threads in your application, making it more efficient and responsive.</p>
-<h2 id="perform-tasks-on-multiple-threads">Perform tasks on multiple threads<a class="headerlink" href="#perform-tasks-on-multiple-threads" title="Permanent link">&para;</a></h2>
-<div class="admonition contribution">
-<p class="admonition-title">Contribution</p>
-<p>2024-02-08 - paweld 🇵🇱 caught a memory leak in the original code and fixed it.</p>
-<p>Thank you!</p>
-</div>
+<h2 id="example-perform-tasks-on-multiple-threads-start-automatically-and-free-on-terminate">Example - Perform tasks on multiple threads, start automatically and free on terminate<a class="headerlink" href="#example-perform-tasks-on-multiple-threads-start-automatically-and-free-on-terminate" title="Permanent link">&para;</a></h2>
+<p>!!! Contribution by paweld 🇵🇱</p>
+<div class="language-text highlight"><pre><span></span><code>2024-02-08 - paweld 🇵🇱 caught a memory leak in the original code and fixed it.
+
+Thank you!
+</code></pre></div>
 <ol>
 <li>Create a class, for example <code>TTaskThread</code>, based on <code>TThread</code>. </li>
 <li>Override <code>Execute</code>. Line 27-34.<ul>
