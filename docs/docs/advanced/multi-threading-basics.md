@@ -169,13 +169,13 @@ By using `TThread`, you can create and manage multiple threads in your applicati
 1. Create a class, for example `TTaskThread`, based on `TThread`. Line 17-24.
 2. Override `Execute`. Line 27-34.
     - This procedure contains your task to perform.
-3. Create a constructor. Line 36-43.
+3. Create a constructor. Line 37-45.
     - call constructor of `TThread`,
     - set free on terminate and
     - Start thread.
-4. Create all threads in the main block.
+4. Create all threads in the main block. Line 56, 57.
 
-```pascal linenums="1" hl_lines="17-24 27-34 37-44 55 56"
+```pascal linenums="1" hl_lines="17-24 27-34 37-45 56 57"
 program CreateThreads;
 
 // 2024-02-08 - paweld 🇵🇱 fixed a memory leak issue in the original code.
