@@ -15,6 +15,7 @@ Multi-threading is good for:
 
 - Managing blocking handles like network tasks.
 - Using multiple processors at once to process a large dataset.
+- Using multiple processors to process different parts of an image simultaneously, improving efficiency and speed.
 - Etc.
 
 Before using multi-threading to speed up tasks using many processors, make sure of the following items. 
@@ -24,7 +25,9 @@ Before using multi-threading to speed up tasks using many processors, make sure 
 
 ### Multi-threaded apps are complex and harder to debug
 
-For simpler tasks, one thread may be enough. Instead of many threads, you can split long tasks into smaller parts or use `Application.ProcessMessages` to handle user actions during long tasks.
+For simpler tasks, one thread may be enough. 
+
+Instead of many threads, you can split long tasks into smaller parts or use `Application.ProcessMessages` to handle user actions during long tasks.
 
 !!! info
     What is `Application.ProcessMessages`?
@@ -84,6 +87,8 @@ uses
 
 Creating a multi-threaded application is easier using the [`TThread`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.html) class. This class lets you add another thread (in addition to the main thread) easily. Usually, you only need to override two methods: the [`constructor Create()`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.create.html) and the [`Execute`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.execute.html) method.
 
+By using `TThread`, you can create and manage multiple threads in your application, making it more efficient and responsive.
+
 ### Step-by-Step Guide
 
 1. Declare a descendant of the [`TThread`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.html) object. 
@@ -102,19 +107,22 @@ Creating a multi-threaded application is easier using the [`TThread`](https://ww
 
 ### Important features of TThread
 
-- **`property ProcessorCount: LongWord;`**
-    - Reurns the number of cores in the system.
+#### `property ProcessorCount: LongWord;`
 
-- **`procedure Terminate;`**
-    - The `Terminate` method simply changes the `Terminated` property to `True`.
-    - It **does not in any way attempt to terminate the thread** in any other way, this just signals the thread that it should stop executing at the earliest possible moment.
+- Returns the number of cores in the system.
+
+#### `procedure Terminate;`
+
+- The `Terminate` method simply changes the `Terminated` property to `True`.
+- It **does not in any way attempt to terminate the thread** in any other way, this just signals the thread that it should stop executing at the earliest possible moment.
   
 !!! Important
 
     When the thread contains a loop (which is common), the loop should end when `Terminated` becomes `True` (by default, it is `False`). During each iteration, check the value of `Terminated`, and if it is `True`, exit the loop promptly after any required cleanup.
 
-- **`function WaitFor;`**
-    - `WaitFor` waits for the thread to terminate, and returns the exit status.
+#### `function WaitFor;`
+
+- `WaitFor` waits for the thread to terminate, and returns the exit status.
 
 !!! Contribution
 
@@ -141,30 +149,49 @@ Creating a multi-threaded application is easier using the [`TThread`](https://ww
 
     To terminate a thread you call `Terminate`. Then if you need to make sure it's done and has cleaned up, you use `WaitFor`.
 
-- **`property FreeOnTerminate: Boolean;`**
+#### [`property FreeOnTerminate: Boolean;`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html)
   
-    - If `FreeOnTerminate` is `True`, the thread object is automatically freed when the `Execute` method finishes.
-    - If `FreeOnTerminate` is `False`, you need to free the thread object manually.
+- If `FreeOnTerminate` is `True`, the thread object is automatically freed when the `Execute` method finishes.
+- If `FreeOnTerminate` is `False`, you need to free the thread object manually.
+- Use the [OnTerminate](https://www.freepascal.org/docs-html/rtl/classes/tthread.onterminate.html) property to get a notification of when the thread has terminated and will be freed.
 
-- **`procedure Synchronize();`**
-    - Threads **should not directly update visible components** (like UI elements), so you must use  `Synchronize` to safely update UI elements from the thread.
-    - `Synchronize` pauses the thread, runs a method (like updating a label) in the main thread, and then resumes the thread.
+!!! Tip - FreeOnTerminate
 
-### How Synchronize works
+    When setting `FreeOnTerminate` property to `True`, in general you may not read or write any property of the `TThread` instance from a different thread, because **there is no guarantee that the thread instance still exists in memory**. 
+    
+    This implies 2 things:
 
-1. The thread posts a message to the main thread and goes to sleep.
-2. The main thread processes the message and runs the specified method.
-3. After running the method, the main thread wakes the sleeping thread, and the thread continues.
+    1. The `OnTerminate` event handler should be set before setting `FreeOnTerminate` to `True`
+    2. The properties can still be read and set in the `OnTerminate` event handler, as the thread instance is then still guaranteed to exist.
+    
+!!! Tip - FreeOnTerminate
 
-By using `TThread`, you can create and manage multiple threads in your application, making it more efficient and responsive.
+    If `FreeOnTerminate` is set to `False`, to stop and delete a running thread from another thread, the following sample code can be used:
+
+    ```pascal
+    aThread.Terminate;
+    aThread.WaitFor;
+    FreeAndNil(aThread);
+    ```
+
+    Source: [https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html](https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html)
+
+#### `procedure Synchronize();`
+
+- Threads **should not directly update visible components** (like UI elements), so you must use  `Synchronize` to safely update UI elements from the thread.
+- `Synchronize` ... 
+    - pauses the thread, 
+    - runs a method (like updating a label) in the main thread, 
+    - and then resumes the thread.
 
 ## Example - Perform simple tasks on multiple threads, start on creation and free on terminate
 
-!!! Contribution by paweld 🇵🇱
+!!! Contribution
 
     2024-02-08 - paweld 🇵🇱 caught a memory leak in the original code and fixed it.
 
     Thank you!
+
 
 1. Create a class, for example `TTaskThread`, based on `TThread`. Line 17-24.
 2. Override `Execute`. Line 27-34.
