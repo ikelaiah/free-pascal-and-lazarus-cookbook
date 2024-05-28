@@ -158,7 +158,7 @@ Creating a multi-threaded application is easier using the [`TThread`](https://ww
 
 By using `TThread`, you can create and manage multiple threads in your application, making it more efficient and responsive.
 
-## Example - Perform simple tasks on multiple threads, start on creationally and free on terminate
+## Example - Perform simple tasks on multiple threads, start on creation and free on terminate
 
 !!! Contribution by paweld 🇵🇱
 
