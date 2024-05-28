@@ -150,7 +150,7 @@ Creating a multi-threaded application is easier using the [`TThread`](https://ww
     - Threads **should not directly update visible components** (like UI elements), so you must use  `Synchronize` to safely update UI elements from the thread.
     - `Synchronize` pauses the thread, runs a method (like updating a label) in the main thread, and then resumes the thread.
 
-#### How Synchronize works
+### How Synchronize works
 
 1. The thread posts a message to the main thread and goes to sleep.
 2. The main thread processes the message and runs the specified method.
