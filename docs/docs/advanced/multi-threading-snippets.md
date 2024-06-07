@@ -1,6 +1,6 @@
 # Multi-threading | Snippets
 
-## Ex: Muti-threaded array sum - manually free threads afer collecting results
+## Muti-threaded array sum - manually free threads afer collecting results
 
 Important features of this example.
 
