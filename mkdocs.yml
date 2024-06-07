@@ -31,7 +31,6 @@ nav:
     - Conditional Compilation: docs/advanced/conditional-compilation.md
     - Debugging: docs/advanced/debugging.md
     - Multi-threading Basics: docs/advanced/multi-threading-basics.md
-    - Multi-threading Creation: docs/advanced/multi-threading-creation.md
     - Multi-threading Snippets: docs/advanced/multi-threading-snippets.md
   - External Systems:
     - Overview: docs/external-systems/overview.md

@@ -185,7 +185,7 @@ By using `TThread`, you can create and manage multiple threads in your applicati
     - and then resumes the thread.
 
 
-## Example - Run a task on a thread with a variable, wait and free on terminate
+## Ex: Run a task on a thread with a variable - auto free on terminate
 
 ```pascal linenums="1"
 program EX1SingleThread;
@@ -270,7 +270,7 @@ ReadLn;
 end.
 ```
 
-## Example - Run multiple tasks on multiple threads, start on creation and free on terminate
+## Ex: Run multiple tasks on multiple threads - auto free on terminate
 
 !!! Contribution
 
