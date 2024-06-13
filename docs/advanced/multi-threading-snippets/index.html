@@ -1096,6 +1096,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#assign-id-to-each-student-name-from-a-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assign ID to each student name from a text file
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1382,6 +1391,15 @@
   <a href="#muti-threaded-array-sum-manually-free-threads-afer-collecting-results" class="md-nav__link">
     <span class="md-ellipsis">
       Muti-threaded array sum - manually free threads afer collecting results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assign-id-to-each-student-name-from-a-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assign ID to each student name from a text file
     </span>
   </a>
   
@@ -1706,6 +1724,694 @@
 </span><span id="__span-0-142"><a id="__codelineno-0-142" name="__codelineno-0-142"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press enter key to quit&#39;</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-0-143"><a id="__codelineno-0-143" name="__codelineno-0-143"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-0-144"><a id="__codelineno-0-144" name="__codelineno-0-144"></a><span class="k">end</span><span class="o">.</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="assign-id-to-each-student-name-from-a-text-file">Assign ID to each student name from a text file<a class="headerlink" href="#assign-id-to-each-student-name-from-a-text-file" title="Permanent link">&para;</a></h2>
+<p><code>common.pas</code></p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">unit</span><span class="w"> </span><span class="n">Common</span><span class="o">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="cm">{$mode ObjFPC}{$H+}</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">interface</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">uses</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span><span class="w"> </span><span class="n">SysUtils</span><span class="o">,</span><span class="w"> </span><span class="n">Generics</span><span class="o">.</span><span class="n">Defaults</span><span class="o">,</span><span class="w"> </span><span class="n">Generics</span><span class="o">.</span><span class="n">Collections</span><span class="o">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="k">type</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">  </span><span class="n">TStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">record</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="n">Name</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="n">id</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="k">type</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">  </span><span class="n">TStudentList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TList</span><span class="o">&lt;</span><span class="n">TStudent</span><span class="o">&gt;;</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">  </span><span class="n">TStudentListComparer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TComparer</span><span class="o">&lt;</span><span class="n">TStudent</span><span class="o">&gt;;</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="k">type</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">  </span><span class="n">TStrList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TList</span><span class="o">&lt;</span><span class="k">string</span><span class="o">&gt;;</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="k">const</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">  </span><span class="n">maxThreads</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="o">;</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="k">var</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">  </span><span class="c1">// start of student ID to assign</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">  </span><span class="n">startStudentID</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200000</span><span class="o">;</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">  </span><span class="c1">// A list of TStudent records</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">  </span><span class="n">finalStudentList</span><span class="o">:</span><span class="w"> </span><span class="n">TStudentList</span><span class="o">;</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="c1">// Custom comparison function for sorting by name - ascending</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="k">function</span><span class="w"> </span><span class="nf">CompareName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LeftItem</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="k">implementation</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="c1">// Custom comparison function for sorting by name - ascending</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="k">function</span><span class="w"> </span><span class="nf">CompareName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LeftItem</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="k">begin</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">  </span><span class="bp">Result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">CompareStr</span><span class="p">(</span><span class="n">LeftItem</span><span class="o">.</span><span class="n">Name</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43"></a>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="k">end</span><span class="o">.</span>
+</span></code></pre></div></td></tr></table></div>
+<p><code>customthread.pas</code></p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span>
+<span class="normal"><a href="#__codelineno-2-54">54</a></span>
+<span class="normal"><a href="#__codelineno-2-55">55</a></span>
+<span class="normal"><a href="#__codelineno-2-56">56</a></span>
+<span class="normal"><a href="#__codelineno-2-57">57</a></span>
+<span class="normal"><a href="#__codelineno-2-58">58</a></span>
+<span class="normal"><a href="#__codelineno-2-59">59</a></span>
+<span class="normal"><a href="#__codelineno-2-60">60</a></span>
+<span class="normal"><a href="#__codelineno-2-61">61</a></span>
+<span class="normal"><a href="#__codelineno-2-62">62</a></span>
+<span class="normal"><a href="#__codelineno-2-63">63</a></span>
+<span class="normal"><a href="#__codelineno-2-64">64</a></span>
+<span class="normal"><a href="#__codelineno-2-65">65</a></span>
+<span class="normal"><a href="#__codelineno-2-66">66</a></span>
+<span class="normal"><a href="#__codelineno-2-67">67</a></span>
+<span class="normal"><a href="#__codelineno-2-68">68</a></span>
+<span class="normal"><a href="#__codelineno-2-69">69</a></span>
+<span class="normal"><a href="#__codelineno-2-70">70</a></span>
+<span class="normal"><a href="#__codelineno-2-71">71</a></span>
+<span class="normal"><a href="#__codelineno-2-72">72</a></span>
+<span class="normal"><a href="#__codelineno-2-73">73</a></span>
+<span class="normal"><a href="#__codelineno-2-74">74</a></span>
+<span class="normal"><a href="#__codelineno-2-75">75</a></span>
+<span class="normal"><a href="#__codelineno-2-76">76</a></span>
+<span class="normal"><a href="#__codelineno-2-77">77</a></span>
+<span class="normal"><a href="#__codelineno-2-78">78</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">unit</span><span class="w"> </span><span class="n">CustomThread</span><span class="o">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cm">{$mode ObjFPC}{$H+}</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">interface</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">uses</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span><span class="w"> </span><span class="n">SysUtils</span><span class="o">,</span><span class="w"> </span><span class="n">Common</span><span class="o">;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="c1">// Create a thread class deriving from TThread.</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="k">type</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">  </span><span class="n">TCustomThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TThread</span><span class="p">)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">  </span><span class="kp">private</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="n">list</span><span class="o">:</span><span class="w"> </span><span class="n">TstrList</span><span class="o">;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="n">cs</span><span class="o">:</span><span class="n">TRTLCriticalSection</span><span class="o">;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">  </span><span class="kp">protected</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">Execute</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">  </span><span class="kp">public</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">    </span><span class="k">constructor</span><span class="w"> </span><span class="nf">Create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">:</span><span class="w"> </span><span class="n">TRTLCriticalSection</span><span class="o">;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">listToProcess</span><span class="o">:</span><span class="w"> </span><span class="n">TStrList</span><span class="o">;</span><span class="w"> </span><span class="n">startIndex</span><span class="o">,</span><span class="w"> </span><span class="n">finishIndex</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="k">destructor</span><span class="w"> </span><span class="nf">Destroy</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="k">implementation</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="c1">// Create the Custom Thread with an input list to process.</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="k">constructor</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">:</span><span class="w"> </span><span class="n">TRTLCriticalSection</span><span class="o">;</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">listToProcess</span><span class="o">:</span><span class="w"> </span><span class="n">TStrList</span><span class="o">;</span><span class="w"> </span><span class="n">startIndex</span><span class="o">,</span><span class="w"> </span><span class="n">finishIndex</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="k">var</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">  </span><span class="kp">index</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="k">begin</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="w">  </span><span class="c1">// This won&#39;t start the threads straight away.</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">  </span><span class="k">inherited</span><span class="w"> </span><span class="n">Create</span><span class="p">(</span><span class="k">True</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="w">  </span><span class="c1">// Not to free on terminate.</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="w">  </span><span class="c1">//FreeOnTerminate := True;</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">cs</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">;</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="w">  </span><span class="c1">// Populate the internal list for the Execute procedure</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStrList</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startIndex</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">finishIndex</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="w">    </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">listToProcess</span><span class="p">[</span><span class="kp">index</span><span class="p">])</span><span class="o">;</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45"></a>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">  </span><span class="c1">// User feedback</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Thread created &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49"></a>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="k">destructor</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Destroy</span><span class="o">;</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="k">begin</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">  </span><span class="k">inherited</span><span class="w"> </span><span class="n">Destroy</span><span class="o">;</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55"></a>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="c1">// Enter and leave Critical Section here.</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="k">procedure</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Execute</span><span class="o">;</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="k">var</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">  </span><span class="kp">index</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">  </span><span class="n">student</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="o">;</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="k">begin</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="w">    </span><span class="n">EnterCriticalSection</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// -------------------------------------- enter cs</span>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="w">    </span><span class="k">try</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="w">      </span><span class="c1">// Add TStudent into TStudentList</span>
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="w">      </span><span class="n">student</span><span class="o">.</span><span class="n">Name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">list</span><span class="p">[</span><span class="kp">index</span><span class="p">]</span><span class="o">;</span>
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="w">      </span><span class="n">student</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startStudentID</span><span class="o">;</span>
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="w">      </span><span class="n">finalStudentList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">student</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70"></a><span class="w">      </span><span class="c1">// Increment student ID by 1</span>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="w">      </span><span class="n">startStudentID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startStudentID</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="w">    </span><span class="k">finally</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="w">      </span><span class="n">LeaveCriticalSection</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// ------------------------------------ leave cs</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77"></a>
+</span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="k">end</span><span class="o">.</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Main program</p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-3-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-3-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-3-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-3-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-3-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-3-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-3-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-3-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-3-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-3-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-3-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-3-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-3-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-3-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-3-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-3-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-3-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-3-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-3-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-3-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-3-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-3-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-3-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-3-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-3-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-3-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-3-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-3-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-3-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-3-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-3-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-3-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-3-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-3-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-3-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-3-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-3-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-3-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-3-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-3-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-3-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-3-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-3-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-3-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-3-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-3-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-3-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-3-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-3-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-3-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-3-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-3-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-3-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-3-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-3-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-3-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-3-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-3-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-3-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-3-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-3-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-3-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-3-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-3-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-3-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-3-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-3-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-3-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-3-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-3-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-3-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-3-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-3-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-3-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-3-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-3-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-3-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-3-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-3-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-3-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-3-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-3-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-3-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-3-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-3-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-3-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-3-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-3-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-3-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-3-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-3-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-3-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-3-100">100</a></span>
+<span class="normal"><a href="#__codelineno-3-101">101</a></span>
+<span class="normal"><a href="#__codelineno-3-102">102</a></span>
+<span class="normal"><a href="#__codelineno-3-103">103</a></span>
+<span class="normal"><a href="#__codelineno-3-104">104</a></span>
+<span class="normal"><a href="#__codelineno-3-105">105</a></span>
+<span class="normal"><a href="#__codelineno-3-106">106</a></span>
+<span class="normal"><a href="#__codelineno-3-107">107</a></span>
+<span class="normal"><a href="#__codelineno-3-108">108</a></span>
+<span class="normal"><a href="#__codelineno-3-109">109</a></span>
+<span class="normal"><a href="#__codelineno-3-110">110</a></span>
+<span class="normal"><a href="#__codelineno-3-111">111</a></span>
+<span class="normal"><a href="#__codelineno-3-112">112</a></span>
+<span class="normal"><a href="#__codelineno-3-113">113</a></span>
+<span class="normal"><a href="#__codelineno-3-114">114</a></span>
+<span class="normal"><a href="#__codelineno-3-115">115</a></span>
+<span class="normal"><a href="#__codelineno-3-116">116</a></span>
+<span class="normal"><a href="#__codelineno-3-117">117</a></span>
+<span class="normal"><a href="#__codelineno-3-118">118</a></span>
+<span class="normal"><a href="#__codelineno-3-119">119</a></span>
+<span class="normal"><a href="#__codelineno-3-120">120</a></span>
+<span class="normal"><a href="#__codelineno-3-121">121</a></span>
+<span class="normal"><a href="#__codelineno-3-122">122</a></span>
+<span class="normal"><a href="#__codelineno-3-123">123</a></span>
+<span class="normal"><a href="#__codelineno-3-124">124</a></span>
+<span class="normal"><a href="#__codelineno-3-125">125</a></span>
+<span class="normal"><a href="#__codelineno-3-126">126</a></span>
+<span class="normal"><a href="#__codelineno-3-127">127</a></span>
+<span class="normal"><a href="#__codelineno-3-128">128</a></span>
+<span class="normal"><a href="#__codelineno-3-129">129</a></span>
+<span class="normal"><a href="#__codelineno-3-130">130</a></span>
+<span class="normal"><a href="#__codelineno-3-131">131</a></span>
+<span class="normal"><a href="#__codelineno-3-132">132</a></span>
+<span class="normal"><a href="#__codelineno-3-133">133</a></span>
+<span class="normal"><a href="#__codelineno-3-134">134</a></span>
+<span class="normal"><a href="#__codelineno-3-135">135</a></span>
+<span class="normal"><a href="#__codelineno-3-136">136</a></span>
+<span class="normal"><a href="#__codelineno-3-137">137</a></span>
+<span class="normal"><a href="#__codelineno-3-138">138</a></span>
+<span class="normal"><a href="#__codelineno-3-139">139</a></span>
+<span class="normal"><a href="#__codelineno-3-140">140</a></span>
+<span class="normal"><a href="#__codelineno-3-141">141</a></span>
+<span class="normal"><a href="#__codelineno-3-142">142</a></span>
+<span class="normal"><a href="#__codelineno-3-143">143</a></span>
+<span class="normal"><a href="#__codelineno-3-144">144</a></span>
+<span class="normal"><a href="#__codelineno-3-145">145</a></span>
+<span class="normal"><a href="#__codelineno-3-146">146</a></span>
+<span class="normal"><a href="#__codelineno-3-147">147</a></span>
+<span class="normal"><a href="#__codelineno-3-148">148</a></span>
+<span class="normal"><a href="#__codelineno-3-149">149</a></span>
+<span class="normal"><a href="#__codelineno-3-150">150</a></span>
+<span class="normal"><a href="#__codelineno-3-151">151</a></span>
+<span class="normal"><a href="#__codelineno-3-152">152</a></span>
+<span class="normal"><a href="#__codelineno-3-153">153</a></span>
+<span class="normal"><a href="#__codelineno-3-154">154</a></span>
+<span class="normal"><a href="#__codelineno-3-155">155</a></span>
+<span class="normal"><a href="#__codelineno-3-156">156</a></span>
+<span class="normal"><a href="#__codelineno-3-157">157</a></span>
+<span class="normal"><a href="#__codelineno-3-158">158</a></span>
+<span class="normal"><a href="#__codelineno-3-159">159</a></span>
+<span class="normal"><a href="#__codelineno-3-160">160</a></span>
+<span class="normal"><a href="#__codelineno-3-161">161</a></span>
+<span class="normal"><a href="#__codelineno-3-162">162</a></span>
+<span class="normal"><a href="#__codelineno-3-163">163</a></span>
+<span class="normal"><a href="#__codelineno-3-164">164</a></span>
+<span class="normal"><a href="#__codelineno-3-165">165</a></span>
+<span class="normal"><a href="#__codelineno-3-166">166</a></span>
+<span class="normal"><a href="#__codelineno-3-167">167</a></span>
+<span class="normal"><a href="#__codelineno-3-168">168</a></span>
+<span class="normal"><a href="#__codelineno-3-169">169</a></span>
+<span class="normal"><a href="#__codelineno-3-170">170</a></span>
+<span class="normal"><a href="#__codelineno-3-171">171</a></span>
+<span class="normal"><a href="#__codelineno-3-172">172</a></span>
+<span class="normal"><a href="#__codelineno-3-173">173</a></span>
+<span class="normal"><a href="#__codelineno-3-174">174</a></span>
+<span class="normal"><a href="#__codelineno-3-175">175</a></span>
+<span class="normal"><a href="#__codelineno-3-176">176</a></span>
+<span class="normal"><a href="#__codelineno-3-177">177</a></span>
+<span class="normal"><a href="#__codelineno-3-178">178</a></span>
+<span class="normal"><a href="#__codelineno-3-179">179</a></span>
+<span class="normal"><a href="#__codelineno-3-180">180</a></span>
+<span class="normal"><a href="#__codelineno-3-181">181</a></span>
+<span class="normal"><a href="#__codelineno-3-182">182</a></span>
+<span class="normal"><a href="#__codelineno-3-183">183</a></span>
+<span class="normal"><a href="#__codelineno-3-184">184</a></span>
+<span class="normal"><a href="#__codelineno-3-185">185</a></span>
+<span class="normal"><a href="#__codelineno-3-186">186</a></span>
+<span class="normal"><a href="#__codelineno-3-187">187</a></span>
+<span class="normal"><a href="#__codelineno-3-188">188</a></span>
+<span class="normal"><a href="#__codelineno-3-189">189</a></span>
+<span class="normal"><a href="#__codelineno-3-190">190</a></span>
+<span class="normal"><a href="#__codelineno-3-191">191</a></span>
+<span class="normal"><a href="#__codelineno-3-192">192</a></span>
+<span class="normal"><a href="#__codelineno-3-193">193</a></span>
+<span class="normal"><a href="#__codelineno-3-194">194</a></span>
+<span class="normal"><a href="#__codelineno-3-195">195</a></span>
+<span class="normal"><a href="#__codelineno-3-196">196</a></span>
+<span class="normal"><a href="#__codelineno-3-197">197</a></span>
+<span class="normal"><a href="#__codelineno-3-198">198</a></span>
+<span class="normal"><a href="#__codelineno-3-199">199</a></span>
+<span class="normal"><a href="#__codelineno-3-200">200</a></span>
+<span class="normal"><a href="#__codelineno-3-201">201</a></span>
+<span class="normal"><a href="#__codelineno-3-202">202</a></span>
+<span class="normal"><a href="#__codelineno-3-203">203</a></span>
+<span class="normal"><a href="#__codelineno-3-204">204</a></span>
+<span class="normal"><a href="#__codelineno-3-205">205</a></span>
+<span class="normal"><a href="#__codelineno-3-206">206</a></span>
+<span class="normal"><a href="#__codelineno-3-207">207</a></span>
+<span class="normal"><a href="#__codelineno-3-208">208</a></span>
+<span class="normal"><a href="#__codelineno-3-209">209</a></span>
+<span class="normal"><a href="#__codelineno-3-210">210</a></span>
+<span class="normal"><a href="#__codelineno-3-211">211</a></span>
+<span class="normal"><a href="#__codelineno-3-212">212</a></span>
+<span class="normal"><a href="#__codelineno-3-213">213</a></span>
+<span class="normal"><a href="#__codelineno-3-214">214</a></span>
+<span class="normal"><a href="#__codelineno-3-215">215</a></span>
+<span class="normal"><a href="#__codelineno-3-216">216</a></span>
+<span class="normal"><a href="#__codelineno-3-217">217</a></span>
+<span class="normal"><a href="#__codelineno-3-218">218</a></span>
+<span class="normal"><a href="#__codelineno-3-219">219</a></span>
+<span class="normal"><a href="#__codelineno-3-220">220</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">program</span><span class="w"> </span><span class="n">AssignStudentIDs</span><span class="o">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="cm">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="cm"> This program assigns student ID to each name from a text file by</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="cm"> using N number of threads.</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="cm"> Pre-requisite</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="cm">    - TThread for managing the threads.</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="cm">    - TRTLCriticalSection for ensuring only one thread can modify a shared</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="cm">      variable at one time.</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="cm">    - Input text file containing a list of names. For example;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="cm">    Alyssa Morgan</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="cm">    Declan Hayes</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="cm">    Nora Patel</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="cm">    Miles Thompson</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="cm">    Sienna Larson</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="cm">    Kellan Rivera</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="cm">    Camille Chang</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="cm">    Jensen Park</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="cm">    Amara Singh</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="cm">    Holden Myers</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="cm">    Elise Howard</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="cm">    Luca Griffin</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="cm">    Reagan Patel</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="cm">    Kian Gallagher</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="cm">    Mara Nguyen</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="cm">    ...</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="cm">    ...</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31"></a>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="cm"> Algorithm</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33"></a>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="cm">    - Read the text file into an array.</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="cm">      - All threads will read from the same array, but at differing start and</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="cm">        finish indexes. This depends on the number of max threads.</span>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="cm">    - Assign workloads to each thread.</span>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="cm">      - Specify the start and finish indexes to each thread.</span>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="cm">      - Will use the rounding up division method to ensure near-equal division</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="cm">        of workload for each thread.</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="cm">    - Wait until all task is done</span>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="cm">    - Sort the final student list</span>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="cm">    - Print results on screen.</span>
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44"></a>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="cm"> Sample Output</span>
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46"></a>
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="cm">   $ ./AssignStudentIDs.exe student-names.txt</span>
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="cm">   No of students         : 200</span>
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="cm">   Max threads            : 4</span>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="cm">   subArray size round up : 51</span>
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="cm">   ---------------------------------</span>
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="cm">   Thread created 46696</span>
+</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="cm">   Thread created 28728</span>
+</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="cm">   Thread created 45456</span>
+</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="cm">   Thread created 46740</span>
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="cm">   Starting threads ...</span>
+</span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="cm">   Waiting for threads to finish ...</span>
+</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="cm">   All threads are done ...</span>
+</span><span id="__span-3-59"><a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="cm">   Printing results ...</span>
+</span><span id="__span-3-60"><a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="cm">   Adeline Khan, 200030</span>
+</span><span id="__span-3-61"><a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="cm">   Alessandra Nguyen, 200163</span>
+</span><span id="__span-3-62"><a id="__codelineno-3-62" name="__codelineno-3-62"></a><span class="cm">   Alessia Harrison, 200177</span>
+</span><span id="__span-3-63"><a id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="cm">   Alyssa Morgan, 200000</span>
+</span><span id="__span-3-64"><a id="__codelineno-3-64" name="__codelineno-3-64"></a><span class="cm">   Amara Larson, 200062</span>
+</span><span id="__span-3-65"><a id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="cm">   Amara Singh, 200008</span>
+</span><span id="__span-3-66"><a id="__codelineno-3-66" name="__codelineno-3-66"></a><span class="cm">   Anika Kim, 200171</span>
+</span><span id="__span-3-67"><a id="__codelineno-3-67" name="__codelineno-3-67"></a><span class="cm">   Anika Rodriguez, 200079</span>
+</span><span id="__span-3-68"><a id="__codelineno-3-68" name="__codelineno-3-68"></a><span class="cm">   Annalise Martinez, 200120</span>
+</span><span id="__span-3-69"><a id="__codelineno-3-69" name="__codelineno-3-69"></a><span class="cm">   Arabella Kim, 200157</span>
+</span><span id="__span-3-70"><a id="__codelineno-3-70" name="__codelineno-3-70"></a><span class="cm">   Arabella Park, 200091</span>
+</span><span id="__span-3-71"><a id="__codelineno-3-71" name="__codelineno-3-71"></a><span class="cm">   Ares Patel, 200172</span>
+</span><span id="__span-3-72"><a id="__codelineno-3-72" name="__codelineno-3-72"></a><span class="cm">   Aria Martinez, 200066</span>
+</span><span id="__span-3-73"><a id="__codelineno-3-73" name="__codelineno-3-73"></a><span class="cm">   Aria Sullivan, 200100</span>
+</span><span id="__span-3-74"><a id="__codelineno-3-74" name="__codelineno-3-74"></a><span class="cm">   ...</span>
+</span><span id="__span-3-75"><a id="__codelineno-3-75" name="__codelineno-3-75"></a><span class="cm">   ...</span>
+</span><span id="__span-3-76"><a id="__codelineno-3-76" name="__codelineno-3-76"></a>
+</span><span id="__span-3-77"><a id="__codelineno-3-77" name="__codelineno-3-77"></a><span class="cm">}</span>
+</span><span id="__span-3-78"><a id="__codelineno-3-78" name="__codelineno-3-78"></a>
+</span><span id="__span-3-79"><a id="__codelineno-3-79" name="__codelineno-3-79"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span><span id="__span-3-80"><a id="__codelineno-3-80" name="__codelineno-3-80"></a>
+</span><span id="__span-3-81"><a id="__codelineno-3-81" name="__codelineno-3-81"></a><span class="k">uses</span>
+</span><span id="__span-3-82"><a id="__codelineno-3-82" name="__codelineno-3-82"></a><span class="w">  </span><span class="cm">{$IFDEF UNIX}</span>
+</span><span id="__span-3-83"><a id="__codelineno-3-83" name="__codelineno-3-83"></a><span class="w">  </span><span class="n">cmem</span>
+</span><span id="__span-3-84"><a id="__codelineno-3-84" name="__codelineno-3-84"></a><span class="w">  </span><span class="o">,</span><span class="w"> </span><span class="n">cthreads</span>
+</span><span id="__span-3-85"><a id="__codelineno-3-85" name="__codelineno-3-85"></a><span class="w">  </span><span class="cm">{$ENDIF}</span>
+</span><span id="__span-3-86"><a id="__codelineno-3-86" name="__codelineno-3-86"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span>
+</span><span id="__span-3-87"><a id="__codelineno-3-87" name="__codelineno-3-87"></a><span class="w">  </span><span class="n">SysUtils</span><span class="o">,</span>
+</span><span id="__span-3-88"><a id="__codelineno-3-88" name="__codelineno-3-88"></a><span class="w">  </span><span class="n">Math</span><span class="o">,</span>
+</span><span id="__span-3-89"><a id="__codelineno-3-89" name="__codelineno-3-89"></a><span class="w">  </span><span class="n">streamex</span><span class="o">,</span>
+</span><span id="__span-3-90"><a id="__codelineno-3-90" name="__codelineno-3-90"></a><span class="w">  </span><span class="n">Common</span><span class="o">,</span>
+</span><span id="__span-3-91"><a id="__codelineno-3-91" name="__codelineno-3-91"></a><span class="w">  </span><span class="n">CustomThread</span><span class="o">;</span>
+</span><span id="__span-3-92"><a id="__codelineno-3-92" name="__codelineno-3-92"></a>
+</span><span id="__span-3-93"><a id="__codelineno-3-93" name="__codelineno-3-93"></a><span class="w">  </span><span class="c1">// All the variables and procedures to get the job done.</span>
+</span><span id="__span-3-94"><a id="__codelineno-3-94" name="__codelineno-3-94"></a><span class="k">var</span>
+</span><span id="__span-3-95"><a id="__codelineno-3-95" name="__codelineno-3-95"></a><span class="w">  </span><span class="c1">// Critical Section preventing threads accessing a variable at the same time.</span>
+</span><span id="__span-3-96"><a id="__codelineno-3-96" name="__codelineno-3-96"></a><span class="w">  </span><span class="n">customCriticalSection</span><span class="o">:</span><span class="w"> </span><span class="n">TRTLCriticalSection</span><span class="o">;</span>
+</span><span id="__span-3-97"><a id="__codelineno-3-97" name="__codelineno-3-97"></a>
+</span><span id="__span-3-98"><a id="__codelineno-3-98" name="__codelineno-3-98"></a><span class="w">  </span><span class="c1">// TStreams for reading files</span>
+</span><span id="__span-3-99"><a id="__codelineno-3-99" name="__codelineno-3-99"></a><span class="w">  </span><span class="n">fileStream</span><span class="o">:</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">;</span>
+</span><span id="__span-3-100"><a id="__codelineno-3-100" name="__codelineno-3-100"></a><span class="w">  </span><span class="n">streamReader</span><span class="o">:</span><span class="w"> </span><span class="n">TStreamReader</span><span class="o">;</span>
+</span><span id="__span-3-101"><a id="__codelineno-3-101" name="__codelineno-3-101"></a>
+</span><span id="__span-3-102"><a id="__codelineno-3-102" name="__codelineno-3-102"></a><span class="w">  </span><span class="c1">// A temporary list to hold student names from a text file</span>
+</span><span id="__span-3-103"><a id="__codelineno-3-103" name="__codelineno-3-103"></a><span class="w">  </span><span class="n">strList</span><span class="o">:</span><span class="w"> </span><span class="n">TStrList</span><span class="o">;</span>
+</span><span id="__span-3-104"><a id="__codelineno-3-104" name="__codelineno-3-104"></a>
+</span><span id="__span-3-105"><a id="__codelineno-3-105" name="__codelineno-3-105"></a><span class="w">  </span><span class="c1">// An array of threads</span>
+</span><span id="__span-3-106"><a id="__codelineno-3-106" name="__codelineno-3-106"></a><span class="w">  </span><span class="n">myThreads</span><span class="o">:</span><span class="w"> </span><span class="k">array</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">TThread</span><span class="o">;</span>
+</span><span id="__span-3-107"><a id="__codelineno-3-107" name="__codelineno-3-107"></a>
+</span><span id="__span-3-108"><a id="__codelineno-3-108" name="__codelineno-3-108"></a><span class="w">  </span><span class="c1">// Variables for calculating subarray size for each thread</span>
+</span><span id="__span-3-109"><a id="__codelineno-3-109" name="__codelineno-3-109"></a><span class="w">  </span><span class="n">subArraySize</span><span class="o">,</span><span class="w"> </span><span class="kp">index</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
+</span><span id="__span-3-110"><a id="__codelineno-3-110" name="__codelineno-3-110"></a>
+</span><span id="__span-3-111"><a id="__codelineno-3-111" name="__codelineno-3-111"></a><span class="w">  </span><span class="c1">// Main block ////////////////////////////////////////////////////////////////</span>
+</span><span id="__span-3-112"><a id="__codelineno-3-112" name="__codelineno-3-112"></a><span class="k">begin</span>
+</span><span id="__span-3-113"><a id="__codelineno-3-113" name="__codelineno-3-113"></a><span class="w">  </span><span class="k">try</span>
+</span><span id="__span-3-114"><a id="__codelineno-3-114" name="__codelineno-3-114"></a><span class="w">    </span><span class="c1">// 1. Read input text file and populate input array from a text file</span>
+</span><span id="__span-3-115"><a id="__codelineno-3-115" name="__codelineno-3-115"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nb">FileExists</span><span class="p">(</span><span class="nb">ParamStr</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-116"><a id="__codelineno-3-116" name="__codelineno-3-116"></a><span class="w">    </span><span class="k">begin</span>
+</span><span id="__span-3-117"><a id="__codelineno-3-117" name="__codelineno-3-117"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="nb">Format</span><span class="p">(</span><span class="s">&#39;%s does not exist.&#39;</span><span class="o">,</span><span class="w"> </span><span class="p">[</span><span class="nb">ParamStr</span><span class="p">(</span><span class="mi">1</span><span class="p">)]))</span><span class="o">;</span>
+</span><span id="__span-3-118"><a id="__codelineno-3-118" name="__codelineno-3-118"></a><span class="w">      </span><span class="k">Exit</span><span class="o">;</span>
+</span><span id="__span-3-119"><a id="__codelineno-3-119" name="__codelineno-3-119"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-3-120"><a id="__codelineno-3-120" name="__codelineno-3-120"></a>
+</span><span id="__span-3-121"><a id="__codelineno-3-121" name="__codelineno-3-121"></a><span class="w">    </span><span class="n">strList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStrList</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
+</span><span id="__span-3-122"><a id="__codelineno-3-122" name="__codelineno-3-122"></a><span class="w">    </span><span class="n">finalStudentList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStudentList</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
+</span><span id="__span-3-123"><a id="__codelineno-3-123" name="__codelineno-3-123"></a><span class="w">    </span><span class="k">try</span>
+</span><span id="__span-3-124"><a id="__codelineno-3-124" name="__codelineno-3-124"></a><span class="w">      </span><span class="n">fileStream</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TFileStream</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="nb">ParamStr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">,</span><span class="w"> </span><span class="n">fmOpenRead</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-125"><a id="__codelineno-3-125" name="__codelineno-3-125"></a><span class="w">      </span><span class="k">try</span>
+</span><span id="__span-3-126"><a id="__codelineno-3-126" name="__codelineno-3-126"></a><span class="w">        </span><span class="n">streamReader</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStreamReader</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">fileStream</span><span class="o">,</span><span class="w"> </span><span class="mi">65536</span><span class="o">,</span><span class="w"> </span><span class="k">False</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-127"><a id="__codelineno-3-127" name="__codelineno-3-127"></a><span class="w">        </span><span class="k">try</span>
+</span><span id="__span-3-128"><a id="__codelineno-3-128" name="__codelineno-3-128"></a><span class="w">          </span><span class="k">while</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">streamReader</span><span class="o">.</span><span class="n">EOF</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-3-129"><a id="__codelineno-3-129" name="__codelineno-3-129"></a><span class="w">          </span><span class="k">begin</span>
+</span><span id="__span-3-130"><a id="__codelineno-3-130" name="__codelineno-3-130"></a><span class="w">            </span><span class="c1">// Add each line into a list</span>
+</span><span id="__span-3-131"><a id="__codelineno-3-131" name="__codelineno-3-131"></a><span class="w">            </span><span class="n">strList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">streamReader</span><span class="o">.</span><span class="n">ReadLine</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-132"><a id="__codelineno-3-132" name="__codelineno-3-132"></a><span class="w">          </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-3-133"><a id="__codelineno-3-133" name="__codelineno-3-133"></a><span class="w">        </span><span class="k">finally</span>
+</span><span id="__span-3-134"><a id="__codelineno-3-134" name="__codelineno-3-134"></a><span class="w">          </span><span class="n">streamReader</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span><span id="__span-3-135"><a id="__codelineno-3-135" name="__codelineno-3-135"></a><span class="w">        </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-3-136"><a id="__codelineno-3-136" name="__codelineno-3-136"></a><span class="w">      </span><span class="k">finally</span>
+</span><span id="__span-3-137"><a id="__codelineno-3-137" name="__codelineno-3-137"></a><span class="w">        </span><span class="n">fileStream</span><span class="o">.</span><span class="n">Free</span>
+</span><span id="__span-3-138"><a id="__codelineno-3-138" name="__codelineno-3-138"></a><span class="w">      </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-3-139"><a id="__codelineno-3-139" name="__codelineno-3-139"></a>
+</span><span id="__span-3-140"><a id="__codelineno-3-140" name="__codelineno-3-140"></a><span class="w">      </span><span class="c1">// 2. Init Critical Section as we have threads writing to a shared variable</span>
+</span><span id="__span-3-141"><a id="__codelineno-3-141" name="__codelineno-3-141"></a><span class="w">      </span><span class="n">InitCriticalSection</span><span class="p">(</span><span class="n">customCriticalSection</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-142"><a id="__codelineno-3-142" name="__codelineno-3-142"></a>
+</span><span id="__span-3-143"><a id="__codelineno-3-143" name="__codelineno-3-143"></a><span class="w">      </span><span class="c1">// 3a. set the number of threads in array of TThread</span>
+</span><span id="__span-3-144"><a id="__codelineno-3-144" name="__codelineno-3-144"></a><span class="w">      </span><span class="nb">SetLength</span><span class="p">(</span><span class="n">myThreads</span><span class="o">,</span><span class="w"> </span><span class="n">maxThreads</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-145"><a id="__codelineno-3-145" name="__codelineno-3-145"></a><span class="w">      </span><span class="k">try</span>
+</span><span id="__span-3-146"><a id="__codelineno-3-146" name="__codelineno-3-146"></a><span class="w">        </span><span class="cm">{</span>
+</span><span id="__span-3-147"><a id="__codelineno-3-147" name="__codelineno-3-147"></a><span class="cm">          3b. Now we add threads &amp; assign workloads, using rounding up division --</span>
+</span><span id="__span-3-148"><a id="__codelineno-3-148" name="__codelineno-3-148"></a><span class="cm">              Ceil((totalElements + N - 1) div N).</span>
+</span><span id="__span-3-149"><a id="__codelineno-3-149" name="__codelineno-3-149"></a><span class="cm">              - When we divide totalElements by N, we get the quotient of the</span>
+</span><span id="__span-3-150"><a id="__codelineno-3-150" name="__codelineno-3-150"></a><span class="cm">                division. However, if totalElements is not evenly divisible by N,</span>
+</span><span id="__span-3-151"><a id="__codelineno-3-151" name="__codelineno-3-151"></a><span class="cm">                there might be a remainder.</span>
+</span><span id="__span-3-152"><a id="__codelineno-3-152" name="__codelineno-3-152"></a><span class="cm">              - In the context of splitting an array into subarrays, we want</span>
+</span><span id="__span-3-153"><a id="__codelineno-3-153" name="__codelineno-3-153"></a><span class="cm">                each subarray to have approximately the same number of elements.</span>
+</span><span id="__span-3-154"><a id="__codelineno-3-154" name="__codelineno-3-154"></a><span class="cm">                Therefore, we want to ensure that any remaining elements after</span>
+</span><span id="__span-3-155"><a id="__codelineno-3-155" name="__codelineno-3-155"></a><span class="cm">                dividing totalElements by N are included in the last subarray to</span>
+</span><span id="__span-3-156"><a id="__codelineno-3-156" name="__codelineno-3-156"></a><span class="cm">                avoid losing data.</span>
+</span><span id="__span-3-157"><a id="__codelineno-3-157" name="__codelineno-3-157"></a><span class="cm">              - The expression Ceil((totalElements + N - 1) div N); effectively</span>
+</span><span id="__span-3-158"><a id="__codelineno-3-158" name="__codelineno-3-158"></a><span class="cm">                rounds up the division by adding N - 1 to totalElements before</span>
+</span><span id="__span-3-159"><a id="__codelineno-3-159" name="__codelineno-3-159"></a><span class="cm">                performing the division. **This ensures that any remainder is</span>
+</span><span id="__span-3-160"><a id="__codelineno-3-160" name="__codelineno-3-160"></a><span class="cm">                accounted for in the last subarray**.</span>
+</span><span id="__span-3-161"><a id="__codelineno-3-161" name="__codelineno-3-161"></a><span class="cm">        }</span>
+</span><span id="__span-3-162"><a id="__codelineno-3-162" name="__codelineno-3-162"></a><span class="w">        </span><span class="n">subArraySize</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">Math</span><span class="o">.</span><span class="n">Ceil</span><span class="p">((</span><span class="n">strList</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">maxThreads</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">maxThreads</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-163"><a id="__codelineno-3-163" name="__codelineno-3-163"></a>
+</span><span id="__span-3-164"><a id="__codelineno-3-164" name="__codelineno-3-164"></a><span class="w">        </span><span class="c1">// Show user feedback</span>
+</span><span id="__span-3-165"><a id="__codelineno-3-165" name="__codelineno-3-165"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;No of students         : &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">strList</span><span class="o">.</span><span class="n">Count</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-3-166"><a id="__codelineno-3-166" name="__codelineno-3-166"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Max threads            : &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">maxThreads</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-3-167"><a id="__codelineno-3-167" name="__codelineno-3-167"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;subArray size round up : &#39;</span><span class="o">,</span><span class="w"> </span><span class="nb">IntToStr</span><span class="p">(</span><span class="n">subArraySize</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-3-168"><a id="__codelineno-3-168" name="__codelineno-3-168"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;---------------------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-169"><a id="__codelineno-3-169" name="__codelineno-3-169"></a>
+</span><span id="__span-3-170"><a id="__codelineno-3-170" name="__codelineno-3-170"></a><span class="w">        </span><span class="cm">{</span>
+</span><span id="__span-3-171"><a id="__codelineno-3-171" name="__codelineno-3-171"></a><span class="cm">         3c. Assign workload to each thread by using the following info;</span>
+</span><span id="__span-3-172"><a id="__codelineno-3-172" name="__codelineno-3-172"></a><span class="cm">             - source list</span>
+</span><span id="__span-3-173"><a id="__codelineno-3-173" name="__codelineno-3-173"></a><span class="cm">             - start index and</span>
+</span><span id="__span-3-174"><a id="__codelineno-3-174" name="__codelineno-3-174"></a><span class="cm">             - finish index for a thread</span>
+</span><span id="__span-3-175"><a id="__codelineno-3-175" name="__codelineno-3-175"></a><span class="cm">        }</span>
+</span><span id="__span-3-176"><a id="__codelineno-3-176" name="__codelineno-3-176"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">maxThreads</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-3-177"><a id="__codelineno-3-177" name="__codelineno-3-177"></a><span class="w">        </span><span class="k">begin</span>
+</span><span id="__span-3-178"><a id="__codelineno-3-178" name="__codelineno-3-178"></a><span class="w">          </span><span class="n">myThreads</span><span class="p">[</span><span class="kp">index</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TCustomThread</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">customCriticalSection</span><span class="o">,</span>
+</span><span id="__span-3-179"><a id="__codelineno-3-179" name="__codelineno-3-179"></a><span class="w">                                                       </span><span class="n">strList</span><span class="o">,</span>
+</span><span id="__span-3-180"><a id="__codelineno-3-180" name="__codelineno-3-180"></a><span class="w">                                                       </span><span class="p">((</span><span class="kp">index</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">subArraySize</span><span class="p">)</span><span class="o">,</span>
+</span><span id="__span-3-181"><a id="__codelineno-3-181" name="__codelineno-3-181"></a><span class="w">                                                       </span><span class="n">Math</span><span class="o">.</span><span class="n">Min</span><span class="p">(</span><span class="kp">index</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">subArraySize</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="n">strList</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-3-182"><a id="__codelineno-3-182" name="__codelineno-3-182"></a><span class="w">        </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-3-183"><a id="__codelineno-3-183" name="__codelineno-3-183"></a>
+</span><span id="__span-3-184"><a id="__codelineno-3-184" name="__codelineno-3-184"></a><span class="w">        </span><span class="c1">// 4. Start all threads</span>
+</span><span id="__span-3-185"><a id="__codelineno-3-185" name="__codelineno-3-185"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Starting threads ...&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-186"><a id="__codelineno-3-186" name="__codelineno-3-186"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nb">High</span><span class="p">(</span><span class="n">myThreads</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-3-187"><a id="__codelineno-3-187" name="__codelineno-3-187"></a><span class="w">          </span><span class="n">myThreads</span><span class="p">[</span><span class="kp">index</span><span class="p">]</span><span class="o">.</span><span class="n">Start</span><span class="o">;</span>
+</span><span id="__span-3-188"><a id="__codelineno-3-188" name="__codelineno-3-188"></a>
+</span><span id="__span-3-189"><a id="__codelineno-3-189" name="__codelineno-3-189"></a><span class="w">        </span><span class="c1">// 5. Wait for both threads to finish</span>
+</span><span id="__span-3-190"><a id="__codelineno-3-190" name="__codelineno-3-190"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Waiting for threads to finish ...&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-191"><a id="__codelineno-3-191" name="__codelineno-3-191"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nb">High</span><span class="p">(</span><span class="n">myThreads</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-3-192"><a id="__codelineno-3-192" name="__codelineno-3-192"></a><span class="w">          </span><span class="n">myThreads</span><span class="p">[</span><span class="kp">index</span><span class="p">]</span><span class="o">.</span><span class="n">WaitFor</span><span class="o">;</span>
+</span><span id="__span-3-193"><a id="__codelineno-3-193" name="__codelineno-3-193"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;All threads are done ...&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-194"><a id="__codelineno-3-194" name="__codelineno-3-194"></a>
+</span><span id="__span-3-195"><a id="__codelineno-3-195" name="__codelineno-3-195"></a><span class="w">        </span><span class="c1">// 6. Sort by student name</span>
+</span><span id="__span-3-196"><a id="__codelineno-3-196" name="__codelineno-3-196"></a><span class="w">        </span><span class="n">finalStudentList</span><span class="o">.</span><span class="n">Sort</span><span class="p">(</span><span class="n">TStudentListComparer</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="o">@</span><span class="n">CompareName</span><span class="p">))</span><span class="o">;</span>
+</span><span id="__span-3-197"><a id="__codelineno-3-197" name="__codelineno-3-197"></a>
+</span><span id="__span-3-198"><a id="__codelineno-3-198" name="__codelineno-3-198"></a><span class="w">        </span><span class="c1">// 7. Show results</span>
+</span><span id="__span-3-199"><a id="__codelineno-3-199" name="__codelineno-3-199"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Printing results ...&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-200"><a id="__codelineno-3-200" name="__codelineno-3-200"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">finalStudentList</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-3-201"><a id="__codelineno-3-201" name="__codelineno-3-201"></a><span class="w">          </span><span class="nb">WriteLn</span><span class="p">(</span><span class="n">finalStudentList</span><span class="p">[</span><span class="kp">index</span><span class="p">]</span><span class="o">.</span><span class="n">Name</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;, &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">finalStudentList</span><span class="p">[</span><span class="kp">index</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-202"><a id="__codelineno-3-202" name="__codelineno-3-202"></a>
+</span><span id="__span-3-203"><a id="__codelineno-3-203" name="__codelineno-3-203"></a><span class="w">        </span><span class="c1">// 8. Show user feedback</span>
+</span><span id="__span-3-204"><a id="__codelineno-3-204" name="__codelineno-3-204"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;---------------------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-205"><a id="__codelineno-3-205" name="__codelineno-3-205"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="nb">Format</span><span class="p">(</span><span class="s">&#39;Output list contains %d items&#39;</span><span class="o">,</span><span class="w"> </span><span class="p">[</span><span class="n">finalStudentList</span><span class="o">.</span><span class="n">Count</span><span class="p">]))</span><span class="o">;</span>
+</span><span id="__span-3-206"><a id="__codelineno-3-206" name="__codelineno-3-206"></a><span class="w">        </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;---------------------------------&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-207"><a id="__codelineno-3-207" name="__codelineno-3-207"></a><span class="w">      </span><span class="k">finally</span>
+</span><span id="__span-3-208"><a id="__codelineno-3-208" name="__codelineno-3-208"></a><span class="w">        </span><span class="c1">// 7. Free Critical Section</span>
+</span><span id="__span-3-209"><a id="__codelineno-3-209" name="__codelineno-3-209"></a><span class="w">        </span><span class="n">DoneCriticalSection</span><span class="p">(</span><span class="n">customCriticalSection</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-210"><a id="__codelineno-3-210" name="__codelineno-3-210"></a><span class="w">      </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-3-211"><a id="__codelineno-3-211" name="__codelineno-3-211"></a><span class="w">    </span><span class="k">finally</span>
+</span><span id="__span-3-212"><a id="__codelineno-3-212" name="__codelineno-3-212"></a><span class="w">      </span><span class="n">finalStudentList</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span><span id="__span-3-213"><a id="__codelineno-3-213" name="__codelineno-3-213"></a><span class="w">      </span><span class="n">strList</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span><span id="__span-3-214"><a id="__codelineno-3-214" name="__codelineno-3-214"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-3-215"><a id="__codelineno-3-215" name="__codelineno-3-215"></a>
+</span><span id="__span-3-216"><a id="__codelineno-3-216" name="__codelineno-3-216"></a><span class="w">  </span><span class="k">except</span>
+</span><span id="__span-3-217"><a id="__codelineno-3-217" name="__codelineno-3-217"></a><span class="w">    </span><span class="k">on</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-3-218"><a id="__codelineno-3-218" name="__codelineno-3-218"></a><span class="w">      </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Error: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">E</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-3-219"><a id="__codelineno-3-219" name="__codelineno-3-219"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-3-220"><a id="__codelineno-3-220" name="__codelineno-3-220"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 
 
