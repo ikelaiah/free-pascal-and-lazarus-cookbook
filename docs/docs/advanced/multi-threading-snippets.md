@@ -162,7 +162,17 @@ begin
 end.
 ```
 
-## Assign ID to each student name from a text file
+## Assigns ID to each student name from a text file
+
+This program assigns ID to each student name from a text file and sort by student ID.
+
+This snippet features;
+
+- `TFIleStream` and `TStreamREader` for reading lines from a text file,
+- use of four threads to complete the task,
+- use of rounding up division to split workload between threads, and
+- use of `TRTLCriticalSection` to create a critical section ensuring only one thread can write into the output list.
+
 
 `common.pas`
 
@@ -174,7 +184,7 @@ unit Common;
 interface
 
 uses
-  Classes, SysUtils, Generics.Defaults, Generics.Collections;
+  Classes, SysUtils, Generics.Defaults, Generics.Collections, Math;
 
 type
   TStudent = record
@@ -200,14 +210,14 @@ var
   finalStudentList: TStudentList;
 
 // Custom comparison function for sorting by name - ascending
-function CompareName(const LeftItem, RightItem: TStudent): integer;
+function CompareID(const LeftItem, RightItem: TStudent): integer;
 
 implementation
 
-// Custom comparison function for sorting by name - ascending
-function CompareName(const LeftItem, RightItem: TStudent): integer;
+// Custom comparison function for sorting by student id - ascending
+function CompareID(const LeftItem, RightItem: TStudent): integer;
 begin
-  Result := CompareStr(LeftItem.Name, RightItem.Name);
+  Result := CompareValue(LeftItem.id, RightItem.id);
 end;
 
 end.
@@ -350,28 +360,27 @@ program AssignStudentIDs;
    Max threads            : 4
    subArray size round up : 51
    ---------------------------------
-   Thread created 46696
-   Thread created 28728
-   Thread created 45456
-   Thread created 46740
+   Thread created 25040
+   Thread created 26324
+   Thread created 11972
+   Thread created 26028
    Starting threads ...
    Waiting for threads to finish ...
    All threads are done ...
    Printing results ...
-   Adeline Khan, 200030
-   Alessandra Nguyen, 200163
-   Alessia Harrison, 200177
    Alyssa Morgan, 200000
-   Amara Larson, 200062
+   Declan Hayes, 200001
+   Nora Patel, 200002
+   Miles Thompson, 200003
+   Sienna Larson, 200004
+   Kellan Rivera, 200005
+   Camille Chang, 200006
+   Jensen Park, 200007
    Amara Singh, 200008
-   Anika Kim, 200171
-   Anika Rodriguez, 200079
-   Annalise Martinez, 200120
-   Arabella Kim, 200157
-   Arabella Park, 200091
-   Ares Patel, 200172
-   Aria Martinez, 200066
-   Aria Sullivan, 200100
+   Holden Myers, 200009
+   Elise Howard, 200010
+   Luca Griffin, 200011
+   Reagan Patel, 200012
    ...
    ...
 
@@ -493,8 +502,8 @@ begin
           myThreads[index].WaitFor;
         WriteLn('All threads are done ...');
 
-        // 6. Sort by student name
-        finalStudentList.Sort(TStudentListComparer.construct(@CompareName));
+        // 6. Sort by student ID
+        finalStudentList.Sort(TStudentListComparer.construct(@CompareID));
 
         // 7. Show results
         WriteLn('Printing results ...');
