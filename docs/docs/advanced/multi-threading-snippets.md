@@ -254,7 +254,7 @@ There are important things to note here:
 
 1. The implementation includes a `destructor` to clean up the list used by the threads for the task (lines 30, 63-69).
 2. The thread receives an array but only processes a portion of it based on the rounding-up division algorithm defined in the main block.
-3. `FreeOnTerminate := True` is set because the main thread is not collecting results from this thread. Instead, this thread writes results into a shared variable (line 47).
+3. `FreeOnTerminate := False` as the main thread is responsible for managing the freeing of all threads (line 47).
 4. The `Execute` method updates shared variables within a critical section (lines 79-91).
 
 
@@ -304,8 +304,9 @@ begin
   // If user pass True, thread won't start automatically
   inherited Create(True);
 
-  // Free threads on terminate.
-  FreeOnTerminate := True;
+  // Not free threads on terminate.
+  // Threads will be freed from the main thread.
+  FreeOnTerminate := False;
 
   // Assign critical section
   self.cs := criticalSection;
@@ -407,7 +408,7 @@ program AssignStudentIDs;
       - Specify the start and finish indexes to each thread.
       - Will use the rounding up division method to ensure near-equal division
         of workload for each thread.
-    - Wait until all task is done
+    - Wait for the threads to finish and then free them.
     - Sort the final student list
     - Print results on screen.
 
@@ -554,10 +555,13 @@ begin
         for index := 0 to High(myThreads) do
           myThreads[index].Start;
 
-        // 5. Wait for both threads to finish
+        // 5. Wait for both threads to finish and free
         WriteLn('Waiting for threads to finish ...');
         for index := 0 to High(myThreads) do
-          myThreads[index].WaitFor;
+          begin
+            myThreads[index].WaitFor;
+            myThreads[index].Free;
+          end;
         WriteLn('All threads are done ...');
 
         // 6. Sort by student ID
