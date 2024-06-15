@@ -1088,22 +1088,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#muti-threaded-array-sum-manually-free-threads-afer-collecting-results" class="md-nav__link">
+  <a href="#sum-numbers-in-an-array" class="md-nav__link">
     <span class="md-ellipsis">
-      Muti-threaded array sum - manually free threads afer collecting results
+      Sum numbers in an array
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigns-a-student-id-to-each-student-name-from-a-text-file" class="md-nav__link">
+  <a href="#assigns-student-ids-to-student-names-in-a-text-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigns a student ID to each student name from a text file
+      Assigns student IDs to student names in a text file
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Assigns a student ID to each student name from a text file">
+    <nav class="md-nav" aria-label="Assigns student IDs to student names in a text file">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1421,22 +1421,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#muti-threaded-array-sum-manually-free-threads-afer-collecting-results" class="md-nav__link">
+  <a href="#sum-numbers-in-an-array" class="md-nav__link">
     <span class="md-ellipsis">
-      Muti-threaded array sum - manually free threads afer collecting results
+      Sum numbers in an array
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigns-a-student-id-to-each-student-name-from-a-text-file" class="md-nav__link">
+  <a href="#assigns-student-ids-to-student-names-in-a-text-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigns a student ID to each student name from a text file
+      Assigns student IDs to student names in a text file
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Assigns a student ID to each student name from a text file">
+    <nav class="md-nav" aria-label="Assigns student IDs to student names in a text file">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1487,7 +1487,8 @@
 
 
 <h1 id="multi-threading-snippets">Multi-threading | Snippets<a class="headerlink" href="#multi-threading-snippets" title="Permanent link">&para;</a></h1>
-<h2 id="muti-threaded-array-sum-manually-free-threads-afer-collecting-results">Muti-threaded array sum - manually free threads afer collecting results<a class="headerlink" href="#muti-threaded-array-sum-manually-free-threads-afer-collecting-results" title="Permanent link">&para;</a></h2>
+<p>Here are collections of snippets solving various tasks using multi-threading.</p>
+<h2 id="sum-numbers-in-an-array">Sum numbers in an array<a class="headerlink" href="#sum-numbers-in-an-array" title="Permanent link">&para;</a></h2>
 <p>Important features of this example.</p>
 <ol>
 <li>Use of <code>TIntegerDynArray</code>, which is a dynamic array of integers.</li>
@@ -1791,21 +1792,21 @@
 </span><span id="__span-0-143"><a id="__codelineno-0-143" name="__codelineno-0-143"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-0-144"><a id="__codelineno-0-144" name="__codelineno-0-144"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="assigns-a-student-id-to-each-student-name-from-a-text-file">Assigns a student ID to each student name from a text file<a class="headerlink" href="#assigns-a-student-id-to-each-student-name-from-a-text-file" title="Permanent link">&para;</a></h2>
-<p>This program assigns ID to each student name from a text file and sort by student ID.</p>
-<p>This snippet features;</p>
+<h2 id="assigns-student-ids-to-student-names-in-a-text-file">Assigns student IDs to student names in a text file<a class="headerlink" href="#assigns-student-ids-to-student-names-in-a-text-file" title="Permanent link">&para;</a></h2>
+<p>This program assigns an ID to each student name from a text file and sorts them by student ID.</p>
+<p>This snippet features:</p>
 <ul>
-<li><code>TFIleStream</code> and <code>TStreamREader</code> for reading lines from a text file,</li>
-<li>use of four threads to complete the task,</li>
-<li>use of rounding up division to split workload between threads, and</li>
-<li>use of <code>TRTLCriticalSection</code> to create a critical section ensuring only one thread can write into the output list.</li>
+<li><code>TFileStream</code> and <code>TStreamReader</code> for reading lines from a text file</li>
+<li>Use of four threads to complete the task</li>
+<li>Use of rounding-up division to split the workload between threads</li>
+<li>Use of <code>TRTLCriticalSection</code> to ensure only one thread can write to the output list</li>
 </ul>
 <h3 id="the-commonpas-of-assigning-a-student-id-to-each-name">The <code>common.pas</code> of assigning a student ID to each name<a class="headerlink" href="#the-commonpas-of-assigning-a-student-id-to-each-name" title="Permanent link">&para;</a></h3>
 <p>This file holds the common type and variable declarations.</p>
-<p>There are two important common variable here.</p>
+<p>There are two important common variables here:</p>
 <ol>
-<li><code>startStudentID: int64 = 200000;</code>. This variable specify the lowest index for student ID. All threads will be reading from this variable and increase by one for other threads to read from. Hence, reading and increment of this variable <strong>MUST</strong> be done from within a critical section to avoid race.</li>
-<li><code>finalStudentList: TStudentList;</code>. A list of <code>TStudent</code> records containing names and student IDs. All threads will write the output here. So, writing to this variable <strong>MUST</strong> be done from within a critical section too.</li>
+<li><code>startStudentID: int64 = 200000;</code> - This variable specifies the starting index for student IDs. All threads will read from this variable and increment it by one for other threads to read from. Therefore, reading and incrementing this variable MUST be done within a critical section to avoid race conditions.</li>
+<li><code>finalStudentList: TStudentList;</code> - A list of TStudent records containing names and student IDs. All threads will write their output here, so writing to this variable MUST also be done within a critical section.</li>
 </ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
