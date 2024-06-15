@@ -219,7 +219,7 @@ const
   maxThreads: int64 = 4;
 
 var
-  // This variable specify the lowest index for student ID.
+  // This variable specifies the lowest index for student ID.
   // All threads will be reading from this variable and increase by one
   // for other threads to read from.
   // Hence, reading and increment of this variable MUST be done
