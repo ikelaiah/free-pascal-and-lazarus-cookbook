@@ -248,14 +248,15 @@ end.
 
 ### The `customthread.pas` of assigning a student ID to each name
 
-This file define the implementation of a custom thread based on `TThread`.
+This file defines the implementation of a custom thread based on `TThread`.
 
-There are imporant things to note here.
+There are important things to note here:
 
-1. The implementation includes a `destructor` to clean up the list used by the threads for the task. Lines 30, 63-69.
-2. The thread receives an array, but only process a portion of it based on the rounding up division algorithm defined in the main block.
-3. The `FreeOnTerminate := True` as the main thread is not collecting results from this thread. This thread writes results into a shared variable. Line 47.
-4. The `Execute` method updates shared variables in a critical section. Line 79-91.
+1. The implementation includes a `destructor` to clean up the list used by the threads for the task (lines 30, 63-69).
+2. The thread receives an array but only processes a portion of it based on the rounding-up division algorithm defined in the main block.
+3. `FreeOnTerminate := True` is set because the main thread is not collecting results from this thread. Instead, this thread writes results into a shared variable (line 47).
+4. The `Execute` method updates shared variables within a critical section (lines 79-91).
+
 
 ```pascal linenums="1"  hl_lines="47 30 63-69 79-91"
 unit CustomThread;
@@ -360,10 +361,10 @@ end.
 
 Key features of the main snippet:
 
-- The text file is read into `strList`.
-- Threads are created and assigned specific subarrays to process.
-- Critical sections ensure safe access to shared variables.
-- After threads finish, results are sorted and printed.
+1. The text file is read into `strList`.
+2. Threads are created and assigned specific subarrays to process.
+3. Critical sections ensure safe access to shared variables.
+4. After the threads finish, the results are sorted and printed.
 
 ```pascal linenums="1"
 program AssignStudentIDs;
