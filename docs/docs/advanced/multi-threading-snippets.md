@@ -258,7 +258,7 @@ There are important things to note here:
 4. The `Execute` method updates shared variables within a critical section (lines 79-91).
 
 
-```pascal linenums="1"  hl_lines="47 30 63-69 79-91"
+```pascal linenums="1"  hl_lines="48 30 64-70 80-92"
 unit CustomThread;
 
 {$mode ObjFPC}{$H+}{$J-}
