@@ -162,7 +162,7 @@ begin
 end.
 ```
 
-## Assigns ID to each student name from a text file
+## Assigns a student ID to each student name from a text file
 
 This program assigns ID to each student name from a text file and sort by student ID.
 
@@ -174,7 +174,15 @@ This snippet features;
 - use of `TRTLCriticalSection` to create a critical section ensuring only one thread can write into the output list.
 
 
-`common.pas`
+### The `common.pas` of assigning a student ID to each name
+
+This file holds the common type and variable declarations.
+
+There are two important common variable here.
+
+1. `startStudentID: int64 = 200000;`. This variable specify the lowest index for student ID. All threads will be reading from this variable and increase by one for other threads to read from. Hence, reading and increment of this variable **MUST** be done from within a critical section to avoid race.
+2. `finalStudentList: TStudentList;`. A list of `TStudent` records containing names and student IDs. All threads will write the output here. So, writing to this variable **MUST** be done from within a critical section too.
+  
 
 ```pascal linenums="1"
 unit Common;
@@ -186,27 +194,40 @@ interface
 uses
   Classes, SysUtils, Generics.Defaults, Generics.Collections, Math;
 
+
 type
+  // A record to hold student information.
   TStudent = record
     Name: string;
     id: integer;
   end;
 
 type
+  // A list to hold student records, along with a comparer for
+  // sorting the list afterwards.
   TStudentList = specialize TList<TStudent>;
   TStudentListComparer = specialize TComparer<TStudent>;
 
 type
+  // A type of string list.
   TStrList = specialize TList<string>;
 
 const
+  // Number of maximum threads to use.
   maxThreads: int64 = 4;
 
 var
-  // start of student ID to assign
+  // This variable specify the lowest index for student ID.
+  // All threads will be reading from this variable and increase by one
+  // for other threads to read from.
+  // Hence, reading and increment of this variable MUST be done
+  // from within a critical section to avoid race.
   startStudentID: int64 = 200000;
 
-  // A list of TStudent records
+  // A list of TStudent records. All threads will write student names and
+  // student IDs into this variable.
+  // Hence, writing to this variable MUST be done from within
+  // a critical section too.
   finalStudentList: TStudentList;
 
 // Custom comparison function for sorting by name - ascending
@@ -223,12 +244,21 @@ end;
 end.
 ```
 
-`customthread.pas`
+### The `customthread.pas` of assigning a student ID to each name
 
-```pascal linenums="1"
+This file define the implementation of a custom thread based on `TThread`.
+
+There are imporant things to note here.
+
+1. The implementation includes a `destructor` to clean up the list used by the threads for the task. Lines 30, 63-69.
+2. The thread receives an array, but only process a portion of it based on the rounding up division algorithm defined in the main block.
+3. The `FreeOnTerminate := True` as the main thread is not collecting results from this thread. This thread writes results into a shared variable. Line 47.
+4. The `Execute` method updates shared variables in a critical section. Line 79-91.
+
+```pascal linenums="1"  hl_lines="47 30 63-69 79-91"
 unit CustomThread;
 
-{$mode ObjFPC}{$H+}
+{$mode ObjFPC}{$H+}{$J-}
 
 interface
 
@@ -237,14 +267,24 @@ uses
 
   // Create a thread class deriving from TThread.
 type
+  // The TThread class encapsulates the native thread support of the OS.
+  // To create a thread, (1) declare a child of the TThread object, ...
   TCustomThread = class(TThread)
+    // (with a data to work with)
   private
-    list: TstrList;
+    // A TStrList to store the input array for this thread, along with
+    // a variable to store an instance of critical section.
+    list: TStrList;
     cs:TRTLCriticalSection;
   protected
+    // (2) override the Execute method, and ...
     procedure Execute; override;
   public
-    constructor Create(const criticalSection: TRTLCriticalSection; const listToProcess: TStrList; startIndex, finishIndex: int64);
+    // (3) include a constructor to setup variables for executing this thread.
+    constructor Create(const criticalSection: TRTLCriticalSection;
+                       const listToProcess: TStrList;
+                       const startIndex, finishIndex: int64);
+    // (4) lastly, include  destructor to free the TStrList of this thread.
     destructor Destroy; override;
   end;
 
@@ -252,16 +292,19 @@ implementation
 
 // Create the Custom Thread with an input list to process.
 constructor TCustomThread.Create(const criticalSection: TRTLCriticalSection;
-                                 const listToProcess: TStrList; startIndex, finishIndex: int64);
+                                 const listToProcess: TStrList;
+                                 const startIndex, finishIndex: int64);
 var
   index: int64;
 begin
-  // This won't start the threads straight away.
+  // Call parent's constructor
+  // If user pass True, thread won't start automatically
   inherited Create(True);
 
-  // Not to free on terminate.
-  //FreeOnTerminate := True;
+  // Free threads on terminate.
+  FreeOnTerminate := True;
 
+  // Assign critical section
   self.cs := criticalSection;
 
   // Populate the internal list for the Execute procedure
@@ -272,12 +315,14 @@ begin
   end;
 
   // User feedback
-  WriteLn('Thread created ', ThreadID);
+  WriteLn('Thread created with id: ', ThreadID);
 end;
 
 destructor TCustomThread.Destroy;
 begin
+  // Free the TStrList.
   self.list.Free;
+  // Call parents' Destroy.
   inherited Destroy;
 end;
 
@@ -289,16 +334,19 @@ var
 begin
   for index := 0 to self.list.Count - 1 do
   begin
-    EnterCriticalSection(cs); // -------------------------------------- enter cs
+    EnterCriticalSection(cs); // --------------------------------- enter cs
     try
-      // Add TStudent into TStudentList
+      // Add student - ID pair as TStudent, then add into TStudentList
+      //   1. Get the name from the list with allocated index
       student.Name := list[index];
+      //   2. Get the starting student ID from
       student.id := startStudentID;
+      //   3. Add TStudent into TStudentList (the main block does the init)
       finalStudentList.Add(student);
-      // Increment student ID by 1
+      // After a student - ID pair is added, increment the current student ID by 1
       startStudentID := startStudentID + 1
     finally
-      LeaveCriticalSection(cs); // ------------------------------------ leave cs
+      LeaveCriticalSection(cs); // ------------------------------- leave cs
     end;
   end;
 end;
@@ -306,7 +354,14 @@ end;
 end.
 ```
 
-Main program
+### The main program of of assigning a student ID to each name
+
+Key features of the main snippet:
+
+- The text file is read into `strList`.
+- Threads are created and assigned specific subarrays to process.
+- Critical sections ensure safe access to shared variables.
+- After threads finish, results are sorted and printed.
 
 ```pascal linenums="1"
 program AssignStudentIDs;
