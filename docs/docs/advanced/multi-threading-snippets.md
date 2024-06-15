@@ -176,7 +176,7 @@ This snippet features:
 - Use of `TRTLCriticalSection` to ensure only one thread can write to the output list
 
 
-### The `common.pas` of assigning a student ID to each name
+### The `common.pas` of assigning IDs to names
 
 This file holds the common type and variable declarations.
 
@@ -246,7 +246,7 @@ end;
 end.
 ```
 
-### The `customthread.pas` of assigning a student ID to each name
+### The `customthread.pas` of assigning IDs to names
 
 This file defines the implementation of a custom thread based on `TThread`.
 
@@ -357,7 +357,7 @@ end;
 end.
 ```
 
-### The main program of of assigning a student ID to each name
+### The main program of assigning IDs to names
 
 Key features of the main snippet:
 
