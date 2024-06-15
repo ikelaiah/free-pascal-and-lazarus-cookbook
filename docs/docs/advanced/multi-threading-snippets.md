@@ -1,6 +1,8 @@
 # Multi-threading | Snippets
 
-## Muti-threaded array sum - manually free threads afer collecting results
+Here are collections of snippets solving various tasks using multi-threading.
+
+## Sum numbers in an array
 
 Important features of this example.
 
@@ -162,26 +164,26 @@ begin
 end.
 ```
 
-## Assigns a student ID to each student name from a text file
+## Assigns student IDs to student names in a text file
 
-This program assigns ID to each student name from a text file and sort by student ID.
+This program assigns an ID to each student name from a text file and sorts them by student ID.
 
-This snippet features;
+This snippet features:
 
-- `TFIleStream` and `TStreamREader` for reading lines from a text file,
-- use of four threads to complete the task,
-- use of rounding up division to split workload between threads, and
-- use of `TRTLCriticalSection` to create a critical section ensuring only one thread can write into the output list.
+- `TFileStream` and `TStreamReader` for reading lines from a text file
+- Use of four threads to complete the task
+- Use of rounding-up division to split the workload between threads
+- Use of `TRTLCriticalSection` to ensure only one thread can write to the output list
 
 
 ### The `common.pas` of assigning a student ID to each name
 
 This file holds the common type and variable declarations.
 
-There are two important common variable here.
+There are two important common variables here:
 
-1. `startStudentID: int64 = 200000;`. This variable specify the lowest index for student ID. All threads will be reading from this variable and increase by one for other threads to read from. Hence, reading and increment of this variable **MUST** be done from within a critical section to avoid race.
-2. `finalStudentList: TStudentList;`. A list of `TStudent` records containing names and student IDs. All threads will write the output here. So, writing to this variable **MUST** be done from within a critical section too.
+1. `startStudentID: int64 = 200000;` - This variable specifies the starting index for student IDs. All threads will read from this variable and increment it by one for other threads to read from. Therefore, reading and incrementing this variable MUST be done within a critical section to avoid race conditions.
+2. `finalStudentList: TStudentList;` - A list of TStudent records containing names and student IDs. All threads will write their output here, so writing to this variable MUST also be done within a critical section.
   
 
 ```pascal linenums="1"
