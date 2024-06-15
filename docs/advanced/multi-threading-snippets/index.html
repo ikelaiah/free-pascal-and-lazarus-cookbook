@@ -1923,13 +1923,13 @@
 </span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="the-customthreadpas-of-assigning-a-student-id-to-each-name">The <code>customthread.pas</code> of assigning a student ID to each name<a class="headerlink" href="#the-customthreadpas-of-assigning-a-student-id-to-each-name" title="Permanent link">&para;</a></h3>
-<p>This file define the implementation of a custom thread based on <code>TThread</code>.</p>
-<p>There are imporant things to note here.</p>
+<p>This file defines the implementation of a custom thread based on <code>TThread</code>.</p>
+<p>There are important things to note here:</p>
 <ol>
-<li>The implementation includes a <code>destructor</code> to clean up the list used by the threads for the task. Lines 30, 63-69.</li>
-<li>The thread receives an array, but only process a portion of it based on the rounding up division algorithm defined in the main block.</li>
-<li>The <code>FreeOnTerminate := True</code> as the main thread is not collecting results from this thread. This thread writes results into a shared variable. Line 47.</li>
-<li>The <code>Execute</code> method updates shared variables in a critical section. Line 79-91.</li>
+<li>The implementation includes a <code>destructor</code> to clean up the list used by the threads for the task (lines 30, 63-69).</li>
+<li>The thread receives an array but only processes a portion of it based on the rounding-up division algorithm defined in the main block.</li>
+<li><code>FreeOnTerminate := True</code> is set because the main thread is not collecting results from this thread. Instead, this thread writes results into a shared variable (line 47).</li>
+<li>The <code>Execute</code> method updates shared variables within a critical section (lines 79-91).</li>
 </ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
@@ -2125,12 +2125,12 @@
 </span></code></pre></div></td></tr></table></div>
 <h3 id="the-main-program-of-of-assigning-a-student-id-to-each-name">The main program of of assigning a student ID to each name<a class="headerlink" href="#the-main-program-of-of-assigning-a-student-id-to-each-name" title="Permanent link">&para;</a></h3>
 <p>Key features of the main snippet:</p>
-<ul>
+<ol>
 <li>The text file is read into <code>strList</code>.</li>
 <li>Threads are created and assigned specific subarrays to process.</li>
 <li>Critical sections ensure safe access to shared variables.</li>
-<li>After threads finish, results are sorted and printed.</li>
-</ul>
+<li>After the threads finish, the results are sorted and printed.</li>
+</ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">  2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">  3</a></span>
