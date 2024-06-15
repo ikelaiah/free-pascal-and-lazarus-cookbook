@@ -1097,11 +1097,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigns-id-to-each-student-name-from-a-text-file" class="md-nav__link">
+  <a href="#assigns-a-student-id-to-each-student-name-from-a-text-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigns ID to each student name from a text file
+      Assigns a student ID to each student name from a text file
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Assigns a student ID to each student name from a text file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-commonpas-of-assigning-a-student-id-to-each-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      The common.pas of assigning a student ID to each name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-customthreadpas-of-assigning-a-student-id-to-each-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      The customthread.pas of assigning a student ID to each name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-main-program-of-of-assigning-a-student-id-to-each-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      The main program of of assigning a student ID to each name
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1397,11 +1430,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigns-id-to-each-student-name-from-a-text-file" class="md-nav__link">
+  <a href="#assigns-a-student-id-to-each-student-name-from-a-text-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigns ID to each student name from a text file
+      Assigns a student ID to each student name from a text file
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Assigns a student ID to each student name from a text file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-commonpas-of-assigning-a-student-id-to-each-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      The common.pas of assigning a student ID to each name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-customthreadpas-of-assigning-a-student-id-to-each-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      The customthread.pas of assigning a student ID to each name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-main-program-of-of-assigning-a-student-id-to-each-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      The main program of of assigning a student ID to each name
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1725,7 +1791,7 @@
 </span><span id="__span-0-143"><a id="__codelineno-0-143" name="__codelineno-0-143"></a><span class="w">  </span><span class="nb">ReadLn</span><span class="o">;</span>
 </span><span id="__span-0-144"><a id="__codelineno-0-144" name="__codelineno-0-144"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="assigns-id-to-each-student-name-from-a-text-file">Assigns ID to each student name from a text file<a class="headerlink" href="#assigns-id-to-each-student-name-from-a-text-file" title="Permanent link">&para;</a></h2>
+<h2 id="assigns-a-student-id-to-each-student-name-from-a-text-file">Assigns a student ID to each student name from a text file<a class="headerlink" href="#assigns-a-student-id-to-each-student-name-from-a-text-file" title="Permanent link">&para;</a></h2>
 <p>This program assigns ID to each student name from a text file and sort by student ID.</p>
 <p>This snippet features;</p>
 <ul>
@@ -1734,7 +1800,13 @@
 <li>use of rounding up division to split workload between threads, and</li>
 <li>use of <code>TRTLCriticalSection</code> to create a critical section ensuring only one thread can write into the output list.</li>
 </ul>
-<p><code>common.pas</code></p>
+<h3 id="the-commonpas-of-assigning-a-student-id-to-each-name">The <code>common.pas</code> of assigning a student ID to each name<a class="headerlink" href="#the-commonpas-of-assigning-a-student-id-to-each-name" title="Permanent link">&para;</a></h3>
+<p>This file holds the common type and variable declarations.</p>
+<p>There are two important common variable here.</p>
+<ol>
+<li><code>startStudentID: int64 = 200000;</code>. This variable specify the lowest index for student ID. All threads will be reading from this variable and increase by one for other threads to read from. Hence, reading and increment of this variable <strong>MUST</strong> be done from within a critical section to avoid race.</li>
+<li><code>finalStudentList: TStudentList;</code>. A list of <code>TStudent</code> records containing names and student IDs. All threads will write the output here. So, writing to this variable <strong>MUST</strong> be done from within a critical section too.</li>
+</ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -1778,7 +1850,20 @@
 <span class="normal"><a href="#__codelineno-1-41">41</a></span>
 <span class="normal"><a href="#__codelineno-1-42">42</a></span>
 <span class="normal"><a href="#__codelineno-1-43">43</a></span>
-<span class="normal"><a href="#__codelineno-1-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">unit</span><span class="w"> </span><span class="n">Common</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span>
+<span class="normal"><a href="#__codelineno-1-45">45</a></span>
+<span class="normal"><a href="#__codelineno-1-46">46</a></span>
+<span class="normal"><a href="#__codelineno-1-47">47</a></span>
+<span class="normal"><a href="#__codelineno-1-48">48</a></span>
+<span class="normal"><a href="#__codelineno-1-49">49</a></span>
+<span class="normal"><a href="#__codelineno-1-50">50</a></span>
+<span class="normal"><a href="#__codelineno-1-51">51</a></span>
+<span class="normal"><a href="#__codelineno-1-52">52</a></span>
+<span class="normal"><a href="#__codelineno-1-53">53</a></span>
+<span class="normal"><a href="#__codelineno-1-54">54</a></span>
+<span class="normal"><a href="#__codelineno-1-55">55</a></span>
+<span class="normal"><a href="#__codelineno-1-56">56</a></span>
+<span class="normal"><a href="#__codelineno-1-57">57</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">unit</span><span class="w"> </span><span class="n">Common</span><span class="o">;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="cm">{$mode ObjFPC}{$H+}</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>
@@ -1787,43 +1872,64 @@
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">uses</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span><span class="n">Classes</span><span class="o">,</span><span class="w"> </span><span class="n">SysUtils</span><span class="o">,</span><span class="w"> </span><span class="n">Generics</span><span class="o">.</span><span class="n">Defaults</span><span class="o">,</span><span class="w"> </span><span class="n">Generics</span><span class="o">.</span><span class="n">Collections</span><span class="o">,</span><span class="w"> </span><span class="n">Math</span><span class="o">;</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="k">type</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">  </span><span class="n">TStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">record</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="n">Name</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="n">id</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="k">type</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">  </span><span class="n">TStudentList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TList</span><span class="o">&lt;</span><span class="n">TStudent</span><span class="o">&gt;;</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">  </span><span class="n">TStudentListComparer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TComparer</span><span class="o">&lt;</span><span class="n">TStudent</span><span class="o">&gt;;</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="k">type</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">  </span><span class="n">TStrList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TList</span><span class="o">&lt;</span><span class="k">string</span><span class="o">&gt;;</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="k">const</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">  </span><span class="n">maxThreads</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="o">;</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="k">var</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">  </span><span class="c1">// start of student ID to assign</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">  </span><span class="n">startStudentID</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200000</span><span class="o">;</span>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">  </span><span class="c1">// A list of TStudent records</span>
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">  </span><span class="n">finalStudentList</span><span class="o">:</span><span class="w"> </span><span class="n">TStudentList</span><span class="o">;</span>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="c1">// Custom comparison function for sorting by name - ascending</span>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="k">function</span><span class="w"> </span><span class="nf">CompareID</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LeftItem</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a>
-</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="k">implementation</span>
-</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a>
-</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="c1">// Custom comparison function for sorting by student id - ascending</span>
-</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="k">function</span><span class="w"> </span><span class="nf">CompareID</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LeftItem</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
-</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="k">begin</span>
-</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">  </span><span class="bp">Result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">CompareValue</span><span class="p">(</span><span class="n">LeftItem</span><span class="o">.</span><span class="n">id</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43"></a>
-</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="k">end</span><span class="o">.</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="k">type</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">  </span><span class="c1">// A record to hold student information.</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">  </span><span class="n">TStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">record</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="n">Name</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="n">id</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="k">type</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">  </span><span class="c1">// A list to hold student records, along with a comparer for</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">  </span><span class="c1">// sorting the list afterwards.</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">  </span><span class="n">TStudentList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TList</span><span class="o">&lt;</span><span class="n">TStudent</span><span class="o">&gt;;</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">  </span><span class="n">TStudentListComparer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TComparer</span><span class="o">&lt;</span><span class="n">TStudent</span><span class="o">&gt;;</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="k">type</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">  </span><span class="c1">// A type of string list.</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">  </span><span class="n">TStrList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialize</span><span class="w"> </span><span class="n">TList</span><span class="o">&lt;</span><span class="k">string</span><span class="o">&gt;;</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="k">const</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">  </span><span class="c1">// Number of maximum threads to use.</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">  </span><span class="n">maxThreads</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="o">;</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="k">var</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w">  </span><span class="c1">// This variable specify the lowest index for student ID.</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">  </span><span class="c1">// All threads will be reading from this variable and increase by one</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">  </span><span class="c1">// for other threads to read from.</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">  </span><span class="c1">// Hence, reading and increment of this variable MUST be done</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">  </span><span class="c1">// from within a critical section to avoid race.</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w">  </span><span class="n">startStudentID</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200000</span><span class="o">;</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">  </span><span class="c1">// A list of TStudent records. All threads will write student names and</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">  </span><span class="c1">// student IDs into this variable.</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">  </span><span class="c1">// Hence, writing to this variable MUST be done from within</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">  </span><span class="c1">// a critical section too.</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w">  </span><span class="n">finalStudentList</span><span class="o">:</span><span class="w"> </span><span class="n">TStudentList</span><span class="o">;</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45"></a>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="c1">// Custom comparison function for sorting by name - ascending</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="k">function</span><span class="w"> </span><span class="nf">CompareID</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LeftItem</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48"></a>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="k">implementation</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50"></a>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="c1">// Custom comparison function for sorting by student id - ascending</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="k">function</span><span class="w"> </span><span class="nf">CompareID</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LeftItem</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="k">begin</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w">  </span><span class="bp">Result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">CompareValue</span><span class="p">(</span><span class="n">LeftItem</span><span class="o">.</span><span class="n">id</span><span class="o">,</span><span class="w"> </span><span class="n">RightItem</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55"></a><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56"></a>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<p><code>customthread.pas</code></p>
+<h3 id="the-customthreadpas-of-assigning-a-student-id-to-each-name">The <code>customthread.pas</code> of assigning a student ID to each name<a class="headerlink" href="#the-customthreadpas-of-assigning-a-student-id-to-each-name" title="Permanent link">&para;</a></h3>
+<p>This file define the implementation of a custom thread based on <code>TThread</code>.</p>
+<p>There are imporant things to note here.</p>
+<ol>
+<li>The implementation includes a <code>destructor</code> to clean up the list used by the threads for the task. Lines 30, 63-69.</li>
+<li>The thread receives an array, but only process a portion of it based on the rounding up division algorithm defined in the main block.</li>
+<li>The <code>FreeOnTerminate := True</code> as the main thread is not collecting results from this thread. This thread writes results into a shared variable. Line 47.</li>
+<li>The <code>Execute</code> method updates shared variables in a critical section. Line 79-91.</li>
+</ol>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -1901,9 +2007,27 @@
 <span class="normal"><a href="#__codelineno-2-75">75</a></span>
 <span class="normal"><a href="#__codelineno-2-76">76</a></span>
 <span class="normal"><a href="#__codelineno-2-77">77</a></span>
-<span class="normal"><a href="#__codelineno-2-78">78</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">unit</span><span class="w"> </span><span class="n">CustomThread</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-2-78">78</a></span>
+<span class="normal"><a href="#__codelineno-2-79">79</a></span>
+<span class="normal"><a href="#__codelineno-2-80">80</a></span>
+<span class="normal"><a href="#__codelineno-2-81">81</a></span>
+<span class="normal"><a href="#__codelineno-2-82">82</a></span>
+<span class="normal"><a href="#__codelineno-2-83">83</a></span>
+<span class="normal"><a href="#__codelineno-2-84">84</a></span>
+<span class="normal"><a href="#__codelineno-2-85">85</a></span>
+<span class="normal"><a href="#__codelineno-2-86">86</a></span>
+<span class="normal"><a href="#__codelineno-2-87">87</a></span>
+<span class="normal"><a href="#__codelineno-2-88">88</a></span>
+<span class="normal"><a href="#__codelineno-2-89">89</a></span>
+<span class="normal"><a href="#__codelineno-2-90">90</a></span>
+<span class="normal"><a href="#__codelineno-2-91">91</a></span>
+<span class="normal"><a href="#__codelineno-2-92">92</a></span>
+<span class="normal"><a href="#__codelineno-2-93">93</a></span>
+<span class="normal"><a href="#__codelineno-2-94">94</a></span>
+<span class="normal"><a href="#__codelineno-2-95">95</a></span>
+<span class="normal"><a href="#__codelineno-2-96">96</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">unit</span><span class="w"> </span><span class="n">CustomThread</span><span class="o">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cm">{$mode ObjFPC}{$H+}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cm">{$mode ObjFPC}{$H+}{$J-}</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">interface</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
@@ -1912,75 +2036,100 @@
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="c1">// Create a thread class deriving from TThread.</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="k">type</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">  </span><span class="n">TCustomThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TThread</span><span class="p">)</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">  </span><span class="kp">private</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="n">list</span><span class="o">:</span><span class="w"> </span><span class="n">TstrList</span><span class="o">;</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="n">cs</span><span class="o">:</span><span class="n">TRTLCriticalSection</span><span class="o">;</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">  </span><span class="kp">protected</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">Execute</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">  </span><span class="kp">public</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">    </span><span class="k">constructor</span><span class="w"> </span><span class="nf">Create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">:</span><span class="w"> </span><span class="n">TRTLCriticalSection</span><span class="o">;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">listToProcess</span><span class="o">:</span><span class="w"> </span><span class="n">TStrList</span><span class="o">;</span><span class="w"> </span><span class="n">startIndex</span><span class="o">,</span><span class="w"> </span><span class="n">finishIndex</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="k">destructor</span><span class="w"> </span><span class="nf">Destroy</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="k">implementation</span>
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="c1">// Create the Custom Thread with an input list to process.</span>
-</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="k">constructor</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">:</span><span class="w"> </span><span class="n">TRTLCriticalSection</span><span class="o">;</span>
-</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">listToProcess</span><span class="o">:</span><span class="w"> </span><span class="n">TStrList</span><span class="o">;</span><span class="w"> </span><span class="n">startIndex</span><span class="o">,</span><span class="w"> </span><span class="n">finishIndex</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="k">var</span>
-</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">  </span><span class="kp">index</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
-</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="k">begin</span>
-</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="w">  </span><span class="c1">// This won&#39;t start the threads straight away.</span>
-</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">  </span><span class="k">inherited</span><span class="w"> </span><span class="n">Create</span><span class="p">(</span><span class="k">True</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>
-</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="w">  </span><span class="c1">// Not to free on terminate.</span>
-</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="w">  </span><span class="c1">//FreeOnTerminate := True;</span>
-</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a>
-</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">cs</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">;</span>
-</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a>
-</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="w">  </span><span class="c1">// Populate the internal list for the Execute procedure</span>
-</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStrList</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
-</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startIndex</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">finishIndex</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="w">    </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">listToProcess</span><span class="p">[</span><span class="kp">index</span><span class="p">])</span><span class="o">;</span>
-</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">  </span><span class="c1">// The TThread class encapsulates the native thread support of the OS.</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">  </span><span class="c1">// To create a thread, (1) declare a child of the TThread object, ...</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">  </span><span class="n">TCustomThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TThread</span><span class="p">)</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="c1">// (with a data to work with)</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">  </span><span class="kp">private</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span><span class="c1">// A TStrList to store the input array for this thread, along with</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="c1">// a variable to store an instance of critical section.</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">    </span><span class="n">list</span><span class="o">:</span><span class="w"> </span><span class="n">TStrList</span><span class="o">;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="n">cs</span><span class="o">:</span><span class="n">TRTLCriticalSection</span><span class="o">;</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">  </span><span class="kp">protected</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">    </span><span class="c1">// (2) override the Execute method, and ...</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">Execute</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">  </span><span class="kp">public</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">    </span><span class="c1">// (3) include a constructor to setup variables for executing this thread.</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">    </span><span class="k">constructor</span><span class="w"> </span><span class="nf">Create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">:</span><span class="w"> </span><span class="n">TRTLCriticalSection</span><span class="o">;</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">listToProcess</span><span class="o">:</span><span class="w"> </span><span class="n">TStrList</span><span class="o">;</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">startIndex</span><span class="o">,</span><span class="w"> </span><span class="n">finishIndex</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">    </span><span class="c1">// (4) lastly, include  destructor to free the TStrList of this thread.</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="hll"><span class="w">    </span><span class="k">destructor</span><span class="w"> </span><span class="nf">Destroy</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
+</span></span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="k">implementation</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="c1">// Create the Custom Thread with an input list to process.</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="k">constructor</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">:</span><span class="w"> </span><span class="n">TRTLCriticalSection</span><span class="o">;</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">listToProcess</span><span class="o">:</span><span class="w"> </span><span class="n">TStrList</span><span class="o">;</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">startIndex</span><span class="o">,</span><span class="w"> </span><span class="n">finishIndex</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="k">var</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">  </span><span class="kp">index</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="k">begin</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="w">  </span><span class="c1">// Call parent&#39;s constructor</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="w">  </span><span class="c1">// If user pass True, thread won&#39;t start automatically</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="w">  </span><span class="k">inherited</span><span class="w"> </span><span class="n">Create</span><span class="p">(</span><span class="k">True</span><span class="p">)</span><span class="o">;</span>
 </span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45"></a>
-</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">  </span><span class="c1">// User feedback</span>
-</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Thread created &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49"></a>
-</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="k">destructor</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Destroy</span><span class="o">;</span>
-</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="k">begin</span>
-</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
-</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">  </span><span class="k">inherited</span><span class="w"> </span><span class="n">Destroy</span><span class="o">;</span>
-</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55"></a>
-</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="c1">// Enter and leave Critical Section here.</span>
-</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="k">procedure</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Execute</span><span class="o">;</span>
-</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="k">var</span>
-</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">  </span><span class="kp">index</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
-</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">  </span><span class="n">student</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="o">;</span>
-</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="k">begin</span>
-</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="w">    </span><span class="n">EnterCriticalSection</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// -------------------------------------- enter cs</span>
-</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="w">    </span><span class="k">try</span>
-</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="w">      </span><span class="c1">// Add TStudent into TStudentList</span>
-</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="w">      </span><span class="n">student</span><span class="o">.</span><span class="n">Name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">list</span><span class="p">[</span><span class="kp">index</span><span class="p">]</span><span class="o">;</span>
-</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="w">      </span><span class="n">student</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startStudentID</span><span class="o">;</span>
-</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="w">      </span><span class="n">finalStudentList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">student</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70"></a><span class="w">      </span><span class="c1">// Increment student ID by 1</span>
-</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="w">      </span><span class="n">startStudentID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startStudentID</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
-</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="w">    </span><span class="k">finally</span>
-</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="w">      </span><span class="n">LeaveCriticalSection</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// ------------------------------------ leave cs</span>
-</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77"></a>
-</span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="k">end</span><span class="o">.</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">  </span><span class="c1">// Free threads on terminate.</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="hll"><span class="w">  </span><span class="n">FreeOnTerminate</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">True</span><span class="o">;</span>
+</span></span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48"></a>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="w">  </span><span class="c1">// Assign critical section</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">cs</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">criticalSection</span><span class="o">;</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51"></a>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">  </span><span class="c1">// Populate the internal list for the Execute procedure</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TStrList</span><span class="o">.</span><span class="n">Create</span><span class="o">;</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startIndex</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">finishIndex</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="w">    </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">listToProcess</span><span class="p">[</span><span class="kp">index</span><span class="p">])</span><span class="o">;</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58"></a>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">  </span><span class="c1">// User feedback</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">  </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Thread created with id: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62"></a>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="hll"><span class="k">destructor</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Destroy</span><span class="o">;</span>
+</span></span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="hll"><span class="k">begin</span>
+</span></span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="hll"><span class="w">  </span><span class="c1">// Free the TStrList.</span>
+</span></span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="hll"><span class="w">  </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span></span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="hll"><span class="w">  </span><span class="c1">// Call parents&#39; Destroy.</span>
+</span></span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="hll"><span class="w">  </span><span class="k">inherited</span><span class="w"> </span><span class="n">Destroy</span><span class="o">;</span>
+</span></span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="hll"><span class="k">end</span><span class="o">;</span>
+</span></span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70"></a>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="c1">// Enter and leave Critical Section here.</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="k">procedure</span><span class="w"> </span><span class="nc">TCustomThread</span><span class="o">.</span><span class="nf">Execute</span><span class="o">;</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="k">var</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="w">  </span><span class="kp">index</span><span class="o">:</span><span class="w"> </span><span class="kt">int64</span><span class="o">;</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="w">  </span><span class="n">student</span><span class="o">:</span><span class="w"> </span><span class="n">TStudent</span><span class="o">;</span>
+</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="k">begin</span>
+</span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="kp">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-2-79"><a id="__codelineno-2-79" name="__codelineno-2-79"></a><span class="hll"><span class="w">    </span><span class="n">EnterCriticalSection</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// --------------------------------- enter cs</span>
+</span></span><span id="__span-2-80"><a id="__codelineno-2-80" name="__codelineno-2-80"></a><span class="hll"><span class="w">    </span><span class="k">try</span>
+</span></span><span id="__span-2-81"><a id="__codelineno-2-81" name="__codelineno-2-81"></a><span class="hll"><span class="w">      </span><span class="c1">// Add student - ID pair as TStudent, then add into TStudentList</span>
+</span></span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82"></a><span class="hll"><span class="w">      </span><span class="c1">//   1. Get the name from the list with allocated index</span>
+</span></span><span id="__span-2-83"><a id="__codelineno-2-83" name="__codelineno-2-83"></a><span class="hll"><span class="w">      </span><span class="n">student</span><span class="o">.</span><span class="n">Name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">list</span><span class="p">[</span><span class="kp">index</span><span class="p">]</span><span class="o">;</span>
+</span></span><span id="__span-2-84"><a id="__codelineno-2-84" name="__codelineno-2-84"></a><span class="hll"><span class="w">      </span><span class="c1">//   2. Get the starting student ID from</span>
+</span></span><span id="__span-2-85"><a id="__codelineno-2-85" name="__codelineno-2-85"></a><span class="hll"><span class="w">      </span><span class="n">student</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startStudentID</span><span class="o">;</span>
+</span></span><span id="__span-2-86"><a id="__codelineno-2-86" name="__codelineno-2-86"></a><span class="hll"><span class="w">      </span><span class="c1">//   3. Add TStudent into TStudentList (the main block does the init)</span>
+</span></span><span id="__span-2-87"><a id="__codelineno-2-87" name="__codelineno-2-87"></a><span class="hll"><span class="w">      </span><span class="n">finalStudentList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">student</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-2-88"><a id="__codelineno-2-88" name="__codelineno-2-88"></a><span class="hll"><span class="w">      </span><span class="c1">// After a student - ID pair is added, increment the current student ID by 1</span>
+</span></span><span id="__span-2-89"><a id="__codelineno-2-89" name="__codelineno-2-89"></a><span class="hll"><span class="w">      </span><span class="n">startStudentID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">startStudentID</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</span></span><span id="__span-2-90"><a id="__codelineno-2-90" name="__codelineno-2-90"></a><span class="hll"><span class="w">    </span><span class="k">finally</span>
+</span></span><span id="__span-2-91"><a id="__codelineno-2-91" name="__codelineno-2-91"></a><span class="hll"><span class="w">      </span><span class="n">LeaveCriticalSection</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// ------------------------------- leave cs</span>
+</span></span><span id="__span-2-92"><a id="__codelineno-2-92" name="__codelineno-2-92"></a><span class="w">    </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-93"><a id="__codelineno-2-93" name="__codelineno-2-93"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-94"><a id="__codelineno-2-94" name="__codelineno-2-94"></a><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-2-95"><a id="__codelineno-2-95" name="__codelineno-2-95"></a>
+</span><span id="__span-2-96"><a id="__codelineno-2-96" name="__codelineno-2-96"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Main program</p>
+<h3 id="the-main-program-of-of-assigning-a-student-id-to-each-name">The main program of of assigning a student ID to each name<a class="headerlink" href="#the-main-program-of-of-assigning-a-student-id-to-each-name" title="Permanent link">&para;</a></h3>
+<p>Key features of the main snippet:</p>
+<ul>
+<li>The text file is read into <code>strList</code>.</li>
+<li>Threads are created and assigned specific subarrays to process.</li>
+<li>Critical sections ensure safe access to shared variables.</li>
+<li>After threads finish, results are sorted and printed.</li>
+</ul>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">  2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">  3</a></span>
