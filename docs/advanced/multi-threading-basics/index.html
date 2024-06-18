@@ -1217,18 +1217,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-run-a-task-on-a-thread-with-a-variable-auto-free-on-terminate" class="md-nav__link">
+  <a href="#example-run-a-task-on-a-thread-with-a-variable" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Run a task on a thread with a variable - auto free on terminate
+      Example: Run a task on a thread with a variable
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-run-multiple-tasks-on-multiple-threads-auto-free-on-terminate" class="md-nav__link">
+  <a href="#example-run-same-tasks-on-multiple-threads" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Run multiple tasks on multiple threads - auto free on terminate
+      Example: Run same tasks on multiple threads
     </span>
   </a>
   
@@ -1688,18 +1688,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-run-a-task-on-a-thread-with-a-variable-auto-free-on-terminate" class="md-nav__link">
+  <a href="#example-run-a-task-on-a-thread-with-a-variable" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Run a task on a thread with a variable - auto free on terminate
+      Example: Run a task on a thread with a variable
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-run-multiple-tasks-on-multiple-threads-auto-free-on-terminate" class="md-nav__link">
+  <a href="#example-run-same-tasks-on-multiple-threads" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Run multiple tasks on multiple threads - auto free on terminate
+      Example: Run same tasks on multiple threads
     </span>
   </a>
   
@@ -1891,7 +1891,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="example-run-a-task-on-a-thread-with-a-variable-auto-free-on-terminate">Example: Run a task on a thread with a variable - auto free on terminate<a class="headerlink" href="#example-run-a-task-on-a-thread-with-a-variable-auto-free-on-terminate" title="Permanent link">&para;</a></h2>
+<h2 id="example-run-a-task-on-a-thread-with-a-variable">Example: Run a task on a thread with a variable<a class="headerlink" href="#example-run-a-task-on-a-thread-with-a-variable" title="Permanent link">&para;</a></h2>
 <div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -2052,7 +2052,7 @@
 </span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79"></a>
 </span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="example-run-multiple-tasks-on-multiple-threads-auto-free-on-terminate">Example: Run multiple tasks on multiple threads - auto free on terminate<a class="headerlink" href="#example-run-multiple-tasks-on-multiple-threads-auto-free-on-terminate" title="Permanent link">&para;</a></h2>
+<h2 id="example-run-same-tasks-on-multiple-threads">Example: Run same tasks on multiple threads<a class="headerlink" href="#example-run-same-tasks-on-multiple-threads" title="Permanent link">&para;</a></h2>
 <div class="admonition contribution">
 <p class="admonition-title">Contribution</p>
 <p>2024-02-08 - paweld 🇵🇱 caught a memory leak in the original code and fixed it.</p>
@@ -2140,11 +2140,11 @@
 <span class="normal"><a href="#__codelineno-5-66">66</a></span>
 <span class="normal"><a href="#__codelineno-5-67">67</a></span>
 <span class="normal"><a href="#__codelineno-5-68">68</a></span>
-<span class="normal"><a href="#__codelineno-5-69">69</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">program</span><span class="w"> </span><span class="n">CreateThreads</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-5-69">69</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">program</span><span class="w"> </span><span class="n">EX2MultiThread</span><span class="o">;</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1">// 2024-02-08 - paweld 🇵🇱 fixed a memory leak issue in the original code.</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="c1">// 2024-02-08 - paweld 🇵🇱 fixed a memory leak issue on the original code.</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="k">uses</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">  </span><span class="cm">{$ifdef unix}</span>
@@ -2170,19 +2170,19 @@
 </span></span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="hll"><span class="w">  </span><span class="k">begin</span>
 </span></span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Started a task on thread ID &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="hll">
-</span></span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31"></a><span class="hll"><span class="w">    </span><span class="nb">Sleep</span><span class="p">(</span><span class="nb">Random</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">;</span><span class="w"> </span><span class="c1">// simulate a time to complete a task</span>
+</span></span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31"></a><span class="hll"><span class="w">    </span><span class="nb">Sleep</span><span class="p">(</span><span class="nb">Random</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">;</span><span class="w"> </span><span class="c1">// Simulating a long-running task.</span>
 </span></span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32"></a><span class="hll">
-</span></span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Sending a terminate signal to thread ID: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">)</span><span class="o">;</span>
+</span></span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33"></a><span class="hll"><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Completed task on thread ID: &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">)</span><span class="o">;</span>
 </span></span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34"></a><span class="hll"><span class="w">  </span><span class="k">end</span><span class="o">;</span>
 </span></span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35"></a>
 </span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36"></a><span class="w">  </span><span class="c1">// Constructor of TTaskThread</span>
 </span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37"></a><span class="hll"><span class="w">  </span><span class="k">constructor</span><span class="w"> </span><span class="nc">TTaskThread</span><span class="o">.</span><span class="nf">Create</span><span class="o">;</span>
 </span></span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38"></a><span class="hll"><span class="w">  </span><span class="k">begin</span>
-</span></span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39"></a><span class="hll"><span class="w">    </span><span class="c1">// Create suspended</span>
+</span></span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39"></a><span class="hll"><span class="w">    </span><span class="c1">// Create as suspended.</span>
 </span></span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40"></a><span class="hll"><span class="w">    </span><span class="k">inherited</span><span class="w"> </span><span class="n">Create</span><span class="p">(</span><span class="k">True</span><span class="p">)</span><span class="o">;</span>
-</span></span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="hll"><span class="w">    </span><span class="c1">// Free the thread instance when stop executing</span>
+</span></span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="hll"><span class="w">    </span><span class="c1">// Set Free on Terminate, so it frees itself when completed.</span>
 </span></span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42"></a><span class="hll"><span class="w">    </span><span class="n">FreeOnTerminate</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">True</span><span class="o">;</span>
-</span></span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43"></a><span class="hll"><span class="w">    </span><span class="c1">// Run thread</span>
+</span></span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43"></a><span class="hll"><span class="w">    </span><span class="c1">// Run thread.</span>
 </span></span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44"></a><span class="hll"><span class="w">    </span><span class="n">Start</span><span class="o">;</span>
 </span></span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45"></a><span class="hll"><span class="w">  </span><span class="k">end</span><span class="o">;</span>
 </span></span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46"></a>
