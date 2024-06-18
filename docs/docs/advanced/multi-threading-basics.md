@@ -185,7 +185,7 @@ By using `TThread`, you can create and manage multiple threads in your applicati
     - and then resumes the thread.
 
 
-## Example: Run a task on a thread with a variable - auto free on terminate
+## Example: Run a task on a thread with a variable
 
 ```pascal linenums="1"
 program EX1SingleThread;
@@ -270,7 +270,7 @@ ReadLn;
 end.
 ```
 
-## Example: Run multiple tasks on multiple threads - auto free on terminate
+## Example: Run same tasks on multiple threads
 
 !!! Contribution
 
@@ -288,11 +288,11 @@ end.
 4. Create all threads in the main block. Line 56, 57.
 
 ```pascal linenums="1" hl_lines="17-24 27-34 37-45 56 57"
-program CreateThreads;
-
-// 2024-02-08 - paweld 🇵🇱 fixed a memory leak issue in the original code.
+program EX2MultiThread;
 
 {$mode objfpc}{$H+}{$J-}
+
+// 2024-02-08 - paweld 🇵🇱 fixed a memory leak issue on the original code.
 
 uses
   {$ifdef unix}
@@ -318,19 +318,19 @@ type
   begin
     WriteLn('Started a task on thread ID ', ThreadID);
 
-    Sleep(Random(5)); // simulate a time to complete a task
+    Sleep(Random(5)); // Simulating a long-running task.
 
-    WriteLn('Sending a terminate signal to thread ID: ', ThreadID);
+    WriteLn('Completed task on thread ID: ', ThreadID);
   end;
 
   // Constructor of TTaskThread
   constructor TTaskThread.Create;
   begin
-    // Create suspended
+    // Create as suspended.
     inherited Create(True);
-    // Free the thread instance when stop executing
+    // Set Free on Terminate, so it frees itself when completed.
     FreeOnTerminate := True;
-    // Run thread
+    // Run thread.
     Start;
   end;
 

@@ -2,6 +2,165 @@
 
 Here are collections of snippets solving various tasks using multi-threading.
 
+## Run a task on a thread with a variable
+
+```pascal linenums="1"
+program EX1SingleThread;
+
+{$mode objfpc}{$H+}{$J-}
+
+uses
+  {$IFDEF UNIX}
+  cmem, cthreads,
+  {$ENDIF}
+  Classes { you can add units after this };
+
+type
+
+  // The TThread class encapsulates the native thread support of the OS.
+  // To create a thread, (1) declare a child of the TThread object, ...
+  TMyThread = class(TThread)
+    // (with a data to work with)
+  private
+    aString: string;
+  protected
+    // (2) override the Execute method, and ...
+    procedure Execute; override;
+  public
+    // (3) lastly, you may include a constructor to setup variables
+    // for executing this thread.
+    constructor Create(isSuspended: boolean; message: string);
+  end;
+
+  constructor TMyThread.Create(isSuspended: boolean; message: string);
+  begin
+
+    // Call parent's constructor
+    // If user pass True, thread won't start automatically
+    inherited Create(isSuspended);
+
+    // Assign a data to work with.
+    self.aString:=message;
+
+    // Free thread when finished.
+    FreeOnTerminate:=True;
+
+  end;
+
+  procedure TMyThread.Execute;
+  begin
+    // Execute thread, and DO SOMETHING in this thread.
+
+    // Example: if the thread has a data to work with,
+    //          use it to achieve a goal.
+    WriteLn('Thread ', ThreadID, ' is printing ', self.aString);
+
+    // Example: simulate a long running process.
+    Sleep(1000);
+  end;
+
+var
+  mythread:TMyThread;
+
+// Main block --------------------------------------------------
+begin
+
+// Create a thread, suspended
+myThread:=TMyThread.Create(True, 'Hello World!');
+
+// Debug line
+WriteLn('We are in the main thread');
+
+// Start the thread
+myThread.Start;
+
+// Wait until the thread is done before going back to
+// the main thread
+myThread.WaitFor;
+
+// Debug line
+WriteLn('We are in the main thread again');
+
+WriteLn('Press enter key to quit');
+ReadLn;
+
+end.
+```
+
+## Run same tasks on multiple threads
+
+```pascal linenums="1"
+program EX2MultiThread;
+
+{$mode objfpc}{$H+}{$J-}
+
+// 2024-02-08 - paweld 🇵🇱 fixed a memory leak issue on the original code.
+
+uses
+  {$ifdef unix}
+  cmem, cthreads,
+  {$endif}
+  Classes,
+  SysUtils;
+
+type
+  // Create a class based on TThread
+  // TTaskThread
+  TTaskThread = class(TThread)
+  protected
+    // Override the Execute procedure of TThread
+    procedure Execute; override;
+  public
+    // Thread constructor with free on terminate
+    constructor Create;
+  end;
+
+  // The Execute procedure, simulating a task
+  procedure TTaskThread.Execute;
+  begin
+    WriteLn('Started a task on thread ID ', ThreadID);
+
+    Sleep(Random(5)); // Simulating a long-running task.
+
+    WriteLn('Completed task on thread ID: ', ThreadID);
+  end;
+
+  // Constructor of TTaskThread
+  constructor TTaskThread.Create;
+  begin
+    // Create as suspended.
+    inherited Create(True);
+    // Set Free on Terminate, so it frees itself when completed.
+    FreeOnTerminate := True;
+    // Run thread.
+    Start;
+  end;
+
+var
+  task1, task2: TThread;
+
+begin
+  WriteLn('---------------------');
+  WriteLn('Started TThread demo');
+  WriteLn('---------------------');
+
+  // Create all threads
+  task1 := TTaskThread.Create;
+  task2 := TTaskThread.Create;
+
+  // Start a task on the main thread
+  Writeln('Starting a task from the main thread');
+  Sleep(Random(5)); // simulate a task
+  Writeln('Completed the task from the main thread');
+
+  WriteLn('---------------------');
+  WriteLn('Finished TThread demo');
+  WriteLn('Press Enter to quit');
+  WriteLn('---------------------');
+  ReadLn;
+end.
+```
+
 ## Sum numbers in an array
 
 Important features of this example.
@@ -18,7 +177,7 @@ Important features of this example.
 7. Lastly, the program displays information about each thread's segment and its partial sum.
 
 ```pascal linenums="1"
-program EX2MultiThread;
+program EX3MultiThread;
 
 {$mode objfpc}{$H+}{$J-}
 
@@ -114,6 +273,7 @@ var
   // Indexes
   index, startIndex, endIndex: integer;
 
+
   // Main block ------------------------------------------------
 begin
 
@@ -121,6 +281,7 @@ begin
   SetLength(inputArray, INPUT_ARRAY_LENGTH);
   for index := 0 to INPUT_ARRAY_LENGTH - 1 do
     inputArray[index] := index + 1;
+
 
   // Calculate segment size for each thread
   segmentSize := Math.Ceil((Length(inputArray) + MAX_THREADS - 1) / MAX_THREADS);
