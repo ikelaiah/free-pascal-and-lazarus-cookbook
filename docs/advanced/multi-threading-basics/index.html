@@ -1180,18 +1180,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#function-waitfor" class="md-nav__link">
+  <a href="#property-freeonterminate-boolean" class="md-nav__link">
     <span class="md-ellipsis">
-      function WaitFor;
+      property FreeOnTerminate: Boolean;
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#property-freeonterminate-boolean" class="md-nav__link">
+  <a href="#function-waitfor" class="md-nav__link">
     <span class="md-ellipsis">
-      property FreeOnTerminate: Boolean;
+      function WaitFor;
     </span>
   </a>
   
@@ -1651,18 +1651,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#function-waitfor" class="md-nav__link">
+  <a href="#property-freeonterminate-boolean" class="md-nav__link">
     <span class="md-ellipsis">
-      function WaitFor;
+      property FreeOnTerminate: Boolean;
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#property-freeonterminate-boolean" class="md-nav__link">
+  <a href="#function-waitfor" class="md-nav__link">
     <span class="md-ellipsis">
-      property FreeOnTerminate: Boolean;
+      function WaitFor;
     </span>
   </a>
   
@@ -1836,30 +1836,9 @@
 <p class="admonition-title">Important</p>
 <p>When the thread contains a loop (which is common), the loop should end when <code>Terminated</code> becomes <code>True</code> (by default, it is <code>False</code>). During each iteration, check the value of <code>Terminated</code>, and if it is <code>True</code>, exit the loop promptly after any required cleanup.</p>
 </div>
-<h4 id="function-waitfor"><code>function WaitFor;</code><a class="headerlink" href="#function-waitfor" title="Permanent link">&para;</a></h4>
-<ul>
-<li><code>WaitFor</code> waits for the thread to terminate, and returns the exit status.</li>
-</ul>
-<div class="admonition contribution">
-<p class="admonition-title">Contribution</p>
-<p>Gustavo 'Gus' Carreno 🇵🇹 🇬🇧 — 2024-05-27 at 15:53</p>
-<p>You <strong>should never use</strong> the <code>Terminate</code> property of a <code>TThread</code> outside the thread itself.</p>
-<p>You <strong>should always use</strong> <code>WaitFor</code> <em>[to wait for the thread to terminate]</em>!! </p>
-<div class="language-pascal highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">begin</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="c1">// ...</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="n">MyThread</span><span class="o">.</span><span class="n">Terminate</span><span class="o">;</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="n">MyThread</span><span class="o">.</span><span class="n">WaitFor</span><span class="o">;</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="c1">//...</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">end</span><span class="o">;</span>
-</span></code></pre></div>
-<p>Usually, you use <code>Terminated</code> extensively in the <code>Execute</code> method.</p>
-<p>You kinda have to check it <strong>religiously</strong> inside <code>Execute</code>, especially if you have a long running and/or blocking thread.</p>
-<p>But, if I'm not mistaken, the <code>Terminated</code> property is privacy level protected. Hence, you <strong>should not use it outside</strong> <code>Execute</code>.</p>
-<p>To terminate a thread you call <code>Terminate</code>. Then if you need to make sure it's done and has cleaned up, you use <code>WaitFor</code>.</p>
-</div>
 <h4 id="property-freeonterminate-boolean"><a href="https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html"><code>property FreeOnTerminate: Boolean;</code></a><a class="headerlink" href="#property-freeonterminate-boolean" title="Permanent link">&para;</a></h4>
 <ul>
-<li>If <code>FreeOnTerminate</code> is <code>True</code>, the thread object is automatically freed when the <code>Execute</code> method finishes.</li>
+<li>If <code>FreeOnTerminate</code> is <code>True</code>, the thread object is automatically freed when the <code>Execute</code> method finishes. This is useful for avoiding memory leaks and simplifying memory management in certain scenarios.</li>
 <li>If <code>FreeOnTerminate</code> is <code>False</code>, you need to free the thread object manually.</li>
 <li>Use the <a href="https://www.freepascal.org/docs-html/rtl/classes/tthread.onterminate.html">OnTerminate</a> property to get a notification of when the thread has terminated and will be freed.</li>
 </ul>
@@ -1875,11 +1854,53 @@
 <div class="admonition tip - freeonterminate">
 <p class="admonition-title">Tip</p>
 <p>If <code>FreeOnTerminate</code> is set to <code>False</code>, to stop and delete a running thread from another thread, the following sample code can be used:</p>
-<div class="language-pascal highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">aThread</span><span class="o">.</span><span class="n">Terminate</span><span class="o">;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">aThread</span><span class="o">.</span><span class="n">WaitFor</span><span class="o">;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">FreeAndNil</span><span class="p">(</span><span class="n">aThread</span><span class="p">)</span><span class="o">;</span>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">aThread</span><span class="o">.</span><span class="n">Terminate</span><span class="o">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">aThread</span><span class="o">.</span><span class="n">WaitFor</span><span class="o">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">FreeAndNil</span><span class="p">(</span><span class="n">aThread</span><span class="p">)</span><span class="o">;</span><span class="w"> </span><span class="c1">// or aThread.Free;</span>
 </span></code></pre></div>
 <p>Source: <a href="https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html">https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html</a></p>
+</div>
+<h4 id="function-waitfor"><code>function WaitFor;</code><a class="headerlink" href="#function-waitfor" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>WaitFor</code> blocks the calling thread until the thread it is called on has finished executing. This is useful for synchronizing the completion of a thread before proceeding with further operations.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The potential conflict arises because if a thread is set to <code>FreeOnTerminate</code>, it will free itself immediately upon completion. If <code>WaitFor</code> is called after the thread has terminated, it will attempt to access a freed (and thus invalid) thread object, leading to undefined behavior or program crashes.</p>
+<p><strong>Safe Usage Scenarios</strong></p>
+<ol>
+<li>
+<p>Single Thread with <code>FreeOnTerminate</code> and <code>WaitFor</code>:</p>
+<ul>
+<li>You can safely use <code>WaitFor</code> with a thread that has <code>FreeOnTerminate</code> set to <code>True</code> <strong><em>if you ensure <code>WaitFor</code> is called before the thread completes and frees itself</em></strong>.</li>
+</ul>
+</li>
+<li>
+<p>For multiple threads, it's safer to avoid combining <code>FreeOnTerminate</code> with <code>WaitFor</code>. Instead, manage the thread lifecycle manually:</p>
+<ul>
+<li>Set <code>FreeOnTerminate</code> to <code>False</code>.</li>
+<li>Call <code>WaitFor</code> on each thread to ensure it completes.</li>
+<li>Manually <code>Free</code> the thread objects.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="admonition contribution">
+<p class="admonition-title">Contribution</p>
+<p>Gustavo 'Gus' Carreno 🇵🇹 🇬🇧 — 2024-05-27 at 15:53</p>
+<p>You <strong>should never use</strong> the <code>Terminate</code> property of a <code>TThread</code> outside the thread itself.</p>
+<p>You <strong>should always use</strong> <code>WaitFor</code> <em>[to wait for the thread to terminate]</em>!! </p>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">begin</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="c1">// ...</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="n">MyThread</span><span class="o">.</span><span class="n">Terminate</span><span class="o">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="n">MyThread</span><span class="o">.</span><span class="n">WaitFor</span><span class="o">;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="c1">//...</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">end</span><span class="o">;</span>
+</span></code></pre></div>
+<p>Usually, you use <code>Terminated</code> extensively in the <code>Execute</code> method.</p>
+<p>You kinda have to check it <strong>religiously</strong> inside <code>Execute</code>, especially if you have a long running and/or blocking thread.</p>
+<p>But, if I'm not mistaken, the <code>Terminated</code> property is privacy level protected. Hence, you <strong>should not use it outside</strong> <code>Execute</code>.</p>
+<p>To terminate a thread you call <code>Terminate</code>. Then if you need to make sure it's done and has cleaned up, you use <code>WaitFor</code>.</p>
 </div>
 <h4 id="procedure-synchronize"><code>procedure Synchronize();</code><a class="headerlink" href="#procedure-synchronize" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1971,7 +1992,10 @@
 <span class="normal"><a href="#__codelineno-4-77">77</a></span>
 <span class="normal"><a href="#__codelineno-4-78">78</a></span>
 <span class="normal"><a href="#__codelineno-4-79">79</a></span>
-<span class="normal"><a href="#__codelineno-4-80">80</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">program</span><span class="w"> </span><span class="n">EX1SingleThread</span><span class="o">;</span>
+<span class="normal"><a href="#__codelineno-4-80">80</a></span>
+<span class="normal"><a href="#__codelineno-4-81">81</a></span>
+<span class="normal"><a href="#__codelineno-4-82">82</a></span>
+<span class="normal"><a href="#__codelineno-4-83">83</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">program</span><span class="w"> </span><span class="n">EX1SingleThread</span><span class="o">;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>
@@ -1982,75 +2006,78 @@
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">  </span><span class="n">Classes</span><span class="w"> </span><span class="cm">{ you can add units after this }</span><span class="o">;</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="k">type</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">  </span><span class="c1">// The TThread class encapsulates the native thread support of the OS.</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">  </span><span class="c1">// To create a thread, (1) declare a child of the TThread object, ...</span>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">  </span><span class="n">TMyThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TThread</span><span class="p">)</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">    </span><span class="c1">// (with a data to work with)</span>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">  </span><span class="kp">private</span>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">    </span><span class="n">aString</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">  </span><span class="kp">protected</span>
-</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">    </span><span class="c1">// (2) override the Execute method, and ...</span>
-</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">Execute</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
-</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">  </span><span class="kp">public</span>
-</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">    </span><span class="c1">// (3) lastly, you may include a constructor to setup variables</span>
-</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">    </span><span class="c1">// for executing this thread.</span>
-</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">    </span><span class="k">constructor</span><span class="w"> </span><span class="nf">Create</span><span class="p">(</span><span class="n">isSuspended</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="o">;</span><span class="w"> </span><span class="n">message</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27"></a>
-</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="w">  </span><span class="k">constructor</span><span class="w"> </span><span class="nc">TMyThread</span><span class="o">.</span><span class="nf">Create</span><span class="p">(</span><span class="n">isSuspended</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="o">;</span><span class="w"> </span><span class="n">message</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30"></a>
-</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31"></a><span class="w">    </span><span class="c1">// Call parent&#39;s constructor</span>
-</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="w">    </span><span class="c1">// If user pass True, thread won&#39;t start automatically</span>
-</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33"></a><span class="w">    </span><span class="k">inherited</span><span class="w"> </span><span class="n">Create</span><span class="p">(</span><span class="n">isSuspended</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34"></a>
-</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="w">    </span><span class="c1">// Assign a data to work with.</span>
-</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="w">    </span><span class="k">self</span><span class="o">.</span><span class="n">aString</span><span class="o">:=</span><span class="n">message</span><span class="o">;</span>
-</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37"></a>
-</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="w">    </span><span class="c1">// Free thread when finished.</span>
-</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="w">    </span><span class="n">FreeOnTerminate</span><span class="o">:=</span><span class="k">True</span><span class="o">;</span>
-</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40"></a>
-</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42"></a>
-</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="w">  </span><span class="k">procedure</span><span class="w"> </span><span class="nc">TMyThread</span><span class="o">.</span><span class="nf">Execute</span><span class="o">;</span>
-</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44"></a><span class="w">  </span><span class="k">begin</span>
-</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45"></a><span class="w">    </span><span class="c1">// Execute thread, and DO SOMETHING in this thread.</span>
-</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46"></a>
-</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47"></a><span class="w">    </span><span class="c1">// Example: if the thread has a data to work with,</span>
-</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48"></a><span class="w">    </span><span class="c1">//          use it to achieve a goal.</span>
-</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Thread &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; is printing &#39;</span><span class="o">,</span><span class="w"> </span><span class="k">self</span><span class="o">.</span><span class="n">aString</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50"></a>
-</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51"></a><span class="w">    </span><span class="c1">// Example: simulate a long running process.</span>
-</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52"></a><span class="w">    </span><span class="nb">Sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
-</span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54"></a>
-</span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55"></a><span class="k">var</span>
-</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56"></a><span class="w">  </span><span class="n">mythread</span><span class="o">:</span><span class="n">TMyThread</span><span class="o">;</span>
-</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57"></a>
-</span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58"></a><span class="c1">// Main block --------------------------------------------------</span>
-</span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59"></a><span class="k">begin</span>
-</span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60"></a>
-</span><span id="__span-4-61"><a id="__codelineno-4-61" name="__codelineno-4-61"></a><span class="c1">// Create a thread, suspended</span>
-</span><span id="__span-4-62"><a id="__codelineno-4-62" name="__codelineno-4-62"></a><span class="n">myThread</span><span class="o">:=</span><span class="n">TMyThread</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="k">True</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-63"><a id="__codelineno-4-63" name="__codelineno-4-63"></a>
-</span><span id="__span-4-64"><a id="__codelineno-4-64" name="__codelineno-4-64"></a><span class="c1">// Debug line</span>
-</span><span id="__span-4-65"><a id="__codelineno-4-65" name="__codelineno-4-65"></a><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;We are in the main thread&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-66"><a id="__codelineno-4-66" name="__codelineno-4-66"></a>
-</span><span id="__span-4-67"><a id="__codelineno-4-67" name="__codelineno-4-67"></a><span class="c1">// Start the thread</span>
-</span><span id="__span-4-68"><a id="__codelineno-4-68" name="__codelineno-4-68"></a><span class="n">myThread</span><span class="o">.</span><span class="n">Start</span><span class="o">;</span>
-</span><span id="__span-4-69"><a id="__codelineno-4-69" name="__codelineno-4-69"></a>
-</span><span id="__span-4-70"><a id="__codelineno-4-70" name="__codelineno-4-70"></a><span class="c1">// Wait until the thread is done before going back to</span>
-</span><span id="__span-4-71"><a id="__codelineno-4-71" name="__codelineno-4-71"></a><span class="c1">// the main thread</span>
-</span><span id="__span-4-72"><a id="__codelineno-4-72" name="__codelineno-4-72"></a><span class="n">myThread</span><span class="o">.</span><span class="n">WaitFor</span><span class="o">;</span>
-</span><span id="__span-4-73"><a id="__codelineno-4-73" name="__codelineno-4-73"></a>
-</span><span id="__span-4-74"><a id="__codelineno-4-74" name="__codelineno-4-74"></a><span class="c1">// Debug line</span>
-</span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75"></a><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;We are in the main thread again&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76"></a>
-</span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77"></a><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press enter key to quit&#39;</span><span class="p">)</span><span class="o">;</span>
-</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78"></a><span class="nb">ReadLn</span><span class="o">;</span>
-</span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79"></a>
-</span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80"></a><span class="k">end</span><span class="o">.</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">  </span><span class="c1">// The TThread class encapsulates the native thread support of the OS.</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">  </span><span class="c1">// To create a thread, (1) declare a child of the TThread object, ...</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">  </span><span class="n">TMyThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TThread</span><span class="p">)</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">    </span><span class="c1">// (with a data to work with)</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">  </span><span class="kp">private</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">    </span><span class="n">aString</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">  </span><span class="kp">protected</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">    </span><span class="c1">// (2) override the Execute method, and ...</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">Execute</span><span class="o">;</span><span class="w"> </span><span class="kp">override</span><span class="o">;</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">  </span><span class="kp">public</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">    </span><span class="c1">// (3) lastly, you may include a constructor to setup variables</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">    </span><span class="c1">// for executing this thread.</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">    </span><span class="k">constructor</span><span class="w"> </span><span class="nf">Create</span><span class="p">(</span><span class="n">isSuspended</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="o">;</span><span class="w"> </span><span class="n">message</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="w">  </span><span class="k">constructor</span><span class="w"> </span><span class="nc">TMyThread</span><span class="o">.</span><span class="nf">Create</span><span class="p">(</span><span class="n">isSuspended</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="o">;</span><span class="w"> </span><span class="n">message</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29"></a>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30"></a><span class="w">    </span><span class="c1">// Call parent&#39;s constructor</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31"></a><span class="w">    </span><span class="c1">// If user pass True, thread won&#39;t start automatically</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="w">    </span><span class="k">inherited</span><span class="w"> </span><span class="n">Create</span><span class="p">(</span><span class="n">isSuspended</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33"></a>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34"></a><span class="w">    </span><span class="c1">// Assign a data to work with.</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="w">    </span><span class="k">self</span><span class="o">.</span><span class="n">aString</span><span class="o">:=</span><span class="n">message</span><span class="o">;</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36"></a>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="w">    </span><span class="c1">// Won&#39;t free the thread when finished.</span>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="w">    </span><span class="c1">// The thread will be freed manually on the main block.</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="w">    </span><span class="n">FreeOnTerminate</span><span class="o">:=</span><span class="k">False</span><span class="o">;</span>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41"></a>
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42"></a><span class="w">  </span><span class="k">procedure</span><span class="w"> </span><span class="nc">TMyThread</span><span class="o">.</span><span class="nf">Execute</span><span class="o">;</span>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="w">  </span><span class="k">begin</span>
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44"></a><span class="w">    </span><span class="c1">// Execute thread, and DO SOMETHING in this thread.</span>
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45"></a>
+</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46"></a><span class="w">    </span><span class="c1">// Example: if the thread has a data to work with,</span>
+</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47"></a><span class="w">    </span><span class="c1">//          use it to achieve a goal.</span>
+</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48"></a><span class="w">    </span><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Thread ID &#39;</span><span class="o">,</span><span class="w"> </span><span class="n">ThreadID</span><span class="o">,</span><span class="w"> </span><span class="s">&#39; is printing &#39;</span><span class="o">,</span><span class="w"> </span><span class="k">self</span><span class="o">.</span><span class="n">aString</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49"></a>
+</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50"></a><span class="w">    </span><span class="c1">// Example: simulate a long running process.</span>
+</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51"></a><span class="w">    </span><span class="nb">Sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53"></a>
+</span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54"></a><span class="k">var</span>
+</span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55"></a><span class="w">  </span><span class="n">mythread</span><span class="o">:</span><span class="n">TMyThread</span><span class="o">;</span>
+</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56"></a>
+</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57"></a><span class="c1">// Main block --------------------------------------------------</span>
+</span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58"></a><span class="k">begin</span>
+</span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59"></a>
+</span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60"></a><span class="c1">// Create a thread, suspended</span>
+</span><span id="__span-4-61"><a id="__codelineno-4-61" name="__codelineno-4-61"></a><span class="n">myThread</span><span class="o">:=</span><span class="n">TMyThread</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="k">True</span><span class="o">,</span><span class="w"> </span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-62"><a id="__codelineno-4-62" name="__codelineno-4-62"></a>
+</span><span id="__span-4-63"><a id="__codelineno-4-63" name="__codelineno-4-63"></a><span class="c1">// Debug line</span>
+</span><span id="__span-4-64"><a id="__codelineno-4-64" name="__codelineno-4-64"></a><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;We are in the main thread&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-65"><a id="__codelineno-4-65" name="__codelineno-4-65"></a>
+</span><span id="__span-4-66"><a id="__codelineno-4-66" name="__codelineno-4-66"></a><span class="c1">// Start the thread</span>
+</span><span id="__span-4-67"><a id="__codelineno-4-67" name="__codelineno-4-67"></a><span class="n">myThread</span><span class="o">.</span><span class="n">Start</span><span class="o">;</span>
+</span><span id="__span-4-68"><a id="__codelineno-4-68" name="__codelineno-4-68"></a>
+</span><span id="__span-4-69"><a id="__codelineno-4-69" name="__codelineno-4-69"></a><span class="c1">// Wait until the thread is done before going back to</span>
+</span><span id="__span-4-70"><a id="__codelineno-4-70" name="__codelineno-4-70"></a><span class="c1">// the main thread.</span>
+</span><span id="__span-4-71"><a id="__codelineno-4-71" name="__codelineno-4-71"></a><span class="n">myThread</span><span class="o">.</span><span class="n">WaitFor</span><span class="o">;</span>
+</span><span id="__span-4-72"><a id="__codelineno-4-72" name="__codelineno-4-72"></a>
+</span><span id="__span-4-73"><a id="__codelineno-4-73" name="__codelineno-4-73"></a><span class="c1">// Free threads manually.</span>
+</span><span id="__span-4-74"><a id="__codelineno-4-74" name="__codelineno-4-74"></a><span class="n">myThread</span><span class="o">.</span><span class="n">Free</span><span class="o">;</span>
+</span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75"></a>
+</span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76"></a><span class="c1">// Debug line.</span>
+</span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77"></a><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;We are in the main thread again&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78"></a>
+</span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79"></a><span class="c1">// Pause console.</span>
+</span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80"></a><span class="nb">WriteLn</span><span class="p">(</span><span class="s">&#39;Press enter key to quit&#39;</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-4-81"><a id="__codelineno-4-81" name="__codelineno-4-81"></a><span class="nb">ReadLn</span><span class="o">;</span>
+</span><span id="__span-4-82"><a id="__codelineno-4-82" name="__codelineno-4-82"></a>
+</span><span id="__span-4-83"><a id="__codelineno-4-83" name="__codelineno-4-83"></a><span class="k">end</span><span class="o">.</span>
 </span></code></pre></div></td></tr></table></div>
 <h2 id="example-run-same-tasks-on-multiple-threads">Example: Run same tasks on multiple threads<a class="headerlink" href="#example-run-same-tasks-on-multiple-threads" title="Permanent link">&para;</a></h2>
 <div class="admonition contribution">
