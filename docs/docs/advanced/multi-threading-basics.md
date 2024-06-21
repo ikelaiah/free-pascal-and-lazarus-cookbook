@@ -203,7 +203,19 @@ By using `TThread`, you can create and manage multiple threads in your applicati
 
 ## Example: Run a task on a thread with a variable
 
-```pascal linenums="1"
+1. Create a class, for example `TMyThread`, based on `TThread`. Line 14-25.
+2. Create a constructor. Line 27-40.
+    - call constructor of `TThread`,
+    - set free on terminate and
+    - Start thread.
+3. Override `Execute`. Line 42-52.
+    - This procedure contains your task to perform.
+4. Create a thread in the main block. Line 67.
+5. Wait for the thread to finish and return to the main thread. Line 71.
+6. Free the thread manually. Line 74.
+
+
+```pascal linenums="1" hl_lines="14-25 27-40 42-52 67 71 74"
 program EX1SingleThread;
 
 {$mode objfpc}{$H+}{$J-}

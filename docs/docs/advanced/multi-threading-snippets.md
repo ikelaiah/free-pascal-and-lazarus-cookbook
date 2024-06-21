@@ -16,7 +16,6 @@ uses
   Classes { you can add units after this };
 
 type
-
   // The TThread class encapsulates the native thread support of the OS.
   // To create a thread, (1) declare a child of the TThread object, ...
   TMyThread = class(TThread)
@@ -42,9 +41,9 @@ type
     // Assign a data to work with.
     self.aString:=message;
 
-    // Free thread when finished.
-    FreeOnTerminate:=True;
-
+    // Won't free the thread when finished.
+    // The thread will be freed manually on the main block.
+    FreeOnTerminate:=False;
   end;
 
   procedure TMyThread.Execute;
@@ -53,7 +52,7 @@ type
 
     // Example: if the thread has a data to work with,
     //          use it to achieve a goal.
-    WriteLn('Thread ', ThreadID, ' is printing ', self.aString);
+    WriteLn('Thread ID ', ThreadID, ' is printing ', self.aString);
 
     // Example: simulate a long running process.
     Sleep(1000);
@@ -75,12 +74,16 @@ WriteLn('We are in the main thread');
 myThread.Start;
 
 // Wait until the thread is done before going back to
-// the main thread
+// the main thread.
 myThread.WaitFor;
 
-// Debug line
+// Free threads manually.
+myThread.Free;
+
+// Debug line.
 WriteLn('We are in the main thread again');
 
+// Pause console.
 WriteLn('Press enter key to quit');
 ReadLn;
 
@@ -91,6 +94,29 @@ end.
 
 ```pascal linenums="1"
 program EX2MultiThread;
+
+{
+  # EX2MultiThread
+
+  A simple demo of multi-threading.
+
+  ## Example of an output
+
+  ---------------------
+  Started TThread demo
+  ---------------------
+  Starting a task from the main thread
+  Started a task on thread ID 22848
+  Started a task on thread ID 24428
+  Completed the task from the main thread
+  Completed task on thread ID: 22848
+  Completed task on thread ID: 24428
+  ---------------------
+  Finished TThread demo
+  Press Enter to quit
+  ---------------------
+}
+
 
 {$mode objfpc}{$H+}{$J-}
 
@@ -120,7 +146,7 @@ type
   begin
     WriteLn('Started a task on thread ID ', ThreadID);
 
-    Sleep(Random(5)); // Simulating a long-running task.
+    Sleep(2000); // Simulating a long-running task.
 
     WriteLn('Completed task on thread ID: ', ThreadID);
   end;
@@ -130,8 +156,8 @@ type
   begin
     // Create as suspended.
     inherited Create(True);
-    // Set Free on Terminate, so it frees itself when completed.
-    FreeOnTerminate := True;
+    // Set Free on Terminate to false, so it won't free itself when completed.
+    FreeOnTerminate := False;
     // Run thread.
     Start;
   end;
@@ -150,8 +176,16 @@ begin
 
   // Start a task on the main thread
   Writeln('Starting a task from the main thread');
-  Sleep(Random(5)); // simulate a task
+  Sleep(2000); // simulate a task
   Writeln('Completed the task from the main thread');
+
+  // Wait for threads to finish before going back to the main thread.
+  task1.WaitFor;
+  task2.WaitFor;
+
+  // Free the threads manually
+  task1.Free;
+  task2.Free;
 
   WriteLn('---------------------');
   WriteLn('Finished TThread demo');
