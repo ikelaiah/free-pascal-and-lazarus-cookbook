@@ -120,9 +120,52 @@ By using `TThread`, you can create and manage multiple threads in your applicati
 
     When the thread contains a loop (which is common), the loop should end when `Terminated` becomes `True` (by default, it is `False`). During each iteration, check the value of `Terminated`, and if it is `True`, exit the loop promptly after any required cleanup.
 
+#### [`property FreeOnTerminate: Boolean;`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html)
+  
+- If `FreeOnTerminate` is `True`, the thread object is automatically freed when the `Execute` method finishes. This is useful for avoiding memory leaks and simplifying memory management in certain scenarios.
+- If `FreeOnTerminate` is `False`, you need to free the thread object manually.
+- Use the [OnTerminate](https://www.freepascal.org/docs-html/rtl/classes/tthread.onterminate.html) property to get a notification of when the thread has terminated and will be freed.
+
+!!! Tip - FreeOnTerminate
+
+    When setting `FreeOnTerminate` property to `True`, in general you may not read or write any property of the `TThread` instance from a different thread, because **there is no guarantee that the thread instance still exists in memory**. 
+    
+    This implies 2 things:
+
+    1. The `OnTerminate` event handler should be set before setting `FreeOnTerminate` to `True`
+    2. The properties can still be read and set in the `OnTerminate` event handler, as the thread instance is then still guaranteed to exist.
+    
+!!! Tip - FreeOnTerminate
+
+    If `FreeOnTerminate` is set to `False`, to stop and delete a running thread from another thread, the following sample code can be used:
+
+    ```pascal
+    aThread.Terminate;
+    aThread.WaitFor;
+    FreeAndNil(aThread); // or aThread.Free;
+    ```
+
+    Source: [https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html](https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html)
+
 #### `function WaitFor;`
 
-- `WaitFor` waits for the thread to terminate, and returns the exit status.
+- `WaitFor` blocks the calling thread until the thread it is called on has finished executing. This is useful for synchronizing the completion of a thread before proceeding with further operations.
+
+!!! Warning
+
+    The potential conflict arises because if a thread is set to `FreeOnTerminate`, it will free itself immediately upon completion. If `WaitFor` is called after the thread has terminated, it will attempt to access a freed (and thus invalid) thread object, leading to undefined behavior or program crashes.
+
+    **Safe Usage Scenarios**
+
+    1. Single Thread with `FreeOnTerminate` and `WaitFor`:
+
+        - You can safely use `WaitFor` with a thread that has `FreeOnTerminate` set to `True` ***if you ensure `WaitFor` is called before the thread completes and frees itself***.
+    
+    2. For multiple threads, it's safer to avoid combining `FreeOnTerminate` with `WaitFor`. Instead, manage the thread lifecycle manually:
+   
+        - Set `FreeOnTerminate` to `False`.
+        - Call `WaitFor` on each thread to ensure it completes.
+        - Manually `Free` the thread objects.
 
 !!! Contribution
 
@@ -149,33 +192,6 @@ By using `TThread`, you can create and manage multiple threads in your applicati
 
     To terminate a thread you call `Terminate`. Then if you need to make sure it's done and has cleaned up, you use `WaitFor`.
 
-#### [`property FreeOnTerminate: Boolean;`](https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html)
-  
-- If `FreeOnTerminate` is `True`, the thread object is automatically freed when the `Execute` method finishes.
-- If `FreeOnTerminate` is `False`, you need to free the thread object manually.
-- Use the [OnTerminate](https://www.freepascal.org/docs-html/rtl/classes/tthread.onterminate.html) property to get a notification of when the thread has terminated and will be freed.
-
-!!! Tip - FreeOnTerminate
-
-    When setting `FreeOnTerminate` property to `True`, in general you may not read or write any property of the `TThread` instance from a different thread, because **there is no guarantee that the thread instance still exists in memory**. 
-    
-    This implies 2 things:
-
-    1. The `OnTerminate` event handler should be set before setting `FreeOnTerminate` to `True`
-    2. The properties can still be read and set in the `OnTerminate` event handler, as the thread instance is then still guaranteed to exist.
-    
-!!! Tip - FreeOnTerminate
-
-    If `FreeOnTerminate` is set to `False`, to stop and delete a running thread from another thread, the following sample code can be used:
-
-    ```pascal
-    aThread.Terminate;
-    aThread.WaitFor;
-    FreeAndNil(aThread);
-    ```
-
-    Source: [https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html](https://www.freepascal.org/daily/doc/rtl/classes/tthread.freeonterminate.html)
-
 #### `procedure Synchronize();`
 
 - Threads **should not directly update visible components** (like UI elements), so you must use  `Synchronize` to safely update UI elements from the thread.
@@ -199,7 +215,6 @@ uses
   Classes { you can add units after this };
 
 type
-
   // The TThread class encapsulates the native thread support of the OS.
   // To create a thread, (1) declare a child of the TThread object, ...
   TMyThread = class(TThread)
@@ -225,9 +240,9 @@ type
     // Assign a data to work with.
     self.aString:=message;
 
-    // Free thread when finished.
-    FreeOnTerminate:=True;
-
+    // Won't free the thread when finished.
+    // The thread will be freed manually on the main block.
+    FreeOnTerminate:=False;
   end;
 
   procedure TMyThread.Execute;
@@ -236,7 +251,7 @@ type
 
     // Example: if the thread has a data to work with,
     //          use it to achieve a goal.
-    WriteLn('Thread ', ThreadID, ' is printing ', self.aString);
+    WriteLn('Thread ID ', ThreadID, ' is printing ', self.aString);
 
     // Example: simulate a long running process.
     Sleep(1000);
@@ -258,12 +273,16 @@ WriteLn('We are in the main thread');
 myThread.Start;
 
 // Wait until the thread is done before going back to
-// the main thread
+// the main thread.
 myThread.WaitFor;
 
-// Debug line
+// Free threads manually.
+myThread.Free;
+
+// Debug line.
 WriteLn('We are in the main thread again');
 
+// Pause console.
 WriteLn('Press enter key to quit');
 ReadLn;
 
@@ -278,17 +297,42 @@ end.
 
     Thank you!
 
-1. Create a class, for example `TTaskThread`, based on `TThread`. Line 17-24.
-2. Override `Execute`. Line 27-34.
+1. Create a class, for example `TTaskThread`, based on `TThread`. Line 40-47.
+2. Override `Execute`. Line 50-57.
     - This procedure contains your task to perform.
-3. Create a constructor. Line 37-45.
+3. Create a constructor. Line 60-68.
     - call constructor of `TThread`,
     - set free on terminate and
     - Start thread.
 4. Create all threads in the main block. Line 56, 57.
+5. Wait for all threads to finish and return to the caller or main thread. Line 88, 89.
+6. Free threads manually. Line 92, 93.
 
-```pascal linenums="1" hl_lines="17-24 27-34 37-45 56 57"
+```pascal linenums="1" hl_lines="40-47 50-57 60-68 79 80 88 89 92 93"
 program EX2MultiThread;
+
+{
+  # EX2MultiThread
+
+  A simple demo of multi-threading.
+
+  ## Example of an output
+
+  ---------------------
+  Started TThread demo
+  ---------------------
+  Starting a task from the main thread
+  Started a task on thread ID 22848
+  Started a task on thread ID 24428
+  Completed the task from the main thread
+  Completed task on thread ID: 22848
+  Completed task on thread ID: 24428
+  ---------------------
+  Finished TThread demo
+  Press Enter to quit
+  ---------------------
+}
+
 
 {$mode objfpc}{$H+}{$J-}
 
@@ -318,7 +362,7 @@ type
   begin
     WriteLn('Started a task on thread ID ', ThreadID);
 
-    Sleep(Random(5)); // Simulating a long-running task.
+    Sleep(2000); // Simulating a long-running task.
 
     WriteLn('Completed task on thread ID: ', ThreadID);
   end;
@@ -328,8 +372,8 @@ type
   begin
     // Create as suspended.
     inherited Create(True);
-    // Set Free on Terminate, so it frees itself when completed.
-    FreeOnTerminate := True;
+    // Set Free on Terminate to false, so it won't free itself when completed.
+    FreeOnTerminate := False;
     // Run thread.
     Start;
   end;
@@ -348,8 +392,16 @@ begin
 
   // Start a task on the main thread
   Writeln('Starting a task from the main thread');
-  Sleep(Random(5)); // simulate a task
+  Sleep(2000); // simulate a task
   Writeln('Completed the task from the main thread');
+
+  // Wait for threads to finish before going back to the main thread.
+  task1.WaitFor;
+  task2.WaitFor;
+
+  // Free the threads manually
+  task1.Free;
+  task2.Free;
 
   WriteLn('---------------------');
   WriteLn('Finished TThread demo');
