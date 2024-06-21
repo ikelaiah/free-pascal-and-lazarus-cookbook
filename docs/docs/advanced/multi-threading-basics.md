@@ -161,7 +161,7 @@ By using `TThread`, you can create and manage multiple threads in your applicati
 
         - You can safely use `WaitFor` with a thread that has `FreeOnTerminate` set to `True` ***if you ensure `WaitFor` is called before the thread completes and frees itself***.
     
-    2. For multiple threads, it's safer to avoid combining `FreeOnTerminate` with `WaitFor`. Instead, manage the thread lifecycle manually:
+    2. For multiple threads, it's safer to avoid combining `FreeOnTerminate` set to `True` with `WaitFor`. Instead, manage the thread lifecycle manually:
    
         - Set `FreeOnTerminate` to `False`.
         - Call `WaitFor` on each thread to ensure it completes.
