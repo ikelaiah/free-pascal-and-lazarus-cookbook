@@ -30,8 +30,10 @@ nav:
     - Overview: docs/advanced/overview.md
     - Conditional Compilation: docs/advanced/conditional-compilation.md
     - Debugging: docs/advanced/debugging.md
-    - Multi-threading Basics: docs/advanced/multi-threading-basics.md
-    - Multi-threading Snippets: docs/advanced/multi-threading-snippets.md
+    - Multi-threading I - Basics: docs/advanced/multi-threading-i-basics.md
+    - Multi-threading II - TThread: docs/advanced/multi-threading-ii-tthread.md
+    - Multi-threading III - Critical Section: docs/advanced/multi-threading-iii-cs.md
+    - Multi-threading IV - Snippets: docs/advanced/multi-threading-iv-snippets.md
   - External Systems:
     - Overview: docs/external-systems/overview.md
     - Parsing JSON: docs/external-systems/parsing-json.md
