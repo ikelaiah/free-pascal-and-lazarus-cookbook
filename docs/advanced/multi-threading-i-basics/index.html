@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://learn-pascal-lang.org/community/">
+        <link rel="canonical" href="https://learn-pascal-lang.org/docs/advanced/multi-threading-i-basics/">
       
       
-        <link rel="prev" href="../docs/external-systems/webserver/">
+        <link rel="prev" href="../debugging/">
       
       
-        <link rel="next" href="../docs/resources/docs-sites/">
+        <link rel="next" href="../multi-threading-ii-tthread/">
       
       
-      <link rel="icon" href="../assets/logo-new-rounded-min.png">
+      <link rel="icon" href="../../../assets/logo-new-rounded-min.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
-        <title>Community - Free Pascal & Lazarus Cookbook</title>
+        <title>Multi-threading I - Basics - Free Pascal & Lazarus Cookbook</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -66,7 +66,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#community" class="md-skip">
+        <a href="#multi-threading-i-basics" class="md-skip">
           Skip to content
         </a>
       
@@ -104,9 +104,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Free Pascal &amp; Lazarus Cookbook" class="md-header__button md-logo" aria-label="Free Pascal & Lazarus Cookbook" data-md-component="logo">
+    <a href="../../.." title="Free Pascal &amp; Lazarus Cookbook" class="md-header__button md-logo" aria-label="Free Pascal & Lazarus Cookbook" data-md-component="logo">
       
-  <img src="../assets/logo-new-rounded-min.png" alt="logo">
+  <img src="../../../assets/logo-new-rounded-min.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Community
+              Multi-threading I - Basics
             
           </span>
         </div>
@@ -213,7 +213,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   Home
@@ -231,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../docs/basics/overview/" class="md-tabs__link">
+        <a href="../../basics/overview/" class="md-tabs__link">
           
   
   Core Tasks
@@ -245,11 +245,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../docs/advanced/overview/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
           
   
   Advanced Topics
@@ -267,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../docs/external-systems/overview/" class="md-tabs__link">
+        <a href="../../external-systems/overview/" class="md-tabs__link">
           
   
   External Systems
@@ -281,11 +283,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../../community/" class="md-tabs__link">
         
   
     
@@ -304,7 +304,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../docs/resources/docs-sites/" class="md-tabs__link">
+        <a href="../../resources/docs-sites/" class="md-tabs__link">
           
   
   Resources
@@ -343,9 +343,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Free Pascal &amp; Lazarus Cookbook" class="md-nav__button md-logo" aria-label="Free Pascal & Lazarus Cookbook" data-md-component="logo">
+    <a href="../../.." title="Free Pascal &amp; Lazarus Cookbook" class="md-nav__button md-logo" aria-label="Free Pascal & Lazarus Cookbook" data-md-component="logo">
       
-  <img src="../assets/logo-new-rounded-min.png" alt="logo">
+  <img src="../../../assets/logo-new-rounded-min.png" alt="logo">
 
     </a>
     Free Pascal & Lazarus Cookbook
@@ -400,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -421,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -442,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../LICENSE/" class="md-nav__link">
+      <a href="../../../LICENSE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -510,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/overview/" class="md-nav__link">
+      <a href="../../basics/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -531,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/install/" class="md-nav__link">
+      <a href="../../basics/install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -552,7 +552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/lazarus-ide/" class="md-nav__link">
+      <a href="../../basics/lazarus-ide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -573,7 +573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/code-structure/" class="md-nav__link">
+      <a href="../../basics/code-structure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -594,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/hello-world/" class="md-nav__link">
+      <a href="../../basics/hello-world/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -615,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/cmd-line-params/" class="md-nav__link">
+      <a href="../../basics/cmd-line-params/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -636,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/funcs-procs/" class="md-nav__link">
+      <a href="../../basics/funcs-procs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -657,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/immutability/" class="md-nav__link">
+      <a href="../../basics/immutability/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/loops/" class="md-nav__link">
+      <a href="../../basics/loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -699,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/arrays/" class="md-nav__link">
+      <a href="../../basics/arrays/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -720,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/lists/" class="md-nav__link">
+      <a href="../../basics/lists/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -741,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/strings/" class="md-nav__link">
+      <a href="../../basics/strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -762,7 +762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/numbers/" class="md-nav__link">
+      <a href="../../basics/numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -783,7 +783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/dates/" class="md-nav__link">
+      <a href="../../basics/dates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -804,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/regex/" class="md-nav__link">
+      <a href="../../basics/regex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -825,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/dir-path-filename/" class="md-nav__link">
+      <a href="../../basics/dir-path-filename/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -846,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/exception-try-blocks/" class="md-nav__link">
+      <a href="../../basics/exception-try-blocks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -867,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/file-handling/" class="md-nav__link">
+      <a href="../../basics/file-handling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -888,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/basics/file-handling-ii/" class="md-nav__link">
+      <a href="../../basics/file-handling-ii/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,8 +913,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -923,12 +925,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -942,7 +944,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Advanced Topics
@@ -956,7 +958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/advanced/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -977,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/advanced/conditional-compilation/" class="md-nav__link">
+      <a href="../conditional-compilation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -998,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/advanced/debugging/" class="md-nav__link">
+      <a href="../debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1016,10 +1018,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../docs/advanced/multi-threading-i-basics/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Multi-threading I - Basics
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1028,6 +1050,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is it?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is it?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-you-need-multi-threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do you need multi-threading?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-threaded-apps-are-complex-and-harder-to-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-threaded apps are complex and harder to debug
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#units-needed-for-a-multi-threaded-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Units needed for a multi-threaded application
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Units needed for a multi-threaded application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-macos-freebsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux macOS FreeBSD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1040,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/advanced/multi-threading-ii-tthread/" class="md-nav__link">
+      <a href="../multi-threading-ii-tthread/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1061,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/advanced/multi-threading-iii-cs/" class="md-nav__link">
+      <a href="../multi-threading-iii-cs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1082,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/advanced/multi-threading-iv-snippets/" class="md-nav__link">
+      <a href="../multi-threading-iv-snippets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1150,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/external-systems/overview/" class="md-nav__link">
+      <a href="../../external-systems/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1171,7 +1279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/external-systems/parsing-json/" class="md-nav__link">
+      <a href="../../external-systems/parsing-json/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1192,7 +1300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/external-systems/webserver/" class="md-nav__link">
+      <a href="../../external-systems/webserver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1217,30 +1325,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Community
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../community/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1249,104 +1337,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#chats" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chats
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Chats">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#forums" class="md-nav__link">
-    <span class="md-ellipsis">
-      Forums
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#discord-servers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Discord Servers
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#irc" class="md-nav__link">
-    <span class="md-ellipsis">
-      IRC
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#email-lists" class="md-nav__link">
-    <span class="md-ellipsis">
-      Email Lists
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#devsrepos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Devs/Repos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#twitter-channels" class="md-nav__link">
-    <span class="md-ellipsis">
-      Twitter Channels
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conferences-and-events" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conferences and Events
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1398,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/resources/docs-sites/" class="md-nav__link">
+      <a href="../../resources/docs-sites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1419,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/resources/fpc-laz-packages/" class="md-nav__link">
+      <a href="../../resources/fpc-laz-packages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1440,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/resources/videos/" class="md-nav__link">
+      <a href="../../resources/videos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1488,37 +1478,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chats" class="md-nav__link">
+  <a href="#what-is-it" class="md-nav__link">
     <span class="md-ellipsis">
-      Chats
+      What is it?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Chats">
+    <nav class="md-nav" aria-label="What is it?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#forums" class="md-nav__link">
+  <a href="#do-you-need-multi-threading" class="md-nav__link">
     <span class="md-ellipsis">
-      Forums
+      Do you need multi-threading?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#discord-servers" class="md-nav__link">
+  <a href="#multi-threaded-apps-are-complex-and-harder-to-debug" class="md-nav__link">
     <span class="md-ellipsis">
-      Discord Servers
+      Multi-threaded apps are complex and harder to debug
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#irc" class="md-nav__link">
+  <a href="#units-needed-for-a-multi-threaded-application" class="md-nav__link">
     <span class="md-ellipsis">
-      IRC
+      Units needed for a multi-threaded application
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Units needed for a multi-threaded application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-macos-freebsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux macOS FreeBSD
     </span>
   </a>
   
@@ -1528,40 +1537,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#email-lists" class="md-nav__link">
-    <span class="md-ellipsis">
-      Email Lists
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#devsrepos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Devs/Repos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#twitter-channels" class="md-nav__link">
-    <span class="md-ellipsis">
-      Twitter Channels
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conferences-and-events" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conferences and Events
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1580,61 +1558,79 @@
                   
 
 
-<h1 id="community">Community<a class="headerlink" href="#community" title="Permanent link">&para;</a></h1>
-<p>Here are chats, mailing lists, conferences and events that relate to Free Pascal, Lazarus and other Object Pascal dialects that transferrable to Free Pascal.</p>
-<h2 id="chats">Chats<a class="headerlink" href="#chats" title="Permanent link">&para;</a></h2>
-<h3 id="forums">Forums<a class="headerlink" href="#forums" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://forum.lazarus.freepascal.org/index.php">Free Pascal and Lazarus</a></li>
-</ul>
-<h3 id="discord-servers">Discord Servers<a class="headerlink" href="#discord-servers" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://discord.com/invite/GPFyAc2UJ2">Unofficial Free Pascal</a></li>
-<li><a href="https://delphi-community.com">Delphi Community</a></li>
-</ul>
-<h3 id="irc">IRC<a class="headerlink" href="#irc" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>#lazarus</code> at <code>web.libera.chat</code>. <ul>
-<li>You can access it via <a href="https://forum.lazarus.freepascal.org/index.php/page,9.html">Free Pascal &amp; Lazarus forum</a></li>
-</ul>
-</li>
-<li><code>#fpc</code> and <code>#fpc-alt</code> on <code>irc.libera.chat</code></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>I have not been able to join the <code>irc.libera.chat</code></p>
-<p>The <code>irc.libera.chat</code> is for off-topic discussions.</p>
-<p>The FPC core team has no control over either of these channels.</p>
+<h1 id="multi-threading-i-basics">Multi-threading I - Basics<a class="headerlink" href="#multi-threading-i-basics" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-it">What is it?<a class="headerlink" href="#what-is-it" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The information in this section is adapted from the following URL; <a href="https://wiki.freepascal.org/Multithreaded_Application_Tutorial">Multithreaded Application Tutorial</a>, excluding the tutorial.</p>
 </div>
-<h2 id="email-lists">Email Lists<a class="headerlink" href="#email-lists" title="Permanent link">&para;</a></h2>
+<p>A multi-threaded application can run multiple tasks simultaneously by creating separate threads. The Main Thread manages user interactions, while other threads handle background tasks.</p>
+<p>This setup improves application responsiveness during intensive operations. Multi-threading is beneficial for running tasks in the background, maintaining user interface responsiveness, and managing multiple client requests in server applications.</p>
+<h3 id="do-you-need-multi-threading">Do you need multi-threading?<a class="headerlink" href="#do-you-need-multi-threading" title="Permanent link">&para;</a></h3>
+<p>Multi-threading is good for:</p>
 <ul>
-<li><a href="https://lists.freepascal.org/mailman/listinfo">Free Pascal Mailing Lists</a><ul>
-<li><strong>FPC-Pascal</strong>: Use the Free Pascal mailing list for questions, updates, and assistance in current and future developments.</li>
-<li><strong>FPC-Devel</strong>: Join the development mailing list for bug reports or technical questions. It's also used to announce new snapshots and small patches for compiler bugs.</li>
-<li><strong>FPC-Announce</strong>: Important announcements (e.g., new releases) will be posted here.</li>
-<li><strong><code>pas2js</code></strong>: For questions and discussions on the <code>pas2js</code> (Pascal-to-JavaScript) compiler.</li>
-<li><strong>FPC-Other</strong>: For all other topics not covered in the above categories.</li>
-<li><strong>MacPascal</strong>: This is the place for discussions about using FPC on the Mac and for iOS devices, although it's not FPC-specific.</li>
+<li>Managing blocking handles like network tasks.</li>
+<li>Using multiple processors at once to process a large dataset.</li>
+<li>Using multiple processors to process different parts of an image simultaneously, improving efficiency and speed.</li>
+<li>Etc.</li>
 </ul>
-</li>
-<li><a href="https://lists.lazarus-ide.org/listinfo">Lazarus Mailing Lists</a></li>
-</ul>
-<h2 id="devsrepos">Devs/Repos<a class="headerlink" href="#devsrepos" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://gitlab.com/freepascal.org/fpc">FPC - Gitlab</a></li>
-<li><a href="https://gitlab.com/freepascal.org/lazarus">Lazarus IDE - Gitlab</a></li>
-</ul>
-<h2 id="twitter-channels">Twitter Channels<a class="headerlink" href="#twitter-channels" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://twitter.com/LazarusDev">Lazarus Dev</a></li>
-<li><a href="https://twitter.com/freepascaldev">Free Pascal Dev</a></li>
-<li><a href="https://twitter.com/Pascal_Congress">Pascal Congress</a></li>
-</ul>
-<h2 id="conferences-and-events">Conferences and Events<a class="headerlink" href="#conferences-and-events" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://wiki.lazarus.freepascal.org/Conferences_and_Events">Conferences and Events from Free pascal wiki site</a></li>
-<li><a href="https://www.pascalcongress.com">International Pascal Congress</a></li>
-</ul>
+<p>Before using multi-threading to speed up tasks using many processors, make sure of the following items. </p>
+<ol>
+<li>Your program is already using all resources well on one CPU core. </li>
+<li>Check if your program is optimized at the highest level (level 3) for the best performance, as higher optimization can make your program faster.</li>
+</ol>
+<h3 id="multi-threaded-apps-are-complex-and-harder-to-debug">Multi-threaded apps are complex and harder to debug<a class="headerlink" href="#multi-threaded-apps-are-complex-and-harder-to-debug" title="Permanent link">&para;</a></h3>
+<p>For simpler tasks, one thread may be enough. </p>
+<p>Instead of many threads, you can split long tasks into smaller parts or use <code>Application.ProcessMessages</code> to handle user actions during long tasks.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>What is <code>Application.ProcessMessages</code>?</p>
+<p><code>Application.ProcessMessages</code> signals that the app can execute events from its event queue. Let's say that you have 2 buttons on a form with to <code>onclick</code> procedures assigned. The first procedure is a lengthly process (eg. <code>repeat..until true</code>). The second button has only <code>ShowMessage('haha')</code>.</p>
+<p>Now, without <code>Appllication.ProcessMessages</code> inserted in the first procedure in the repeat statement, if you press the first button then you will not be able to press the seccond button (or anything else) until the repeat statement finishes. So the user interface is frozen.</p>
+<p>With the <code>application.processmessages</code> inserted as follows</p>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">repeat</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">Application</span><span class="o">.</span><span class="n">ProcessMessages</span><span class="o">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="o">...</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">until</span><span class="w"> </span><span class="k">true</span><span class="o">;</span>
+</span></code></pre></div>
+<p>If you press the first button and then the second button the <code>ShowMessage</code> will happen! So, it is a way to fake a multithread app :-))</p>
+<p>Source: <a href="https://stackoverflow.com/a/24789033/1179312">Lazarus: The effect of Application.ProcessMessages</a></p>
+</div>
+<h3 id="units-needed-for-a-multi-threaded-application">Units needed for a multi-threaded application<a class="headerlink" href="#units-needed-for-a-multi-threaded-application" title="Permanent link">&para;</a></h3>
+<h4 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
+<p>You don´t need any special unit for this to work with Windows. </p>
+<h4 id="linux-macos-freebsd">Linux macOS FreeBSD<a class="headerlink" href="#linux-macos-freebsd" title="Permanent link">&para;</a></h4>
+<p>With Linux, macOS and FreeBSD, you need the <code>cthreads</code> unit and it must be the first used unit of the project (the program source, usually the <code>.lpr</code> file)! </p>
+<p>In cases where you need  units like <code>cmem</code>, <code>cthreads</code>, and <code>cwstrings</code>; </p>
+<ol>
+<li>Place them first in the <code>uses</code> section, </li>
+<li>Due to how these units work, a sensible order is <code>cmem</code>, <code>cthreads</code> and <code>cwstrings</code>.</li>
+</ol>
+<p>So, your FPC/Lazarus application code should begin as the following snippet.</p>
+<div class="language-pascal highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">program</span><span class="w"> </span><span class="n">AMultiThreadedProgram</span><span class="o">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="cm">{$mode objfpc}{$H+}{$J-}</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">uses</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="cm">{$ifdef unix}</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span><span class="n">cmem</span><span class="o">,</span><span class="w"> </span><span class="c1">// the c memory manager is faster for multi-threading</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">        </span><span class="c1">// on some systems</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span><span class="n">cthreads</span><span class="o">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="cm">{$endif}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span><span class="cm">{ you can add units here }</span><span class="o">;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">  </span><span class="c1">// ... the rest of your code</span>
+</span></code></pre></div></td></tr></table></div>
 
 
 
@@ -1675,18 +1671,18 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../js/open_in_new_tab.js"></script>
+        <script src="../../../js/open_in_new_tab.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
