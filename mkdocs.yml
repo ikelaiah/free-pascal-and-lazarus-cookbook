@@ -80,15 +80,11 @@ theme:
     - search.highlight
     - content.code.copy
 
+extra_css:
+  - assets/extra.css
+
 plugins:
   - search
-#  - enumerate-headings:
-#      toc_depth: 6
-#      increment_across_pages: true
-#      exclude:
-#          - index.md
-#          - about.md
-#          - LICENSE.md
   - open-in-new-tab
   - glightbox:
       touchNavigation: true
